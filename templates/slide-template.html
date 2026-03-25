@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Título — Gestiona</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/corporate.css">
+</head>
+<body>
+<main role="presentation">
+
+    <!-- 1. PORTADA -->
+    <section class="slide-container" aria-label="Portada">
+        <div class="title-layout">
+            <h1>Título de la <span>Presentación</span></h1>
+            <p class="subtitle">Subtítulo descriptivo de la presentación</p>
+        </div>
+    </section>
+
+    <!-- 2. SEPARADOR DE SECCIÓN -->
+    <section class="slide-container" aria-label="Sección">
+        <div class="section-title-layout">
+            <h2>Nombre de Sección</h2>
+            <hr aria-hidden="true">
+            <p class="subtitle">Breve descripción de lo que aborda esta sección</p>
+        </div>
+    </section>
+
+    <!-- 3. TILES 2×2 -->
+    <section class="slide-container" aria-label="Tiles">
+        <h2 class="slide-title">Contenido en Tiles</h2>
+        <div class="content-area">
+            <div class="tiled-content">
+                <article class="tile">
+                    <div class="icon" aria-hidden="true"><i class="fa-solid fa-lightbulb"></i></div>
+                    <h3>Punto clave uno</h3>
+                    <p>Descripción concisa del primer punto importante.</p>
+                </article>
+                <article class="tile">
+                    <div class="icon" aria-hidden="true"><i class="fa-solid fa-chart-line"></i></div>
+                    <h3>Punto clave dos</h3>
+                    <p>Descripción concisa del segundo punto importante.</p>
+                </article>
+                <article class="tile">
+                    <div class="icon" aria-hidden="true"><i class="fa-solid fa-users"></i></div>
+                    <h3>Punto clave tres</h3>
+                    <p>Descripción concisa del tercer punto importante.</p>
+                </article>
+                <article class="tile">
+                    <div class="icon" aria-hidden="true"><i class="fa-solid fa-shield-halved"></i></div>
+                    <h3>Punto clave cuatro</h3>
+                    <p>Descripción concisa del cuarto punto importante.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. DOS COLUMNAS -->
+    <section class="slide-container" aria-label="Dos columnas">
+        <h2 class="slide-title">Dos Columnas</h2>
+        <div class="content-area">
+            <div class="two-column">
+                <div>
+                    <ul class="bullet-list">
+                        <li><i class="fa-solid fa-check" aria-hidden="true"></i> Primer punto relevante con detalle explicativo.</li>
+                        <li><i class="fa-solid fa-check" aria-hidden="true"></i> Segundo punto relevante con más contexto.</li>
+                        <li><i class="fa-solid fa-check" aria-hidden="true"></i> Tercer punto que complementa la información.</li>
+                    </ul>
+                </div>
+                <div class="card card--bordered">
+                    <h3>Dato Destacado</h3>
+                    <p>Información complementaria que refuerza el contenido de la columna izquierda.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. FEATURE CARDS con iconos circulares -->
+    <section class="slide-container" aria-label="Feature cards">
+        <h2 class="slide-title">Objetivos Estratégicos</h2>
+        <div class="content-area" style="align-items: center;">
+            <div class="feature-cards">
+                <div class="feature-card">
+                    <div class="icon-circle icon-circle--lg mx-auto">
+                        <i class="fa-solid fa-rocket" aria-hidden="true"></i>
+                    </div>
+                    <h3>Innovación</h3>
+                    <p>Descripción del primer objetivo estratégico y su impacto.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon-circle icon-circle--lg mx-auto">
+                        <i class="fa-solid fa-globe" aria-hidden="true"></i>
+                    </div>
+                    <h3>Internacionalización</h3>
+                    <p>Descripción del segundo objetivo y su alcance.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. SECCIÓN OSCURA con glass cards -->
+    <section class="slide-container" aria-label="Sección oscura con cards">
+        <div class="section-title-layout">
+            <h2>Capacidades Clave</h2>
+            <hr aria-hidden="true">
+            <div class="mt-lg" style="display: flex; gap: 32px;">
+                <div class="card--glass">
+                    <h3><i class="fa-solid fa-server" aria-hidden="true" style="margin-right: 8px;"></i>Infraestructura</h3>
+                    <p>Plataforma robusta y escalable para entornos exigentes.</p>
+                </div>
+                <div class="card--glass">
+                    <h3><i class="fa-solid fa-lock" aria-hidden="true" style="margin-right: 8px;"></i>Seguridad</h3>
+                    <p>Cumplimiento normativo y protección integral de datos.</p>
+                </div>
+                <div class="card--glass">
+                    <h3><i class="fa-solid fa-puzzle-piece" aria-hidden="true" style="margin-right: 8px;"></i>Integración</h3>
+                    <p>Conectividad nativa con sistemas y servicios existentes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. CIERRE -->
+    <section class="slide-container" aria-label="Cierre">
+        <div class="section-title-layout">
+            <h2>¡Gracias!</h2>
+            <hr aria-hidden="true">
+            <p class="subtitle">espublicogestiona.com</p>
+        </div>
+    </section>
+
+</main>
+<script src="../assets/js/navigation.js"></script>
+</body>
+</html>

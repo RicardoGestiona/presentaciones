@@ -1,0 +1,10 @@
+CLAUDE.local.md
+.DS_Store
+node_modules/
+.env
+.env.*
+.claude/
+.playwright-mcp/
+desarrollo-medios/
+log-prompts.md
+manual.md
