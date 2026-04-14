@@ -581,6 +581,18 @@
             gap: 14px;
             font-size: 17px;
             color: var(--color-text);
+            transform: translateX(-12px);
+            transition: opacity 0.4s ease, transform 0.5s cubic-bezier(0.34, 1.4, 0.64, 1), visibility 0s;
+        }
+
+        .event-list li.visible {
+            animation: item-slide-in 0.55s cubic-bezier(0.34, 1.4, 0.64, 1) both;
+        }
+
+        @keyframes item-slide-in {
+            0%   { opacity: 0; transform: translateX(-18px) scale(0.95); }
+            55%  { opacity: 1; transform: translateX(4px) scale(1.02); }
+            100% { opacity: 1; transform: translateX(0) scale(1); }
         }
 
         .event-list li i {
@@ -675,10 +687,10 @@
             <div class="event-right">
                 <p class="event-desc">Talleres individuales guiados por un docente especialista. Cada alumno trabajó en su propio entorno demo, con itinerarios adaptados al perfil técnico o funcional.</p>
                 <ul class="event-list">
-                    <li><i class="fa-solid fa-check"></i> 2 itinerarios paralelos (técnico y funcional)</li>
-                    <li><i class="fa-solid fa-check"></i> 3 talleres por itinerario</li>
-                    <li><i class="fa-solid fa-check"></i> Trabajo individual guiado</li>
-                    <li><i class="fa-solid fa-check"></i> Entorno demo propio por alumno</li>
+                    <li class="phase" data-phase="1"><i class="fa-solid fa-check"></i> 2 itinerarios paralelos (técnico y funcional)</li>
+                    <li class="phase" data-phase="2"><i class="fa-solid fa-check"></i> 3 talleres por itinerario</li>
+                    <li class="phase" data-phase="3"><i class="fa-solid fa-check"></i> Trabajo individual guiado</li>
+                    <li class="phase" data-phase="4"><i class="fa-solid fa-check"></i> Entorno demo propio por alumno</li>
                 </ul>
             </div>
         </div>
@@ -700,10 +712,10 @@
             <div class="event-right">
                 <p class="event-desc">GovJam + talleres diferenciados. Metodología de diseño de servicios públicos digitales por grupos, con un taller común de partida y elección de especialización.</p>
                 <ul class="event-list">
-                    <li><i class="fa-solid fa-check"></i> Taller común: oficinas virtuales</li>
-                    <li><i class="fa-solid fa-check"></i> 4 talleres especializados (elegir 2)</li>
-                    <li><i class="fa-solid fa-check"></i> Inicio del trabajo en equipo</li>
-                    <li><i class="fa-solid fa-check"></i> Metodología GovJam</li>
+                    <li class="phase" data-phase="1"><i class="fa-solid fa-check"></i> Taller común: oficinas virtuales</li>
+                    <li class="phase" data-phase="2"><i class="fa-solid fa-check"></i> 4 talleres especializados (elegir 2)</li>
+                    <li class="phase" data-phase="3"><i class="fa-solid fa-check"></i> Inicio del trabajo en equipo</li>
+                    <li class="phase" data-phase="4"><i class="fa-solid fa-check"></i> Metodología GovJam</li>
                 </ul>
             </div>
         </div>
@@ -725,10 +737,10 @@
             <div class="event-right">
                 <p class="event-desc">Desafío colaborativo real. Equipos multidisciplinares construyen soluciones completas en Gestiona, compitiendo en exposición final ante un jurado especializado.</p>
                 <ul class="event-list">
-                    <li><i class="fa-solid fa-check"></i> Equipos con roles mixtos</li>
-                    <li><i class="fa-solid fa-check"></i> 5 fases metodológicas</li>
-                    <li><i class="fa-solid fa-check"></i> 4 ejes técnicos</li>
-                    <li><i class="fa-solid fa-check"></i> Exposición y competición con jurado</li>
+                    <li class="phase" data-phase="1"><i class="fa-solid fa-check"></i> Equipos con roles mixtos</li>
+                    <li class="phase" data-phase="2"><i class="fa-solid fa-check"></i> 5 fases metodológicas</li>
+                    <li class="phase" data-phase="3"><i class="fa-solid fa-check"></i> 4 ejes técnicos</li>
+                    <li class="phase" data-phase="4"><i class="fa-solid fa-check"></i> Exposición y competición con jurado</li>
                 </ul>
             </div>
         </div>
