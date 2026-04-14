@@ -703,6 +703,22 @@
             width: 36px;
             text-align: center;
         }
+
+        /* --- Feature cards con phases (slide 9) --- */
+        .feature-card.phase {
+            transform: translateY(20px) scale(0.92);
+            transition: opacity 0.45s ease, transform 0.6s cubic-bezier(0.34, 1.4, 0.64, 1), visibility 0s;
+        }
+
+        .feature-card.phase.visible {
+            animation: feature-pop 0.65s cubic-bezier(0.34, 1.4, 0.64, 1) both;
+        }
+
+        @keyframes feature-pop {
+            0%   { opacity: 0; transform: translateY(24px) scale(0.88); }
+            55%  { opacity: 1; transform: translateY(-5px) scale(1.04); }
+            100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
     </style>
 </head>
 <body>
@@ -920,21 +936,21 @@
         <h2 class="slide-title">Objetivos</h2>
         <div class="content-area" style="align-items: center;">
             <div class="feature-cards">
-                <div class="feature-card">
+                <div class="feature-card phase" data-phase="1">
                     <div class="icon-circle icon-circle--lg mx-auto">
                         <i class="fa-solid fa-people-arrows" aria-hidden="true"></i>
                     </div>
                     <h3>Trabajo colaborativo</h3>
-                    <p>Romper los silos de conocimiento, coordinando expertos en parametrización, analistas de datos y desarrolladores en un entorno real.</p>
+                    <p>Especialistas certificados de las tres certificaciones colaboran por un objetivo común.</p>
                 </div>
-                <div class="feature-card">
+                <div class="feature-card phase" data-phase="2">
                     <div class="icon-circle icon-circle--lg mx-auto">
                         <i class="fa-solid fa-brain" aria-hidden="true"></i>
                     </div>
-                    <h3>Consolidación de conocimiento</h3>
-                    <p>Aplicar las competencias adquiridas en las certificaciones bajo presión creativa, sumando nuevas funcionalidades.</p>
+                    <h3>Consolidar conocimiento</h3>
+                    <p>Aplicar las competencias adquiridas en las tres certificaciones y ponerlas en común para multiplicar capacidades.</p>
                 </div>
-                <div class="feature-card">
+                <div class="feature-card phase" data-phase="3">
                     <div class="icon-circle icon-circle--lg mx-auto">
                         <i class="fa-solid fa-diagram-project" aria-hidden="true"></i>
                     </div>
