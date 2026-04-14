@@ -252,6 +252,167 @@
         .tagline.visible {
             transform: translateY(0);
         }
+
+        /* --- Slide 2: De dónde venimos (journey) --- */
+        .journey-layout {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                radial-gradient(ellipse at 15% 20%, rgba(0, 223, 178, 0.12), transparent 55%),
+                radial-gradient(ellipse at 85% 80%, rgba(95, 255, 223, 0.08), transparent 55%),
+                var(--color-bg-dark);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 80px;
+            overflow: hidden;
+        }
+
+        .journey-layout::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+            background-size: 48px 48px;
+            opacity: 0.5;
+            pointer-events: none;
+        }
+
+        .journey-header {
+            text-align: center;
+            margin-bottom: 70px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .journey-header h2 {
+            color: white;
+            font-size: 52px;
+            margin-bottom: 18px;
+            letter-spacing: -0.5px;
+        }
+
+        .journey-header hr {
+            width: 80px;
+            height: 4px;
+            background: var(--color-primary-light);
+            border: none;
+            border-radius: 2px;
+            margin: 0 auto 18px;
+        }
+
+        .journey-header .subtitle {
+            color: rgba(255, 255, 255, 0.75);
+            font-size: 20px;
+        }
+
+        .journey-map {
+            position: relative;
+            width: 100%;
+            max-width: 960px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            z-index: 2;
+        }
+
+        .journey-line {
+            position: absolute;
+            top: 42px;
+            left: 8%;
+            right: 8%;
+            height: 2px;
+            background-image: linear-gradient(90deg, rgba(255, 255, 255, 0.35) 50%, transparent 50%);
+            background-size: 12px 2px;
+            background-repeat: repeat-x;
+        }
+
+        .journey-line--progress {
+            background-image: linear-gradient(90deg, var(--color-primary-light), var(--color-accent));
+            background-size: auto;
+            right: auto;
+            width: 46%;
+            height: 3px;
+            box-shadow: 0 0 12px rgba(0, 223, 178, 0.6);
+        }
+
+        .journey-stop {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .journey-pin {
+            width: 84px;
+            height: 84px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.08);
+            border: 2px solid rgba(255, 255, 255, 0.35);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            color: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(4px);
+            position: relative;
+            z-index: 2;
+        }
+
+        .journey-pin--highlight {
+            background: linear-gradient(135deg, var(--color-primary-light), var(--color-accent));
+            border-color: var(--color-accent);
+            color: var(--color-bg-dark);
+            box-shadow:
+                0 0 0 6px rgba(95, 255, 223, 0.18),
+                0 10px 28px rgba(0, 223, 178, 0.35);
+            animation: pin-pulse 2.2s ease-in-out infinite;
+        }
+
+        @keyframes pin-pulse {
+            0%, 100% { box-shadow: 0 0 0 6px rgba(95, 255, 223, 0.18), 0 10px 28px rgba(0, 223, 178, 0.35); }
+            50%      { box-shadow: 0 0 0 14px rgba(95, 255, 223, 0.06), 0 10px 28px rgba(0, 223, 178, 0.55); }
+        }
+
+        .journey-year {
+            font-size: 40px;
+            font-weight: 700;
+            color: white;
+            margin: 18px 0 2px;
+            letter-spacing: -0.5px;
+        }
+
+        .journey-stop--current .journey-year {
+            color: var(--color-accent);
+        }
+
+        .journey-city {
+            font-size: 22px;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.9);
+            margin: 0 0 6px;
+        }
+
+        .journey-tag {
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: rgba(255, 255, 255, 0.55);
+            margin: 0;
+        }
+
+        .journey-stop--current .journey-tag {
+            color: var(--color-primary-light);
+            font-weight: 600;
+        }
     </style>
 </head>
 <body>
@@ -278,10 +439,44 @@
 
     <!-- 2. SEPARADOR — De dónde venimos -->
     <section class="slide-container" aria-label="Evolución">
-        <div class="section-title-layout">
-            <h2>De dónde venimos</h2>
-            <hr aria-hidden="true">
-            <p class="subtitle">Tres eventos formativos: Segovia, Jaén, Eivissa.<br>Innovación continua</p>
+        <div class="journey-layout">
+            <div class="journey-header">
+                <h2>De dónde venimos</h2>
+                <hr aria-hidden="true">
+                <p class="subtitle">Tres eventos formativos. Innovación continua.</p>
+            </div>
+
+            <div class="journey-map" aria-hidden="true">
+                <div class="journey-line"></div>
+                <div class="journey-line journey-line--progress"></div>
+
+                <div class="journey-stop">
+                    <div class="journey-pin">
+                        <i class="fa-solid fa-mountain-sun"></i>
+                    </div>
+                    <p class="journey-year">2024</p>
+                    <p class="journey-city">Segovia</p>
+                    <p class="journey-tag">I Encuentro</p>
+                </div>
+
+                <div class="journey-stop">
+                    <div class="journey-pin">
+                        <i class="fa-solid fa-sun"></i>
+                    </div>
+                    <p class="journey-year">2025</p>
+                    <p class="journey-city">Jaén</p>
+                    <p class="journey-tag">II Encuentro</p>
+                </div>
+
+                <div class="journey-stop journey-stop--current">
+                    <div class="journey-pin journey-pin--highlight">
+                        <i class="fa-solid fa-location-dot"></i>
+                    </div>
+                    <p class="journey-year">2026</p>
+                    <p class="journey-city">Eivissa</p>
+                    <p class="journey-tag">I Hackathon</p>
+                </div>
+            </div>
         </div>
     </section>
 
