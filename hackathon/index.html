@@ -863,20 +863,12 @@
             gap: 16px;
             padding: 0 80px;
             align-content: center;
-            align-items: start;
+            align-items: stretch;
         }
         .year-card {
             display: flex; flex-direction: column; gap: 8px;
             background: var(--color-bg-light); border-radius: 10px;
             padding: 16px 16px; border-top: 3px solid var(--color-primary-light);
-        }
-        /* Todos los year-card aparecen a la vez — sin phase */
-        .year-card.phase {
-            opacity: 1 !important;
-            visibility: visible !important;
-            transform: none !important;
-            transition: none !important;
-            animation: none !important;
         }
         .year-card-icon {
             width: 36px; height: 36px; border-radius: 50%;
@@ -1369,18 +1361,18 @@
                 </div>
             </div>
             <div class="year-body">
-                <div class="year-card phase" data-phase="1">
+                <div class="year-card">
                     <div class="year-card-icon"><i class="fa-solid fa-rocket"></i></div>
                     <span class="year-card-date">Mayo 2014</span>
                     <h3>Implantación inicial</h3>
                     <p>Puesta en marcha del sistema de Administración Electrónica en el Ayuntamiento de Ibiza.</p>
                 </div>
-                <div class="year-card phase" data-phase="2">
+                <div class="year-card">
                     <div class="year-card-icon"><i class="fa-solid fa-file-lines"></i></div>
                     <h3>Primeros expedientes digitales</h3>
                     <p>Digitalización de los primeros procedimientos municipales y arranque del expediente electrónico.</p>
                 </div>
-                <div class="year-card phase" data-phase="3">
+                <div class="year-card">
                     <div class="year-card-icon"><i class="fa-solid fa-users"></i></div>
                     <h3>Formación inicial del equipo</h3>
                     <p>Capacitación del personal municipal en la nueva plataforma de tramitación electrónica.</p>
@@ -1401,17 +1393,17 @@
                 </div>
             </div>
             <div class="year-body">
-                <div class="year-card phase" data-phase="1">
+                <div class="year-card">
                     <div class="year-card-icon"><i class="fa-solid fa-gears"></i></div>
                     <h3>Optimización de la plataforma</h3>
                     <p>Ajustes y mejoras sobre la implantación inicial. Refinamiento de flujos y procedimientos.</p>
                 </div>
-                <div class="year-card phase" data-phase="2">
+                <div class="year-card">
                     <div class="year-card-icon"><i class="fa-solid fa-list-check"></i></div>
                     <h3>Ampliación del catálogo</h3>
                     <p>Incorporación progresiva de nuevos procedimientos al sistema de tramitación electrónica.</p>
                 </div>
-                <div class="year-card phase" data-phase="3">
+                <div class="year-card">
                     <div class="year-card-icon"><i class="fa-solid fa-shield-halved"></i></div>
                     <h3>Seguridad y firma electrónica</h3>
                     <p>Refuerzo de los mecanismos de autenticación y firma electrónica en los trámites municipales.</p>
@@ -1432,18 +1424,18 @@
                 </div>
             </div>
             <div class="year-body">
-                <div class="year-card phase" data-phase="1">
+                <div class="year-card">
                     <div class="year-card-icon"><i class="fa-solid fa-building-columns"></i></div>
                     <span class="year-card-date">Junio 2016</span>
                     <h3>Módulo de Órganos Colegiados</h3>
                     <p>Implantación de la primera versión del módulo para la gestión electrónica de órganos de gobierno.</p>
                 </div>
-                <div class="year-card phase" data-phase="2">
+                <div class="year-card">
                     <div class="year-card-icon"><i class="fa-solid fa-scroll"></i></div>
                     <h3>Digitalización del Pleno</h3>
                     <p>Gestión electrónica de convocatorias, actas y acuerdos de los plenos municipales.</p>
                 </div>
-                <div class="year-card phase" data-phase="3">
+                <div class="year-card">
                     <div class="year-card-icon"><i class="fa-solid fa-people-group"></i></div>
                     <h3>Comisiones informativas</h3>
                     <p>Extensión del módulo a las comisiones informativas y demás órganos colegiados del Ayuntamiento.</p>
@@ -1464,18 +1456,18 @@
                 </div>
             </div>
             <div class="year-body">
-                <div class="year-card phase" data-phase="1">
+                <div class="year-card">
                     <div class="year-card-icon"><i class="fa-solid fa-scale-balanced"></i></div>
                     <span class="year-card-date">Noviembre 2017</span>
                     <h3>Adaptación al ENI</h3>
                     <p>Implantación de la versión adaptada al Esquema Nacional de Interoperabilidad.</p>
                 </div>
-                <div class="year-card phase" data-phase="2">
+                <div class="year-card">
                     <div class="year-card-icon"><i class="fa-solid fa-book"></i></div>
                     <h3>Ley 39/2015</h3>
                     <p>Incorporación de las exigencias del Procedimiento Administrativo Común de las Administraciones Públicas.</p>
                 </div>
-                <div class="year-card phase" data-phase="3">
+                <div class="year-card">
                     <div class="year-card-icon"><i class="fa-solid fa-folder-open"></i></div>
                     <h3>Normalización documental</h3>
                     <p>Estandarización de documentos y expedientes electrónicos conforme al marco normativo vigente.</p>
@@ -1496,17 +1488,17 @@
                 </div>
             </div>
             <div class="year-body">
-                <div class="year-card phase" data-phase="1">
+                <div class="year-card">
                     <div class="year-card-icon"><i class="fa-solid fa-link"></i></div>
                     <h3>Integración con la AGE</h3>
                     <p>Activación de las integraciones con la Administración General del Estado y sus plataformas compartidas.</p>
                 </div>
-                <div class="year-card phase" data-phase="2">
+                <div class="year-card">
                     <div class="year-card-icon"><i class="fa-solid fa-envelope-circle-check"></i></div>
                     <h3>Notificaciones electrónicas</h3>
                     <p>Adaptación al régimen de notificaciones electrónicas obligatorias conforme a la Ley 39/2015.</p>
                 </div>
-                <div class="year-card phase" data-phase="3">
+                <div class="year-card">
                     <div class="year-card-icon"><i class="fa-solid fa-network-wired"></i></div>
                     <h3>Servicios compartidos</h3>
                     <p>Conexión con Cl@ve, SIR y otras plataformas del ecosistema de interoperabilidad estatal.</p>
@@ -1527,18 +1519,18 @@
                 </div>
             </div>
             <div class="year-body">
-                <div class="year-card phase" data-phase="1">
+                <div class="year-card">
                     <div class="year-card-icon"><i class="fa-solid fa-lightbulb"></i></div>
                     <span class="year-card-date">Febrero 2019</span>
                     <h3>Proyecto CNIS Eivissa</h3>
                     <p>Participación en el Congreso Nacional de Innovación y Servicios Públicos con el modelo de Ibiza.</p>
                 </div>
-                <div class="year-card phase" data-phase="2">
+                <div class="year-card">
                     <div class="year-card-icon"><i class="fa-solid fa-chart-line"></i></div>
                     <h3>Madurez del sistema</h3>
                     <p>Consolidación de 5 años de tramitación electrónica con mejoras en rendimiento y usabilidad.</p>
                 </div>
-                <div class="year-card phase" data-phase="3">
+                <div class="year-card">
                     <div class="year-card-icon"><i class="fa-solid fa-handshake"></i></div>
                     <h3>Colaboración institucional</h3>
                     <p>Intercambio de experiencias con otros ayuntamientos y difusión del modelo de éxito de Ibiza.</p>
@@ -1559,18 +1551,18 @@
                 </div>
             </div>
             <div class="year-body">
-                <div class="year-card phase" data-phase="1">
+                <div class="year-card">
                     <div class="year-card-icon"><i class="fa-solid fa-laptop-house"></i></div>
                     <span class="year-card-date">Marzo 2020</span>
                     <h3>Herramientas colaborativas</h3>
                     <p>Despliegue urgente de herramientas de trabajo remoto para garantizar la continuidad del servicio durante el confinamiento.</p>
                 </div>
-                <div class="year-card phase" data-phase="2">
+                <div class="year-card">
                     <div class="year-card-icon"><i class="fa-solid fa-calendar-check"></i></div>
                     <h3>Sistema de cita previa</h3>
                     <p>Implantación del sistema de cita previa para la atención ciudadana presencial en condiciones de seguridad sanitaria.</p>
                 </div>
-                <div class="year-card phase" data-phase="3">
+                <div class="year-card">
                     <div class="year-card-icon"><i class="fa-solid fa-circle-check"></i></div>
                     <h3>Continuidad del servicio</h3>
                     <p>La e-Administración ya implantada permitió mantener los trámites municipales sin interrupción durante la pandemia.</p>
@@ -1591,7 +1583,7 @@
                 </div>
             </div>
             <div class="year-body">
-                <div class="year-card phase" data-phase="1">
+                <div class="year-card">
                     <div class="year-card-icon"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
                     <span class="year-card-date">Julio 2021</span>
                     <h3>Módulo de control interno</h3>
@@ -1602,7 +1594,7 @@
                     <h3>Hito nacional</h3>
                     <p>Ibiza se convierte en el primer ayuntamiento de España en implementar la fiscalización previa electrónica.</p>
                 </div>
-                <div class="year-card phase" data-phase="3">
+                <div class="year-card">
                     <div class="year-card-icon"><i class="fa-solid fa-euro-sign"></i></div>
                     <h3>Gestión económica avanzada</h3>
                     <p>Fortalecimiento del control interno y la trazabilidad en la gestión económico-financiera municipal.</p>
@@ -1623,17 +1615,17 @@
                 </div>
             </div>
             <div class="year-body">
-                <div class="year-card phase" data-phase="1">
+                <div class="year-card">
                     <div class="year-card-icon"><i class="fa-solid fa-sitemap"></i></div>
                     <h3>Catálogo 100% electrónico</h3>
                     <p>Todos los procedimientos del catálogo municipal disponibles en formato 100% electrónico.</p>
                 </div>
-                <div class="year-card phase" data-phase="2">
+                <div class="year-card">
                     <div class="year-card-icon"><i class="fa-solid fa-mobile-screen"></i></div>
                     <h3>Mejora de la experiencia ciudadana</h3>
                     <p>Actualizaciones orientadas a mejorar la accesibilidad y usabilidad de los servicios digitales para el ciudadano.</p>
                 </div>
-                <div class="year-card phase" data-phase="3">
+                <div class="year-card">
                     <div class="year-card-icon"><i class="fa-solid fa-lock"></i></div>
                     <h3>Seguridad y trazabilidad</h3>
                     <p>Refuerzo de los mecanismos de seguridad, auditoría y trazabilidad del expediente electrónico.</p>
@@ -1654,17 +1646,17 @@
                 </div>
             </div>
             <div class="year-body">
-                <div class="year-card phase" data-phase="1">
+                <div class="year-card">
                     <div class="year-card-icon"><i class="fa-solid fa-arrows-rotate"></i></div>
                     <h3>Actualización de la plataforma</h3>
                     <p>Modernización tecnológica hacia las nuevas versiones de Gestiona con mejoras de rendimiento y funcionalidad.</p>
                 </div>
-                <div class="year-card phase" data-phase="2">
+                <div class="year-card">
                     <div class="year-card-icon"><i class="fa-solid fa-plug-circle-plus"></i></div>
                     <h3>Nuevas integraciones</h3>
                     <p>Ampliación de las conexiones con sistemas autonómicos, estatales y servicios de interoperabilidad avanzada.</p>
                 </div>
-                <div class="year-card phase" data-phase="3">
+                <div class="year-card">
                     <div class="year-card-icon"><i class="fa-solid fa-graduation-cap"></i></div>
                     <h3>Plan de certificación</h3>
                     <p>Diseño y planificación del programa de certificación de usuarios en las distintas especialidades de Gestiona.</p>
@@ -1685,17 +1677,17 @@
                 </div>
             </div>
             <div class="year-body">
-                <div class="year-card phase" data-phase="1">
+                <div class="year-card">
                     <div class="year-card-icon"><i class="fa-solid fa-certificate"></i></div>
                     <h3>Administración Avanzada</h3>
                     <p>Certificación de los primeros usuarios del Ayuntamiento en configuración avanzada de Gestiona.</p>
                 </div>
-                <div class="year-card phase" data-phase="2">
+                <div class="year-card">
                     <div class="year-card-icon"><i class="fa-solid fa-person-chalkboard"></i></div>
                     <h3>Programa de formación especializada</h3>
                     <p>Inicio del programa de formación certificada para el equipo técnico y funcional del Ayuntamiento.</p>
                 </div>
-                <div class="year-card phase" data-phase="3">
+                <div class="year-card">
                     <div class="year-card-icon"><i class="fa-solid fa-user-graduate"></i></div>
                     <h3>Comunidad certificada</h3>
                     <p>Crecimiento de la comunidad de profesionales certificados como palanca de calidad en la gestión municipal.</p>
@@ -1716,17 +1708,17 @@
                 </div>
             </div>
             <div class="year-body">
-                <div class="year-card phase" data-phase="1">
+                <div class="year-card">
                     <div class="year-card-icon"><i class="fa-solid fa-print"></i></div>
                     <h3>Impresión y ensobrado</h3>
                     <p>Activación de los servicios de impresión y ensobrado para las comunicaciones y notificaciones municipales.</p>
                 </div>
-                <div class="year-card phase" data-phase="2">
+                <div class="year-card">
                     <div class="year-card-icon"><i class="fa-solid fa-chart-pie"></i></div>
                     <h3>Certificación Analiz@</h3>
                     <p>Certificación de usuarios en el módulo de análisis de datos Analiz@, potenciando la inteligencia de gestión.</p>
                 </div>
-                <div class="year-card phase" data-phase="3">
+                <div class="year-card">
                     <div class="year-card-icon"><i class="fa-solid fa-code"></i></div>
                     <h3>Gestiona for Developers</h3>
                     <p>Inscripción en el programa de certificación técnica "Gestiona for Developers" para el equipo de desarrollo.</p>
