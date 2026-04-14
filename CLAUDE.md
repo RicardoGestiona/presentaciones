@@ -28,6 +28,7 @@ presentaciones/
 ## Sistema visual (basado en desarrollo-medios)
 - **Slides** = `<section class="slide-container">` de 1280×720px, centrados en fondo oscuro
 - **Navegación** = transición horizontal `translateX` via `<main role="presentation">`
+- **Fases** = revelación progresiva dentro de un slide: elementos con `.phase[data-phase="N"]` se muestran secuencialmente al pulsar siguiente. CSS debe ocultar `.phase` por defecto y mostrar `.phase.visible`.
 - **Tipografía** = Roboto (Google Fonts)
 - **Iconos** = Font Awesome 6.5.1
 
@@ -42,12 +43,25 @@ presentaciones/
 | `.tile-triple` | Variante de 3 columnas |
 | `.table-layout` | Tabla con cabecera oscura |
 | `.bullet-list` | Lista con iconos Font Awesome (`.bullet-list--gold` para esFirma) |
+| `.feature-cards` | Flex de tarjetas con icono circular centrado |
+| `.step-cards` | Pasos numerados sobre fondo oscuro (`.step-card--gold`) |
+| `.highlight-box` | Callout con borde lateral (`.highlight-box--gold`) |
+
+## Componentes adicionales
+- `.card` / `.card--bordered` / `.card--bordered-gold` → tarjetas con sombra
+- `.card--glass` / `.card--glass-gold` → tarjetas translúcidas para secciones oscuras
+- `.icon-circle` / `.icon-circle--lg` / `.icon-circle--gold` → icono circular con fondo
+- `.badge-gestiona` / `.badge-esfirma` → etiquetas de marca
+- `.team-bar` → barra de equipo (icono + label + nombres)
+- `.bar-chart` → gráfico de barras simple (`.bar--low`, `.bar--mid`, `.bar--high`)
+- `.accent-line` / `.accent-line--gold` → línea decorativa
 
 ## Variantes esFirma
 - `.esfirma-theme` en `slide-container` → decoración de fondo dorada
 - `.tile--gold` → borde superior dorado en tiles
 - `.card--bordered-gold` → borde superior dorado en cards
 - `.section-title-layout--gold` → separador con línea dorada
+- `.feature-card--gold` → feature card con borde dorado
 
 ## Convenciones
 - Cada presentación = subdirectorio con su `index.html` que importa `../assets/css/corporate.css` y `../assets/js/navigation.js`
