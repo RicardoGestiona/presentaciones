@@ -664,6 +664,45 @@
             40%  { opacity: 0.15; text-shadow: none; }
             100% { opacity: 1; text-shadow: 0 0 32px rgba(95, 255, 223, 0.35); }
         }
+
+        /* --- Grid ¿Qué es? (slide 8) --- */
+        .quees-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .quees-item {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            background: var(--color-bg-light);
+            border-radius: 10px;
+            padding: 20px 24px;
+            border-left: 4px solid var(--color-primary-light);
+            font-size: 16px;
+            color: var(--color-text-dark);
+            transform: translateX(-14px) scale(0.96);
+            transition: opacity 0.4s ease, transform 0.55s cubic-bezier(0.34, 1.4, 0.64, 1), visibility 0s;
+        }
+
+        .quees-item.visible {
+            animation: quees-slide 0.55s cubic-bezier(0.34, 1.4, 0.64, 1) both;
+        }
+
+        @keyframes quees-slide {
+            0%   { opacity: 0; transform: translateX(-18px) scale(0.93); }
+            55%  { opacity: 1; transform: translateX(4px) scale(1.02); }
+            100% { opacity: 1; transform: translateX(0) scale(1); }
+        }
+
+        .quees-icon {
+            font-size: 26px;
+            color: var(--color-primary);
+            flex-shrink: 0;
+            width: 36px;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
@@ -850,24 +889,27 @@
     <section class="slide-container" aria-label="Qué es el Hackathon">
         <h2 class="slide-title">¿Qué es el Hackathon Gestiona?</h2>
         <div class="content-area">
-            <div class="two-column">
-                <div>
-                    <p style="font-size: 18px; line-height: 1.65; margin-bottom: 20px;">
-                        Una nueva modalidad de <strong>taller práctico</strong> dentro del programa de certificación de esPublico, donde los profesionales certificados trabajan conjuntamente para construir <strong>soluciones integrales, sólidas y escalables</strong>.
-                    </p>
-                    <div class="highlight-box">
-                        <p style="margin: 0; font-size: 16px;">
-                            <strong>No es solo un taller.</strong> Es un laboratorio de alto rendimiento que tiende puentes entre la formación técnica y la ejecución estratégica.
-                        </p>
-                    </div>
+            <div class="highlight-box" style="margin-bottom: 28px;">
+                <p style="margin: 0; font-size: 18px; text-align: center;">
+                    <strong>No es solo un taller.</strong> Es un laboratorio de alto rendimiento que tiende puentes entre la formación técnica y la ejecución estratégica.
+                </p>
+            </div>
+            <div class="quees-grid">
+                <div class="quees-item phase" data-phase="1">
+                    <div class="quees-icon"><i class="fa-solid fa-users-gear" aria-hidden="true"></i></div>
+                    <div><strong>Equipos multidisciplinares</strong><br>de parametrización, datos y desarrollo</div>
                 </div>
-                <div>
-                    <ul class="bullet-list">
-                        <li><i class="fa-solid fa-users-gear" aria-hidden="true"></i> <strong>Equipos multidisciplinares</strong> de parametrización, datos y desarrollo</li>
-                        <li><i class="fa-solid fa-trophy" aria-hidden="true"></i> <strong>Gamificación</strong> y dinámicas de alto rendimiento</li>
-                        <li><i class="fa-solid fa-people-group" aria-hidden="true"></i> Espacio definitivo de <strong>networking</strong> para usuarios certificados</li>
-                        <li><i class="fa-solid fa-award" aria-hidden="true"></i> Exposición final y elección de la <strong>solución más innovadora</strong></li>
-                    </ul>
+                <div class="quees-item phase" data-phase="2">
+                    <div class="quees-icon"><i class="fa-solid fa-trophy" aria-hidden="true"></i></div>
+                    <div><strong>Gamificación</strong><br>y dinámicas de alto rendimiento</div>
+                </div>
+                <div class="quees-item phase" data-phase="3">
+                    <div class="quees-icon"><i class="fa-solid fa-people-group" aria-hidden="true"></i></div>
+                    <div>Espacio definitivo de <strong>networking</strong><br>para usuarios certificados</div>
+                </div>
+                <div class="quees-item phase" data-phase="4">
+                    <div class="quees-icon"><i class="fa-solid fa-award" aria-hidden="true"></i></div>
+                    <div>Exposición final y elección de la<br><strong>solución más innovadora</strong></div>
                 </div>
             </div>
         </div>
