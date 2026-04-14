@@ -757,6 +757,141 @@
             100% { opacity: 1; transform: translateY(0) scale(1); }
         }
 
+        /* ============================================
+           MESA REDONDA — 12 años de e-Administración
+           ============================================ */
+
+        .portada-layout {
+            position: absolute;
+            inset: 0;
+            background-image: url('./Dalt-Vila-Ibiza-ciudad.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 60px 80px;
+        }
+        .portada-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(160deg, rgba(0,30,48,0.82) 0%, rgba(0,77,94,0.75) 100%);
+        }
+        .portada-content { position: relative; z-index: 2; }
+        .portada-label {
+            font-size: 12px; text-transform: uppercase; letter-spacing: 3px;
+            color: var(--color-primary-light); font-weight: 600; margin-bottom: 16px;
+        }
+        .portada-title {
+            font-size: 58px; font-weight: 700; color: white;
+            line-height: 1.1; letter-spacing: -1.5px; margin-bottom: 20px;
+        }
+        .portada-title span { color: var(--color-accent); }
+        .portada-subtitle { font-size: 20px; color: rgba(255,255,255,0.75); margin-bottom: 32px; }
+        .portada-meta { display: flex; align-items: center; justify-content: center; gap: 24px; }
+        .portada-badge {
+            display: inline-block; padding: 8px 22px; border-radius: 24px;
+            font-size: 13px; font-weight: 600;
+            background: rgba(0,223,178,0.2); border: 1px solid rgba(95,255,223,0.4);
+            color: var(--color-accent);
+        }
+
+        .presenter-layout {
+            position: absolute; inset: 0;
+            display: grid; grid-template-columns: 420px 1fr;
+            background: var(--color-bg-dark); overflow: hidden;
+        }
+        .presenter-photo { position: relative; overflow: hidden; }
+        .presenter-photo img {
+            width: 100%; height: 100%; object-fit: cover;
+            object-position: top center; filter: grayscale(15%);
+        }
+        .presenter-photo::after {
+            content: ""; position: absolute; inset: 0;
+            background: linear-gradient(90deg, transparent 60%, var(--color-bg-dark));
+        }
+        .presenter-info {
+            display: flex; flex-direction: column; justify-content: center;
+            padding: 64px 72px 64px 48px; position: relative; z-index: 2;
+        }
+        .presenter-info::before {
+            content: ""; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+            background: linear-gradient(90deg, var(--color-primary-light), var(--color-accent));
+        }
+        .presenter-role {
+            font-size: 12px; text-transform: uppercase; letter-spacing: 3px;
+            color: var(--color-primary-light); font-weight: 600; margin-bottom: 16px;
+        }
+        .presenter-name {
+            font-size: 48px; font-weight: 700; color: white;
+            letter-spacing: -1px; line-height: 1.1; margin-bottom: 12px;
+        }
+        .presenter-org { font-size: 20px; color: rgba(255,255,255,0.65); margin-bottom: 36px; }
+        .presenter-desc {
+            font-size: 17px; line-height: 1.7; color: rgba(255,255,255,0.8);
+            border-left: 3px solid var(--color-primary-light); padding-left: 20px;
+        }
+
+        .year-layout {
+            position: absolute; inset: 0;
+            display: flex; flex-direction: column;
+            background: white; overflow: hidden;
+        }
+        .year-header {
+            background: var(--color-bg-dark); padding: 28px 60px;
+            display: flex; align-items: center; gap: 28px;
+            flex-shrink: 0; position: relative;
+        }
+        .year-header::after {
+            content: ""; position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+            background: linear-gradient(90deg, var(--color-primary-light), transparent);
+        }
+        .year-num { font-size: 72px; font-weight: 900; color: white; letter-spacing: -3px; line-height: 1; }
+        .year-divider { width: 2px; height: 60px; background: rgba(255,255,255,0.2); flex-shrink: 0; }
+        .year-context { display: flex; flex-direction: column; gap: 4px; }
+        .year-label {
+            font-size: 12px; text-transform: uppercase; letter-spacing: 2.5px;
+            color: var(--color-primary-light); font-weight: 600;
+        }
+        .year-period { font-size: 18px; color: rgba(255,255,255,0.7); }
+        .year-body {
+            flex: 1; display: grid; grid-template-columns: 1fr 1fr 1fr;
+            gap: 24px; padding: 36px 60px; align-items: stretch;
+        }
+        .year-card {
+            display: flex; flex-direction: column; gap: 12px;
+            background: var(--color-bg-light); border-radius: 12px;
+            padding: 24px 22px; border-top: 3px solid var(--color-primary-light);
+            transform: translateY(16px) scale(0.94);
+            transition: opacity 0.45s ease, transform 0.6s cubic-bezier(0.34,1.4,0.64,1), visibility 0s;
+        }
+        .year-card.visible { animation: year-card-in 0.65s cubic-bezier(0.34,1.4,0.64,1) both; }
+        @keyframes year-card-in {
+            0%   { opacity: 0; transform: translateY(20px) scale(0.9); }
+            55%  { opacity: 1; transform: translateY(-4px) scale(1.03); }
+            100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        .year-card-icon {
+            width: 44px; height: 44px; border-radius: 50%;
+            background: rgba(0,109,133,0.1);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 18px; color: var(--color-primary); flex-shrink: 0;
+        }
+        .year-card h3 { font-size: 15px; font-weight: 700; color: var(--color-primary-dark); margin: 0; line-height: 1.3; }
+        .year-card p { font-size: 14px; color: var(--color-text); margin: 0; line-height: 1.5; flex: 1; }
+        .year-card-date {
+            font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px;
+            color: var(--color-primary-light); font-weight: 600;
+        }
+        .year-card--highlight {
+            border-top-color: var(--color-accent);
+            background: linear-gradient(135deg, rgba(0,109,133,0.06), rgba(0,223,178,0.04));
+        }
+        .year-card--highlight .year-card-icon { background: rgba(0,223,178,0.15); color: var(--color-primary); }
+        .year-card--highlight h3 { color: var(--color-primary-dark); }
+
         /* --- Slide demo (penúltima) --- */
         .demo-layout {
             position: absolute;
@@ -1148,16 +1283,456 @@
         </div>
     </section>
 
-    <!-- 12. CIERRE -->
+    <!-- MESA REDONDA — 12 años de e-Administración en Ibiza -->
+
+    <!-- MR-1. PORTADA -->
+    <section class="slide-container" aria-label="Mesa redonda portada">
+        <div class="portada-layout">
+            <div class="portada-overlay"></div>
+            <div class="portada-content">
+                <p class="portada-label">Mesa redonda · I Hackathon Gestiona · Eivissa 2026</p>
+                <h1 class="portada-title"><span>12 años</span> de e-Administración<br>en el Ayuntamiento de Ibiza</h1>
+                <p class="portada-subtitle">De la implantación inicial al Hackathon de innovación</p>
+                <div class="portada-meta">
+                    <span class="portada-badge"><i class="fa-solid fa-calendar"></i> 2014 – 2026</span>
+                    <span class="portada-badge"><i class="fa-solid fa-landmark"></i> Ajuntament d'Eivissa</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MR-2. PRESENTADORA -->
+    <section class="slide-container" aria-label="Presentadora">
+        <div class="presenter-layout">
+            <div class="presenter-photo">
+                <img src="./Mati.png" alt="Matilde Manzano Costa">
+            </div>
+            <div class="presenter-info">
+                <p class="presenter-role">Ponente</p>
+                <h2 class="presenter-name">Matilde<br>Manzano Costa</h2>
+                <p class="presenter-org">Ayuntamiento de Ibiza</p>
+                <p class="presenter-desc">Responsable del proyecto de implantación y evolución de la Administración Electrónica en el Ayuntamiento de Ibiza durante los últimos 12 años.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- MR-3. 2014 -->
+    <section class="slide-container" aria-label="2014">
+        <div class="year-layout">
+            <div class="year-header">
+                <span class="year-num">2014</span>
+                <div class="year-divider"></div>
+                <div class="year-context">
+                    <span class="year-label">El inicio</span>
+                    <span class="year-period">Primer año de la e-Administración en Ibiza</span>
+                </div>
+            </div>
+            <div class="year-body">
+                <div class="year-card phase" data-phase="1">
+                    <div class="year-card-icon"><i class="fa-solid fa-rocket"></i></div>
+                    <span class="year-card-date">Mayo 2014</span>
+                    <h3>Implantación inicial</h3>
+                    <p>Puesta en marcha del sistema de Administración Electrónica en el Ayuntamiento de Ibiza.</p>
+                </div>
+                <div class="year-card phase" data-phase="2">
+                    <div class="year-card-icon"><i class="fa-solid fa-file-lines"></i></div>
+                    <h3>Primeros expedientes digitales</h3>
+                    <p>Digitalización de los primeros procedimientos municipales y arranque del expediente electrónico.</p>
+                </div>
+                <div class="year-card phase" data-phase="3">
+                    <div class="year-card-icon"><i class="fa-solid fa-users"></i></div>
+                    <h3>Formación inicial del equipo</h3>
+                    <p>Capacitación del personal municipal en la nueva plataforma de tramitación electrónica.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MR-4. 2015 -->
+    <section class="slide-container" aria-label="2015">
+        <div class="year-layout">
+            <div class="year-header">
+                <span class="year-num">2015</span>
+                <div class="year-divider"></div>
+                <div class="year-context">
+                    <span class="year-label">Consolidación</span>
+                    <span class="year-period">Extensión y estabilización del sistema</span>
+                </div>
+            </div>
+            <div class="year-body">
+                <div class="year-card phase" data-phase="1">
+                    <div class="year-card-icon"><i class="fa-solid fa-gears"></i></div>
+                    <h3>Optimización de la plataforma</h3>
+                    <p>Ajustes y mejoras sobre la implantación inicial. Refinamiento de flujos y procedimientos.</p>
+                </div>
+                <div class="year-card phase" data-phase="2">
+                    <div class="year-card-icon"><i class="fa-solid fa-list-check"></i></div>
+                    <h3>Ampliación del catálogo</h3>
+                    <p>Incorporación progresiva de nuevos procedimientos al sistema de tramitación electrónica.</p>
+                </div>
+                <div class="year-card phase" data-phase="3">
+                    <div class="year-card-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                    <h3>Seguridad y firma electrónica</h3>
+                    <p>Refuerzo de los mecanismos de autenticación y firma electrónica en los trámites municipales.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MR-5. 2016 -->
+    <section class="slide-container" aria-label="2016">
+        <div class="year-layout">
+            <div class="year-header">
+                <span class="year-num">2016</span>
+                <div class="year-divider"></div>
+                <div class="year-context">
+                    <span class="year-label">Órganos colegiados</span>
+                    <span class="year-period">Digitalización del Pleno y las comisiones</span>
+                </div>
+            </div>
+            <div class="year-body">
+                <div class="year-card phase" data-phase="1">
+                    <div class="year-card-icon"><i class="fa-solid fa-building-columns"></i></div>
+                    <span class="year-card-date">Junio 2016</span>
+                    <h3>Módulo de Órganos Colegiados</h3>
+                    <p>Implantación de la primera versión del módulo para la gestión electrónica de órganos de gobierno.</p>
+                </div>
+                <div class="year-card phase" data-phase="2">
+                    <div class="year-card-icon"><i class="fa-solid fa-scroll"></i></div>
+                    <h3>Digitalización del Pleno</h3>
+                    <p>Gestión electrónica de convocatorias, actas y acuerdos de los plenos municipales.</p>
+                </div>
+                <div class="year-card phase" data-phase="3">
+                    <div class="year-card-icon"><i class="fa-solid fa-people-group"></i></div>
+                    <h3>Comisiones informativas</h3>
+                    <p>Extensión del módulo a las comisiones informativas y demás órganos colegiados del Ayuntamiento.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MR-6. 2017 -->
+    <section class="slide-container" aria-label="2017">
+        <div class="year-layout">
+            <div class="year-header">
+                <span class="year-num">2017</span>
+                <div class="year-divider"></div>
+                <div class="year-context">
+                    <span class="year-label">Marco normativo</span>
+                    <span class="year-period">Adaptación a la Ley 39/2015 y el ENI</span>
+                </div>
+            </div>
+            <div class="year-body">
+                <div class="year-card phase" data-phase="1">
+                    <div class="year-card-icon"><i class="fa-solid fa-scale-balanced"></i></div>
+                    <span class="year-card-date">Noviembre 2017</span>
+                    <h3>Adaptación al ENI</h3>
+                    <p>Implantación de la versión adaptada al Esquema Nacional de Interoperabilidad.</p>
+                </div>
+                <div class="year-card phase" data-phase="2">
+                    <div class="year-card-icon"><i class="fa-solid fa-book"></i></div>
+                    <h3>Ley 39/2015</h3>
+                    <p>Incorporación de las exigencias del Procedimiento Administrativo Común de las Administraciones Públicas.</p>
+                </div>
+                <div class="year-card phase" data-phase="3">
+                    <div class="year-card-icon"><i class="fa-solid fa-folder-open"></i></div>
+                    <h3>Normalización documental</h3>
+                    <p>Estandarización de documentos y expedientes electrónicos conforme al marco normativo vigente.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MR-7. 2018 -->
+    <section class="slide-container" aria-label="2018">
+        <div class="year-layout">
+            <div class="year-header">
+                <span class="year-num">2018</span>
+                <div class="year-divider"></div>
+                <div class="year-context">
+                    <span class="year-label">Interoperabilidad</span>
+                    <span class="year-period">Conexión con la Administración General del Estado</span>
+                </div>
+            </div>
+            <div class="year-body">
+                <div class="year-card phase" data-phase="1">
+                    <div class="year-card-icon"><i class="fa-solid fa-link"></i></div>
+                    <h3>Integración con la AGE</h3>
+                    <p>Activación de las integraciones con la Administración General del Estado y sus plataformas compartidas.</p>
+                </div>
+                <div class="year-card phase" data-phase="2">
+                    <div class="year-card-icon"><i class="fa-solid fa-envelope-circle-check"></i></div>
+                    <h3>Notificaciones electrónicas</h3>
+                    <p>Adaptación al régimen de notificaciones electrónicas obligatorias conforme a la Ley 39/2015.</p>
+                </div>
+                <div class="year-card phase" data-phase="3">
+                    <div class="year-card-icon"><i class="fa-solid fa-network-wired"></i></div>
+                    <h3>Servicios compartidos</h3>
+                    <p>Conexión con Cl@ve, SIR y otras plataformas del ecosistema de interoperabilidad estatal.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MR-8. 2019 -->
+    <section class="slide-container" aria-label="2019">
+        <div class="year-layout">
+            <div class="year-header">
+                <span class="year-num">2019</span>
+                <div class="year-divider"></div>
+                <div class="year-context">
+                    <span class="year-label">Innovación</span>
+                    <span class="year-period">Proyecto CNIS y madurez del sistema</span>
+                </div>
+            </div>
+            <div class="year-body">
+                <div class="year-card phase" data-phase="1">
+                    <div class="year-card-icon"><i class="fa-solid fa-lightbulb"></i></div>
+                    <span class="year-card-date">Febrero 2019</span>
+                    <h3>Proyecto CNIS Eivissa</h3>
+                    <p>Participación en el Congreso Nacional de Innovación y Servicios Públicos con el modelo de Ibiza.</p>
+                </div>
+                <div class="year-card phase" data-phase="2">
+                    <div class="year-card-icon"><i class="fa-solid fa-chart-line"></i></div>
+                    <h3>Madurez del sistema</h3>
+                    <p>Consolidación de 5 años de tramitación electrónica con mejoras en rendimiento y usabilidad.</p>
+                </div>
+                <div class="year-card phase" data-phase="3">
+                    <div class="year-card-icon"><i class="fa-solid fa-handshake"></i></div>
+                    <h3>Colaboración institucional</h3>
+                    <p>Intercambio de experiencias con otros ayuntamientos y difusión del modelo de éxito de Ibiza.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MR-9. 2020 -->
+    <section class="slide-container" aria-label="2020">
+        <div class="year-layout">
+            <div class="year-header">
+                <span class="year-num">2020</span>
+                <div class="year-divider"></div>
+                <div class="year-context">
+                    <span class="year-label">Resiliencia</span>
+                    <span class="year-period">La administración ante la COVID-19</span>
+                </div>
+            </div>
+            <div class="year-body">
+                <div class="year-card phase" data-phase="1">
+                    <div class="year-card-icon"><i class="fa-solid fa-laptop-house"></i></div>
+                    <span class="year-card-date">Marzo 2020</span>
+                    <h3>Herramientas colaborativas</h3>
+                    <p>Despliegue urgente de herramientas de trabajo remoto para garantizar la continuidad del servicio durante el confinamiento.</p>
+                </div>
+                <div class="year-card phase" data-phase="2">
+                    <div class="year-card-icon"><i class="fa-solid fa-calendar-check"></i></div>
+                    <h3>Sistema de cita previa</h3>
+                    <p>Implantación del sistema de cita previa para la atención ciudadana presencial en condiciones de seguridad sanitaria.</p>
+                </div>
+                <div class="year-card phase" data-phase="3">
+                    <div class="year-card-icon"><i class="fa-solid fa-circle-check"></i></div>
+                    <h3>Continuidad del servicio</h3>
+                    <p>La e-Administración ya implantada permitió mantener los trámites municipales sin interrupción durante la pandemia.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MR-10. 2021 -->
+    <section class="slide-container" aria-label="2021">
+        <div class="year-layout">
+            <div class="year-header">
+                <span class="year-num">2021</span>
+                <div class="year-divider"></div>
+                <div class="year-context">
+                    <span class="year-label">Control interno</span>
+                    <span class="year-period">Primer ayuntamiento con fiscalización electrónica</span>
+                </div>
+            </div>
+            <div class="year-body">
+                <div class="year-card phase" data-phase="1">
+                    <div class="year-card-icon"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
+                    <span class="year-card-date">Julio 2021</span>
+                    <h3>Módulo de control interno</h3>
+                    <p>Puesta en marcha del módulo de control interno de Gestiona para la fiscalización previa de gastos.</p>
+                </div>
+                <div class="year-card phase year-card--highlight" data-phase="2">
+                    <div class="year-card-icon"><i class="fa-solid fa-trophy"></i></div>
+                    <h3>Hito nacional</h3>
+                    <p>Ibiza se convierte en el primer ayuntamiento de España en implementar la fiscalización previa electrónica.</p>
+                </div>
+                <div class="year-card phase" data-phase="3">
+                    <div class="year-card-icon"><i class="fa-solid fa-euro-sign"></i></div>
+                    <h3>Gestión económica avanzada</h3>
+                    <p>Fortalecimiento del control interno y la trazabilidad en la gestión económico-financiera municipal.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MR-11. 2022 -->
+    <section class="slide-container" aria-label="2022">
+        <div class="year-layout">
+            <div class="year-header">
+                <span class="year-num">2022</span>
+                <div class="year-divider"></div>
+                <div class="year-context">
+                    <span class="year-label">Expansión</span>
+                    <span class="year-period">Madurez plena del ecosistema digital</span>
+                </div>
+            </div>
+            <div class="year-body">
+                <div class="year-card phase" data-phase="1">
+                    <div class="year-card-icon"><i class="fa-solid fa-sitemap"></i></div>
+                    <h3>Catálogo 100% electrónico</h3>
+                    <p>Todos los procedimientos del catálogo municipal disponibles en formato 100% electrónico.</p>
+                </div>
+                <div class="year-card phase" data-phase="2">
+                    <div class="year-card-icon"><i class="fa-solid fa-mobile-screen"></i></div>
+                    <h3>Mejora de la experiencia ciudadana</h3>
+                    <p>Actualizaciones orientadas a mejorar la accesibilidad y usabilidad de los servicios digitales para el ciudadano.</p>
+                </div>
+                <div class="year-card phase" data-phase="3">
+                    <div class="year-card-icon"><i class="fa-solid fa-lock"></i></div>
+                    <h3>Seguridad y trazabilidad</h3>
+                    <p>Refuerzo de los mecanismos de seguridad, auditoría y trazabilidad del expediente electrónico.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MR-12. 2023 -->
+    <section class="slide-container" aria-label="2023">
+        <div class="year-layout">
+            <div class="year-header">
+                <span class="year-num">2023</span>
+                <div class="year-divider"></div>
+                <div class="year-context">
+                    <span class="year-label">Modernización</span>
+                    <span class="year-period">Nuevas integraciones y preparación del futuro</span>
+                </div>
+            </div>
+            <div class="year-body">
+                <div class="year-card phase" data-phase="1">
+                    <div class="year-card-icon"><i class="fa-solid fa-arrows-rotate"></i></div>
+                    <h3>Actualización de la plataforma</h3>
+                    <p>Modernización tecnológica hacia las nuevas versiones de Gestiona con mejoras de rendimiento y funcionalidad.</p>
+                </div>
+                <div class="year-card phase" data-phase="2">
+                    <div class="year-card-icon"><i class="fa-solid fa-plug-circle-plus"></i></div>
+                    <h3>Nuevas integraciones</h3>
+                    <p>Ampliación de las conexiones con sistemas autonómicos, estatales y servicios de interoperabilidad avanzada.</p>
+                </div>
+                <div class="year-card phase" data-phase="3">
+                    <div class="year-card-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                    <h3>Plan de certificación</h3>
+                    <p>Diseño y planificación del programa de certificación de usuarios en las distintas especialidades de Gestiona.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MR-13. 2024 -->
+    <section class="slide-container" aria-label="2024">
+        <div class="year-layout">
+            <div class="year-header">
+                <span class="year-num">2024</span>
+                <div class="year-divider"></div>
+                <div class="year-context">
+                    <span class="year-label">Certificación</span>
+                    <span class="year-period">El conocimiento como activo estratégico</span>
+                </div>
+            </div>
+            <div class="year-body">
+                <div class="year-card phase" data-phase="1">
+                    <div class="year-card-icon"><i class="fa-solid fa-certificate"></i></div>
+                    <h3>Administración Avanzada</h3>
+                    <p>Certificación de los primeros usuarios del Ayuntamiento en configuración avanzada de Gestiona.</p>
+                </div>
+                <div class="year-card phase" data-phase="2">
+                    <div class="year-card-icon"><i class="fa-solid fa-person-chalkboard"></i></div>
+                    <h3>Programa de formación especializada</h3>
+                    <p>Inicio del programa de formación certificada para el equipo técnico y funcional del Ayuntamiento.</p>
+                </div>
+                <div class="year-card phase" data-phase="3">
+                    <div class="year-card-icon"><i class="fa-solid fa-user-graduate"></i></div>
+                    <h3>Comunidad certificada</h3>
+                    <p>Crecimiento de la comunidad de profesionales certificados como palanca de calidad en la gestión municipal.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MR-14. 2025 -->
+    <section class="slide-container" aria-label="2025">
+        <div class="year-layout">
+            <div class="year-header">
+                <span class="year-num">2025</span>
+                <div class="year-divider"></div>
+                <div class="year-context">
+                    <span class="year-label">Nuevos módulos</span>
+                    <span class="year-period">Analiz@, Developers e impresión</span>
+                </div>
+            </div>
+            <div class="year-body">
+                <div class="year-card phase" data-phase="1">
+                    <div class="year-card-icon"><i class="fa-solid fa-print"></i></div>
+                    <h3>Impresión y ensobrado</h3>
+                    <p>Activación de los servicios de impresión y ensobrado para las comunicaciones y notificaciones municipales.</p>
+                </div>
+                <div class="year-card phase" data-phase="2">
+                    <div class="year-card-icon"><i class="fa-solid fa-chart-pie"></i></div>
+                    <h3>Certificación Analiz@</h3>
+                    <p>Certificación de usuarios en el módulo de análisis de datos Analiz@, potenciando la inteligencia de gestión.</p>
+                </div>
+                <div class="year-card phase" data-phase="3">
+                    <div class="year-card-icon"><i class="fa-solid fa-code"></i></div>
+                    <h3>Gestiona for Developers</h3>
+                    <p>Inscripción en el programa de certificación técnica "Gestiona for Developers" para el equipo de desarrollo.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MR-15. 2026 -->
+    <section class="slide-container" aria-label="2026">
+        <div class="year-layout">
+            <div class="year-header" style="background: linear-gradient(135deg, var(--color-bg-dark), #004d5e);">
+                <span class="year-num" style="color: var(--color-accent);">2026</span>
+                <div class="year-divider"></div>
+                <div class="year-context">
+                    <span class="year-label">El futuro</span>
+                    <span class="year-period">I Hackathon Gestiona — Eivissa</span>
+                </div>
+            </div>
+            <div class="year-body">
+                <div class="year-card year-card--highlight phase" data-phase="1">
+                    <div class="year-card-icon"><i class="fa-solid fa-trophy"></i></div>
+                    <span class="year-card-date">Abril 2026</span>
+                    <h3>I Hackathon Gestiona</h3>
+                    <p>Primer desafío colaborativo de la comunidad de certificados de esPublico. Eivissa como escenario de innovación.</p>
+                </div>
+                <div class="year-card year-card--highlight phase" data-phase="2">
+                    <div class="year-card-icon"><i class="fa-solid fa-people-pulling"></i></div>
+                    <h3>Equipos multidisciplinares</h3>
+                    <p>Especialistas en Administración Avanzada, Analiz@ y Gestiona for Developers construyen soluciones reales en equipo.</p>
+                </div>
+                <div class="year-card year-card--highlight phase" data-phase="3">
+                    <div class="year-card-icon"><i class="fa-solid fa-seedling"></i></div>
+                    <h3>12 años de base sólida</h3>
+                    <p>El Hackathon es posible gracias a una década de implantación, aprendizaje y mejora continua en la e-Administración de Ibiza.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CIERRE FINAL -->
     <section class="slide-container" aria-label="Cierre">
         <div class="section-title-layout">
             <h2>¡Muchas gracias!</h2>
             <hr aria-hidden="true">
             <p class="subtitle">I Hackathon Gestiona — 15 a 17 de abril de 2026</p>
             <p style="margin-top: 28px; color: rgba(255,255,255,0.6); font-size: 18px;">espublicogestiona.com</p>
-            <a href="../mesa-redonda/index.html" style="margin-top: 40px; display: inline-flex; align-items: center; gap: 10px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.25); color: rgba(255,255,255,0.75); font-size: 15px; padding: 12px 28px; border-radius: 30px; text-decoration: none; transition: background 0.2s;">
-                <i class="fa-solid fa-arrow-right"></i> Continuar: Mesa Redonda — 12 años de e-Administración
-            </a>
         </div>
     </section>
 
