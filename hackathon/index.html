@@ -425,6 +425,173 @@
             color: var(--color-primary-light);
             font-weight: 600;
         }
+
+        /* --- Slides de evento individual (3a, 3b, 3c) --- */
+        .event-layout {
+            position: absolute;
+            inset: 0;
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            background: var(--color-bg-dark);
+            overflow: hidden;
+        }
+
+        .event-num-bg {
+            position: absolute;
+            right: -20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 280px;
+            font-weight: 900;
+            color: rgba(255, 255, 255, 0.04);
+            line-height: 1;
+            pointer-events: none;
+            letter-spacing: -12px;
+            user-select: none;
+        }
+
+        .event-left {
+            background: rgba(0, 0, 0, 0.22);
+            border-right: 1px solid rgba(255, 255, 255, 0.08);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 48px 36px;
+            text-align: center;
+            gap: 12px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .event-left::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--color-primary), var(--color-primary-light));
+        }
+
+        .event-layout--active .event-left::before {
+            background: linear-gradient(90deg, var(--color-primary-light), var(--color-accent));
+            box-shadow: 0 0 16px rgba(95, 255, 223, 0.4);
+        }
+
+        .event-edition {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            color: var(--color-primary-light);
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .event-city {
+            font-size: 52px;
+            font-weight: 700;
+            color: white;
+            margin: 0;
+            letter-spacing: -1px;
+            line-height: 1;
+        }
+
+        .event-layout--active .event-city {
+            color: var(--color-accent);
+        }
+
+        .event-date {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.6);
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .event-icon-wrap {
+            width: 76px;
+            height: 76px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.07);
+            border: 2px solid rgba(0, 223, 178, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            color: var(--color-primary-light);
+            margin: 6px 0;
+        }
+
+        .event-icon-wrap--active {
+            background: linear-gradient(135deg, var(--color-primary-light), var(--color-accent));
+            border-color: var(--color-accent);
+            color: var(--color-bg-dark);
+            box-shadow: 0 0 24px rgba(95, 255, 223, 0.35);
+        }
+
+        .event-tag {
+            display: inline-block;
+            padding: 5px 16px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            background: rgba(0, 109, 133, 0.35);
+            color: var(--color-primary-light);
+            border: 1px solid rgba(0, 223, 178, 0.2);
+        }
+
+        .event-tag--active {
+            background: rgba(0, 223, 178, 0.15);
+            color: var(--color-accent);
+            border-color: rgba(95, 255, 223, 0.4);
+        }
+
+        .event-right {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 56px 72px 56px 56px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .event-desc {
+            font-size: 19px;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 32px;
+        }
+
+        .event-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .event-list li {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            font-size: 17px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .event-list li i {
+            color: var(--color-primary-light);
+            font-size: 13px;
+            flex-shrink: 0;
+        }
+
+        .event-layout--active .event-list li i {
+            color: var(--color-accent);
+        }
     </style>
 </head>
 <body>
@@ -492,50 +659,78 @@
         </div>
     </section>
 
-    <!-- 3. TIMELINE — Las tres ediciones -->
-    <section class="slide-container" aria-label="Tres ediciones">
-        <h2 class="slide-title">Evolución del encuentro formativo</h2>
-        <div class="content-area">
-            <div class="evolution-grid">
-                <div class="evo-card">
-                    <p class="evo-year">Junio 2024</p>
-                    <h3>I Encuentro — Segovia</h3>
-                    <p>Talleres individuales guiados por un docente especialista. Cada alumno trabajó en su propio entorno demo.</p>
-                    <ul class="evo-card-list">
-                        <li>2 itinerarios paralelos</li>
-                        <li>3 talleres por itinerario</li>
-                        <li>Trabajo individual</li>
-                    </ul>
-                    <span class="evo-tag">Aprendizaje individual</span>
+    <!-- 3a. EVENTO — Segovia 2024 -->
+    <section class="slide-container" aria-label="I Encuentro Segovia">
+        <div class="event-layout">
+            <span class="event-num-bg" aria-hidden="true">01</span>
+            <div class="event-left">
+                <p class="event-edition">I Encuentro</p>
+                <h2 class="event-city">Segovia</h2>
+                <p class="event-date"><i class="fa-solid fa-calendar-days"></i> Junio 2024</p>
+                <div class="event-icon-wrap">
+                    <i class="fa-solid fa-mountain-sun"></i>
                 </div>
-                <div class="evo-card">
-                    <p class="evo-year">Junio 2025</p>
-                    <h3>II Encuentro — Jaén</h3>
-                    <p>GovJam + talleres diferenciados. Metodología de diseño de servicios públicos digitales por grupos.</p>
-                    <ul class="evo-card-list">
-                        <li>Taller común: oficinas virtuales</li>
-                        <li>4 talleres a elegir 2</li>
-                        <li>Inicio del trabajo en grupo</li>
-                    </ul>
-                    <span class="evo-tag">Co-diseño</span>
-                </div>
-                <div class="evo-card evo-card--active">
-                    <p class="evo-year">Abril 2026</p>
-                    <h3>I Hackathon — Eivissa</h3>
-                    <p>Desafío colaborativo real. Equipos multidisciplinares construyen soluciones completas en Gestiona.</p>
-                    <ul class="evo-card-list">
-                        <li>Equipos con roles mixtos</li>
-                        <li>5 fases, 4 ejes técnicos</li>
-                        <li>Exposición y competición</li>
-                    </ul>
-                    <span class="evo-tag">Innovación colaborativa</span>
-                </div>
+                <span class="event-tag">Aprendizaje individual</span>
             </div>
-            <div class="arrow-connector">
-                <span class="arrow-line"></span>
-                <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+            <div class="event-right">
+                <p class="event-desc">Talleres individuales guiados por un docente especialista. Cada alumno trabajó en su propio entorno demo, con itinerarios adaptados al perfil técnico o funcional.</p>
+                <ul class="event-list">
+                    <li><i class="fa-solid fa-check"></i> 2 itinerarios paralelos (técnico y funcional)</li>
+                    <li><i class="fa-solid fa-check"></i> 3 talleres por itinerario</li>
+                    <li><i class="fa-solid fa-check"></i> Trabajo individual guiado</li>
+                    <li><i class="fa-solid fa-check"></i> Entorno demo propio por alumno</li>
+                </ul>
             </div>
-            <p class="text-center text-muted text-sm" style="margin: 0;">De <strong>talleres individuales</strong> a <strong>equipos multidisciplinares</strong> construyendo soluciones reales</p>
+        </div>
+    </section>
+
+    <!-- 3b. EVENTO — Jaén 2025 -->
+    <section class="slide-container" aria-label="II Encuentro Jaén">
+        <div class="event-layout event-layout--alt">
+            <span class="event-num-bg" aria-hidden="true">02</span>
+            <div class="event-left">
+                <p class="event-edition">II Encuentro</p>
+                <h2 class="event-city">Jaén</h2>
+                <p class="event-date"><i class="fa-solid fa-calendar-days"></i> Junio 2025</p>
+                <div class="event-icon-wrap">
+                    <i class="fa-solid fa-sun"></i>
+                </div>
+                <span class="event-tag">Co-diseño</span>
+            </div>
+            <div class="event-right">
+                <p class="event-desc">GovJam + talleres diferenciados. Metodología de diseño de servicios públicos digitales por grupos, con un taller común de partida y elección de especialización.</p>
+                <ul class="event-list">
+                    <li><i class="fa-solid fa-check"></i> Taller común: oficinas virtuales</li>
+                    <li><i class="fa-solid fa-check"></i> 4 talleres especializados (elegir 2)</li>
+                    <li><i class="fa-solid fa-check"></i> Inicio del trabajo en equipo</li>
+                    <li><i class="fa-solid fa-check"></i> Metodología GovJam</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3c. EVENTO — Eivissa 2026 -->
+    <section class="slide-container" aria-label="I Hackathon Eivissa">
+        <div class="event-layout event-layout--active">
+            <span class="event-num-bg" aria-hidden="true">03</span>
+            <div class="event-left">
+                <p class="event-edition">I Hackathon</p>
+                <h2 class="event-city">Eivissa</h2>
+                <p class="event-date"><i class="fa-solid fa-calendar-days"></i> Abril 2026</p>
+                <div class="event-icon-wrap event-icon-wrap--active">
+                    <i class="fa-solid fa-location-dot"></i>
+                </div>
+                <span class="event-tag event-tag--active">Innovación colaborativa</span>
+            </div>
+            <div class="event-right">
+                <p class="event-desc">Desafío colaborativo real. Equipos multidisciplinares construyen soluciones completas en Gestiona, compitiendo en exposición final ante un jurado especializado.</p>
+                <ul class="event-list">
+                    <li><i class="fa-solid fa-check"></i> Equipos con roles mixtos</li>
+                    <li><i class="fa-solid fa-check"></i> 5 fases metodológicas</li>
+                    <li><i class="fa-solid fa-check"></i> 4 ejes técnicos</li>
+                    <li><i class="fa-solid fa-check"></i> Exposición y competición con jurado</li>
+                </ul>
+            </div>
         </div>
     </section>
 
