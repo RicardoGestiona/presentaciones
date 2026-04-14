@@ -719,6 +719,22 @@
             55%  { opacity: 1; transform: translateY(-5px) scale(1.04); }
             100% { opacity: 1; transform: translateY(0) scale(1); }
         }
+
+        /* --- Tarjetas glass como phases (slide 11) --- */
+        .card--glass.phase {
+            transform: translateY(18px) scale(0.9);
+            transition: opacity 0.4s ease, transform 0.55s cubic-bezier(0.34, 1.4, 0.64, 1), visibility 0s;
+        }
+
+        .card--glass.phase.visible {
+            animation: glass-pop 0.6s cubic-bezier(0.34, 1.4, 0.64, 1) both;
+        }
+
+        @keyframes glass-pop {
+            0%   { opacity: 0; transform: translateY(22px) scale(0.86); }
+            55%  { opacity: 1; transform: translateY(-4px) scale(1.05); }
+            100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
     </style>
 </head>
 <body>
@@ -967,22 +983,22 @@
         <div class="content-area">
             <p style="margin-bottom: 20px; font-size: 17px;">Cada equipo recibirá un reto el día del evento: configurar y desplegar un <strong>procedimiento completo en Gestiona</strong> que responda a necesidades reales. Cuatro ejes críticos:</p>
             <div class="tiled-content">
-                <article class="tile">
-                    <div class="icon" aria-hidden="true"><i class="fa-solid fa-server"></i></div>
-                    <h3>Arquitectura del sistema</h3>
-                    <p>Configuración y parametrización de un sistema completo de extremo a extremo.</p>
-                </article>
-                <article class="tile">
+                <article class="tile phase" data-phase="1">
                     <div class="icon" aria-hidden="true"><i class="fa-solid fa-route"></i></div>
                     <h3>Ingeniería de flujos</h3>
                     <p>Definición de un flujo de tramitación lógico, eficiente y consistente.</p>
                 </article>
-                <article class="tile">
+                <article class="tile phase" data-phase="2">
+                    <div class="icon" aria-hidden="true"><i class="fa-solid fa-server"></i></div>
+                    <h3>Arquitectura del sistema</h3>
+                    <p>Configuración y parametrización de un sistema completo de extremo a extremo.</p>
+                </article>
+                <article class="tile phase" data-phase="3">
                     <div class="icon" aria-hidden="true"><i class="fa-solid fa-chart-pie"></i></div>
                     <h3>Inteligencia de datos</h3>
                     <p>Diseño de un dashboard avanzado para la monitorización y toma de decisiones.</p>
                 </article>
-                <article class="tile">
+                <article class="tile phase" data-phase="4">
                     <div class="icon" aria-hidden="true"><i class="fa-solid fa-plug"></i></div>
                     <h3>Ecosistema conectado</h3>
                     <p>Implementación de una integración con sistemas externos, garantizando interoperabilidad.</p>
@@ -996,29 +1012,28 @@
         <div class="section-title-layout">
             <h2 style="font-size: 44px;">Metodología</h2>
             <hr aria-hidden="true">
-            <p class="subtitle" style="margin-bottom: 28px;">Cinco fases que simulan el ciclo de vida de un proyecto tecnológico</p>
             <div style="display: flex; gap: 18px; max-width: 1100px;">
-                <div class="card--glass" style="flex: 1; text-align: center; padding: 24px 14px;">
+                <div class="card--glass phase" data-phase="1" style="flex: 1; text-align: center; padding: 24px 14px;">
                     <div class="phase-number">1</div>
                     <h3 style="font-size: 15px;">Diseño Conceptual</h3>
                     <p style="font-size: 13px;">Estrategia, roles y roadmap</p>
                 </div>
-                <div class="card--glass" style="flex: 1; text-align: center; padding: 24px 14px;">
+                <div class="card--glass phase" data-phase="2" style="flex: 1; text-align: center; padding: 24px 14px;">
                     <div class="phase-number">2</div>
                     <h3 style="font-size: 15px;">Config. Estructural</h3>
                     <p style="font-size: 13px;">Elementos comunes y arquitectura</p>
                 </div>
-                <div class="card--glass" style="flex: 1; text-align: center; padding: 24px 14px;">
+                <div class="card--glass phase" data-phase="3" style="flex: 1; text-align: center; padding: 24px 14px;">
                     <div class="phase-number">3</div>
                     <h3 style="font-size: 15px;">Desarrollo</h3>
                     <p style="font-size: 13px;">Ejecución técnica por áreas</p>
                 </div>
-                <div class="card--glass" style="flex: 1; text-align: center; padding: 24px 14px;">
+                <div class="card--glass phase" data-phase="4" style="flex: 1; text-align: center; padding: 24px 14px;">
                     <div class="phase-number">4</div>
                     <h3 style="font-size: 15px;">Integración</h3>
                     <p style="font-size: 13px;">Puesta en común y producción</p>
                 </div>
-                <div class="card--glass" style="flex: 1; text-align: center; padding: 24px 14px;">
+                <div class="card--glass phase" data-phase="5" style="flex: 1; text-align: center; padding: 24px 14px;">
                     <div class="phase-number">5</div>
                     <h3 style="font-size: 15px;">Validación</h3>
                     <p style="font-size: 13px;">Demo pública y defensa</p>
@@ -1027,103 +1042,7 @@
         </div>
     </section>
 
-    <!-- 10. AGENDA — Miércoles 15 -->
-    <section class="slide-container" aria-label="Agenda miércoles">
-        <h2 class="slide-title">Bienvenida</h2>
-        <div class="content-area">
-            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
-                <span class="badge-day"><i class="fa-solid fa-calendar-day" aria-hidden="true" style="margin-right: 6px;"></i> Miércoles 15 de abril</span>
-                <span class="text-muted text-sm">Ayuntamiento en Dalt Vila — Sala Capitular</span>
-            </div>
-            <table class="agenda-table">
-                <tr><td>17:00</td><td><strong>Bienvenida institucional</strong> a cargo del Excmo. Ajuntament d'Eivissa</td></tr>
-                <tr><td>17:30</td><td><strong>Proyecto Hackathon</strong> — Presentación del evento y dinámica</td></tr>
-                <tr><td>18:00</td><td><strong>"12 años de la implantación e-admin en Ajuntament d'Eivissa"</strong><br><span class="text-muted text-sm">Equipo de innovación de l'Ajuntament d'Eivissa</span></td></tr>
-                <tr><td>19:00</td><td><strong>Visita guiada por Eivissa:</strong> Dalt Vila</td></tr>
-                <tr><td>21:00</td><td><strong>Cóctel de bienvenida</strong> en la terraza del Ayuntamiento en Dalt Vila</td></tr>
-            </table>
-        </div>
-    </section>
-
-    <!-- 11. AGENDA — Jueves 16 -->
-    <section class="slide-container" aria-label="Agenda jueves">
-        <h2 class="slide-title">Talleres</h2>
-        <div class="content-area">
-            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
-                <span class="badge-day"><i class="fa-solid fa-calendar-day" aria-hidden="true" style="margin-right: 6px;"></i> Jueves 16 de abril</span>
-                <span class="text-muted text-sm">Hotel THB Los Molinos — Sala Open Space</span>
-            </div>
-            <table class="agenda-table">
-                <tr><td>8:30</td><td><strong>Desarrollo de la jornada</strong> y constitución de equipos</td></tr>
-                <tr><td>9:30</td><td><strong>Talleres en grupo</strong> — Fases 1, 2 y 3</td></tr>
-                <tr><td>11:30</td><td>Coffee-Break</td></tr>
-                <tr><td>12:00</td><td><strong>Talleres en grupo</strong> — Fases 3 y 4</td></tr>
-                <tr><td>14:00</td><td>Almuerzo</td></tr>
-                <tr><td>16:00 – 18:00</td><td><strong>Talleres en grupo</strong> — Fases 4 y 5</td></tr>
-                <tr><td>21:00</td><td><strong>Cena del evento</strong> en Restaurante Can Curreu</td></tr>
-            </table>
-        </div>
-    </section>
-
-    <!-- 12. AGENDA — Viernes 17 -->
-    <section class="slide-container" aria-label="Agenda viernes">
-        <h2 class="slide-title">Exposiciones y despedida</h2>
-        <div class="content-area">
-            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
-                <span class="badge-day"><i class="fa-solid fa-calendar-day" aria-hidden="true" style="margin-right: 6px;"></i> Viernes 17 de abril</span>
-                <span class="text-muted text-sm">Hotel THB Los Molinos — Sala Sa Conillera</span>
-            </div>
-            <table class="agenda-table">
-                <tr><td>8:30</td><td><strong>Exposición grupo 1</strong></td></tr>
-                <tr><td>9:00</td><td><strong>Exposición grupo 2</strong></td></tr>
-                <tr><td>9:30</td><td><strong>Exposición grupo 3</strong></td></tr>
-                <tr><td>10:00</td><td><strong>Exposición grupo 4</strong></td></tr>
-                <tr><td>10:30</td><td><strong>Exposición grupo 5</strong></td></tr>
-                <tr><td>11:00</td><td><strong>Exposición grupo 6</strong></td></tr>
-                <tr><td>11:30</td><td><strong>Exposición grupo 7</strong></td></tr>
-                <tr><td>12:00</td><td><strong>Brunch de despedida y cierre</strong></td></tr>
-            </table>
-        </div>
-    </section>
-
-    <!-- 13. SEDES -->
-    <section class="slide-container" aria-label="Sedes">
-        <h2 class="slide-title">Sedes del encuentro</h2>
-        <div class="content-area">
-            <div class="sede-item">
-                <div class="icon-circle">
-                    <i class="fa-solid fa-landmark" aria-hidden="true"></i>
-                </div>
-                <div>
-                    <h3>Presentación y bienvenida — 15 de abril</h3>
-                    <p><strong>Sala Capitular, Ajuntament d'Eivissa en Dalt Vila</strong></p>
-                    <p class="text-muted text-sm">Plaça d'Espanya, 1, Eivissa</p>
-                </div>
-            </div>
-            <div class="sede-item">
-                <div class="icon-circle">
-                    <i class="fa-solid fa-hotel" aria-hidden="true"></i>
-                </div>
-                <div>
-                    <h3>Hackathon y exposiciones — 16 y 17 de abril</h3>
-                    <p><strong>Hotel THB Los Molinos</strong></p>
-                    <p class="text-muted text-sm">Carrer de Ramon Muntaner, 60, 07800 Eivissa</p>
-                </div>
-            </div>
-            <div class="sede-item">
-                <div class="icon-circle">
-                    <i class="fa-solid fa-utensils" aria-hidden="true"></i>
-                </div>
-                <div>
-                    <h3>Cena del encuentro — 16 de abril</h3>
-                    <p><strong>Restaurante Can Curreu</strong></p>
-                    <p class="text-muted text-sm">Carrer Sant Carles, Santa Eulària des Riu, Illes Balears</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 14. CIERRE -->
+    <!-- 12. CIERRE -->
     <section class="slide-container" aria-label="Cierre">
         <div class="section-title-layout">
             <h2>¡Nos vemos en Eivissa!</h2>
