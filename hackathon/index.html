@@ -604,6 +604,46 @@
         .event-layout--active .event-list li i {
             color: var(--color-primary-light);
         }
+
+        /* --- Bloque cocreación (slide 6) --- */
+        .cocreacion-box {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            background: linear-gradient(135deg, var(--color-bg-dark) 0%, #004d5e 100%);
+            border-radius: 12px;
+            padding: 28px 36px;
+            border-left: 5px solid var(--color-primary-light);
+        }
+
+        .cocreacion-icon {
+            font-size: 40px;
+            color: var(--color-primary-light);
+            flex-shrink: 0;
+            opacity: 0.9;
+        }
+
+        .cocreacion-text {
+            text-align: center;
+            flex: 1;
+        }
+
+        .cocreacion-text p {
+            margin: 0;
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.5;
+        }
+
+        .cocreacion-keyword {
+            font-size: 42px !important;
+            font-weight: 700 !important;
+            color: var(--color-accent) !important;
+            letter-spacing: -1px;
+            line-height: 1.1 !important;
+            margin: 6px 0 !important;
+            text-shadow: 0 0 32px rgba(95, 255, 223, 0.35);
+        }
     </style>
 </head>
 <body>
@@ -750,11 +790,11 @@
     <section class="slide-container" aria-label="Evolución en números">
         <h2 class="slide-title">Crecimiento edición a edición</h2>
         <div class="content-area">
-            <div class="tiled-content tile-triple" style="margin-bottom: 28px;">
+            <div class="tiled-content tile-triple" style="margin-bottom: 32px;">
                 <article class="tile" style="text-align: center;">
-                    <div class="icon" aria-hidden="true"><i class="fa-solid fa-calendar-days"></i></div>
-                    <h3>Duración</h3>
-                    <p><strong>2 días</strong> (Segovia) <i class="fa-solid fa-arrow-right text-primary" style="font-size: 12px;" aria-hidden="true"></i> <strong>2 días</strong> (Jaén) <i class="fa-solid fa-arrow-right text-primary" style="font-size: 12px;" aria-hidden="true"></i> <strong>3 días</strong> (Eivissa)</p>
+                    <div class="icon" aria-hidden="true"><i class="fa-solid fa-box-archive"></i></div>
+                    <h3>Entregable</h3>
+                    <p><strong>Demo guiada</strong> <i class="fa-solid fa-arrow-right text-primary" style="font-size: 12px;" aria-hidden="true"></i> <strong>Prototipo de servicio</strong> <i class="fa-solid fa-arrow-right text-primary" style="font-size: 12px;" aria-hidden="true"></i> <strong>Solución real desplegable</strong></p>
                 </article>
                 <article class="tile" style="text-align: center;">
                     <div class="icon" aria-hidden="true"><i class="fa-solid fa-users"></i></div>
@@ -767,11 +807,15 @@
                     <p><strong>Guiada</strong> <i class="fa-solid fa-arrow-right text-primary" style="font-size: 12px;" aria-hidden="true"></i> <strong>Co-diseño</strong> <i class="fa-solid fa-arrow-right text-primary" style="font-size: 12px;" aria-hidden="true"></i> <strong>Hackathon</strong></p>
                 </article>
             </div>
-            <div class="highlight-box">
-                <p style="margin: 0; font-size: 16px;">
-                    <i class="fa-solid fa-lightbulb text-primary" aria-hidden="true" style="margin-right: 8px;"></i>
-                    <strong>Cada edición ha incorporado los aprendizajes de la anterior</strong>, evolucionando desde la formación individual hacia un laboratorio de innovación donde los profesionales certificados co-crean soluciones reales.
-                </p>
+            <div class="cocreacion-box">
+                <div class="cocreacion-icon" aria-hidden="true">
+                    <i class="fa-solid fa-people-pulling"></i>
+                </div>
+                <div class="cocreacion-text">
+                    <p>Cada edición ha incorporado los aprendizajes de la anterior,<br>evolucionando hacia un modelo de</p>
+                    <p class="cocreacion-keyword">cocreación</p>
+                    <p>donde profesionales certificados construyen juntos soluciones reales.</p>
+                </div>
             </div>
         </div>
     </section>
