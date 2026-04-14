@@ -892,6 +892,57 @@
         .year-card--highlight .year-card-icon { background: rgba(0,223,178,0.15); color: var(--color-primary); }
         .year-card--highlight h3 { color: var(--color-primary-dark); }
 
+        /* --- Slide presentadora full-bleed --- */
+        .presenter-full {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+        }
+        .presenter-full-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top center;
+        }
+        .presenter-full-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                to top,
+                rgba(0, 30, 48, 0.92) 0%,
+                rgba(0, 30, 48, 0.4) 45%,
+                transparent 100%
+            );
+        }
+        .presenter-full-name {
+            position: absolute;
+            bottom: 52px;
+            left: 64px;
+            right: 64px;
+            z-index: 2;
+        }
+        .presenter-full-label {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--color-primary-light);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .presenter-full-name h2 {
+            font-size: 56px;
+            font-weight: 700;
+            color: white;
+            letter-spacing: -1.5px;
+            line-height: 1.05;
+            margin-bottom: 10px;
+        }
+        .presenter-full-org {
+            font-size: 20px;
+            color: rgba(255, 255, 255, 0.65);
+            margin: 0;
+        }
+
         /* --- Slide demo (penúltima) --- */
         .demo-layout {
             position: absolute;
@@ -1290,15 +1341,13 @@
 
     <!-- MR-2. PRESENTADORA -->
     <section class="slide-container" aria-label="Presentadora">
-        <div class="presenter-layout">
-            <div class="presenter-photo">
-                <img src="./Mati.png" alt="Matilde Manzano Costa">
-            </div>
-            <div class="presenter-info">
-                <p class="presenter-role">Ponente</p>
-                <h2 class="presenter-name">Matilde<br>Manzano Costa</h2>
-                <p class="presenter-org">Ayuntamiento de Ibiza</p>
-                <p class="presenter-desc">Responsable del proyecto de implantación y evolución de la Administración Electrónica en el Ayuntamiento de Ibiza durante los últimos 12 años.</p>
+        <div class="presenter-full">
+            <img src="./Mati.png" alt="Matilde Manzano Costa" class="presenter-full-img">
+            <div class="presenter-full-overlay"></div>
+            <div class="presenter-full-name">
+                <p class="presenter-full-label">Ponente</p>
+                <h2>Matilde Manzano Costa</h2>
+                <p class="presenter-full-org">Ayuntamiento de Ibiza</p>
             </div>
         </div>
     </section>
