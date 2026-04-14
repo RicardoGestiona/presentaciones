@@ -756,6 +756,80 @@
             55%  { opacity: 1; transform: translateY(-4px) scale(1.05); }
             100% { opacity: 1; transform: translateY(0) scale(1); }
         }
+
+        /* --- Slide demo (penúltima) --- */
+        .demo-layout {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background:
+                radial-gradient(ellipse at 50% 30%, rgba(0, 223, 178, 0.18), transparent 60%),
+                var(--color-bg-dark);
+            gap: 16px;
+            text-align: center;
+        }
+
+        .demo-label {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--color-primary-light);
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .demo-title {
+            font-size: 52px;
+            font-weight: 700;
+            color: white;
+            margin: 0;
+            letter-spacing: -1px;
+        }
+
+        .demo-subtitle {
+            font-size: 20px;
+            color: rgba(255, 255, 255, 0.6);
+            margin: 0 0 12px;
+        }
+
+        .demo-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: linear-gradient(135deg, var(--color-primary-light), var(--color-accent));
+            color: var(--color-bg-dark);
+            font-size: 20px;
+            font-weight: 700;
+            padding: 18px 48px;
+            border-radius: 50px;
+            text-decoration: none;
+            box-shadow: 0 8px 32px rgba(0, 223, 178, 0.4);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .demo-btn:hover {
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 14px 40px rgba(0, 223, 178, 0.55);
+        }
+
+        .demo-hint {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.4);
+            margin: 8px 0 0;
+        }
+
+        .demo-hint kbd {
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 4px;
+            padding: 2px 8px;
+            font-family: var(--font-family);
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+        }
     </style>
 </head>
 <body>
@@ -1058,6 +1132,19 @@
                     <p style="font-size: 13px;">Demo pública y defensa</p>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- 11. DEMO -->
+    <section class="slide-container" aria-label="Demo de la aplicación">
+        <div class="demo-layout">
+            <p class="demo-label">Demo en vivo</p>
+            <h2 class="demo-title">I Hackathon Gestiona</h2>
+            <p class="demo-subtitle">Plataforma de gestión del evento</p>
+            <a href="https://hackathon.gestiona4dev.tech/auth/login" target="_blank" class="demo-btn">
+                <i class="fa-solid fa-rocket"></i> Abrir aplicación
+            </a>
+            <p class="demo-hint"><i class="fa-solid fa-arrow-left"></i> Vuelve aquí con <kbd>←</kbd> cuando termines la demo</p>
         </div>
     </section>
 
