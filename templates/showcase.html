@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Showcase — Sistema de presentaciones Gestiona / esFirma</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/corporate.css">
+    <style>
+        .phase { opacity: 0; visibility: hidden; transition: opacity .4s ease, visibility 0s linear .4s; }
+        .phase.visible { opacity: 1; visibility: visible; transition: opacity .4s ease, visibility 0s linear 0s; }
+    </style>
+</head>
+<body>
+<main role="presentation">
+
+    <!-- 1. Portada -->
+    <section class="slide-container" aria-label="Portada">
+        <div class="title-layout">
+            <h1>Showcase del <span>sistema de diseño</span></h1>
+            <p class="subtitle">Demo navegable con todos los layouts y componentes disponibles en <code>corporate.css</code>. Pulsa la flecha derecha para empezar.</p>
+        </div>
+    </section>
+
+    <!-- 2. Separador: Layouts Gestiona -->
+    <section class="slide-container" aria-label="Sección Layouts Gestiona">
+        <div class="section-title-layout">
+            <h2>Layouts — marca Gestiona</h2>
+            <hr aria-hidden="true">
+            <p class="subtitle">Estructuras principales para organizar el contenido</p>
+        </div>
+    </section>
+
+    <!-- 3. Tiles 2x2 -->
+    <section class="slide-container" aria-label="Tiles 2x2">
+        <h2 class="slide-title">Tiles · grid 2×2 (.tiled-content + .tile)</h2>
+        <div class="content-area">
+            <div class="tiled-content">
+                <article class="tile">
+                    <div class="icon" aria-hidden="true"><i class="fa-solid fa-lightbulb"></i></div>
+                    <h3>Idea uno</h3>
+                    <p>Descripción concisa del primer punto.</p>
+                </article>
+                <article class="tile">
+                    <div class="icon" aria-hidden="true"><i class="fa-solid fa-chart-line"></i></div>
+                    <h3>Idea dos</h3>
+                    <p>Descripción concisa del segundo punto.</p>
+                </article>
+                <article class="tile">
+                    <div class="icon" aria-hidden="true"><i class="fa-solid fa-users"></i></div>
+                    <h3>Idea tres</h3>
+                    <p>Descripción concisa del tercer punto.</p>
+                </article>
+                <article class="tile">
+                    <div class="icon" aria-hidden="true"><i class="fa-solid fa-shield-halved"></i></div>
+                    <h3>Idea cuatro</h3>
+                    <p>Descripción concisa del cuarto punto.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Tile-triple -->
+    <section class="slide-container" aria-label="Tiles 3 columnas">
+        <h2 class="slide-title">Tiles · 3 columnas (.tile-triple)</h2>
+        <div class="content-area">
+            <div class="tiled-content tile-triple">
+                <article class="tile">
+                    <div class="icon" aria-hidden="true"><i class="fa-solid fa-rocket"></i></div>
+                    <h3>Velocidad</h3>
+                    <p>Despliegue inmediato.</p>
+                </article>
+                <article class="tile">
+                    <div class="icon" aria-hidden="true"><i class="fa-solid fa-globe"></i></div>
+                    <h3>Alcance</h3>
+                    <p>Cobertura nacional.</p>
+                </article>
+                <article class="tile">
+                    <div class="icon" aria-hidden="true"><i class="fa-solid fa-lock"></i></div>
+                    <h3>Seguridad</h3>
+                    <p>Cumplimiento normativo.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Dos columnas: bullet-list + card -->
+    <section class="slide-container" aria-label="Dos columnas">
+        <h2 class="slide-title">Dos columnas (.two-column)</h2>
+        <div class="content-area">
+            <div class="two-column">
+                <div>
+                    <ul class="bullet-list">
+                        <li><i class="fa-solid fa-check" aria-hidden="true"></i> Primer punto relevante.</li>
+                        <li><i class="fa-solid fa-check" aria-hidden="true"></i> Segundo punto con más contexto.</li>
+                        <li><i class="fa-solid fa-check" aria-hidden="true"></i> Tercer punto que complementa.</li>
+                        <li><i class="fa-solid fa-check" aria-hidden="true"></i> Cuarto punto de cierre.</li>
+                    </ul>
+                </div>
+                <div class="card card--bordered">
+                    <h3>Dato destacado</h3>
+                    <p>Información complementaria que refuerza el contenido de la columna izquierda. La <code>.card--bordered</code> aporta acento superior.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Feature cards -->
+    <section class="slide-container" aria-label="Feature cards">
+        <h2 class="slide-title">Feature cards (.feature-cards + .icon-circle)</h2>
+        <div class="content-area" style="align-items: center;">
+            <div class="feature-cards">
+                <div class="feature-card">
+                    <div class="icon-circle icon-circle--lg mx-auto">
+                        <i class="fa-solid fa-rocket" aria-hidden="true"></i>
+                    </div>
+                    <h3>Innovación</h3>
+                    <p>Despliegue rápido de nuevas funcionalidades.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon-circle icon-circle--lg mx-auto">
+                        <i class="fa-solid fa-globe" aria-hidden="true"></i>
+                    </div>
+                    <h3>Escala</h3>
+                    <p>Cobertura nacional con tolerancia a fallos.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon-circle icon-circle--lg mx-auto">
+                        <i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
+                    </div>
+                    <h3>Confianza</h3>
+                    <p>Auditoría continua y trazabilidad completa.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. Step cards (sobre fondo oscuro) -->
+    <section class="slide-container" aria-label="Step cards">
+        <div class="section-title-layout">
+            <h2>Step cards (.step-cards)</h2>
+            <hr aria-hidden="true">
+            <div class="step-cards mt-lg">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <p>Recogida de datos</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <p>Procesado y validación</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <p>Notificación al ciudadano</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. Glass cards -->
+    <section class="slide-container" aria-label="Glass cards">
+        <div class="section-title-layout">
+            <h2>Glass cards (.card--glass)</h2>
+            <hr aria-hidden="true">
+            <div class="mt-lg" style="display: flex; gap: 32px;">
+                <div class="card--glass">
+                    <h3><i class="fa-solid fa-server" aria-hidden="true" style="margin-right: 8px;"></i>Infraestructura</h3>
+                    <p>Plataforma robusta y escalable para entornos exigentes.</p>
+                </div>
+                <div class="card--glass">
+                    <h3><i class="fa-solid fa-lock" aria-hidden="true" style="margin-right: 8px;"></i>Seguridad</h3>
+                    <p>Cumplimiento normativo y protección integral de datos.</p>
+                </div>
+                <div class="card--glass">
+                    <h3><i class="fa-solid fa-puzzle-piece" aria-hidden="true" style="margin-right: 8px;"></i>Integración</h3>
+                    <p>Conectividad nativa con sistemas existentes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 9. Tabla -->
+    <section class="slide-container" aria-label="Tabla">
+        <h2 class="slide-title">Tabla (.table-layout)</h2>
+        <div class="content-area">
+            <div class="table-layout">
+                <table>
+                    <thead>
+                        <tr><th>Indicador</th><th>2023</th><th>2024</th><th>2025</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Expedientes tramitados</td><td>98 200</td><td>120 400</td><td>148 100</td></tr>
+                        <tr><td>Usuarios activos</td><td>2 700</td><td>3 200</td><td>4 100</td></tr>
+                        <tr><td>Disponibilidad</td><td>99,80 %</td><td>99,92 %</td><td>99,97 %</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- 10. Highlight box -->
+    <section class="slide-container" aria-label="Highlight box">
+        <h2 class="slide-title">Highlight box (.highlight-box)</h2>
+        <div class="content-area">
+            <div class="highlight-box">
+                <p><strong>Dato clave:</strong> el sistema procesa más de un millón de registros al año con una disponibilidad del 99,97 %.</p>
+            </div>
+            <div class="highlight-box highlight-box--gold mt-md">
+                <p><strong>Variante esFirma:</strong> mismo callout con acento dorado (<code>.highlight-box--gold</code>).</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 11. Bar chart -->
+    <section class="slide-container" aria-label="Bar chart">
+        <h2 class="slide-title">Bar chart (.bar-chart)</h2>
+        <div class="content-area">
+            <div class="bar-chart">
+                <div class="bar bar--low">2023</div>
+                <div class="bar bar--mid">2024</div>
+                <div class="bar bar--high">2025</div>
+            </div>
+            <p class="bar-caption">Evolución anual de expedientes tramitados</p>
+        </div>
+    </section>
+
+    <!-- 12. Team bar + accent line -->
+    <section class="slide-container" aria-label="Team bar y accent line">
+        <h2 class="slide-title">Team bar y accent line</h2>
+        <div class="content-area">
+            <p>La <code>.accent-line</code> sirve como separador visual breve:</p>
+            <hr class="accent-line mt-sm mb-md" aria-hidden="true">
+            <p>La <code>.team-bar</code> firma un slide con icono, etiqueta y nombres:</p>
+            <div class="team-bar">
+                <i class="fa-solid fa-people-group team-icon" aria-hidden="true"></i>
+                <p class="team-label">Equipo</p>
+                <p class="team-names">Ricardo Peñalver · María López · Juan García · Equipo de Producto Gestiona</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 13. Phase reveal -->
+    <section class="slide-container" aria-label="Revelación por fases">
+        <h2 class="slide-title">Revelación por fases (.phase[data-phase])</h2>
+        <div class="content-area">
+            <p>Pulsa "siguiente" tres veces para revelar cada bullet:</p>
+            <ul class="bullet-list mt-md">
+                <li class="phase" data-phase="1"><i class="fa-solid fa-check" aria-hidden="true"></i> Primer punto — aparece tras el primer "siguiente".</li>
+                <li class="phase" data-phase="2"><i class="fa-solid fa-check" aria-hidden="true"></i> Segundo punto — aparece tras el segundo.</li>
+                <li class="phase" data-phase="3"><i class="fa-solid fa-check" aria-hidden="true"></i> Tercer punto — aparece tras el tercero.</li>
+            </ul>
+            <div class="team-bar mt-lg">
+                <i class="fa-solid fa-info-circle team-icon" aria-hidden="true"></i>
+                <p class="team-label">Nota</p>
+                <p class="team-names">Las fases también funcionan con tiles, feature-cards o glass-cards añadiendo <code>class="phase" data-phase="N"</code>.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 14. Badges -->
+    <section class="slide-container" aria-label="Badges">
+        <h2 class="slide-title">Badges de marca</h2>
+        <div class="content-area">
+            <p>Etiquetas para diferenciar productos en contenido mixto:</p>
+            <p class="mt-md">
+                <span class="badge badge-gestiona">Gestiona</span>
+                &nbsp;&nbsp;
+                <span class="badge badge-esfirma">esFirma</span>
+            </p>
+        </div>
+    </section>
+
+    <!-- 15. Separador: variantes esFirma -->
+    <section class="slide-container esfirma-theme" aria-label="Sección Variantes esFirma">
+        <div class="section-title-layout section-title-layout--gold">
+            <h2>Variantes <span class="text-gold">esFirma</span></h2>
+            <hr aria-hidden="true">
+            <p class="subtitle">Mismas estructuras, paleta dorada</p>
+        </div>
+    </section>
+
+    <!-- 16. esFirma — feature cards gold -->
+    <section class="slide-container esfirma-theme" aria-label="Feature cards esFirma">
+        <h2 class="slide-title slide-title--gold">Feature cards · variante dorada</h2>
+        <div class="content-area" style="align-items: center;">
+            <div class="feature-cards">
+                <div class="feature-card feature-card--gold">
+                    <div class="icon-circle icon-circle--lg icon-circle--gold mx-auto">
+                        <i class="fa-solid fa-signature" aria-hidden="true"></i>
+                    </div>
+                    <h3>Firma electrónica</h3>
+                    <p>Generación de evidencias jurídicas conformes al marco eIDAS.</p>
+                </div>
+                <div class="feature-card feature-card--gold">
+                    <div class="icon-circle icon-circle--lg icon-circle--gold mx-auto">
+                        <i class="fa-solid fa-id-card" aria-hidden="true"></i>
+                    </div>
+                    <h3>Identidad digital</h3>
+                    <p>Verificación de identidad multinivel.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 17. esFirma — tiles + bullet list gold -->
+    <section class="slide-container esfirma-theme" aria-label="Tiles esFirma">
+        <h2 class="slide-title slide-title--gold">Tiles y bullet list · variante dorada</h2>
+        <div class="content-area">
+            <div class="two-column">
+                <div>
+                    <ul class="bullet-list bullet-list--gold">
+                        <li><i class="fa-solid fa-check" aria-hidden="true"></i> Cumplimiento eIDAS y normativa nacional.</li>
+                        <li><i class="fa-solid fa-check" aria-hidden="true"></i> Trazabilidad completa de evidencias.</li>
+                        <li><i class="fa-solid fa-check" aria-hidden="true"></i> Integración con AOC, FNMT y proveedores.</li>
+                    </ul>
+                </div>
+                <div class="card card--bordered-gold">
+                    <h3>esFirma</h3>
+                    <p>Plataforma de firma electrónica e identidad digital cualificada del grupo esPublico.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 18. Cierre -->
+    <section class="slide-container" aria-label="Cierre">
+        <div class="section-title-layout">
+            <h2>Fin del showcase</h2>
+            <hr aria-hidden="true">
+            <p class="subtitle">Consulta <code>AGENTS.md</code> y <code>LLM-CONTEXT.md</code> para el HTML mínimo de cada componente.</p>
+        </div>
+    </section>
+
+</main>
+<script src="../assets/js/navigation.js"></script>
+</body>
+</html>
