@@ -14,10 +14,12 @@ Pregunta sugerida cuando falte la marca:
 
 > ¿Qué marca? Productos disponibles: **espublico** (matriz, naranja), **gestiona** (azul petróleo), **esfirma** (dorado), **hacienda-local** (verde), **rrhh** (rojo), **videoactas** (azul oscuro), **tecnologia** (azul cielo), **sistemas** (azul marino), **drag** (azul profundo), **ecityclic** (verde lima), **medidata** (verde selva). ¿Cuál usamos?
 
-La marca se aplica con un atributo `data-brand` en `<body>`:
+La marca se aplica con un atributo `data-brand` en `<body>` (todo el deck) o en un `<section class="slide-container">` (solo ese slide, útil para co-marketing):
 
 ```html
 <body data-brand="hacienda-local">
+<!-- ... -->
+<section class="slide-container" data-brand="esfirma" aria-label="Slide esFirma">…</section>
 ```
 
 ### Catálogo de marcas (Pantone oficial — <https://design.g3stiona.com/recursos-nuevo-espublico/>)

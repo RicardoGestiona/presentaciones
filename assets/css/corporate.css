@@ -53,17 +53,19 @@
 
 /* ----------------------------------------
    0.5 PALETAS POR MARCA (data-brand)
-   Activar añadiendo data-brand="<nombre>" al <body>.
+   Activar añadiendo data-brand="<nombre>" a <body> (toda la presentación)
+   o a un <section class="slide-container"> concreto (solo ese slide,
+   útil para co-marketing dentro de un mismo deck).
    Si no se especifica, se usa la paleta Gestiona del :root.
    Catálogo oficial: https://design.g3stiona.com/recursos-nuevo-espublico/
    ---------------------------------------- */
 
 /* esPublico (matriz) — Pantone 144 C — naranja
    Alias: corporativa, corporativa-ae, contratacion */
-body[data-brand="espublico"],
-body[data-brand="corporativa"],
-body[data-brand="corporativa-ae"],
-body[data-brand="contratacion"] {
+[data-brand="espublico"],
+[data-brand="corporativa"],
+[data-brand="corporativa-ae"],
+[data-brand="contratacion"] {
     --color-primary: #ff9900;
     --color-primary-light: #ffb84d;
     --color-primary-dark: #cc7a00;
@@ -73,8 +75,8 @@ body[data-brand="contratacion"] {
 
 /* Gestiona — Pantone 3145 C — azul petróleo (idéntica al :root, declarada por completitud)
    Alias: factory */
-body[data-brand="gestiona"],
-body[data-brand="factory"] {
+[data-brand="gestiona"],
+[data-brand="factory"] {
     --color-primary: #006d85;
     --color-primary-light: #00dfb2;
     --color-primary-dark: #004d5e;
@@ -83,7 +85,7 @@ body[data-brand="factory"] {
 }
 
 /* esFirma — Pantone 618 C — dorado */
-body[data-brand="esfirma"] {
+[data-brand="esfirma"] {
     --color-primary: #aa9944;
     --color-primary-light: #d4c06a;
     --color-primary-dark: #8a7a35;
@@ -92,7 +94,7 @@ body[data-brand="esfirma"] {
 }
 
 /* Hacienda Local — Pantone 3252 C — verde */
-body[data-brand="hacienda-local"] {
+[data-brand="hacienda-local"] {
     --color-primary: #00bb88;
     --color-primary-light: #4ddbb0;
     --color-primary-dark: #008a64;
@@ -101,7 +103,7 @@ body[data-brand="hacienda-local"] {
 }
 
 /* Recursos Humanos — Pantone 1925 C — rojo */
-body[data-brand="rrhh"] {
+[data-brand="rrhh"] {
     --color-primary: #ee0055;
     --color-primary-light: #ff4d85;
     --color-primary-dark: #b3003f;
@@ -110,7 +112,7 @@ body[data-brand="rrhh"] {
 }
 
 /* Videoactas — Pantone 4153 C — azul oscuro */
-body[data-brand="videoactas"] {
+[data-brand="videoactas"] {
     --color-primary: #034797;
     --color-primary-light: #4d7fc4;
     --color-primary-dark: #022e63;
@@ -119,7 +121,7 @@ body[data-brand="videoactas"] {
 }
 
 /* Tecnología — Pantone 801 C — azul cielo */
-body[data-brand="tecnologia"] {
+[data-brand="tecnologia"] {
     --color-primary: #0099dd;
     --color-primary-light: #4dbdec;
     --color-primary-dark: #0073a8;
@@ -128,7 +130,7 @@ body[data-brand="tecnologia"] {
 }
 
 /* Sistemas — Pantone 301 C — azul marino */
-body[data-brand="sistemas"] {
+[data-brand="sistemas"] {
     --color-primary: #0f4c81;
     --color-primary-light: #4d7fb3;
     --color-primary-dark: #0a345a;
@@ -137,7 +139,7 @@ body[data-brand="sistemas"] {
 }
 
 /* Drag esPublico — Pantone 654 C — azul profundo */
-body[data-brand="drag"] {
+[data-brand="drag"] {
     --color-primary: #10406d;
     --color-primary-light: #4d7099;
     --color-primary-dark: #0a2c4d;
@@ -146,7 +148,7 @@ body[data-brand="drag"] {
 }
 
 /* ecityclic esPublico — Pantone 376 — verde lima */
-body[data-brand="ecityclic"] {
+[data-brand="ecityclic"] {
     --color-primary: #7fb927;
     --color-primary-light: #a8d165;
     --color-primary-dark: #5a8a17;
@@ -155,7 +157,7 @@ body[data-brand="ecityclic"] {
 }
 
 /* Medidata esPublico — Pantone 340 C — verde selva */
-body[data-brand="medidata"] {
+[data-brand="medidata"] {
     --color-primary: #249265;
     --color-primary-light: #5dae8a;
     --color-primary-dark: #186845;

@@ -20,11 +20,18 @@ Sistema de presentaciones HTML corporativas para el portfolio completo de **esPu
 
 > **El usuario debe especificar la marca antes de generar la presentación. Si no lo hace, PREGUNTAR antes de generar nada.**
 
-Cada producto del portfolio tiene su Pantone propio. La paleta se aplica añadiendo el atributo `data-brand` al `<body>` de la presentación:
+Cada producto del portfolio tiene su Pantone propio. La paleta se aplica añadiendo el atributo `data-brand`:
 
-```html
-<body data-brand="hacienda-local">
-```
+- **Nivel deck** (toda la presentación) → en `<body>`:
+  ```html
+  <body data-brand="hacienda-local">
+  ```
+- **Nivel slide** (un solo slide, p.ej. para co-marketing dentro de un deck de otra marca) → en el `<section class="slide-container">`:
+  ```html
+  <section class="slide-container" data-brand="esfirma" aria-label="Slide esFirma dentro de un deck Gestiona">…</section>
+  ```
+
+El selector CSS es `[data-brand="X"]`, no está acoplado al `<body>`. Las variables cascadan al elemento más cercano con `data-brand`.
 
 Si el usuario no menciona marca en su prompt, la respuesta correcta es preguntar:
 
