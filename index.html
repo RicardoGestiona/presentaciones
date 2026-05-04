@@ -7,11 +7,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="./assets/css/corporate.css">
     <style>
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         body {
-            font-family: 'Roboto', sans-serif;
-            background: #003040;
+            background: var(--color-bg-dark);
             color: white;
             min-height: 100vh;
             display: flex;
@@ -19,12 +18,13 @@
             align-items: center;
             justify-content: center;
             padding: 40px 24px;
+            margin: 0;
         }
         .logo {
             font-size: 13px;
             text-transform: uppercase;
             letter-spacing: 3px;
-            color: #00dfb2;
+            color: var(--color-primary-light);
             font-weight: 600;
             margin-bottom: 12px;
         }
@@ -33,7 +33,6 @@
             font-weight: 700;
             letter-spacing: -0.5px;
             margin-bottom: 48px;
-            color: white;
         }
         .grid {
             display: grid;
@@ -42,49 +41,48 @@
             width: 100%;
             max-width: 900px;
         }
-        .card {
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 14px;
-            padding: 32px 28px;
+        .card--glass.card-link {
             text-decoration: none;
-            color: white;
             display: flex;
             flex-direction: column;
             gap: 10px;
-            transition: background 0.2s, transform 0.2s;
+            padding: 32px 28px;
+            transition: background 0.2s, transform 0.2s, border-color 0.2s;
         }
-        .card:hover {
-            background: rgba(0,223,178,0.1);
-            border-color: rgba(0,223,178,0.35);
+        .card--glass.card-link:hover {
+            background: rgba(0, 223, 178, 0.1);
+            border-color: rgba(0, 223, 178, 0.35);
             transform: translateY(-3px);
         }
         .card-icon {
             font-size: 28px;
-            color: #00dfb2;
+            color: var(--color-primary-light);
             margin-bottom: 4px;
         }
         .card-label {
             font-size: 11px;
             text-transform: uppercase;
             letter-spacing: 2px;
-            color: #00dfb2;
+            color: var(--color-primary-light);
             font-weight: 600;
         }
-        .card h2 {
+        .card--glass.card-link h2 {
             font-size: 20px;
             font-weight: 700;
             line-height: 1.3;
+            color: white;
+            margin: 0;
         }
-        .card p {
+        .card--glass.card-link p {
             font-size: 14px;
-            color: rgba(255,255,255,0.6);
+            color: rgba(255, 255, 255, 0.6);
             line-height: 1.5;
+            margin: 0;
         }
         .card-arrow {
             margin-top: auto;
             font-size: 13px;
-            color: rgba(255,255,255,0.4);
+            color: rgba(255, 255, 255, 0.4);
         }
     </style>
 </head>
@@ -92,18 +90,25 @@
     <p class="logo">esPublico Gestiona</p>
     <h1>Presentaciones</h1>
     <div class="grid">
-        <a class="card" href="./hackathon/">
+        <a class="card--glass card-link" href="./hackathon/">
             <div class="card-icon"><i class="fa-solid fa-code-branch"></i></div>
             <span class="card-label">I Hackathon Gestiona · Eivissa 2026</span>
             <h2>Presentación del evento</h2>
             <p>Estructura, metodología, objetivos y dinámica del primer Hackathon Gestiona.</p>
             <span class="card-arrow">Abrir <i class="fa-solid fa-arrow-right"></i></span>
         </a>
-        <a class="card" href="./mesa-redonda/">
+        <a class="card--glass card-link" href="./mesa-redonda/">
             <div class="card-icon"><i class="fa-solid fa-landmark"></i></div>
             <span class="card-label">Mesa redonda · I Hackathon Gestiona</span>
             <h2>12 años de e-Administración en Ibiza</h2>
             <p>Hitos del proyecto de Administración Electrónica en el Ayuntamiento de Ibiza, 2014–2026.</p>
+            <span class="card-arrow">Abrir <i class="fa-solid fa-arrow-right"></i></span>
+        </a>
+        <a class="card--glass card-link" href="./formacion/">
+            <div class="card-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+            <span class="card-label">Academy Gestiona · Certificaciones</span>
+            <h2>Formación Clientes Gestiona</h2>
+            <p>Dos dimensiones: formación online general y programas de certificación, con datos de alcance y convocatorias.</p>
             <span class="card-arrow">Abrir <i class="fa-solid fa-arrow-right"></i></span>
         </a>
     </div>

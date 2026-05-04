@@ -9,6 +9,19 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="../assets/css/corporate.css">
+    <style>
+        /* Revelación progresiva: usa .phase[data-phase="N"] dentro de un slide */
+        .phase {
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.4s ease, visibility 0s linear 0.4s;
+        }
+        .phase.visible {
+            opacity: 1;
+            visibility: visible;
+            transition: opacity 0.4s ease, visibility 0s linear 0s;
+        }
+    </style>
 </head>
 <body>
 <main role="presentation">
@@ -124,7 +137,19 @@
         </div>
     </section>
 
-    <!-- 7. CIERRE -->
+    <!-- 7. REVELACIÓN PROGRESIVA (.phase) — pulsa siguiente para revelar cada bullet -->
+    <section class="slide-container" aria-label="Revelación progresiva">
+        <h2 class="slide-title">Revelación por fases</h2>
+        <div class="content-area">
+            <ul class="bullet-list">
+                <li class="phase" data-phase="1"><i class="fa-solid fa-check" aria-hidden="true"></i> Primer punto (aparece tras el primer siguiente).</li>
+                <li class="phase" data-phase="2"><i class="fa-solid fa-check" aria-hidden="true"></i> Segundo punto (aparece tras el segundo siguiente).</li>
+                <li class="phase" data-phase="3"><i class="fa-solid fa-check" aria-hidden="true"></i> Tercer punto (aparece tras el tercer siguiente).</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- 8. CIERRE -->
     <section class="slide-container" aria-label="Cierre">
         <div class="section-title-layout">
             <h2>¡Gracias!</h2>
