@@ -1,81 +1,66 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+Guía específica para Claude Code en este repositorio. Las **convenciones canónicas** del proyecto (sistema de diseño, layouts, reglas de creación de presentaciones) viven en [`AGENTS.md`](./AGENTS.md). Este fichero solo añade lo específico de Claude Code.
 
-## Proyecto
-Presentaciones HTML corporativas para **esPublico Gestiona** y **esFirma**. HTML/CSS/JS puro + Google Fonts (Roboto) + Font Awesome 6.5.1 via CDN.
+> **Lectura obligatoria al empezar a trabajar aquí:** [`AGENTS.md`](./AGENTS.md). Si trabajas con asistentes web sin filesystem, usa [`LLM-CONTEXT.md`](./LLM-CONTEXT.md).
 
-## Paleta de Colores (CSS Custom Properties)
-Definidas en `assets/css/corporate.css`:
-- **Gestiona:** `--color-primary: #006d85`, `--color-primary-light: #00dfb2`, `--color-primary-dark: #004d5e`, `--color-accent: #5fffdf`, `--color-bg-light: #ecf0f3`
-- **esFirma:** `--color-gold: #aa9944`
-- **Fondo oscuro:** `--color-bg-dark: #003040`
+---
 
-## Webs comerciales
-- espublicogestiona.com
-- esfirma.com
+## 1. Resumen rápido
 
-## Estructura
-```
-presentaciones/
-├── assets/css/corporate.css  — Estilos compartidos (paleta, tipografía, layouts)
-├── assets/js/navigation.js   — Navegación horizontal (translateX) por teclado
-├── assets/img/               — Logos e imágenes compartidas
-├── templates/                — Plantilla HTML reutilizable
-└── <nombre>/index.html       — Cada presentación es un subdirectorio
-```
+Repositorio de presentaciones HTML corporativas (esPublico Gestiona / esFirma). HTML/CSS/JS puro, sin build. Cada presentación es un `<nombre>/index.html` que importa los assets compartidos vía `../assets/`.
 
-## Sistema visual (basado en desarrollo-medios)
-- **Slides** = `<section class="slide-container">` de 1280×720px, centrados en fondo oscuro
-- **Navegación** = transición horizontal `translateX` via `<main role="presentation">`
-- **Fases** = revelación progresiva dentro de un slide: elementos con `.phase[data-phase="N"]` se muestran secuencialmente al pulsar siguiente. CSS debe ocultar `.phase` por defecto y mostrar `.phase.visible`.
-- **Tipografía** = Roboto (Google Fonts)
-- **Iconos** = Font Awesome 6.5.1
-
-## Layouts disponibles
-| Clase | Uso |
-|---|---|
-| `.title-layout` | Portada y cierre (centrado vertical) |
-| `.section-title-layout` | Separador de sección (fondo oscuro completo) |
-| `.slide-title` | Título estándar con barra lateral (`.slide-title--gold` para esFirma) |
-| `.two-column` | Grid de 2 columnas con gap 60px |
-| `.tiled-content` | Grid 2×2 de tarjetas (`.tile`) |
-| `.tile-triple` | Variante de 3 columnas |
-| `.table-layout` | Tabla con cabecera oscura |
-| `.bullet-list` | Lista con iconos Font Awesome (`.bullet-list--gold` para esFirma) |
-| `.feature-cards` | Flex de tarjetas con icono circular centrado |
-| `.step-cards` | Pasos numerados sobre fondo oscuro (`.step-card--gold`) |
-| `.highlight-box` | Callout con borde lateral (`.highlight-box--gold`) |
-
-## Componentes adicionales
-- `.card` / `.card--bordered` / `.card--bordered-gold` → tarjetas con sombra
-- `.card--glass` / `.card--glass-gold` → tarjetas translúcidas para secciones oscuras
-- `.icon-circle` / `.icon-circle--lg` / `.icon-circle--gold` → icono circular con fondo
-- `.badge-gestiona` / `.badge-esfirma` → etiquetas de marca
-- `.team-bar` → barra de equipo (icono + label + nombres)
-- `.bar-chart` → gráfico de barras simple (`.bar--low`, `.bar--mid`, `.bar--high`)
-- `.accent-line` / `.accent-line--gold` → línea decorativa
-
-## Variantes esFirma
-- `.esfirma-theme` en `slide-container` → decoración de fondo dorada
-- `.tile--gold` → borde superior dorado en tiles
-- `.card--bordered-gold` → borde superior dorado en cards
-- `.section-title-layout--gold` → separador con línea dorada
-- `.feature-card--gold` → feature card con borde dorado
-
-## Convenciones
-- Cada presentación = subdirectorio con su `index.html` que importa `../assets/css/corporate.css` y `../assets/js/navigation.js`
-- Estilos específicos de una presentación → `<style>` inline en su HTML
-- UI y comentarios en **español**; nombres de clases CSS y variables JS en **inglés**
-
-## Comandos
 ```bash
-# Preview local (desde raíz del proyecto)
+# Preview local
 npx serve . -l 8080
 # Abrir http://localhost:8080/<nombre>/
 ```
 
-## Crear nueva presentación
-1. Copiar `templates/slide-template.html` a `<nombre>/index.html`
-2. Editar contenido de slides
-3. Las rutas a assets ya apuntan a `../assets/`
+---
+
+## 2. Personas (Karpathy framework)
+
+El equipo usa tres personas locales en `.claude/` (ignorada por git, configuración personal de cada miembro):
+
+- `@senior` → `.claude/senior.md` — ingeniería rigurosa, crítica, surgical.
+- `@junior` → `.claude/junior.md` — prototipado rápido, "hacerlo funcionar".
+- `@security` → `.claude/security.md` — auditoría meticulosa.
+
+Auto-trigger: `@senior` y `@security` por defecto si la tarea toca tokens, identidad o PII.
+
+Si `.claude/` no existe en tu copia local, clona las personas desde `~/.config/.claude/` o pídelas a otro miembro del equipo.
+
+---
+
+## 3. Trazabilidad (`log-prompts.md`)
+
+Tras cada sesión productiva añade una entrada ISO-8601 en [`log-prompts.md`](./log-prompts.md):
+
+```
+### [YYYY-MM-DD HH:mm] | PROMPT: <resumen> | RESULT: <ficheros tocados>
+```
+
+Máximo 4 líneas por entrada. Sin "lessons learned" ni historial de commits — solo el resultado final. `log-prompts.md` está en `.gitignore` (local).
+
+---
+
+## 4. Reglas operativas Claude Code
+
+- **Sandboxing**: operaciones limitadas estrictamente a la raíz del proyecto. Prohibido `cd ..` o tocar rutas externas.
+- **GitHub**: SSH only. Convertir HTTPS a SSH automáticamente. Cuenta activa documentada en `CLAUDE.local.md`.
+- **Definition of Done**: ver checklist en `~/.claude/CLAUDE.md` (configuración global del usuario).
+- **`context7` MCP**: usar para documentación actualizada de librerías antes de implementar.
+- **Sin `console.log`**: usar logging estructurado JSON si se requiere observabilidad.
+
+---
+
+## 5. Material no canónico
+
+- `desarrollo-medios/` → proyecto histórico (submódulo). Sirvió de inspiración visual; **no usarlo como referencia activa**. Está en `.gitignore`.
+- `_sources/` → material fuente local (PDFs, pptx, docx). Ignorado por git.
+
+---
+
+## 6. Para todo lo demás
+
+Sistema de diseño, layouts, componentes, variantes, reglas de creación de presentaciones → **`AGENTS.md`**.
