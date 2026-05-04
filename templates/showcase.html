@@ -13,8 +13,18 @@
         .phase { opacity: 0; visibility: hidden; transition: opacity .4s ease, visibility 0s linear .4s; }
         .phase.visible { opacity: 1; visibility: visible; transition: opacity .4s ease, visibility 0s linear 0s; }
     </style>
+    <style>
+        .brand-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 24px; }
+        .brand-swatch { display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 14px 8px; border-radius: var(--radius-sm); background: var(--color-bg-light); }
+        .brand-swatch .swatch { width: 56px; height: 56px; border-radius: 50%; border: 2px solid var(--color-border); }
+        .brand-swatch .name { font-size: 13px; font-weight: 700; color: var(--color-text-dark); }
+        .brand-swatch .code { font-size: 11px; color: var(--color-text-subtle); font-family: monospace; }
+    </style>
 </head>
-<body>
+<!-- Cambia data-brand para ver el showcase con la paleta de cualquier marca.
+     Valores válidos: espublico, gestiona, esfirma, hacienda-local, rrhh,
+                      videoactas, tecnologia, sistemas, drag, ecityclic, medidata. -->
+<body data-brand="gestiona">
 <main role="presentation">
 
     <!-- 1. Portada -->
@@ -325,7 +335,28 @@
         </div>
     </section>
 
-    <!-- 18. Cierre -->
+    <!-- 18. Catálogo de marcas — data-brand -->
+    <section class="slide-container" aria-label="Catálogo de marcas">
+        <h2 class="slide-title">Catálogo de marcas (<code>data-brand</code>)</h2>
+        <div class="content-area">
+            <p>Cambia <code>&lt;body data-brand="…"&gt;</code> para reskinar todo el deck con la paleta oficial del producto.</p>
+            <div class="brand-grid">
+                <div class="brand-swatch"><div class="swatch" style="background:#ff9900"></div><span class="name">esPublico</span><span class="code">espublico</span></div>
+                <div class="brand-swatch"><div class="swatch" style="background:#006d85"></div><span class="name">Gestiona</span><span class="code">gestiona</span></div>
+                <div class="brand-swatch"><div class="swatch" style="background:#aa9944"></div><span class="name">esFirma</span><span class="code">esfirma</span></div>
+                <div class="brand-swatch"><div class="swatch" style="background:#00bb88"></div><span class="name">Hacienda Local</span><span class="code">hacienda-local</span></div>
+                <div class="brand-swatch"><div class="swatch" style="background:#ee0055"></div><span class="name">RRHH</span><span class="code">rrhh</span></div>
+                <div class="brand-swatch"><div class="swatch" style="background:#034797"></div><span class="name">Videoactas</span><span class="code">videoactas</span></div>
+                <div class="brand-swatch"><div class="swatch" style="background:#0099dd"></div><span class="name">Tecnología</span><span class="code">tecnologia</span></div>
+                <div class="brand-swatch"><div class="swatch" style="background:#0f4c81"></div><span class="name">Sistemas</span><span class="code">sistemas</span></div>
+                <div class="brand-swatch"><div class="swatch" style="background:#10406d"></div><span class="name">Drag</span><span class="code">drag</span></div>
+                <div class="brand-swatch"><div class="swatch" style="background:#7fb927"></div><span class="name">ecityclic</span><span class="code">ecityclic</span></div>
+                <div class="brand-swatch"><div class="swatch" style="background:#249265"></div><span class="name">Medidata</span><span class="code">medidata</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 19. Cierre -->
     <section class="slide-container" aria-label="Cierre">
         <div class="section-title-layout">
             <h2>Fin del showcase</h2>
