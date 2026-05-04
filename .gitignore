@@ -8,3 +8,7 @@ node_modules/
 desarrollo-medios/
 log-prompts.md
 manual.md
+_sources/
+*.pptx
+*.docx
+*.textClipping
