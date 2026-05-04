@@ -6,19 +6,56 @@ Este fichero contiene **todo el contexto necesario** para que un LLM sin acceso 
 
 ---
 
+## 0. REGLA DE MARCA — ANTES DE GENERAR
+
+> Si el usuario **no especifica marca** en su petición, **PREGUNTAR ANTES DE GENERAR**. No asumir nunca una marca por defecto. La marca define la paleta corporativa de toda la presentación.
+
+Pregunta sugerida cuando falte la marca:
+
+> ¿Qué marca? Productos disponibles: **espublico** (matriz, naranja), **gestiona** (azul petróleo), **esfirma** (dorado), **hacienda-local** (verde), **rrhh** (rojo), **videoactas** (azul oscuro), **tecnologia** (azul cielo), **sistemas** (azul marino), **drag** (azul profundo), **ecityclic** (verde lima), **medidata** (verde selva). ¿Cuál usamos?
+
+La marca se aplica con un atributo `data-brand` en `<body>`:
+
+```html
+<body data-brand="hacienda-local">
+```
+
+### Catálogo de marcas (Pantone oficial — <https://design.g3stiona.com/recursos-nuevo-espublico/>)
+
+| `data-brand` | Producto | Pantone | HEX |
+|---|---|---|---|
+| `espublico` | esPublico (matriz). Alias: `corporativa`, `corporativa-ae`, `contratacion` | 144 C | `#ff9900` |
+| `gestiona` | Gestiona. Alias: `factory` | 3145 C | `#006d85` |
+| `esfirma` | esFirma | 618 C | `#aa9944` |
+| `hacienda-local` | Hacienda Local | 3252 C | `#00bb88` |
+| `rrhh` | Recursos Humanos | 1925 C | `#ee0055` |
+| `videoactas` | Videoactas | 4153 C | `#034797` |
+| `tecnologia` | Tecnología | 801 C | `#0099dd` |
+| `sistemas` | Sistemas | 301 C | `#0f4c81` |
+| `drag` | Drag esPublico | 654 C | `#10406d` |
+| `ecityclic` | ecityclic | 376 | `#7fb927` |
+| `medidata` | Medidata | 340 C | `#249265` |
+
+`corporate.css` redefine los tokens (`--color-primary`, `--color-primary-light`, `--color-primary-dark`, `--color-accent`, `--color-primary-soft`) según el `data-brand`. Todos los componentes se reestilan automáticamente.
+
+`--color-gold` (esFirma) sigue independiente: las variantes `--gold` (`.tile--gold`, `.card--bordered-gold`, etc.) permiten co-marketing dentro de un deck de cualquier otra marca.
+
+---
+
 ## 1. Reglas de oro
 
-1. Salida = un único `index.html` autónomo. Nada de build, npm, frameworks.
-2. Importar siempre estos assets compartidos (rutas relativas a `../assets/`):
+1. **Marca obligatoria** — preguntar si el usuario no la especifica (ver §0). Aplicarla con `<body data-brand="<marca>">`.
+2. Salida = un único `index.html` autónomo. Nada de build, npm, frameworks.
+3. Importar siempre estos assets compartidos (rutas relativas a `../assets/`):
    ```html
    <link rel="stylesheet" href="../assets/css/corporate.css">
    <script src="../assets/js/navigation.js"></script>
    ```
-3. Nunca redefinir clases que ya existen en `corporate.css`. Reutilizar.
-4. Estilos específicos de la presentación → `<style>` inline en el propio `index.html`.
-5. UI y comentarios en **español**. Identificadores en inglés.
-6. Cada slide = `<section class="slide-container" aria-label="…">` (1280×720 px). Iconos decorativos con `aria-hidden="true"`.
-7. Marca por defecto: **Gestiona**. Variante esFirma: añadir `.esfirma-theme` al `<section>` y usar clases `--gold`.
+4. Nunca redefinir clases que ya existen en `corporate.css`. Reutilizar.
+5. Estilos específicos de la presentación → `<style>` inline en el propio `index.html`.
+6. UI y comentarios en **español**. Identificadores en inglés.
+7. Cada slide = `<section class="slide-container" aria-label="…">` (1280×720 px). Iconos decorativos con `aria-hidden="true"`.
+8. Variantes `--gold` (esFirma) son cross-brand: cualquier deck puede usar `.tile--gold`, `.card--bordered-gold`, `.highlight-box--gold`, etc. para destacar contenido de esFirma.
 
 ---
 
@@ -54,7 +91,7 @@ Este fichero contiene **todo el contexto necesario** para que un LLM sin acceso 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Título — Gestiona</title>
+    <title>Título — <Marca></title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -65,7 +102,7 @@ Este fichero contiene **todo el contexto necesario** para que un LLM sin acceso 
         .phase.visible { opacity: 1; visibility: visible; transition: opacity .4s ease, visibility 0s linear 0s; }
     </style>
 </head>
-<body>
+<body data-brand="<marca>">
 <main role="presentation">
 
     <!-- slides aquí -->

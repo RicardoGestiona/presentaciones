@@ -4,6 +4,8 @@ Plantilla y sistema de presentaciones HTML corporativas. Pensada para uso compar
 
 **Stack:** HTML/CSS/JS puro · Roboto (Google Fonts) · Font Awesome 6.5.1 (CDN) · sin build, sin dependencias.
 
+**Marcas soportadas:** todo el portfolio esPublico — Gestiona, esFirma, esPublico (matriz), Hacienda Local, RRHH, Videoactas, Tecnología, Sistemas, Drag, ecityclic, Medidata. Cada una con su Pantone oficial ([manual de estilo](https://design.g3stiona.com/recursos-nuevo-espublico/)). Selección con `<body data-brand="<marca>">`. Si la marca no está clara, **el asistente debe preguntar antes de generar**.
+
 ---
 
 ## Quick start

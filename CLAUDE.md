@@ -44,7 +44,15 @@ Máximo 4 líneas por entrada. Sin "lessons learned" ni historial de commits —
 
 ---
 
-## 4. Reglas operativas Claude Code
+## 4. Selección de marca
+
+Cada producto del portfolio esPublico tiene su Pantone propio. **Nunca asumir una marca por defecto.** Si el usuario no la indica, preguntar.
+
+Marcas soportadas: `espublico`, `gestiona`, `esfirma`, `hacienda-local`, `rrhh`, `videoactas`, `tecnologia`, `sistemas`, `drag`, `ecityclic`, `medidata`. Aplicar con `<body data-brand="<marca>">`. Detalle completo en [`AGENTS.md` §1bis](./AGENTS.md). Manual oficial: <https://design.g3stiona.com/recursos-nuevo-espublico/>.
+
+---
+
+## 5. Reglas operativas Claude Code
 
 - **Sandboxing**: operaciones limitadas estrictamente a la raíz del proyecto. Prohibido `cd ..` o tocar rutas externas.
 - **GitHub**: SSH only. Convertir HTTPS a SSH automáticamente. Cuenta activa documentada en `CLAUDE.local.md`.
@@ -54,13 +62,13 @@ Máximo 4 líneas por entrada. Sin "lessons learned" ni historial de commits —
 
 ---
 
-## 5. Material no canónico
+## 6. Material no canónico
 
 - `desarrollo-medios/` → proyecto histórico (submódulo). Sirvió de inspiración visual; **no usarlo como referencia activa**. Está en `.gitignore`.
 - `_sources/` → material fuente local (PDFs, pptx, docx). Ignorado por git.
 
 ---
 
-## 6. Para todo lo demás
+## 7. Para todo lo demás
 
 Sistema de diseño, layouts, componentes, variantes, reglas de creación de presentaciones → **`AGENTS.md`**.

@@ -8,11 +8,51 @@ Para asistentes sin acceso al filesystem (Claude Web, ChatGPT, Gemini), usa el b
 
 ## 1. Qué es este repositorio
 
-Sistema de presentaciones HTML corporativas para **esPublico Gestiona** y **esFirma**. Cada presentación es un `index.html` autónomo que importa los assets compartidos del repo.
+Sistema de presentaciones HTML corporativas para el portfolio completo de **esPublico** (Gestiona, esFirma, Hacienda Local, RRHH, Videoactas, Tecnología, Sistemas, Drag, ecityclic, Medidata, etc.). Cada presentación es un `index.html` autónomo que importa los assets compartidos del repo.
 
 - HTML/CSS/JS puro. Sin build, sin frameworks, sin npm install.
 - Roboto vía Google Fonts. Font Awesome 6.5.1 vía CDN.
-- Webs comerciales: `espublicogestiona.com`, `esfirma.com`.
+- Manual de estilo oficial: <https://design.g3stiona.com/recursos-nuevo-espublico/>.
+
+---
+
+## 1bis. Selección de marca — REGLA OBLIGATORIA
+
+> **El usuario debe especificar la marca antes de generar la presentación. Si no lo hace, PREGUNTAR antes de generar nada.**
+
+Cada producto del portfolio tiene su Pantone propio. La paleta se aplica añadiendo el atributo `data-brand` al `<body>` de la presentación:
+
+```html
+<body data-brand="hacienda-local">
+```
+
+Si el usuario no menciona marca en su prompt, la respuesta correcta es preguntar:
+
+> ¿Qué marca? Productos disponibles: **espublico** (matriz, naranja), **gestiona** (azul petróleo), **esfirma** (dorado), **hacienda-local** (verde), **rrhh** (rojo), **videoactas** (azul oscuro), **tecnologia** (azul cielo), **sistemas** (azul marino), **drag** (azul profundo), **ecityclic** (verde lima), **medidata** (verde selva). ¿Cuál usamos?
+
+**Nunca asumir Gestiona por defecto.** Es la paleta del `:root` solo por motivos históricos del sistema; no es una decisión de diseño implícita.
+
+### Catálogo de marcas
+
+| `data-brand` | Producto | Pantone | HEX primario | Notas |
+|---|---|---|---|---|
+| `espublico` | esPublico (matriz) | 144 C | `#ff9900` | Naranja corporativo. Alias: `corporativa`, `corporativa-ae`, `contratacion` |
+| `gestiona` | Gestiona | 3145 C | `#006d85` | Azul petróleo. Alias: `factory` |
+| `esfirma` | esFirma | 618 C | `#aa9944` | Dorado |
+| `hacienda-local` | Hacienda Local (HL) | 3252 C | `#00bb88` | Verde |
+| `rrhh` | Recursos Humanos | 1925 C | `#ee0055` | Rojo |
+| `videoactas` | Videoactas | 4153 C | `#034797` | Azul oscuro |
+| `tecnologia` | Tecnología | 801 C | `#0099dd` | Azul cielo |
+| `sistemas` | Sistemas | 301 C | `#0f4c81` | Azul marino |
+| `drag` | Drag esPublico | 654 C | `#10406d` | Azul profundo |
+| `ecityclic` | ecityclic esPublico | 376 | `#7fb927` | Verde lima |
+| `medidata` | Medidata esPublico | 340 C | `#249265` | Verde selva |
+
+Tipografías oficiales de todo el portfolio: **Roboto**, **Roboto Slab**, **Open Sans** (todas Google Fonts, libres).
+
+Cada bloque de marca redefine `--color-primary`, `--color-primary-light`, `--color-primary-dark`, `--color-accent` y `--color-primary-soft`. Todos los componentes que usan estos tokens se reestilan automáticamente.
+
+`--color-gold` (esFirma) y las variantes `--gold` siguen siendo independientes para permitir co-marketing en el mismo deck (p.ej. una presentación de Gestiona con una sección destacada de esFirma usando `.tile--gold`).
 
 ---
 
@@ -162,13 +202,13 @@ Para presentaciones bajo marca esFirma:
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Título — Gestiona</title>
+    <title>Título — <Marca></title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="../assets/css/corporate.css">
 </head>
-<body>
+<body data-brand="<marca>">
 <main role="presentation">
 
     <section class="slide-container" aria-label="Portada">
@@ -197,20 +237,21 @@ Para presentaciones bajo marca esFirma:
 
 Al modificar o crear presentaciones:
 
-1. **No reinventar estilos** — si existe una clase en `corporate.css`, úsala. Solo añade CSS inline para casos específicos de esa presentación.
-2. **No tocar `corporate.css`** salvo cuando el cambio aplique a todo el sistema (decisión del equipo).
-3. **No introducir frameworks** ni librerías npm. Stack puro intencional.
-4. **No usar f-strings ni concatenación** en JS para insertar HTML; el contenido es estático en HTML.
-5. **Usar variables CSS**, no colores hardcoded.
-6. **Mantener idioma**: contenido visible en español, identificadores en inglés.
-7. **Accesibilidad**: cada `<section class="slide-container">` debe tener `aria-label`. Iconos decorativos llevan `aria-hidden="true"`.
-8. **Slides 1280×720** — no cambiar dimensiones. Si el contenido no entra, redistribuir, no escalar.
-9. **Material fuente** (PDF, pptx, docx) va en `_sources/<nombre>/`, fuera del repo (gitignored).
+1. **Marca obligatoria** — si el usuario no la especifica, **preguntar** antes de generar. Nunca asumir Gestiona ni cualquier otra por defecto. Aplicarla con `<body data-brand="<marca>">`. Lista en §1bis.
+2. **No reinventar estilos** — si existe una clase en `corporate.css`, úsala. Solo añade CSS inline para casos específicos de esa presentación.
+3. **No tocar `corporate.css`** salvo cuando el cambio aplique a todo el sistema (decisión del equipo).
+4. **No introducir frameworks** ni librerías npm. Stack puro intencional.
+5. **No usar f-strings ni concatenación** en JS para insertar HTML; el contenido es estático en HTML.
+6. **Usar variables CSS**, no colores hardcoded.
+7. **Mantener idioma**: contenido visible en español, identificadores en inglés.
+8. **Accesibilidad**: cada `<section class="slide-container">` debe tener `aria-label`. Iconos decorativos llevan `aria-hidden="true"`.
+9. **Slides 1280×720** — no cambiar dimensiones. Si el contenido no entra, redistribuir, no escalar.
+10. **Material fuente** (PDF, pptx, docx) va en `_sources/<nombre>/`, fuera del repo (gitignored).
 
 ---
 
 ## 6. Material no canónico
 
 - `desarrollo-medios/` — proyecto histórico que sirvió de inspiración visual. **No usar como referencia activa**. Está ignorado por git (`.gitignore`).
-- `.claude/` — configuración local de Claude Code (personas senior/junior/security). Privada, ignorada por git.
+- `.claude/` — solo trackeamos las personas (`senior.md`, `junior.md`, `security.md`). El resto (estado, `settings.local.json`) es privado y queda ignorado.
 - `_sources/` — material fuente local (PDFs, pptx). Ignorado por git.
