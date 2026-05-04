@@ -3,7 +3,10 @@ CLAUDE.local.md
 node_modules/
 .env
 .env.*
-.claude/
+.claude/*
+!.claude/senior.md
+!.claude/junior.md
+!.claude/security.md
 .playwright-mcp/
 desarrollo-medios/
 log-prompts.md
