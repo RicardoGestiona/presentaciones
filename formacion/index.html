@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formación Clientes Gestiona</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/corporate.css">
+    <style>
+        /* --- PDF / impresión: apila todas las slides sin transiciones --- */
+        @media print {
+            @page { size: 1280px 720px; margin: 0; }
+            html, body {
+                background: white !important;
+                width: 1280px !important;
+                height: auto !important;
+                overflow: visible !important;
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+            main[role="presentation"] {
+                display: block !important;
+                height: auto !important;
+                width: 1280px !important;
+                transform: none !important;
+                transition: none !important;
+            }
+            .slide-container {
+                width: 1280px !important;
+                min-width: 1280px !important;
+                height: 720px !important;
+                margin: 0 !important;
+                border-radius: 0 !important;
+                box-shadow: none !important;
+                page-break-after: always !important;
+                break-after: page !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+            .slide-container:last-child {
+                page-break-after: auto !important;
+                break-after: auto !important;
+            }
+        }
+
+        /* Estilos específicos de esta presentación */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            width: 100%;
+        }
+        .stat-card {
+            background: var(--color-bg-light);
+            border-radius: var(--radius-md);
+            padding: 24px 20px;
+            text-align: center;
+            border-top: 4px solid var(--color-primary);
+            box-shadow: var(--shadow-card);
+        }
+        .stat-card .stat-number {
+            font-size: 38px;
+            font-weight: 700;
+            color: var(--color-primary);
+            line-height: 1.1;
+            letter-spacing: -1px;
+        }
+        .stat-card .stat-label {
+            font-size: 14px;
+            color: var(--color-text-muted);
+            margin-top: 6px;
+            line-height: 1.4;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            font-weight: 600;
+        }
+        .stat-card--accent {
+            border-top-color: var(--color-primary-light);
+        }
+        .stat-card--accent .stat-number {
+            color: var(--color-primary-dark);
+        }
+
+        /* Tile con cifra grande */
+        .tile .tile-number {
+            font-size: 44px;
+            font-weight: 700;
+            color: var(--color-primary);
+            line-height: 1;
+            letter-spacing: -1px;
+            margin-bottom: 6px;
+        }
+        .tile .tile-sub {
+            font-size: 14px;
+            color: var(--color-text-subtle);
+            margin-top: 8px;
+        }
+
+        /* Programa de certificación — cards */
+        .cert-card {
+            background: var(--color-bg-light);
+            border-radius: var(--radius-md);
+            padding: 24px 26px;
+            border-left: 4px solid var(--color-primary);
+            box-shadow: var(--shadow-card);
+        }
+        .cert-card h3 {
+            font-size: 18px;
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .cert-card h3 i {
+            color: var(--color-primary);
+        }
+        .cert-editions {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .cert-edition {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 14px;
+            background: var(--color-white);
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--color-border);
+            font-size: 15px;
+        }
+        .cert-edition .edition-id {
+            font-weight: 600;
+            color: var(--color-primary);
+        }
+        .cert-edition .edition-date {
+            color: var(--color-text-body);
+        }
+        .cert-edition .edition-slots {
+            font-size: 13px;
+            color: var(--color-white);
+            background: var(--color-primary);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+
+        .cert-grid {
+            display: grid;
+            grid-template-columns: 1.3fr 1fr 1fr;
+            gap: 20px;
+            width: 100%;
+        }
+
+        /* Gap visible: números de alcance */
+        .gap-visual {
+            display: flex;
+            align-items: stretch;
+            gap: 24px;
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .gap-visual .gap-card {
+            flex: 1;
+            background: var(--color-bg-light);
+            border-radius: var(--radius-md);
+            padding: 32px 28px;
+            text-align: center;
+            box-shadow: var(--shadow-card);
+        }
+        .gap-visual .gap-card--primary {
+            background: var(--color-primary);
+            color: var(--color-white);
+        }
+        .gap-visual .gap-number {
+            font-size: 52px;
+            font-weight: 700;
+            line-height: 1;
+            letter-spacing: -1.5px;
+            color: var(--color-primary);
+        }
+        .gap-visual .gap-card--primary .gap-number { color: var(--color-white); }
+        .gap-visual .gap-label {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 10px;
+            font-weight: 600;
+            color: var(--color-text-muted);
+        }
+        .gap-visual .gap-card--primary .gap-label { color: rgba(255,255,255,0.85); }
+        .gap-visual .gap-arrow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-primary);
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+<main role="presentation">
+
+    <!-- 1. PORTADA -->
+    <section class="slide-container" aria-label="Portada">
+        <div class="title-layout">
+            <span class="badge badge-gestiona mb-md">esPublico Gestiona</span>
+            <h1>Formación <span>Clientes Gestiona</span></h1>
+            <p class="subtitle">Dos dimensiones complementarias: Academy Gestiona y Programas de Certificación</p>
+        </div>
+    </section>
+
+    <!-- 2. FEATURE CARDS — Las dos dimensiones -->
+    <section class="slide-container" aria-label="Las dos dimensiones">
+        <h2 class="slide-title">Un ecosistema, dos caminos</h2>
+        <div class="content-area" style="align-items: center;">
+            <div class="feature-cards">
+                <div class="feature-card">
+                    <div class="icon-circle icon-circle--lg mx-auto">
+                        <i class="fa-solid fa-graduation-cap" aria-hidden="true"></i>
+                    </div>
+                    <h3>Academy Gestiona</h3>
+                    <p>Formación online general, abierta a todos los usuarios de la plataforma. Autoformación a ritmo propio con catálogo amplio de cursos y planes de aprendizaje.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon-circle icon-circle--lg mx-auto">
+                        <i class="fa-solid fa-certificate" aria-hidden="true"></i>
+                    </div>
+                    <h3>Programas de Certificación</h3>
+                    <p>Itinerarios especializados con plazas limitadas y convocatorias programadas. Acreditación de competencias avanzadas para perfiles técnicos y funcionales.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. SEPARADOR — Academy Gestiona -->
+    <section class="slide-container" aria-label="Sección Academy Gestiona">
+        <div class="section-title-layout">
+            <h2>Academy Gestiona</h2>
+            <hr aria-hidden="true">
+            <p class="subtitle">Formación online general</p>
+        </div>
+    </section>
+
+    <!-- 5. Alcance — Universo potencial -->
+    <section class="slide-container" aria-label="Alcance Academy Gestiona">
+        <h2 class="slide-title">Alcance y universo potencial</h2>
+        <div class="content-area">
+            <div class="gap-visual">
+                <div class="gap-card gap-card--primary">
+                    <div class="gap-number">220.000</div>
+                    <div class="gap-label">Potenciales usuarios</div>
+                </div>
+                <div class="gap-arrow" aria-hidden="true">
+                    <i class="fa-solid fa-arrow-right"></i>
+                </div>
+                <div class="gap-card">
+                    <div class="gap-number">60.500</div>
+                    <div class="gap-label">Usuarios de alta</div>
+                </div>
+                <div class="gap-arrow" aria-hidden="true">
+                    <i class="fa-solid fa-arrow-right"></i>
+                </div>
+                <div class="gap-card">
+                    <div class="gap-number">159.500</div>
+                    <div class="gap-label">Por incorporar</div>
+                </div>
+            </div>
+            <div class="highlight-box mt-lg" style="max-width: 1000px; margin-left: auto; margin-right: auto;">
+                <p><strong>Oportunidad:</strong> solo el 27,5 % del universo potencial ya está dado de alta. Queda un margen amplio de crecimiento orgánico para la plataforma.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Catálogo de Academy -->
+    <section class="slide-container" aria-label="Catálogo Academy">
+        <h2 class="slide-title">Catálogo disponible</h2>
+        <div class="content-area">
+            <div class="tiled-content">
+                <article class="tile">
+                    <div class="icon" aria-hidden="true"><i class="fa-solid fa-book-open"></i></div>
+                    <div class="tile-number">1.011</div>
+                    <h3>Cursos</h3>
+                    <p>Contenidos formativos disponibles en el catálogo online.</p>
+                </article>
+                <article class="tile">
+                    <div class="icon" aria-hidden="true"><i class="fa-solid fa-route"></i></div>
+                    <div class="tile-number">216</div>
+                    <h3>Planes de aprendizaje</h3>
+                    <p>Itinerarios estructurados que agrupan cursos por competencia u objetivo.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. Datos marzo — Actividad -->
+    <section class="slide-container" aria-label="Actividad marzo">
+        <h2 class="slide-title">Actividad marzo 2026</h2>
+        <div class="content-area">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">2.715</div>
+                    <div class="stat-label">Alumnos únicos</div>
+                </div>
+                <div class="stat-card stat-card--accent">
+                    <div class="stat-number">24.401</div>
+                    <div class="stat-label">Horas online</div>
+                </div>
+                <div class="stat-card stat-card--accent">
+                    <div class="stat-number">2.098</div>
+                    <div class="stat-label">Horas presenciales</div>
+                </div>
+            </div>
+            <div class="stats-grid mt-md" style="grid-template-columns: repeat(2, 1fr); max-width: 780px; margin-left: auto; margin-right: auto;">
+                <div class="stat-card">
+                    <div class="stat-number">698</div>
+                    <div class="stat-label">Planes de formación completados</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">1.567</div>
+                    <div class="stat-label">Cursos completados</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. SEPARADOR — Certificación -->
+    <section class="slide-container" aria-label="Sección programas certificación">
+        <div class="section-title-layout">
+            <h2>Programas de Certificación</h2>
+            <hr aria-hidden="true">
+            <p class="subtitle">Fechas de arranque (online) y plazas disponibles</p>
+        </div>
+    </section>
+
+    <!-- 9. Programas de certificación — cards -->
+    <section class="slide-container" aria-label="Programas de certificación">
+        <h2 class="slide-title">Convocatorias programadas</h2>
+        <div class="content-area">
+            <div class="cert-grid">
+                <div class="cert-card">
+                    <h3><i class="fa-solid fa-screwdriver-wrench" aria-hidden="true"></i> Administración Avanzada de Gestiona</h3>
+                    <div class="cert-editions">
+                        <div class="cert-edition">
+                            <span class="edition-id">Ed. 33</span>
+                            <span class="edition-date">6 de julio</span>
+                            <span class="edition-slots">9 plazas</span>
+                        </div>
+                        <div class="cert-edition">
+                            <span class="edition-id">Ed. 34</span>
+                            <span class="edition-date">28 septiembre</span>
+                            <span class="edition-slots">15 plazas</span>
+                        </div>
+                        <div class="cert-edition">
+                            <span class="edition-id">Ed. 35</span>
+                            <span class="edition-date">21 diciembre</span>
+                            <span class="edition-slots">16 plazas</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="cert-card">
+                    <h3><i class="fa-solid fa-chart-column" aria-hidden="true"></i> Analítica de datos</h3>
+                    <div class="cert-editions">
+                        <div class="cert-edition">
+                            <span class="edition-id">Ed. 6</span>
+                            <span class="edition-date">18 septiembre</span>
+                            <span class="edition-slots">12 plazas</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="cert-card">
+                    <h3><i class="fa-solid fa-code" aria-hidden="true"></i> Gestiona for Developers</h3>
+                    <div class="cert-editions">
+                        <div class="cert-edition">
+                            <span class="edition-id">Ed. 5</span>
+                            <span class="edition-date">14 septiembre</span>
+                            <span class="edition-slots">9 plazas</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="highlight-box mt-md">
+                <p><strong>Total 2026:</strong> 13 convocatorias programadas · 61 plazas disponibles de 208 plazas convocadas en tres itinerarios de especialización.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 10. Resumen consolidado -->
+    <section class="slide-container" aria-label="Resumen consolidado">
+        <div class="section-title-layout">
+            <h2>Formación que suma</h2>
+            <hr aria-hidden="true">
+            <div class="mt-lg" style="display: flex; gap: 32px;">
+                <div class="card--glass">
+                    <h3><i class="fa-solid fa-globe" aria-hidden="true" style="margin-right: 8px;"></i>Escala</h3>
+                    <p>Academy Gestiona pone la formación al alcance de 220.000 usuarios potenciales con más de 1.000 cursos.</p>
+                </div>
+                <div class="card--glass">
+                    <h3><i class="fa-solid fa-medal" aria-hidden="true" style="margin-right: 8px;"></i>Especialización</h3>
+                    <p>Los programas de certificación acreditan competencias avanzadas en itinerarios con plazas limitadas.</p>
+                </div>
+                <div class="card--glass">
+                    <h3><i class="fa-solid fa-arrow-trend-up" aria-hidden="true" style="margin-right: 8px;"></i>Crecimiento</h3>
+                    <p>Queda un margen de 159.500 usuarios por incorporar: recorrido amplio para seguir aportando valor.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 11. CIERRE -->
+    <section class="slide-container" aria-label="Cierre">
+        <div class="section-title-layout">
+            <h2>¡Gracias!</h2>
+            <hr aria-hidden="true">
+            <p class="subtitle">espublicogestiona.com</p>
+        </div>
+    </section>
+
+</main>
+<script src="../assets/js/navigation.js"></script>
+</body>
+</html>
