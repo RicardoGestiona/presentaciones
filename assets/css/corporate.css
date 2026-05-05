@@ -181,12 +181,29 @@ body {
     color: var(--color-text-body);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Stage: contenedor de viewport del deck.
+   Dimensiones nominales 1280×720, escalado uniforme al viewport real
+   manteniendo aspect ratio. Lo inyecta navigation.js envolviendo a <main>. */
+.stage {
+    width: var(--slide-width);
+    height: var(--slide-height);
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+    transform-origin: center;
+    transform: scale(min(calc(100vw / 1280px), calc(100vh / 720px)));
 }
 
 main[role="presentation"] {
     display: flex;
     align-items: center;
-    height: 100vh;
+    height: var(--slide-height);
+    width: max-content;
     transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -208,7 +225,6 @@ main[role="presentation"] {
     border-radius: var(--radius-sm);
     box-shadow: var(--shadow-slide);
     flex-shrink: 0;
-    margin: 0 calc((100vw - var(--slide-width)) / 2);
 }
 
 /* Decoración sutil de fondo */

@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestiona Avanza — Lanzamiento de marca</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/corporate.css">
+    <style>
+        .phase { opacity: 0; visibility: hidden; transition: opacity .4s ease, visibility 0s linear .4s; }
+        .phase.visible { opacity: 1; visibility: visible; transition: opacity .4s ease, visibility 0s linear 0s; }
+
+        .cover-logo {
+            max-width: 720px;
+            width: 80%;
+            height: auto;
+            display: block;
+            margin: 0 auto 32px;
+        }
+        .cover-tag {
+            display: inline-block;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--color-primary);
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+        .cover-meta {
+            margin-top: 28px;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--color-text-subtle);
+        }
+
+        .principles-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 16px;
+        }
+        .principle {
+            background: var(--color-bg-light);
+            border-radius: var(--radius-md);
+            padding: 20px 16px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            border-top: 4px solid var(--color-primary);
+        }
+        .principle .num {
+            font-family: 'Roboto', sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--color-primary);
+            line-height: 1;
+        }
+        .principle h3 {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--color-text-dark);
+            margin: 0;
+            line-height: 1.3;
+        }
+        .principle p {
+            font-size: 12px;
+            color: var(--color-text-muted);
+            line-height: 1.4;
+            margin: 0;
+        }
+
+        .formula-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 28px;
+        }
+        .formula-card {
+            background: var(--color-bg-light);
+            border-radius: var(--radius-md);
+            padding: 24px 26px;
+            border-left: 5px solid var(--color-primary);
+        }
+        .formula-card h3 {
+            font-size: 16px;
+            color: var(--color-text-dark);
+            margin: 0 0 6px;
+        }
+        .formula-card .subtitle-mini {
+            font-size: 12px;
+            color: var(--color-text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 14px;
+        }
+        .formula-pattern {
+            display: inline-block;
+            background: var(--color-primary);
+            color: white;
+            padding: 8px 14px;
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 14px;
+        }
+        .formula-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            font-size: 13px;
+            color: var(--color-text-body);
+        }
+        .formula-list li {
+            padding: 4px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+        }
+        .formula-list li:last-child { border-bottom: none; }
+        .formula-list strong { color: var(--color-primary-dark); }
+
+        .pieces-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+        .piece {
+            background: white;
+            border: 1px solid rgba(0, 109, 133, 0.15);
+            border-radius: var(--radius-md);
+            padding: 18px 18px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+        }
+        .piece .piece-icon {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: var(--color-primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+        }
+        .piece h3 {
+            font-size: 14px;
+            color: var(--color-text-dark);
+            margin: 0;
+            line-height: 1.3;
+        }
+        .piece p {
+            font-size: 12px;
+            color: var(--color-text-muted);
+            line-height: 1.4;
+            margin: 0;
+        }
+
+        .concepts {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 18px;
+        }
+        .concept-pill {
+            background: var(--color-primary);
+            color: white;
+            padding: 8px 18px;
+            border-radius: 999px;
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+        }
+        .concept-pill.alt {
+            background: white;
+            color: var(--color-primary-dark);
+            border: 1.5px solid var(--color-primary);
+        }
+
+        .closing-logo {
+            max-width: 360px;
+            width: 60%;
+            margin: 0 auto 24px;
+            display: block;
+            filter: brightness(0) invert(1);
+            opacity: 0.92;
+        }
+    </style>
+</head>
+<body data-brand="gestiona">
+<main role="presentation">
+
+    <!-- 1. PORTADA -->
+    <section class="slide-container" aria-label="Portada Gestiona Avanza">
+        <div class="title-layout">
+            <span class="cover-tag">Lanzamiento de marca · Uso interno</span>
+            <img src="../assets/img/gestiona-avanza-logo.png" alt="Logo Gestiona Avanza" class="cover-logo">
+            <p class="subtitle">La marca global del ecosistema formativo y de comunidad de Gestiona</p>
+            <p class="cover-meta">Líneas generales · 2026</p>
+        </div>
+    </section>
+
+    <!-- 2. PROPÓSITO + DECISIÓN ESTRATÉGICA -->
+    <section class="slide-container" aria-label="Propósito y decisión estratégica">
+        <h2 class="slide-title">Propósito y decisión estratégica</h2>
+        <div class="content-area">
+            <div class="two-column">
+                <div>
+                    <ul class="bullet-list">
+                        <li><i class="fa-solid fa-check" aria-hidden="true"></i> No crear una marca nueva: <strong>elevar una existente</strong> y dotarla de un significado más amplio.</li>
+                        <li><i class="fa-solid fa-check" aria-hidden="true"></i> Marca seleccionada: <strong>Gestiona Avanza</strong>, por su capacidad evocativa y flexibilidad semántica.</li>
+                        <li><i class="fa-solid fa-check" aria-hidden="true"></i> Arquitectura más clara, más aspiracional y menos descriptiva.</li>
+                        <li><i class="fa-solid fa-check" aria-hidden="true"></i> Concentrar el posicionamiento en una sola marca activa, evitando la proliferación.</li>
+                    </ul>
+                </div>
+                <div class="card card--bordered">
+                    <h3>Lógica de marca paraguas</h3>
+                    <p>Una marca principal ordena un conjunto de ofertas y formatos diferentes, sin necesidad de homogeneizar las submarcas con reconocimiento propio acumulado.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. SIGNIFICADO DE LA MARCA -->
+    <section class="slide-container" aria-label="Significado de la marca">
+        <h2 class="slide-title">Significado de la marca</h2>
+        <div class="content-area">
+            <div class="highlight-box">
+                <p><strong>Gestiona Avanza</strong> es el universo de aprendizaje, desarrollo, actualización, conexión profesional y reconocimiento experto en torno a Gestiona.</p>
+            </div>
+            <div class="two-column mt-md">
+                <div>
+                    <ul class="bullet-list">
+                        <li><i class="fa-solid fa-arrow-right" aria-hidden="true"></i> Ya no se limita a una comunidad concreta.</li>
+                        <li><i class="fa-solid fa-arrow-right" aria-hidden="true"></i> Propuesta global para usuarios, clientes, perfiles internos y especialistas.</li>
+                    </ul>
+                </div>
+                <div>
+                    <ul class="bullet-list">
+                        <li><i class="fa-solid fa-arrow-right" aria-hidden="true"></i> Tono evocativo: progreso, evolución, excelencia.</li>
+                        <li><i class="fa-solid fa-arrow-right" aria-hidden="true"></i> No describe un producto: describe una idea de crecimiento profesional.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. ROL EN EL ECOSISTEMA -->
+    <section class="slide-container" aria-label="Rol en el ecosistema">
+        <div class="section-title-layout">
+            <h2>Rol en el ecosistema</h2>
+            <hr aria-hidden="true">
+            <p class="subtitle">Marco de sentido común para todas las iniciativas formativas y de comunidad</p>
+            <div class="mt-lg" style="display: flex; gap: 24px;">
+                <div class="card--glass">
+                    <h3><i class="fa-solid fa-graduation-cap" aria-hidden="true" style="margin-right: 8px;"></i>Formación</h3>
+                    <p>Cursos online, programas avanzados y acreditación.</p>
+                </div>
+                <div class="card--glass">
+                    <h3><i class="fa-solid fa-people-group" aria-hidden="true" style="margin-right: 8px;"></i>Comunidad</h3>
+                    <p>Red profesional, conocimiento compartido y proyectos.</p>
+                </div>
+                <div class="card--glass">
+                    <h3><i class="fa-solid fa-microphone-lines" aria-hidden="true" style="margin-right: 8px;"></i>Eventos y contenidos</h3>
+                    <p>Congreso, hackathon, podcast y newsletter.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. PRINCIPIOS DE ARQUITECTURA -->
+    <section class="slide-container" aria-label="Principios de arquitectura">
+        <h2 class="slide-title">Cinco principios de arquitectura</h2>
+        <div class="content-area">
+            <div class="principles-grid">
+                <div class="principle">
+                    <span class="num">1</span>
+                    <h3>Marca tractora única</h3>
+                    <p>Una sola marca para reforzar reconocimiento y coherencia global.</p>
+                </div>
+                <div class="principle">
+                    <span class="num">2</span>
+                    <h3>Extensiones claras</h3>
+                    <p>Por formato o función, evitando nombres ambiguos.</p>
+                </div>
+                <div class="principle">
+                    <span class="num">3</span>
+                    <h3>Preservar equity</h3>
+                    <p>Allí donde una submarca ya tenga peso propio.</p>
+                </div>
+                <div class="principle">
+                    <span class="num">4</span>
+                    <h3>Sistema + flexibilidad</h3>
+                    <p>Lógica de negocio sobre uniformidad rígida.</p>
+                </div>
+                <div class="principle">
+                    <span class="num">5</span>
+                    <h3>Escalabilidad futura</h3>
+                    <p>Incorporar nuevas iniciativas sin rehacer el sistema.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. SISTEMA VERBAL -->
+    <section class="slide-container" aria-label="Sistema verbal recomendado">
+        <h2 class="slide-title">Sistema verbal recomendado</h2>
+        <div class="content-area">
+            <div class="formula-row">
+                <div class="formula-card">
+                    <h3>Canales, productos o líneas estables</h3>
+                    <p class="subtitle-mini">Refuerza la marca madre en cada punto de contacto</p>
+                    <span class="formula-pattern">Gestiona Avanza + descriptor</span>
+                    <ul class="formula-list">
+                        <li><strong>Gestiona Avanza Academy</strong></li>
+                        <li><strong>Gestiona Avanza Hub</strong></li>
+                        <li><strong>Gestiona Avanza Podcast</strong></li>
+                        <li><strong>Gestiona Avanza Newsletter</strong></li>
+                    </ul>
+                </div>
+                <div class="formula-card">
+                    <h3>Hitos, encuentros o eventos singulares</h3>
+                    <p class="subtitle-mini">El formato actúa como denominación principal</p>
+                    <span class="formula-pattern">Descriptor + Gestiona Avanza</span>
+                    <ul class="formula-list">
+                        <li><strong>Congreso</strong> Gestiona Avanza</li>
+                        <li><strong>Hackathon</strong> Gestiona Avanza</li>
+                        <li><strong>Certificaciones</strong> Gestiona Avanza</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. PIEZAS DEL ECOSISTEMA -->
+    <section class="slide-container" aria-label="Piezas principales del ecosistema">
+        <h2 class="slide-title">Piezas del ecosistema</h2>
+        <div class="content-area">
+            <div class="pieces-grid">
+                <article class="piece">
+                    <div class="piece-icon"><i class="fa-solid fa-graduation-cap" aria-hidden="true"></i></div>
+                    <h3>Gestiona Avanza Academy</h3>
+                    <p>Catálogo de cursos online del ecosistema formativo. Aprendizaje continuo bajo demanda.</p>
+                </article>
+                <article class="piece">
+                    <div class="piece-icon"><i class="fa-solid fa-people-group" aria-hidden="true"></i></div>
+                    <h3>Gestiona Avanza Hub</h3>
+                    <p>Comunidad profesional. Red de relación, conocimiento compartido y formación continua.</p>
+                </article>
+                <article class="piece">
+                    <div class="piece-icon"><i class="fa-solid fa-certificate" aria-hidden="true"></i></div>
+                    <h3>Certificaciones Gestiona Avanza</h3>
+                    <p>Programas semipresenciales de acreditación. Preserva equity de "Certificaciones".</p>
+                </article>
+                <article class="piece">
+                    <div class="piece-icon"><i class="fa-solid fa-award" aria-hidden="true"></i></div>
+                    <h3>Máster Gestiona</h3>
+                    <p>Programa oficial avanzado dentro de la línea de certificaciones. No es marca global.</p>
+                </article>
+                <article class="piece">
+                    <div class="piece-icon"><i class="fa-solid fa-microphone-lines" aria-hidden="true"></i></div>
+                    <h3>Congreso Gestiona Avanza</h3>
+                    <p>Encuentro insignia para perfiles expertos y comunidad profesional avanzada.</p>
+                </article>
+                <article class="piece">
+                    <div class="piece-icon"><i class="fa-solid fa-code-branch" aria-hidden="true"></i></div>
+                    <h3>Hackathon Gestiona Avanza</h3>
+                    <p>Espacio de innovación, colaboración y resolución de retos del ecosistema.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. JERARQUÍA FUNCIONAL (TABLA) -->
+    <section class="slide-container" aria-label="Jerarquía funcional del ecosistema">
+        <h2 class="slide-title">Jerarquía funcional</h2>
+        <div class="content-area">
+            <div class="table-layout">
+                <table>
+                    <thead>
+                        <tr><th>Nivel</th><th>Denominación</th><th>Función</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Marca global</td><td><strong>Gestiona Avanza</strong></td><td>Universo de formación, desarrollo y proyección experta.</td></tr>
+                        <tr><td>Aprendizaje</td><td>Gestiona Avanza Academy</td><td>Catálogo de cursos online.</td></tr>
+                        <tr><td>Comunidad</td><td>Gestiona Avanza Hub</td><td>Nodo profesional y conocimiento compartido.</td></tr>
+                        <tr><td>Contenidos</td><td>Podcast / Newsletter</td><td>Extensiones editoriales de la marca.</td></tr>
+                        <tr><td>Acreditación</td><td>Certificaciones Gestiona Avanza</td><td>Programas de acreditación del conocimiento.</td></tr>
+                        <tr><td>Programa avanzado</td><td>Máster Gestiona</td><td>Programa oficial dentro de certificaciones.</td></tr>
+                        <tr><td>Encuentro insignia</td><td>Congreso Gestiona Avanza</td><td>Gran evento para perfiles expertos.</td></tr>
+                        <tr><td>Innovación</td><td>Hackathon Gestiona Avanza</td><td>Reto, innovación y colaboración.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- 9. TONO Y CONCEPTOS RECTORES -->
+    <section class="slide-container" aria-label="Tono y conceptos rectores">
+        <div class="section-title-layout">
+            <h2>Tono y conceptos rectores</h2>
+            <hr aria-hidden="true">
+            <p class="subtitle">Solvencia, progreso, conexión y especialización. Territorio aspiracional, profesional y movilizador.</p>
+            <div class="concepts">
+                <span class="concept-pill">Avance</span>
+                <span class="concept-pill alt">Excelencia</span>
+                <span class="concept-pill">Actualización</span>
+                <span class="concept-pill alt">Comunidad experta</span>
+                <span class="concept-pill">Reconocimiento</span>
+                <span class="concept-pill alt">Innovación</span>
+                <span class="concept-pill">Evolución profesional</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 10. IMPLANTACIÓN -->
+    <section class="slide-container" aria-label="Implicaciones de implantación">
+        <h2 class="slide-title">Implantación</h2>
+        <div class="content-area">
+            <div class="step-cards mt-md" style="background: var(--color-bg-light); padding: 28px; border-radius: var(--radius-md);">
+                <div class="step-card" style="background: white; color: var(--color-text-body); border: 1px solid rgba(0,109,133,0.15);">
+                    <div class="step-number" style="background: var(--color-primary); color: white;">1</div>
+                    <p style="color: var(--color-text-body);"><strong>Transición progresiva</strong>, no reemplazo total inmediato.</p>
+                </div>
+                <div class="step-card" style="background: white; color: var(--color-text-body); border: 1px solid rgba(0,109,133,0.15);">
+                    <div class="step-number" style="background: var(--color-primary); color: white;">2</div>
+                    <p style="color: var(--color-text-body);"><strong>Unificar relato</strong> y ordenar la convivencia entre activos.</p>
+                </div>
+                <div class="step-card" style="background: white; color: var(--color-text-body); border: 1px solid rgba(0,109,133,0.15);">
+                    <div class="step-number" style="background: var(--color-primary); color: white;">3</div>
+                    <p style="color: var(--color-text-body);"><strong>Norma de uso consistente</strong>: extensiones vs. hitos singulares.</p>
+                </div>
+            </div>
+            <div class="highlight-box mt-md">
+                <p><strong>Síntesis:</strong> ampliación estratégica de una marca existente. Arquitectura flexible que protege el equity y ordena el crecimiento futuro.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 11. CIERRE -->
+    <section class="slide-container" aria-label="Cierre">
+        <div class="section-title-layout">
+            <img src="../assets/img/gestiona-avanza-logo.png" alt="Gestiona Avanza" class="closing-logo">
+            <hr aria-hidden="true">
+            <p class="subtitle">La marca global del ecosistema formativo de Gestiona</p>
+        </div>
+    </section>
+
+</main>
+<script src="../assets/js/navigation.js"></script>
+</body>
+</html>

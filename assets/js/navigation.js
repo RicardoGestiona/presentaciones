@@ -8,9 +8,19 @@
     var main = document.querySelector('main[role="presentation"]');
     if (!main) return;
 
+    /* Inyecta wrapper .stage que escala uniformemente el deck al viewport.
+       No requiere cambios en el HTML de cada presentación. */
+    if (!main.parentElement || !main.parentElement.classList.contains("stage")) {
+        var stage = document.createElement("div");
+        stage.className = "stage";
+        main.parentNode.insertBefore(stage, main);
+        stage.appendChild(main);
+    }
+
     var slides = main.querySelectorAll(".slide-container");
     var total = slides.length;
     var current = 0;
+    var SLIDE_WIDTH = 1280;
 
     /** Obtiene las fases de una slide, ordenadas por data-phase */
     function getPhases(slideIndex) {
@@ -58,7 +68,7 @@
         if (index < 0 || index >= total) return;
         var prev = current;
         current = index;
-        main.style.transform = "translateX(-" + (current * 100) + "vw)";
+        main.style.transform = "translateX(-" + (current * SLIDE_WIDTH) + "px)";
 
         // Al retroceder, mostrar todas las fases de la slide destino
         if (index < prev) {
