@@ -16,9 +16,12 @@ export default function Home() {
               Crea presentaciones corporativas esPublico sin editar HTML. Rellena un formulario,
               obtén el index.html generado, y refina con un asistente conversacional.
             </p>
-            <div style={{ display: 'flex', gap: '10px' }}>
+            <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
               <Link href="/editor">
-                <button>Crear nueva presentación</button>
+                <button>v1: Formulario</button>
+              </Link>
+              <Link href="/editor-v2">
+                <button style={{ background: '#28a745' }}>v2: Chat (Ollama)</button>
               </Link>
               <Link href="/settings">
                 <button style={{ background: '#666' }}>Configuración</button>
