@@ -1,0 +1,10 @@
+export { renderTitleSlide } from './title';
+export { renderSectionSlide } from './section';
+export { renderTiledSlide } from './tiled';
+export { renderTwoColumnSlide } from './two-column';
+export { renderFeatureCardsSlide } from './feature-cards';
+export { renderBulletListSlide } from './bullet-list';
+export { renderStepCardsSlide } from './step-cards';
+export { renderTableSlide } from './table';
+export { renderBarChartSlide } from './bar-chart';
+export { renderClosingSlide } from './closing';
