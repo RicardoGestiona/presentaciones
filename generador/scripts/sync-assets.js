@@ -5,11 +5,11 @@ const path = require('path');
 const crypto = require('crypto');
 
 const sourceDir = path.join(__dirname, '..', '..', 'assets');
-const destDir = path.join(__dirname, '..', 'public');
+const destDir = path.join(__dirname, '..', 'public', 'assets');
 
 const files = [
-  { src: 'css/corporate.css', dest: 'corporate.css' },
-  { src: 'js/navigation.js', dest: 'navigation.js' },
+  { src: 'css/corporate.css', dest: 'css/corporate.css' },
+  { src: 'js/navigation.js', dest: 'js/navigation.js' },
 ];
 
 function hashFile(filePath) {
@@ -35,10 +35,11 @@ for (const file of files) {
   const destHash = fs.existsSync(destPath) ? hashFile(destPath) : null;
 
   if (srcHash !== destHash) {
+    fs.mkdirSync(path.dirname(destPath), { recursive: true });
     fs.copyFileSync(srcPath, destPath);
-    console.log(`✓ Synced ${file.src} → ${file.dest}`);
+    console.log(`✓ Synced ${file.src} → assets/${file.dest}`);
   } else {
-    console.log(`✓ ${file.dest} in sync`);
+    console.log(`✓ assets/${file.dest} in sync`);
   }
 }
 
