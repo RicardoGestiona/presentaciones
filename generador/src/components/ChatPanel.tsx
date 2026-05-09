@@ -2,9 +2,33 @@
 
 import { useState, useRef, useEffect } from 'react';
 import { Deck, Action } from '@/lib/schema';
-import { callOllama, getOllamaConfig, testOllamaConnection, type OllamaChatMessage } from '@/lib/llm/client';
+import {
+  callOllama,
+  getOllamaConfig,
+  testOllamaConnection,
+  OllamaError,
+  type OllamaChatMessage,
+  type OllamaErrorKind,
+} from '@/lib/llm/client';
 import { buildSystemPrompt } from '@/lib/llm/system-prompt';
 import { applyActions } from '@/lib/llm/apply-actions';
+
+interface ChatError {
+  kind: OllamaErrorKind | 'apply';
+  title: string;
+  body: string;
+  details?: string;
+}
+
+const ERROR_HINTS: Record<ChatError['kind'], string> = {
+  network: 'Verifica que Ollama esté corriendo: OLLAMA_ORIGINS=* ollama serve',
+  timeout: 'Modelo demasiado lento. Prueba con uno más pequeño en /settings.',
+  http: 'Ollama rechazó la petición. Revisa el modelo configurado.',
+  parse: 'El modelo devolvió texto malformado. Reintenta o usa un modelo más capaz.',
+  schema: 'El modelo respondió con tipos inválidos. Reintenta o ajusta el prompt.',
+  apply: 'No se pudo aplicar el cambio al deck. La acción pasó schema pero rompió un invariante.',
+  unknown: 'Error inesperado. Revisa la consola del navegador.',
+};
 
 interface Message {
   role: 'user' | 'assistant';
@@ -21,7 +45,7 @@ export function ChatPanel({ deck, onDeckUpdate }: Props) {
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<ChatError | null>(null);
   const [connected, setConnected] = useState(false);
   const [streamingContent, setStreamingContent] = useState('');
   const messagesEnd = useRef<HTMLDivElement>(null);
@@ -31,9 +55,6 @@ export function ChatPanel({ deck, onDeckUpdate }: Props) {
       const config = getOllamaConfig();
       const ok = await testOllamaConnection(config);
       setConnected(ok);
-      if (!ok) {
-        setError(`Ollama no disponible en ${config.url}. Configura en /settings.`);
-      }
     };
     checkConnection();
   }, []);
@@ -68,16 +89,44 @@ export function ChatPanel({ deck, onDeckUpdate }: Props) {
         }));
       ollamaMessages.push({ role: 'user', content: userMessage.content });
 
-      const response = await callOllama(
-        config,
-        ollamaMessages,
-        systemPrompt,
-        (_token, accumulated) => setStreamingContent(accumulated)
-      );
+      let response;
+      try {
+        response = await callOllama(
+          config,
+          ollamaMessages,
+          systemPrompt,
+          (_token, accumulated) => setStreamingContent(accumulated)
+        );
+      } catch (err) {
+        if (err instanceof OllamaError) {
+          setError({
+            kind: err.kind,
+            title: err.message,
+            body: ERROR_HINTS[err.kind],
+            details: err.details,
+          });
+        } else {
+          setError({
+            kind: 'unknown',
+            title: err instanceof Error ? err.message : 'Error desconocido',
+            body: ERROR_HINTS.unknown,
+          });
+        }
+        return;
+      }
 
-      // Apply actions to deck
-      const updatedDeck = applyActions(deck, response.actions);
-      onDeckUpdate(updatedDeck);
+      try {
+        const updatedDeck = applyActions(deck, response.actions);
+        onDeckUpdate(updatedDeck);
+      } catch (err) {
+        setError({
+          kind: 'apply',
+          title: err instanceof Error ? err.message : 'Error aplicando acciones',
+          body: ERROR_HINTS.apply,
+          details: JSON.stringify(response.actions, null, 2),
+        });
+        return;
+      }
 
       const assistantMessage: Message = {
         role: 'assistant',
@@ -86,8 +135,6 @@ export function ChatPanel({ deck, onDeckUpdate }: Props) {
       };
 
       setMessages((prev) => [...prev, assistantMessage]);
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'Error desconocido');
     } finally {
       setLoading(false);
       setStreamingContent('');
@@ -183,8 +230,50 @@ export function ChatPanel({ deck, onDeckUpdate }: Props) {
           </div>
         )}
         {error && (
-          <div style={{ color: '#d32f2f', fontSize: '14px', background: '#ffebee', padding: '10px', borderRadius: '4px' }}>
-            {error}
+          <div
+            role="alert"
+            style={{
+              fontSize: '13px',
+              background: '#ffebee',
+              borderLeft: '4px solid #d32f2f',
+              padding: '12px',
+              borderRadius: '4px',
+              marginBottom: '15px',
+            }}
+          >
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '8px' }}>
+              <strong style={{ color: '#d32f2f' }}>
+                ⚠ Error [{error.kind}]: {error.title}
+              </strong>
+              <button
+                onClick={() => setError(null)}
+                style={{ background: 'transparent', border: 'none', cursor: 'pointer', color: '#666', fontSize: '16px', padding: '0 4px' }}
+                aria-label="Cerrar error"
+              >
+                ✕
+              </button>
+            </div>
+            <p style={{ margin: '6px 0 0', color: '#444' }}>{error.body}</p>
+            {error.details && (
+              <details style={{ marginTop: '8px' }}>
+                <summary style={{ cursor: 'pointer', fontSize: '12px', color: '#666' }}>Detalles</summary>
+                <pre
+                  style={{
+                    margin: '6px 0 0',
+                    padding: '8px',
+                    background: '#fff',
+                    borderRadius: '3px',
+                    fontSize: '11px',
+                    overflow: 'auto',
+                    maxHeight: '200px',
+                    whiteSpace: 'pre-wrap',
+                    wordBreak: 'break-word',
+                  }}
+                >
+                  {error.details}
+                </pre>
+              </details>
+            )}
           </div>
         )}
         <div ref={messagesEnd} />

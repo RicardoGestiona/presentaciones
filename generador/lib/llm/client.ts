@@ -1,3 +1,4 @@
+import { z } from 'zod';
 import { OllamaResponse, OllamaResponseSchema } from '../schema';
 
 export interface OllamaConfig {
@@ -10,10 +11,25 @@ export interface OllamaChatMessage {
   content: string;
 }
 
+export type OllamaErrorKind = 'network' | 'timeout' | 'http' | 'parse' | 'schema' | 'unknown';
+
+export class OllamaError extends Error {
+  constructor(
+    public kind: OllamaErrorKind,
+    message: string,
+    public details?: string
+  ) {
+    super(message);
+    this.name = 'OllamaError';
+  }
+}
+
 const DEFAULT_CONFIG: OllamaConfig = {
   url: 'http://localhost:11434',
   model: 'qwen2.5:7b-instruct',
 };
+
+const DEFAULT_TIMEOUT_MS = 180_000;
 
 export function getOllamaConfig(): OllamaConfig {
   if (typeof window === 'undefined') {
@@ -34,7 +50,8 @@ export async function callOllama(
   config: OllamaConfig,
   messages: OllamaChatMessage[],
   systemPrompt: string,
-  onToken?: (token: string, accumulated: string) => void
+  onToken?: (token: string, accumulated: string) => void,
+  timeoutMs: number = DEFAULT_TIMEOUT_MS
 ): Promise<OllamaResponse> {
   const useStream = typeof onToken === 'function';
   const payload = {
@@ -48,20 +65,41 @@ export async function callOllama(
   };
 
   let fullContent = '';
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), timeoutMs);
 
+  let response: Response;
   try {
-    const response = await fetch(`${config.url}/api/chat`, {
+    response = await fetch(`${config.url}/api/chat`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload),
+      signal: controller.signal,
     });
-
-    if (!response.ok) {
-      throw new Error(`Ollama returned ${response.status}: ${response.statusText}`);
+  } catch (err) {
+    clearTimeout(timer);
+    if (err instanceof DOMException && err.name === 'AbortError') {
+      throw new OllamaError('timeout', `Ollama no respondió en ${timeoutMs / 1000}s`);
     }
+    const msg = err instanceof Error ? err.message : 'fetch failed';
+    throw new OllamaError('network', `No se pudo conectar a ${config.url}`, msg);
+  }
 
+  if (!response.ok) {
+    clearTimeout(timer);
+    const body = await response.text().catch(() => '');
+    throw new OllamaError(
+      'http',
+      `Ollama devolvió ${response.status} ${response.statusText}`,
+      body.slice(0, 500)
+    );
+  }
+
+  try {
     if (useStream) {
-      if (!response.body) throw new Error('No response body for stream');
+      if (!response.body) {
+        throw new OllamaError('network', 'Ollama no devolvió cuerpo de respuesta para stream');
+      }
       const reader = response.body.getReader();
       const decoder = new TextDecoder();
       let buffer = '';
@@ -73,7 +111,12 @@ export async function callOllama(
         buffer = lines.pop() ?? '';
         for (const line of lines) {
           if (!line.trim()) continue;
-          const chunk = JSON.parse(line);
+          let chunk: { message?: { content?: string }; done?: boolean };
+          try {
+            chunk = JSON.parse(line);
+          } catch {
+            throw new OllamaError('parse', 'Línea de stream NDJSON inválida', line.slice(0, 200));
+          }
           if (chunk.message?.content) {
             fullContent += chunk.message.content;
             onToken!(chunk.message.content, fullContent);
@@ -84,22 +127,44 @@ export async function callOllama(
     } else {
       const data = await response.json();
       if (!data.message || typeof data.message.content !== 'string') {
-        throw new Error('Unexpected Ollama response format');
+        throw new OllamaError('parse', 'Formato de respuesta Ollama inesperado');
       }
       fullContent = data.message.content;
     }
+  } catch (err) {
+    clearTimeout(timer);
+    if (err instanceof OllamaError) throw err;
+    if (err instanceof DOMException && err.name === 'AbortError') {
+      throw new OllamaError('timeout', `Stream interrumpido tras ${timeoutMs / 1000}s`);
+    }
+    const msg = err instanceof Error ? err.message : String(err);
+    throw new OllamaError('network', 'Error leyendo respuesta de Ollama', msg);
+  } finally {
+    clearTimeout(timer);
+  }
 
-    try {
-      const parsed = JSON.parse(fullContent);
-      return OllamaResponseSchema.parse(parsed);
-    } catch (e) {
-      throw new Error(`Failed to parse Ollama JSON response: ${fullContent}`);
+  let parsedJson: unknown;
+  try {
+    parsedJson = JSON.parse(fullContent);
+  } catch {
+    throw new OllamaError(
+      'parse',
+      'Modelo no devolvió JSON válido',
+      fullContent.slice(0, 500)
+    );
+  }
+
+  try {
+    return OllamaResponseSchema.parse(parsedJson);
+  } catch (err) {
+    if (err instanceof z.ZodError) {
+      throw new OllamaError(
+        'schema',
+        'JSON no cumple el contrato de actions',
+        JSON.stringify(err.issues, null, 2).slice(0, 500)
+      );
     }
-  } catch (error) {
-    if (error instanceof Error) {
-      throw new Error(`Ollama error: ${error.message}`);
-    }
-    throw error;
+    throw new OllamaError('unknown', 'Error de validación inesperado', String(err));
   }
 }
 
