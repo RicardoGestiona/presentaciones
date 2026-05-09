@@ -1,4 +1,4 @@
-import { Deck, Slide, Action, validateDeck } from '../schema';
+import { Deck, Action, validateDeck } from '../schema';
 
 export function applyActions(deck: Deck, actions: Action[]): Deck {
   let result = structuredClone(deck);

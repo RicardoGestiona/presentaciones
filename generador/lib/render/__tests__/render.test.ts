@@ -226,4 +226,121 @@ describe('renderSlide', () => {
     expect(html).toContain('Thank you');
     expect(html).toContain('Questions?');
   });
+
+  it('renders two-column slide with bullets + html blocks', () => {
+    const slide: Slide = {
+      type: 'two-column',
+      title: 'Compare',
+      left: { type: 'bullets', content: 'Pro 1\nPro 2' },
+      right: { type: 'html', content: '<p class="custom">Raw</p>' },
+    };
+
+    const html = renderSlide(slide, 'gestiona');
+    expect(html).toContain('two-column');
+    expect(html).toContain('Compare');
+    expect(html).toContain('<li>Pro 1</li>');
+    expect(html).toContain('<li>Pro 2</li>');
+    expect(html).toContain('<p class="custom">Raw</p>');
+  });
+
+  it('renders step-cards with numbered steps and gold variant', () => {
+    const slide: Slide = {
+      type: 'step-cards',
+      title: 'Process',
+      gold: true,
+      steps: [
+        { title: 'Step A', text: 'first' },
+        { title: 'Step B', text: 'second' },
+      ],
+    };
+
+    const html = renderSlide(slide, 'gestiona');
+    expect(html).toContain('step-cards');
+    expect(html).toContain('step-card--gold');
+    expect(html).toContain('slide-title--gold');
+    expect(html).toContain('>1</div>');
+    expect(html).toContain('>2</div>');
+    expect(html).toContain('Step A');
+    expect(html).toContain('Step B');
+  });
+});
+
+describe('parity vs showcase canonical classes', () => {
+  const allLayoutsDeck: Deck = {
+    name: 'parity',
+    title: 'Parity',
+    brand: 'gestiona',
+    slides: [
+      { type: 'title', h1: 'T' },
+      { type: 'section', h2: 'S' },
+      {
+        type: 'tiled',
+        title: 'X',
+        tiles: [{ icon: 'fa-bolt', title: 'A', text: 'a' }],
+      },
+      {
+        type: 'two-column',
+        title: 'X',
+        left: { type: 'text', content: 'L' },
+        right: { type: 'text', content: 'R' },
+      },
+      {
+        type: 'feature-cards',
+        title: 'X',
+        cards: [{ icon: 'fa-bolt', title: 'A', text: 'a' }],
+      },
+      {
+        type: 'bullet-list',
+        title: 'X',
+        bullets: [
+          { icon: 'fa-bolt', text: 'a' },
+          { icon: 'fa-bolt', text: 'b' },
+        ],
+      },
+      {
+        type: 'step-cards',
+        title: 'X',
+        steps: [{ title: 'A', text: 'a' }],
+      },
+      {
+        type: 'table',
+        title: 'X',
+        headers: ['H'],
+        rows: [['v']],
+      },
+      {
+        type: 'bar-chart',
+        title: 'X',
+        bars: [{ label: 'A', value: 50, tone: 'mid' }],
+      },
+      { type: 'closing', h2: 'End' },
+    ],
+  };
+
+  it('emits every canonical layout class', () => {
+    const html = renderDeck(allLayoutsDeck);
+    const canonicalClasses = [
+      'slide-container',
+      'title-layout',
+      'section-title-layout',
+      'two-column',
+      'step-cards',
+      'bar-chart',
+    ];
+    for (const cls of canonicalClasses) {
+      expect(html, `missing class: ${cls}`).toContain(cls);
+    }
+  });
+
+  it('imports corporate.css and navigation.js with correct relative path', () => {
+    const html = renderDeck(allLayoutsDeck);
+    expect(html).toContain('href="../assets/css/corporate.css"');
+    expect(html).toContain('src="../assets/js/navigation.js"');
+  });
+
+  it('applies data-brand at body and slide-container level', () => {
+    const html = renderDeck(allLayoutsDeck);
+    expect(html).toContain('<body data-brand="gestiona">');
+    expect(html.match(/data-brand="gestiona"/g)?.length ?? 0).toBeGreaterThan(1);
+  });
 });

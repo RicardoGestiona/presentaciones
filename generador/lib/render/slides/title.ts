@@ -1,4 +1,3 @@
-import { TitleSlideSchema } from '../../schema';
 import { escape } from '../escape';
 import type { Brand } from '../../schema';
 

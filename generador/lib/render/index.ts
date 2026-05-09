@@ -43,7 +43,7 @@ export function renderSlide(slide: Slide, deckBrand: Brand): string {
   }
 }
 
-export function renderDeck(deck: Deck, imageMap?: Record<string, string>): string {
+export function renderDeck(deck: Deck, _imageMap?: Record<string, string>): string {
   const slides = deck.slides.map((slide) => renderSlide(slide, deck.brand)).join('\n');
 
   return `<!DOCTYPE html>

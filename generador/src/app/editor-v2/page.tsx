@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { Deck, BRANDS } from '@/lib/schema';
+import { Deck } from '@/lib/schema';
 import { renderDeck } from '@/lib/render';
 import { ChatPanel } from '@/components/ChatPanel';
 
@@ -17,6 +17,7 @@ const emptyDeck: Deck = {
       subtitle: 'Usa el chat para editar',
     },
   ],
+  images: [],
 };
 
 export default function EditorV2() {

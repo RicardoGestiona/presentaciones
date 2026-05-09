@@ -16,9 +16,8 @@ const emptyDeck: Deck = {
       subtitle: 'Subtítulo',
     },
   ],
+  images: [],
 };
-
-type SlideFormData = Slide & { [key: string]: any };
 
 export default function Editor() {
   const [deck, setDeck] = useState<Deck>(emptyDeck);
@@ -40,7 +39,7 @@ export default function Editor() {
       ...deck,
       slides: [
         ...deck.slides,
-        { type: 'section', h2: 'Nueva sección' },
+        { type: 'section', h2: 'Nueva sección', dark: false },
       ],
     });
   };
