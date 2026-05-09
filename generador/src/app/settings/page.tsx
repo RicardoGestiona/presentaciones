@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react';
 
 export default function Settings() {
   const [ollamaUrl, setOllamaUrl] = useState('http://localhost:11434');
-  const [ollamaModel, setOllamaModel] = useState('llama3.1:8b');
+  const [ollamaModel, setOllamaModel] = useState('qwen2.5:7b-instruct');
   const [status, setStatus] = useState<'idle' | 'testing' | 'success' | 'error'>('idle');
 
   useEffect(() => {
@@ -72,12 +72,12 @@ export default function Settings() {
           </div>
 
           <div className="form-group">
-            <label>Modelo (p.ej. qwen2.5-coder:7b, llama3.1:8b)</label>
+            <label>Modelo (p.ej. qwen2.5:7b-instruct, llama3.1:8b)</label>
             <input
               type="text"
               value={ollamaModel}
               onChange={(e) => setOllamaModel(e.target.value)}
-              placeholder="llama3.1:8b"
+              placeholder="qwen2.5:7b-instruct"
             />
           </div>
 

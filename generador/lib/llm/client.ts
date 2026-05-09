@@ -12,7 +12,7 @@ export interface OllamaChatMessage {
 
 const DEFAULT_CONFIG: OllamaConfig = {
   url: 'http://localhost:11434',
-  model: 'llama3.1:8b',
+  model: 'qwen2.5:7b-instruct',
 };
 
 export function getOllamaConfig(): OllamaConfig {
