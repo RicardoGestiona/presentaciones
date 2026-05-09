@@ -33,24 +33,26 @@ export function getOllamaConfig(): OllamaConfig {
 export async function callOllama(
   config: OllamaConfig,
   messages: OllamaChatMessage[],
-  systemPrompt: string
+  systemPrompt: string,
+  onToken?: (token: string, accumulated: string) => void
 ): Promise<OllamaResponse> {
+  const useStream = typeof onToken === 'function';
   const payload = {
     model: config.model,
     messages: [
       { role: 'system', content: systemPrompt },
       ...messages,
     ],
-    stream: false,
+    stream: useStream,
     format: 'json',
   };
+
+  let fullContent = '';
 
   try {
     const response = await fetch(`${config.url}/api/chat`, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload),
     });
 
@@ -58,20 +60,41 @@ export async function callOllama(
       throw new Error(`Ollama returned ${response.status}: ${response.statusText}`);
     }
 
-    const data = await response.json();
-
-    // Ollama returns { model, created_at, message: { role, content }, done }
-    // We need to parse the content as JSON
-    if (data.message && typeof data.message.content === 'string') {
-      try {
-        const parsed = JSON.parse(data.message.content);
-        return OllamaResponseSchema.parse(parsed);
-      } catch (e) {
-        throw new Error(`Failed to parse Ollama JSON response: ${data.message.content}`);
+    if (useStream) {
+      if (!response.body) throw new Error('No response body for stream');
+      const reader = response.body.getReader();
+      const decoder = new TextDecoder();
+      let buffer = '';
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        buffer += decoder.decode(value, { stream: true });
+        const lines = buffer.split('\n');
+        buffer = lines.pop() ?? '';
+        for (const line of lines) {
+          if (!line.trim()) continue;
+          const chunk = JSON.parse(line);
+          if (chunk.message?.content) {
+            fullContent += chunk.message.content;
+            onToken!(chunk.message.content, fullContent);
+          }
+          if (chunk.done) break;
+        }
       }
+    } else {
+      const data = await response.json();
+      if (!data.message || typeof data.message.content !== 'string') {
+        throw new Error('Unexpected Ollama response format');
+      }
+      fullContent = data.message.content;
     }
 
-    throw new Error('Unexpected Ollama response format');
+    try {
+      const parsed = JSON.parse(fullContent);
+      return OllamaResponseSchema.parse(parsed);
+    } catch (e) {
+      throw new Error(`Failed to parse Ollama JSON response: ${fullContent}`);
+    }
   } catch (error) {
     if (error instanceof Error) {
       throw new Error(`Ollama error: ${error.message}`);

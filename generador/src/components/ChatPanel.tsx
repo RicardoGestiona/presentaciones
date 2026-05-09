@@ -23,6 +23,7 @@ export function ChatPanel({ deck, onDeckUpdate }: Props) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [connected, setConnected] = useState(false);
+  const [streamingContent, setStreamingContent] = useState('');
   const messagesEnd = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -53,6 +54,7 @@ export function ChatPanel({ deck, onDeckUpdate }: Props) {
     setInput('');
     setLoading(true);
     setError(null);
+    setStreamingContent('');
 
     try {
       const config = getOllamaConfig();
@@ -66,7 +68,12 @@ export function ChatPanel({ deck, onDeckUpdate }: Props) {
         }));
       ollamaMessages.push({ role: 'user', content: userMessage.content });
 
-      const response = await callOllama(config, ollamaMessages, systemPrompt);
+      const response = await callOllama(
+        config,
+        ollamaMessages,
+        systemPrompt,
+        (_token, accumulated) => setStreamingContent(accumulated)
+      );
 
       // Apply actions to deck
       const updatedDeck = applyActions(deck, response.actions);
@@ -83,6 +90,7 @@ export function ChatPanel({ deck, onDeckUpdate }: Props) {
       setError(err instanceof Error ? err.message : 'Error desconocido');
     } finally {
       setLoading(false);
+      setStreamingContent('');
     }
   };
 
@@ -146,8 +154,32 @@ export function ChatPanel({ deck, onDeckUpdate }: Props) {
           </div>
         ))}
         {loading && (
-          <div style={{ color: '#0066cc', fontSize: '14px' }}>
-            Procesando...
+          <div style={{ marginBottom: '15px' }}>
+            <div
+              style={{
+                background: '#f5f5f5',
+                borderLeft: '4px solid #999',
+                padding: '10px',
+                borderRadius: '4px',
+                fontSize: '14px',
+              }}
+            >
+              <strong style={{ fontSize: '12px', color: '#666' }}>
+                Asistente {streamingContent ? '(escribiendo...)' : '(pensando...)'}
+              </strong>
+              <p
+                style={{
+                  margin: '5px 0 0',
+                  whiteSpace: 'pre-wrap',
+                  wordBreak: 'break-word',
+                  fontFamily: streamingContent ? 'monospace' : 'inherit',
+                  fontSize: streamingContent ? '12px' : '14px',
+                  color: streamingContent ? '#444' : '#0066cc',
+                }}
+              >
+                {streamingContent || '⏳'}
+              </p>
+            </div>
           </div>
         )}
         {error && (
