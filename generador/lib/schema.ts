@@ -192,7 +192,7 @@ export type Deck = z.infer<typeof DeckSchema>;
 export const UpdateSlideActionSchema = z.object({
   type: z.literal('update_slide'),
   index: z.number().int().min(0),
-  patch: SlideSchema.partial(),
+  patch: z.record(z.string(), z.unknown()),
 });
 
 export const AddSlideActionSchema = z.object({
