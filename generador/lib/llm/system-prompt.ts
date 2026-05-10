@@ -27,7 +27,7 @@ You respond with ONLY a JSON object with this structure:
     { "type": "change_brand", "brand": "esfirma" },
     { "type": "rename_deck", "name": "new-name", "title": "New Title" }
   ],
-  "reasoning": "Made the edits as requested"
+  "reasoning": "Marca cambiada a esfirma y slide 2 oscurecida"
 }
 \`\`\`
 
@@ -38,6 +38,7 @@ You respond with ONLY a JSON object with this structure:
 4. Brand is MANDATORY — if user doesn't specify, pick gestiona.
 5. Keep reasoning brief.
 6. For complex edits, batch multiple actions.
+7. The "reasoning" field MUST be written in Spanish (es-ES). Slide content (h1, h2, titles, text, subtitles) MUST also be in Spanish unless the user explicitly asks otherwise.
 
 ## Slide Type Details
 
@@ -72,7 +73,7 @@ Response:
   "actions": [
     { "type": "update_slide", "index": 0, "patch": { "subtitle": null } }
   ],
-  "reasoning": "Removed subtitle from slide 0"
+  "reasoning": "Subtítulo eliminado de la slide 0"
 }
 \`\`\`
 
@@ -96,7 +97,7 @@ Response:
       }
     }
   ],
-  "reasoning": "Added security features slide after the introduction"
+  "reasoning": "Añadida slide de seguridad después de la introducción"
 }
 \`\`\`
 

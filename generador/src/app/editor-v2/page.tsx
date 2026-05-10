@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
-import { Deck, DeckSchema, ImageAsset, Slide } from '@/lib/schema';
+import { Deck, DeckSchema, ImageAsset, Slide, findMissingImageRefs } from '@/lib/schema';
 import { renderDeck } from '@/lib/render';
 import { ChatPanel } from '@/components/ChatPanel';
 
@@ -73,6 +73,7 @@ export default function EditorV2() {
   }, [deck, hydrated]);
 
   const htmlPreview = renderDeck(deck);
+  const missingImages = findMissingImageRefs(deck);
 
   const handleAddImage = async (files: FileList | null) => {
     if (!files || files.length === 0) return;
@@ -185,7 +186,29 @@ export default function EditorV2() {
           </Link>
           <h2 style={{ marginTop: '10px' }}>v2: Chat</h2>
           <div style={{ fontSize: '12px', color: '#666' }}>
-            <p style={{ margin: '5px 0' }}>{deck.name}</p>
+            <div style={{ margin: '5px 0' }}>
+              <label style={{ display: 'block', fontSize: '10px', color: '#999', textTransform: 'uppercase' }}>
+                Slug (kebab-case)
+              </label>
+              <input
+                type="text"
+                value={deck.name}
+                onChange={(e) => setDeck({ ...deck, name: e.target.value })}
+                pattern="[a-z0-9-]+"
+                style={{ width: '100%', fontSize: '12px', padding: '3px 6px', fontFamily: 'monospace' }}
+              />
+            </div>
+            <div style={{ margin: '5px 0' }}>
+              <label style={{ display: 'block', fontSize: '10px', color: '#999', textTransform: 'uppercase' }}>
+                Título
+              </label>
+              <input
+                type="text"
+                value={deck.title}
+                onChange={(e) => setDeck({ ...deck, title: e.target.value })}
+                style={{ width: '100%', fontSize: '12px', padding: '3px 6px' }}
+              />
+            </div>
             <p style={{ margin: '5px 0' }}>Marca: {deck.brand}</p>
             <p style={{ margin: '5px 0' }}>Slides: {deck.slides.length}</p>
           </div>
@@ -250,6 +273,28 @@ export default function EditorV2() {
             ))}
           </ul>
         </div>
+
+        {missingImages.length > 0 && (
+          <div
+            role="alert"
+            style={{
+              background: '#fff8e1',
+              borderLeft: '4px solid #f9a825',
+              padding: '8px 12px',
+              margin: '0',
+              fontSize: '11px',
+              color: '#5d4037',
+            }}
+          >
+            <strong>⚠ Imágenes referenciadas pero no subidas:</strong>
+            <ul style={{ margin: '4px 0 0', paddingLeft: '16px' }}>
+              {missingImages.map((src) => (
+                <li key={src}><code>{src}</code></li>
+              ))}
+            </ul>
+            <p style={{ margin: '4px 0 0' }}>Súbelas con "+ Añadir" o el ZIP descargado tendrá enlaces rotos.</p>
+          </div>
+        )}
 
         <ChatPanel deck={deck} onDeckUpdate={setDeck} />
 

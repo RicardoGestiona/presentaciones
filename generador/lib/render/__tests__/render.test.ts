@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { renderDeck, renderSlide } from '../index';
+import { findMissingImageRefs } from '../../schema';
 import type { Deck, Slide } from '../../schema';
 
 describe('renderDeck', () => {
@@ -382,5 +383,56 @@ describe('parity vs showcase canonical classes', () => {
     const html = renderDeck(allLayoutsDeck);
     expect(html).toContain('<body data-brand="gestiona">');
     expect(html.match(/data-brand="gestiona"/g)?.length ?? 0).toBeGreaterThan(1);
+  });
+});
+
+describe('findMissingImageRefs', () => {
+  it('returns empty when every slide image ref is uploaded', () => {
+    const deck: Deck = {
+      name: 'x',
+      title: 'X',
+      brand: 'gestiona',
+      slides: [
+        { type: 'title', h1: 'X', image: { src: 'logo.png' } },
+      ],
+      images: [{ id: '1', filename: 'logo.png', dataUrl: 'data:image/png;base64,iVBORw0KGgo=' }],
+    };
+    expect(findMissingImageRefs(deck)).toEqual([]);
+  });
+
+  it('flags missing title image and two-column image blocks', () => {
+    const deck: Deck = {
+      name: 'x',
+      title: 'X',
+      brand: 'gestiona',
+      slides: [
+        { type: 'title', h1: 'X', image: { src: 'hero.jpg' } },
+        {
+          type: 'two-column',
+          title: 'cmp',
+          left: { type: 'image', src: 'chart.png' },
+          right: { type: 'text', content: 'right' },
+        },
+      ],
+      images: [],
+    };
+    const missing = findMissingImageRefs(deck);
+    expect(missing).toContain('hero.jpg');
+    expect(missing).toContain('chart.png');
+    expect(missing).toHaveLength(2);
+  });
+
+  it('deduplicates same filename referenced from multiple slides', () => {
+    const deck: Deck = {
+      name: 'x',
+      title: 'X',
+      brand: 'gestiona',
+      slides: [
+        { type: 'title', h1: 'A', image: { src: 'logo.png' } },
+        { type: 'title', h1: 'B', image: { src: 'logo.png' } },
+      ],
+      images: [],
+    };
+    expect(findMissingImageRefs(deck)).toEqual(['logo.png']);
   });
 });

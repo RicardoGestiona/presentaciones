@@ -268,3 +268,19 @@ export function validateSlide(data: unknown): Slide {
 export function validateAction(data: unknown): Action {
   return ActionSchema.parse(data);
 }
+
+// Cross-reference check: image filenames referenced by slides that are not present in deck.images.
+export function findMissingImageRefs(deck: Deck): string[] {
+  const available = new Set((deck.images ?? []).map((i) => i.filename));
+  const missing = new Set<string>();
+  for (const slide of deck.slides) {
+    if (slide.type === 'title' && slide.image && !available.has(slide.image.src)) {
+      missing.add(slide.image.src);
+    }
+    if (slide.type === 'two-column') {
+      if (slide.left.type === 'image' && !available.has(slide.left.src)) missing.add(slide.left.src);
+      if (slide.right.type === 'image' && !available.has(slide.right.src)) missing.add(slide.right.src);
+    }
+  }
+  return Array.from(missing);
+}
