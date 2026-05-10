@@ -21,6 +21,9 @@ export async function POST(request: NextRequest) {
     // Add index.html
     deckFolder.file('index.html', html);
 
+    // Add deck.json (source-of-truth for re-import via UI)
+    deckFolder.file('deck.json', JSON.stringify(deck, null, 2));
+
     // Add images if any
     if (deck.images && deck.images.length > 0) {
       const imgFolder = deckFolder.folder('img');

@@ -1,14 +1,21 @@
 'use client';
 
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
-import { Deck, ImageAsset } from '@/lib/schema';
+import { Deck, DeckSchema, ImageAsset, Slide } from '@/lib/schema';
 import { renderDeck } from '@/lib/render';
 import { ChatPanel } from '@/components/ChatPanel';
 
+const STORAGE_KEY = 'currentDeck:v2';
 const MAX_IMAGES = 10;
 const MAX_IMAGE_BYTES = 5 * 1024 * 1024;
 const ALLOWED_MIME = /^image\/(png|jpeg|jpg|webp|gif|svg\+xml)$/;
+
+function slideSummary(slide: Slide): string {
+  if (slide.type === 'title') return slide.h1;
+  if (slide.type === 'section' || slide.type === 'closing') return slide.h2;
+  return slide.title ?? slide.type;
+}
 
 function readFileAsDataURL(file: File): Promise<string> {
   return new Promise((resolve, reject) => {
@@ -37,7 +44,33 @@ export default function EditorV2() {
   const [deck, setDeck] = useState<Deck>(emptyDeck);
   const [imageError, setImageError] = useState<string | null>(null);
   const [downloading, setDownloading] = useState(false);
+  const [hydrated, setHydrated] = useState(false);
   const fileInput = useRef<HTMLInputElement>(null);
+  const importInput = useRef<HTMLInputElement>(null);
+
+  // Hydrate from localStorage on mount
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (saved) {
+        const parsed = DeckSchema.parse(JSON.parse(saved));
+        setDeck(parsed);
+      }
+    } catch {
+      // Corrupt or stale data — keep emptyDeck
+    }
+    setHydrated(true);
+  }, []);
+
+  // Persist on every change after hydration
+  useEffect(() => {
+    if (!hydrated) return;
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(deck));
+    } catch {
+      // Quota exceeded — ignore silently for now
+    }
+  }, [deck, hydrated]);
 
   const htmlPreview = renderDeck(deck);
 
@@ -83,6 +116,40 @@ export default function EditorV2() {
     setDeck({ ...deck, images: (deck.images ?? []).filter((img) => img.id !== id) });
   };
 
+  const handleRemoveSlide = (idx: number) => {
+    if (deck.slides.length <= 1) return;
+    setDeck({ ...deck, slides: deck.slides.filter((_, i) => i !== idx) });
+  };
+
+  const handleNewDeck = () => {
+    if (!confirm('¿Descartar la presentación actual y empezar de cero?')) return;
+    setDeck(emptyDeck);
+    setImageError(null);
+  };
+
+  const handleImport = async (file: File | undefined) => {
+    if (!file) return;
+    setImageError(null);
+    try {
+      let json: string;
+      if (file.name.toLowerCase().endsWith('.zip')) {
+        const JSZip = (await import('jszip')).default;
+        const zip = await JSZip.loadAsync(file);
+        const entry = zip.file(/(^|\/)deck\.json$/i)[0];
+        if (!entry) throw new Error('ZIP no contiene deck.json');
+        json = await entry.async('string');
+      } else {
+        json = await file.text();
+      }
+      const parsed = DeckSchema.parse(JSON.parse(json));
+      setDeck(parsed);
+    } catch (err) {
+      setImageError(`Importación falló: ${err instanceof Error ? err.message : 'desconocido'}`);
+    } finally {
+      if (importInput.current) importInput.current.value = '';
+    }
+  };
+
   const handleDownload = async () => {
     setDownloading(true);
     try {
@@ -122,6 +189,66 @@ export default function EditorV2() {
             <p style={{ margin: '5px 0' }}>Marca: {deck.brand}</p>
             <p style={{ margin: '5px 0' }}>Slides: {deck.slides.length}</p>
           </div>
+          <div style={{ display: 'flex', gap: '6px', marginTop: '8px' }}>
+            <button
+              type="button"
+              onClick={handleNewDeck}
+              style={{ flex: 1, padding: '4px 8px', fontSize: '11px', background: '#666' }}
+            >
+              + Nueva
+            </button>
+            <button
+              type="button"
+              onClick={() => importInput.current?.click()}
+              style={{ flex: 1, padding: '4px 8px', fontSize: '11px', background: '#666' }}
+            >
+              📂 Cargar
+            </button>
+            <input
+              ref={importInput}
+              type="file"
+              accept=".json,.zip,application/json,application/zip"
+              onChange={(e) => handleImport(e.target.files?.[0])}
+              style={{ display: 'none' }}
+            />
+          </div>
+          <ul style={{ margin: '12px 0 0', padding: 0, listStyle: 'none', maxHeight: '160px', overflowY: 'auto', borderTop: '1px solid #eee' }}>
+            {deck.slides.map((slide, idx) => (
+              <li
+                key={idx}
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '6px',
+                  fontSize: '11px',
+                  padding: '4px 0',
+                  borderBottom: '1px solid #eee',
+                }}
+              >
+                <span style={{ color: '#999', width: '20px', textAlign: 'right' }}>{idx + 1}.</span>
+                <span style={{ color: '#666', minWidth: '60px' }}>{slide.type}</span>
+                <span style={{ flex: 1, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                  {slideSummary(slide)}
+                </span>
+                <button
+                  type="button"
+                  onClick={() => handleRemoveSlide(idx)}
+                  disabled={deck.slides.length <= 1}
+                  style={{
+                    background: 'transparent',
+                    border: 'none',
+                    color: deck.slides.length <= 1 ? '#ccc' : '#d32f2f',
+                    cursor: deck.slides.length <= 1 ? 'not-allowed' : 'pointer',
+                    fontSize: '14px',
+                    padding: 0,
+                  }}
+                  aria-label={`Eliminar slide ${idx + 1}`}
+                >
+                  ✕
+                </button>
+              </li>
+            ))}
+          </ul>
         </div>
 
         <ChatPanel deck={deck} onDeckUpdate={setDeck} />
