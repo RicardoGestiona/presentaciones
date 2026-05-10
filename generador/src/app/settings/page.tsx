@@ -55,10 +55,10 @@ export default function Settings() {
           <h2>Configuración</h2>
         </div>
         <div className="panel-content">
-          <h3 style={{ marginBottom: '20px' }}>Ollama (v2 — próximamente)</h3>
+          <h3 style={{ marginBottom: '20px' }}>Ollama</h3>
           <p style={{ marginBottom: '20px', fontSize: '14px', color: '#666', lineHeight: '1.6' }}>
-            Cuando esté disponible el chat (v2), necesitaremos conectar a tu Ollama local para edits
-            conversacionales.
+            El chat conversacional (v2) requiere acceso a un endpoint Ollama. Por defecto apunta a
+            tu instalación local; en deploy interno cambia a la URL del tunnel/host expuesto.
           </p>
 
           <div className="form-group">
@@ -139,7 +139,7 @@ export default function Settings() {
                 wordBreak: 'break-all',
               }}
             >
-              ollama pull qwen2.5-coder:7b
+              ollama pull qwen2.5:7b-instruct
             </code>
           </p>
         </div>
