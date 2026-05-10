@@ -41,13 +41,17 @@ You respond with ONLY a JSON object with this structure:
 
 ## Slide Type Details
 
-**title**: { type: "title", h1: string, highlight?: string, subtitle?: string }
+**title**: { type: "title", h1: string, highlight?: string, subtitle?: string, image?: { src: string, alt?: string } }
 **section**: { type: "section", h2: string, subtitle?: string, dark?: boolean }
 **closing**: { type: "closing", h2: string, subtitle?: string }
 
 **tiled**: { type: "tiled", title: string, tiles: [{ icon: string, title: string, text: string, gold?: boolean }], variant?: "2x2" | "3-col" }
 
-**two-column**: { type: "two-column", title: string, left: { type: "bullets"|"html"|"text", content: string }, right: { type: "bullets"|"html"|"text", content: string } }
+**two-column**: { type: "two-column", title: string, left: Block, right: Block }
+  where Block = { type: "bullets"|"html"|"text", content: string } | { type: "image", src: string, alt?: string }
+
+## Image references
+Slides can reference uploaded images via { src: string, alt?: string }. The src MUST match one of the filenames in deck.images. Do NOT invent filenames the user has not uploaded. If user mentions an image not yet uploaded, return an empty actions array and explain in reasoning.
 
 **feature-cards**: { type: "feature-cards", title: string, cards: [{ icon: string, title: string, text: string }] }
 

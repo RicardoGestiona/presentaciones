@@ -243,6 +243,46 @@ describe('renderSlide', () => {
     expect(html).toContain('<p class="custom">Raw</p>');
   });
 
+  it('renders title slide with image reference', () => {
+    const slide: Slide = {
+      type: 'title',
+      h1: 'Bienvenido',
+      image: { src: 'logo.png', alt: 'Logo corporativo' },
+    };
+
+    const html = renderSlide(slide, 'gestiona');
+    expect(html).toContain('class="title-image"');
+    expect(html).toContain('src="./img/logo.png"');
+    expect(html).toContain('alt="Logo corporativo"');
+  });
+
+  it('falls back to src as alt when alt missing', () => {
+    const slide: Slide = {
+      type: 'title',
+      h1: 'X',
+      image: { src: 'hero.jpg' },
+    };
+
+    const html = renderSlide(slide, 'gestiona');
+    expect(html).toContain('alt="hero.jpg"');
+  });
+
+  it('renders two-column with image block', () => {
+    const slide: Slide = {
+      type: 'two-column',
+      title: 'Compare',
+      left: { type: 'bullets', content: 'Pro 1\nPro 2' },
+      right: { type: 'image', src: 'chart.png', alt: 'Q1 chart' },
+    };
+
+    const html = renderSlide(slide, 'gestiona');
+    expect(html).toContain('two-column');
+    expect(html).toContain('<li>Pro 1</li>');
+    expect(html).toContain('class="column-image"');
+    expect(html).toContain('src="./img/chart.png"');
+    expect(html).toContain('alt="Q1 chart"');
+  });
+
   it('renders step-cards with numbered steps and gold variant', () => {
     const slide: Slide = {
       type: 'step-cards',

@@ -39,12 +39,20 @@ const BaseSlideSchema = z.object({
   notes: z.string().optional(),
 });
 
+// Image reference inside a slide
+// `src` MUST be the filename of a previously uploaded asset (deck.images[].filename).
+export const SlideImageRefSchema = z.object({
+  src: z.string().min(1, 'src required'),
+  alt: z.string().optional(),
+});
+
 // Title slide
 export const TitleSlideSchema = BaseSlideSchema.extend({
   type: z.literal('title'),
   h1: z.string().min(1, 'h1 required'),
   highlight: z.string().optional(),
   subtitle: z.string().optional(),
+  image: SlideImageRefSchema.optional(),
 });
 
 // Section divider
@@ -71,10 +79,16 @@ export const TiledSlideSchema = BaseSlideSchema.extend({
 });
 
 // Block (for two-column)
-export const BlockSchema = z.object({
-  type: z.enum(['bullets', 'html', 'text']),
-  content: z.string().min(1),
-});
+export const BlockSchema = z.discriminatedUnion('type', [
+  z.object({ type: z.literal('bullets'), content: z.string().min(1) }),
+  z.object({ type: z.literal('html'), content: z.string().min(1) }),
+  z.object({ type: z.literal('text'), content: z.string().min(1) }),
+  z.object({
+    type: z.literal('image'),
+    src: z.string().min(1, 'src required'),
+    alt: z.string().optional(),
+  }),
+]);
 
 // Two column
 export const TwoColumnSlideSchema = BaseSlideSchema.extend({

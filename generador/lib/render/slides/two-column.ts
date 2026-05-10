@@ -13,6 +13,9 @@ function renderBlock(block: any): string {
   if (block.type === 'html') {
     return block.content;
   }
+  if (block.type === 'image') {
+    return `<img class="column-image" src="./img/${escape(block.src)}" alt="${escape(block.alt ?? block.src)}">`;
+  }
   return `<p>${escape(block.content)}</p>`;
 }
 
