@@ -1,0 +1,5 @@
+.tools/.venv/
+.tools/shots/
+
+# Permitir el PPTX final de esta presentación
+!certificacion-inap.pptx
