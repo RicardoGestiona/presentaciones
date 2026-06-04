@@ -72,3 +72,12 @@ Marcas soportadas: `espublico`, `gestiona`, `esfirma`, `hacienda-local`, `rrhh`,
 ## 7. Para todo lo demás
 
 Sistema de diseño, layouts, componentes, variantes, reglas de creación de presentaciones → **`AGENTS.md`**.
+
+## 8. Generador HTML a PPTX
+
+Esta sección define las reglas estrictas para modificar o generar código relacionado con la exportación de presentaciones:
+
+1. **Mapeo de Estilos:** Al exportar a PPTX, SIEMPRE preserva la fidelidad visual. Convierte las unidades `rem` a `pt` usando un factor de 1rem = 16pt. Los colores HEX deben inyectarse directamente en las propiedades `fill` de las formas del PPTX.
+2. **Animaciones:** Cualquier clase CSS que empiece por `animate-` (ej. `animate-fade-in`) debe mapearse obligatoriamente a la animación de entrada nativa equivalente en la librería de generación de PPTX. No uses imágenes GIF para simular animaciones.
+3. **Estructura:** Cada etiqueta `<section>` del HTML original debe corresponder a un único Slide en el PPTX.
+4. **Prohibiciones:** NO alteres la lógica del archivo `exportService.js` sin antes revisar que estas reglas de estilo se mantengan intactas.
