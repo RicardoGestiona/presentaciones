@@ -10,17 +10,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="../assets/css/corporate.css">
     <style>
-        /* Revelación progresiva: usa .phase[data-phase="N"] dentro de un slide */
-        .phase {
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.4s ease, visibility 0s linear 0.4s;
-        }
-        .phase.visible {
-            opacity: 1;
-            visibility: visible;
-            transition: opacity 0.4s ease, visibility 0s linear 0s;
-        }
+        /* Revelación progresiva (.phase) y paginación (.slide-dots) son canónicas
+           y viven en corporate.css. Variantes de entrada disponibles:
+             · .phase                   → enumeración vertical (desliza hacia arriba).
+             · .phase--slide-left/right → bloques de texto, desplazamiento lateral.
+             · .phase--fade             → solo fundido.
+           Añade aquí únicamente estilos específicos de esta presentación. */
     </style>
 </head>
 <!-- Marca obligatoria: cambiar data-brand al producto correspondiente.
@@ -140,9 +135,10 @@
         </div>
     </section>
 
-    <!-- 7. REVELACIÓN PROGRESIVA (.phase) — pulsa siguiente para revelar cada bullet -->
-    <section class="slide-container" aria-label="Revelación progresiva">
-        <h2 class="slide-title">Revelación por fases</h2>
+    <!-- 7. REVELACIÓN VERTICAL — enumeraciones. .phase base (desliza hacia arriba).
+         Pulsa "siguiente" para revelar cada punto en orden por data-phase. -->
+    <section class="slide-container" aria-label="Revelación vertical de enumeraciones">
+        <h2 class="slide-title">Enumeración vertical</h2>
         <div class="content-area">
             <ul class="bullet-list">
                 <li class="phase" data-phase="1"><i class="fa-solid fa-check" aria-hidden="true"></i> Primer punto (aparece tras el primer siguiente).</li>
@@ -152,7 +148,26 @@
         </div>
     </section>
 
-    <!-- 8. CIERRE -->
+    <!-- 8. REVELACIÓN LATERAL — bloques de texto. .phase--slide-left/right.
+         Dos bloques con el mismo data-phase entran a la vez desde lados opuestos;
+         increméntalo para encadenarlos uno tras otro. -->
+    <section class="slide-container" aria-label="Revelación lateral de bloques">
+        <h2 class="slide-title">Bloques con desplazamiento lateral</h2>
+        <div class="content-area">
+            <div class="two-column">
+                <div class="card card--bordered phase phase--slide-left" data-phase="1">
+                    <h3>Bloque desde la izquierda</h3>
+                    <p>Entra deslizándose lateralmente; ideal para tarjetas y bloques de texto.</p>
+                </div>
+                <div class="card card--bordered phase phase--slide-right" data-phase="1">
+                    <h3>Bloque desde la derecha</h3>
+                    <p>Comparte data-phase con el anterior, así ambos aparecen al unísono.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 9. CIERRE -->
     <section class="slide-container" aria-label="Cierre">
         <div class="section-title-layout">
             <h2>¡Gracias!</h2>

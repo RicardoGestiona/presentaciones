@@ -96,6 +96,8 @@ Toda presentación nueva debe importar los assets compartidos vía `../assets/`:
 
 Cada slide es un `<section class="slide-container">` de 1280×720 px. La transición horizontal entre slides la gestiona `navigation.js` mediante `translateX` sobre `<main role="presentation">`.
 
+`navigation.js` inyecta automáticamente una **paginación visual** (bullets) centrada abajo: un `.slide-dot` por slide dentro de `.stage`, con el dot activo expandido a pastilla en el color de marca. Es de solo lectura y no requiere markup; se desactiva sola si solo hay un slide. Estilos en `corporate.css` (`.slide-dots` / `.slide-dot`).
+
 ```html
 <main role="presentation">
     <section class="slide-container" aria-label="Descripción">
@@ -115,14 +117,25 @@ Para revelar elementos dentro de un slide al pulsar siguiente:
 <li class="phase" data-phase="2">Aparece tras el segundo "siguiente"</li>
 ```
 
-CSS base requerido (en el `<style>` inline del slide o en el template):
+El CSS de `.phase` es **canónico y vive en `corporate.css`** — no lo redefinas inline. `navigation.js` añade/quita la clase `.visible` en orden por `data-phase` (los del mismo `N` aparecen a la vez) antes de avanzar al siguiente slide. Transiciones discretas; respeta `prefers-reduced-motion`.
 
-```css
-.phase { opacity: 0; visibility: hidden; transition: opacity .4s ease, visibility 0s linear .4s; }
-.phase.visible { opacity: 1; visibility: visible; transition: opacity .4s ease, visibility 0s linear 0s; }
+Variantes de entrada (combínalas con `.phase`):
+
+| Clase | Comportamiento | Uso típico |
+|-------|----------------|------------|
+| `.phase` | Desliza hacia arriba (vertical) | Enumeraciones, listas |
+| `.phase--slide-left` | Entra desde la izquierda | Bloques de texto, tarjetas |
+| `.phase--slide-right` | Entra desde la derecha | Bloques de texto, tarjetas |
+| `.phase--fade` | Solo fundido, sin desplazamiento | Cuando el movimiento estorba |
+
+```html
+<!-- Enumeración vertical -->
+<li class="phase" data-phase="1">…</li>
+
+<!-- Dos bloques que entran a la vez desde lados opuestos -->
+<div class="card phase phase--slide-left"  data-phase="1">…</div>
+<div class="card phase phase--slide-right" data-phase="1">…</div>
 ```
-
-`navigation.js` añade/quita la clase `.visible` en orden por `data-phase` antes de avanzar al siguiente slide.
 
 ---
 

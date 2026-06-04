@@ -37,35 +37,7 @@
             flex-direction: column;
             gap: 6px;
         }
-
-        /* Revelación progresiva de elementos (.phase) — fade + leve slide-up.
-           visibility:hidden (no display:none) reserva el espacio: los elementos
-           aparecen en su sitio sin reflujo del layout. navigation.js alterna .visible. */
-        .phase {
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(12px);
-            transition: opacity .5s ease,
-                        transform .5s cubic-bezier(0.22, 1, 0.36, 1),
-                        visibility 0s linear .5s;
-        }
-        .phase.visible {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-            transition: opacity .5s ease,
-                        transform .5s cubic-bezier(0.22, 1, 0.36, 1),
-                        visibility 0s linear 0s;
-        }
-        @media (prefers-reduced-motion: reduce) {
-            .phase {
-                transform: none;
-                transition: opacity .3s ease, visibility 0s linear .3s;
-            }
-            .phase.visible {
-                transition: opacity .3s ease, visibility 0s linear 0s;
-            }
-        }
+        /* Revelación progresiva (.phase) → canónica en corporate.css. */
     </style>
 </head>
 <body data-brand="ecityclic">

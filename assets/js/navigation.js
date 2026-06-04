@@ -11,16 +11,42 @@
     /* Inyecta wrapper .stage que escala uniformemente el deck al viewport.
        No requiere cambios en el HTML de cada presentación. */
     if (!main.parentElement || !main.parentElement.classList.contains("stage")) {
-        var stage = document.createElement("div");
-        stage.className = "stage";
-        main.parentNode.insertBefore(stage, main);
-        stage.appendChild(main);
+        var newStage = document.createElement("div");
+        newStage.className = "stage";
+        main.parentNode.insertBefore(newStage, main);
+        newStage.appendChild(main);
     }
+    var stage = main.parentElement; // .stage (recién inyectado o preexistente)
 
     var slides = main.querySelectorAll(".slide-container");
     var total = slides.length;
     var current = 0;
     var SLIDE_WIDTH = 1280;
+
+    /* Paginación visual (bullets): indicador de la diapositiva activa. Se genera
+       dinámicamente (un dot por slide) y se ancla a .stage, por lo que flota sobre
+       el área visible y escala con el deck. Estilos en corporate.css (.slide-dots).
+       Es de solo lectura; goToSlide() actualiza el dot activo. */
+    var dots = [];
+    if (total > 1) {
+        var dotsNav = document.createElement("nav");
+        dotsNav.className = "slide-dots";
+        dotsNav.setAttribute("aria-label", "Paginación de diapositivas");
+        for (var d = 0; d < total; d++) {
+            var dot = document.createElement("span");
+            dot.className = "slide-dot";
+            dot.setAttribute("aria-hidden", "true");
+            dotsNav.appendChild(dot);
+            dots.push(dot);
+        }
+        stage.appendChild(dotsNav);
+    }
+
+    function updateDots(index) {
+        for (var i = 0; i < dots.length; i++) {
+            dots[i].classList.toggle("is-active", i === index);
+        }
+    }
 
     /** Obtiene las fases de una slide, ordenadas por data-phase */
     function getPhases(slideIndex) {
@@ -69,6 +95,7 @@
         var prev = current;
         current = index;
         main.style.transform = "translateX(-" + (current * SLIDE_WIDTH) + "px)";
+        updateDots(current);
 
         // Al retroceder, mostrar todas las fases de la slide destino
         if (index < prev) {

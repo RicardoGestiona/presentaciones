@@ -207,6 +207,84 @@ main[role="presentation"] {
     transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Paginación visual (bullets) — la inyecta navigation.js dentro de .stage.
+   Indicador de solo lectura, centrado abajo; el dot activo se expande a pastilla
+   con el color de marca. Hereda --color-primary / --color-text-subtle del tema. */
+.slide-dots {
+    position: absolute;
+    bottom: 22px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 50;
+    pointer-events: none;
+}
+.slide-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 999px;
+    background: var(--color-text-subtle);
+    opacity: 0.28;
+    transition: width 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+                opacity 0.45s ease,
+                background-color 0.45s ease;
+}
+.slide-dot.is-active {
+    width: 22px;
+    opacity: 1;
+    background: var(--color-primary);
+}
+@media (prefers-reduced-motion: reduce) {
+    .slide-dot {
+        transition: opacity 0.2s ease, background-color 0.2s ease;
+    }
+}
+
+/* ----------------------------------------
+   REVELACIÓN PROGRESIVA (.phase)
+   Cada slide oculta sus elementos .phase[data-phase="N"]; navigation.js los
+   revela en orden al pulsar "siguiente" (los del mismo N aparecen a la vez).
+   visibility:hidden (no display:none) reserva el espacio → sin reflujo de layout.
+   Transiciones discretas y limpias. Variantes de entrada:
+     · .phase                    → enumeración vertical (desliza hacia arriba). Por defecto.
+     · .phase--slide-left/right  → bloques de texto con desplazamiento lateral.
+     · .phase--fade              → solo fundido, sin desplazamiento.
+   El estado .visible siempre resuelve a transform:none, sea cual sea la variante.
+   ---------------------------------------- */
+.phase {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(12px);
+    transition: opacity 0.5s ease,
+                transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+                visibility 0s linear 0.5s;
+}
+.phase.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    transition: opacity 0.5s ease,
+                transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+                visibility 0s linear 0s;
+}
+.phase--slide-left  { transform: translateX(-28px); }
+.phase--slide-right { transform: translateX(28px); }
+.phase--fade        { transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+    .phase,
+    .phase--slide-left,
+    .phase--slide-right {
+        transform: none;
+        transition: opacity 0.3s ease, visibility 0s linear 0.3s;
+    }
+    .phase.visible {
+        transition: opacity 0.3s ease, visibility 0s linear 0s;
+    }
+}
+
 /* ----------------------------------------
    2. SLIDE CONTAINER
    ---------------------------------------- */

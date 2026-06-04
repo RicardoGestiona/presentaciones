@@ -10,10 +10,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="../assets/css/corporate.css">
     <style>
-        .phase { opacity: 0; visibility: hidden; transition: opacity .4s ease, visibility 0s linear .4s; }
-        .phase.visible { opacity: 1; visibility: visible; transition: opacity .4s ease, visibility 0s linear 0s; }
-    </style>
-    <style>
         .brand-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 24px; }
         .brand-swatch { display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 14px 8px; border-radius: var(--radius-sm); background: var(--color-bg-light); }
         .brand-swatch .swatch { width: 56px; height: 56px; border-radius: 50%; border: 2px solid var(--color-border); }
@@ -252,20 +248,25 @@
         </div>
     </section>
 
-    <!-- 13. Phase reveal -->
+    <!-- 13. Phase reveal — variantes de entrada -->
     <section class="slide-container" aria-label="Revelación por fases">
         <h2 class="slide-title">Revelación por fases (.phase[data-phase])</h2>
         <div class="content-area">
-            <p>Pulsa "siguiente" tres veces para revelar cada bullet:</p>
+            <p>Enumeración vertical con <code>.phase</code> (desliza hacia arriba):</p>
             <ul class="bullet-list mt-md">
                 <li class="phase" data-phase="1"><i class="fa-solid fa-check" aria-hidden="true"></i> Primer punto — aparece tras el primer "siguiente".</li>
                 <li class="phase" data-phase="2"><i class="fa-solid fa-check" aria-hidden="true"></i> Segundo punto — aparece tras el segundo.</li>
                 <li class="phase" data-phase="3"><i class="fa-solid fa-check" aria-hidden="true"></i> Tercer punto — aparece tras el tercero.</li>
             </ul>
-            <div class="team-bar mt-lg">
-                <i class="fa-solid fa-info-circle team-icon" aria-hidden="true"></i>
-                <p class="team-label">Nota</p>
-                <p class="team-names">Las fases también funcionan con tiles, feature-cards o glass-cards añadiendo <code>class="phase" data-phase="N"</code>.</p>
+            <div class="two-column mt-lg">
+                <div class="card card--bordered phase phase--slide-left" data-phase="4">
+                    <h3>Bloque lateral</h3>
+                    <p><code>.phase--slide-left</code> / <code>--slide-right</code> para bloques de texto.</p>
+                </div>
+                <div class="card card--bordered phase phase--slide-right" data-phase="4">
+                    <h3>Entrada simétrica</h3>
+                    <p>Mismo <code>data-phase</code> → ambos bloques aparecen a la vez.</p>
+                </div>
             </div>
         </div>
     </section>

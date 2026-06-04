@@ -99,9 +99,8 @@ La marca se aplica con un atributo `data-brand` en `<body>` (todo el deck) o en 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="../assets/css/corporate.css">
     <style>
-        /* Estilos específicos de ESTA presentación, si hace falta */
-        .phase { opacity: 0; visibility: hidden; transition: opacity .4s ease, visibility 0s linear .4s; }
-        .phase.visible { opacity: 1; visibility: visible; transition: opacity .4s ease, visibility 0s linear 0s; }
+        /* Estilos específicos de ESTA presentación, si hace falta.
+           .phase (revelación progresiva) y .slide-dots ya son canónicos en corporate.css. */
     </style>
 </head>
 <body data-brand="<marca>">
@@ -115,7 +114,7 @@ La marca se aplica con un atributo `data-brand` en `<body>` (todo el deck) o en 
 </html>
 ```
 
-`navigation.js` gestiona: flechas/Espacio/PageDown = siguiente, ←/↑/PageUp = anterior, Home/End = primer/último, revelación de elementos `.phase[data-phase="N"]` antes de avanzar.
+`navigation.js` gestiona: flechas/Espacio/PageDown = siguiente, ←/↑/PageUp = anterior, Home/End = primer/último, revelación de elementos `.phase[data-phase="N"]` antes de avanzar. También inyecta automáticamente una paginación visual (bullets, `.slide-dots`) centrada abajo, sin necesidad de markup.
 
 ---
 
@@ -315,17 +314,21 @@ Variante esFirma: `.highlight-box--gold`.
 
 ### 4.15 Revelación progresiva (fases)
 
-Marcar elementos con `class="phase" data-phase="N"`. `navigation.js` los muestra uno a uno antes de avanzar al siguiente slide.
+Marcar elementos con `class="phase" data-phase="N"`. `navigation.js` los muestra en orden por `N` (los del mismo `N` a la vez) antes de avanzar al siguiente slide. CSS canónico en `corporate.css` — no redefinir inline.
+
+Variantes de entrada (combinar con `.phase`): `.phase` = enumeración vertical (desliza hacia arriba), `.phase--slide-left` / `.phase--slide-right` = bloques de texto con desplazamiento lateral, `.phase--fade` = solo fundido. Todas discretas y con `prefers-reduced-motion`.
 
 ```html
+<!-- Enumeración vertical -->
 <ul class="bullet-list">
     <li class="phase" data-phase="1"><i class="fa-solid fa-check"></i> Aparece tras el primer "siguiente"</li>
     <li class="phase" data-phase="2"><i class="fa-solid fa-check"></i> Aparece tras el segundo "siguiente"</li>
-    <li class="phase" data-phase="3"><i class="fa-solid fa-check"></i> Aparece tras el tercer "siguiente"</li>
 </ul>
-```
 
-CSS base obligatorio (incluido ya en el esqueleto base, sección 3).
+<!-- Bloques con desplazamiento lateral (entran a la vez desde lados opuestos) -->
+<div class="card card--bordered phase phase--slide-left"  data-phase="1">…</div>
+<div class="card card--bordered phase phase--slide-right" data-phase="1">…</div>
+```
 
 ---
 
