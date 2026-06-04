@@ -3,37 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hub de transformación digital — ecityclic · Gestiona Avanza</title>
+    <title>Hub de transformación digital — Ecityclic</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="../assets/css/corporate.css">
     <style>
-        .phase {
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.4s ease, visibility 0s linear 0.4s;
+        /* Barra de acento del título en verde de marca (override del dorado por defecto) */
+        .slide-title {
+            border-left-color: var(--color-primary);
         }
-        .phase.visible {
-            opacity: 1;
-            visibility: visible;
-            transition: opacity 0.4s ease, visibility 0s linear 0s;
-        }
-        .eyebrow {
-            font-size: 13px;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            color: var(--color-primary);
-            font-weight: 600;
-            margin-bottom: 14px;
-        }
-        .feature-card .metric-number {
+        .metric-number {
             font-size: 56px;
             font-weight: 700;
             line-height: 1;
             color: var(--color-primary);
             margin: 8px 0 14px;
+        }
+        /* Número de página inferior derecho */
+        .slide-container .slide-number {
+            position: absolute;
+            bottom: 28px;
+            right: 48px;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--color-text-subtle);
+            opacity: 0.55;
+            z-index: 2;
+        }
+        /* "Equipo responsable" apilado (label sobre nombres) en las tarjetas de fase */
+        .team-bar {
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        /* Revelación progresiva de elementos (.phase) — fade + leve slide-up.
+           visibility:hidden (no display:none) reserva el espacio: los elementos
+           aparecen en su sitio sin reflujo del layout. navigation.js alterna .visible. */
+        .phase {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(12px);
+            transition: opacity .5s ease,
+                        transform .5s cubic-bezier(0.22, 1, 0.36, 1),
+                        visibility 0s linear .5s;
+        }
+        .phase.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+            transition: opacity .5s ease,
+                        transform .5s cubic-bezier(0.22, 1, 0.36, 1),
+                        visibility 0s linear 0s;
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .phase {
+                transform: none;
+                transition: opacity .3s ease, visibility 0s linear .3s;
+            }
+            .phase.visible {
+                transition: opacity .3s ease, visibility 0s linear 0s;
+            }
         }
     </style>
 </head>
@@ -43,248 +74,271 @@
     <!-- 1. PORTADA -->
     <section class="slide-container" aria-label="Portada">
         <div class="title-layout">
-            <p class="eyebrow">ecityclic · esPublico</p>
-            <h1>Hub de transformación digital <span>Gestiona Avanza</span></h1>
-            <p class="subtitle">Estrategia 2026 – 2027 · Cataluña</p>
+            <h1>Hub de transformación digital <span>Ecityclic</span></h1>
+            <p class="subtitle">Estrategia 2026 – 2027</p>
         </div>
+        <span class="slide-number">1 / 11</span>
     </section>
 
-    <!-- 2. CONTEXTO Y SOTA -->
-    <section class="slide-container" aria-label="Contexto y estado del arte">
-        <h2 class="slide-title">Contexto · de dónde partimos</h2>
+    <!-- 2. CONTEXTO Y PREMISAS -->
+    <section class="slide-container" aria-label="Contexto y premisas de partida">
+        <h2 class="slide-title">Contexto y premisas de partida</h2>
         <div class="content-area">
             <ul class="bullet-list">
-                <li><i class="fa-solid fa-building-columns" aria-hidden="true"></i> Empresa <strong>referente en software de gestión</strong> para la Administración Pública.</li>
-                <li><i class="fa-solid fa-network-wired" aria-hidden="true"></i> Red de <strong>oficinas replicadas en el territorio</strong>, con espacios muy versátiles.</li>
-                <li><i class="fa-solid fa-bullseye" aria-hidden="true"></i> El reto: <strong>dar contenido</strong> a esas instalaciones y transformarlas en un espacio de referencia.</li>
-                <li><i class="fa-solid fa-layer-group" aria-hidden="true"></i> Muchos usuarios, <strong>distintos estadios de madurez digital</strong>.</li>
-                <li><i class="fa-solid fa-people-group" aria-hidden="true"></i> Perfiles organizativos heterogéneos por territorio.</li>
+                <li class="phase" data-phase="1"><i class="fa-solid fa-building-columns" aria-hidden="true"></i> esPublico como <strong>referente en software de gestión</strong> para la Administración Pública.</li>
+                <li class="phase" data-phase="2"><i class="fa-solid fa-chalkboard-user" aria-hidden="true"></i> Instalaciones modernas con <strong>espacios versátiles y adaptables</strong>.</li>
+                <li class="phase" data-phase="3"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i> Mantener la <strong>identidad de ecityclic</strong> en el marco de la integración de empresas.</li>
+                <li class="phase" data-phase="4"><i class="fa-solid fa-people-group" aria-hidden="true"></i> Muchos usuarios con <strong>perfiles heterogéneos</strong> y en distintos estadios de madurez digital.</li>
+                <li class="phase" data-phase="5"><i class="fa-solid fa-location-dot" aria-hidden="true"></i> Ubicación geográfica de Lleida como <strong>handicap para atraer personas</strong> a las instalaciones.</li>
+                <li class="phase" data-phase="6"><i class="fa-solid fa-city" aria-hidden="true"></i> Existencia de <strong>dos hubs tecnológicos fuertes en Cataluña</strong>: Tarragona y Barcelona.</li>
             </ul>
         </div>
+        <span class="slide-number">2 / 11</span>
     </section>
 
-    <!-- 3. EL PROBLEMA -->
-    <section class="slide-container" aria-label="El problema">
-        <h2 class="slide-title">El problema · qué queremos resolver</h2>
+    <!-- 3. EL DESAFÍO -->
+    <section class="slide-container" aria-label="El desafío">
+        <h2 class="slide-title">El desafío</h2>
         <div class="content-area">
-            <div class="highlight-box">
+            <div class="highlight-box phase" data-phase="1">
                 <h3>Dar sentido de país a las oficinas ecityclic</h3>
-                <p>Convertirlas en el referente de transformación digital de las administraciones catalanas.</p>
+                <p>Convertirlas en el referente de transformación digital de las administraciones públicas catalanas.</p>
             </div>
             <div class="two-column mt-lg">
-                <div class="card card--bordered">
-                    <h3><i class="fa-solid fa-comments" aria-hidden="true"></i> Lo que piden los usuarios</h3>
-                    <p>Capacitación <strong>real</strong> para resolver problemas reales — no para engordar resultados ni estrategias políticas.</p>
+                <div class="card card--bordered phase" data-phase="2">
+                    <h3><i class="fa-solid fa-comments" aria-hidden="true"></i> Lo que demandan los usuarios</h3>
+                    <p>Acompañamiento <strong>eficaz</strong> para resolver problemas reales.</p>
                 </div>
-                <div class="card card--bordered">
-                    <h3><i class="fa-solid fa-circle-exclamation" aria-hidden="true"></i> Lo que hoy no reciben</h3>
-                    <p>Ni el Consorci AOC ni las Diputaciones cubren esa necesidad. Hay un <strong>hueco</strong> que podemos ocupar.</p>
+                <div class="card card--bordered phase" data-phase="3">
+                    <h3><i class="fa-solid fa-circle-exclamation" aria-hidden="true"></i> Lo que necesitan los usuarios</h3>
+                    <p>Capacitación <strong>útil</strong> y personalizada a su realidad.</p>
                 </div>
             </div>
         </div>
+        <span class="slide-number">3 / 11</span>
     </section>
 
     <!-- 4. VISIÓN — USUARIO EN EL CENTRO -->
-    <section class="slide-container" aria-label="Visión estratégica: usuario en el centro">
-        <h2 class="slide-title">Visión · el usuario en el centro</h2>
+    <section class="slide-container" aria-label="Visión: el usuario en el centro">
+        <h2 class="slide-title">Visión: El usuario en el centro</h2>
         <div class="content-area">
             <div class="tiled-content tile-triple">
-                <article class="tile">
+                <article class="tile phase" data-phase="1">
                     <div class="icon" aria-hidden="true"><i class="fa-solid fa-share-nodes"></i></div>
                     <h3>Espacios <em>POR</em> el usuario</h3>
-                    <p>Compartir el éxito y la práctica. Los propios usuarios cuentan cómo lo hacen.</p>
+                    <p>Los usuarios comparten experiencias y conocimiento.</p>
                 </article>
-                <article class="tile">
-                    <div class="icon" aria-hidden="true"><i class="fa-solid fa-flask"></i></div>
-                    <h3>Espacios <em>CON</em> el usuario</h3>
-                    <p>Co-diseño y laboratorios. Construimos soluciones junto a quien las usará.</p>
-                </article>
-                <article class="tile">
-                    <div class="icon" aria-hidden="true"><i class="fa-solid fa-hands-holding-circle"></i></div>
+                <article class="tile phase" data-phase="2">
+                    <div class="icon" aria-hidden="true"><i class="fa-solid fa-hands-holding-child"></i></div>
                     <h3>Espacios <em>PARA</em> el usuario</h3>
                     <p>Acompañamiento, valor y referencia digital permanente.</p>
                 </article>
+                <article class="tile phase" data-phase="3">
+                    <div class="icon" aria-hidden="true"><i class="fa-solid fa-flask"></i></div>
+                    <h3>Espacios <em>CON</em> el usuario</h3>
+                    <p>Laboratorios de creación de soluciones colaborativas.</p>
+                </article>
             </div>
         </div>
+        <span class="slide-number">4 / 11</span>
     </section>
 
-    <!-- 5. INSIGHTS REUNIÓN LLEIDA -->
-    <section class="slide-container" aria-label="Insights clave reunión Lleida 22.05.2026">
-        <h2 class="slide-title">Insights · reunión Lleida (22.05.2026)</h2>
+    <!-- 5. EJES ESTRATÉGICOS -->
+    <section class="slide-container" aria-label="Ejes estratégicos">
+        <h2 class="slide-title">Ejes estratégicos</h2>
         <div class="content-area">
             <div class="two-column">
-                <div class="card card--bordered">
-                    <h3><i class="fa-solid fa-trophy" aria-hidden="true"></i> Champions del territorio</h3>
-                    <p><strong>Consells comarcals</strong> (técnicos) y <strong>usuarios certificados</strong>. Son la palanca dinamizadora.</p>
+                <div class="card card--bordered phase" data-phase="1">
+                    <h3><i class="fa-solid fa-trophy" aria-hidden="true"></i> Usuarios clave</h3>
+                    <p>Técnicos de <strong>Consells Comarcals</strong> y <strong>usuarios certificados</strong> de Cataluña.</p>
                 </div>
-                <div class="card card--bordered">
-                    <h3><i class="fa-solid fa-medal" aria-hidden="true"></i> Incentivo del funcionario</h3>
+                <div class="card card--bordered phase" data-phase="2">
+                    <h3><i class="fa-solid fa-medal" aria-hidden="true"></i> Incentivos para el usuario</h3>
                     <p><strong>Reconocimiento profesional</strong>. Dar visibilidad a su trabajo y que participe en la creación.</p>
                 </div>
-                <div class="card card--bordered">
-                    <h3><i class="fa-solid fa-handshake" aria-hidden="true"></i> Proveedor → socio institucional</h3>
-                    <p>Imposible mientras nos vean como <strong>amenaza</strong>. La capacitación es el camino para cambiar la percepción.</p>
+                <div class="card card--bordered phase" data-phase="3">
+                    <h3><i class="fa-solid fa-handshake" aria-hidden="true"></i> De proveedor a socio institucional</h3>
+                    <p><strong>Capacitación 360º</strong> como vía para generar marca en torno a la transformación digital.</p>
                 </div>
-                <div class="card card--bordered">
-                    <h3><i class="fa-solid fa-people-arrows" aria-hidden="true"></i> Hibridación por perfil</h3>
-                    <p>Acciones diferenciadas según convocatoria: <strong>usuario · consells · secretarios · CIOs</strong>.</p>
+                <div class="card card--bordered phase" data-phase="4">
+                    <h3><i class="fa-solid fa-people-arrows" aria-hidden="true"></i> Otros stakeholders</h3>
+                    <p>Acciones formativas abiertas a <strong>perfiles estratégicos</strong> (CIOs, Secretarios, AOC, Empresas, etc.)</p>
                 </div>
             </div>
         </div>
+        <span class="slide-number">5 / 11</span>
     </section>
 
     <!-- 6. CATÁLOGO DE ACCIONES -->
-    <section class="slide-container" aria-label="Catálogo de acciones del Hub">
-        <h2 class="slide-title">Catálogo de acciones <span data-brand="gestiona" class="badge badge-gestiona" style="vertical-align: middle; margin-left: 8px;">Gestiona Avanza</span></h2>
+    <section class="slide-container" aria-label="Catálogo de acciones">
+        <h2 class="slide-title">Catálogo de acciones</h2>
         <div class="content-area">
             <div class="tiled-content tile-triple">
-                <article class="tile">
-                    <div class="icon" aria-hidden="true"><i class="fa-solid fa-cogs"></i></div>
-                    <h3>Formación avanzada</h3>
-                    <p>Programa de configuración avanzada de procedimientos.</p>
+                <article class="tile phase" data-phase="1">
+                    <div class="icon" aria-hidden="true"><i class="fa-solid fa-gears"></i></div>
+                    <h3>Formación práctica</h3>
+                    <p>Taller de configuración avanzada de tramitación reglada.</p>
                 </article>
-                <article class="tile">
+                <article class="tile phase" data-phase="2">
                     <div class="icon" aria-hidden="true"><i class="fa-solid fa-rocket"></i></div>
                     <h3>Novedades y módulos</h3>
                     <p>Formación asociada a nuevas versiones y módulos de Gestiona.</p>
                 </article>
-                <article class="tile">
+                <article class="tile phase" data-phase="3">
                     <div class="icon" aria-hidden="true"><i class="fa-solid fa-vial"></i></div>
                     <h3>Lab provincial</h3>
-                    <p>Metodología y diseño de configuración de procedimientos de ámbito provincial.</p>
+                    <p>Metodología y diseño de configuración de ámbito provincial.</p>
                 </article>
-                <article class="tile">
+                <article class="tile phase" data-phase="4">
                     <div class="icon" aria-hidden="true"><i class="fa-solid fa-flask-vial"></i></div>
                     <h3>Lab autonómico</h3>
                     <p>Metodología y diseño de configuración de ámbito autonómico.</p>
                 </article>
-                <article class="tile">
+                <article class="tile phase" data-phase="5">
                     <div class="icon" aria-hidden="true"><i class="fa-solid fa-mug-hot"></i></div>
                     <h3>Desayunos de expertos</h3>
                     <p>Encuentros con expertos del grupo esPublico.</p>
                 </article>
-                <article class="tile">
+                <article class="tile phase" data-phase="6">
                     <div class="icon" aria-hidden="true"><i class="fa-solid fa-handshake-angle"></i></div>
-                    <h3>Partners</h3>
-                    <p>Formaciones a cargo de empresas colaboradoras (Fractal, AGTIC, …).</p>
+                    <h3>Otras formaciones</h3>
+                    <p>Formaciones impartidas por empresas colaboradoras (Fractal, AGTIC, etc.)</p>
                 </article>
             </div>
         </div>
+        <span class="slide-number">6 / 11</span>
     </section>
 
     <!-- 7. OBJETIVOS CUANTITATIVOS -->
-    <section class="slide-container" aria-label="Objetivos cuantitativos">
-        <h2 class="slide-title">Objetivos · qué queremos lograr</h2>
+    <section class="slide-container" aria-label="Objetivos a 31 de diciembre de 2027">
+        <h2 class="slide-title">Objetivos a 31 de diciembre de 2027</h2>
         <div class="content-area" style="align-items: center;">
-            <div class="feature-cards" style="flex-wrap: wrap;">
-                <div class="feature-card">
+            <div class="feature-cards">
+                <div class="feature-card phase" data-phase="1">
                     <div class="icon-circle icon-circle--lg mx-auto" aria-hidden="true"><i class="fa-solid fa-graduation-cap"></i></div>
                     <p class="metric-number">100</p>
-                    <p>Usuarios capacitados en programas <strong>avanzados</strong> de Gestiona.</p>
+                    <p>Usuarios del programa <strong>Configuración Avanzada</strong> de Procedimientos.</p>
                 </div>
-                <div class="feature-card">
+                <div class="feature-card phase" data-phase="2">
                     <div class="icon-circle icon-circle--lg mx-auto" aria-hidden="true"><i class="fa-solid fa-chalkboard-user"></i></div>
                     <p class="metric-number">200</p>
-                    <p>Asistentes a jornadas de <strong>novedades</strong> de Gestiona.</p>
+                    <p>Asistentes a <strong>talleres presenciales</strong> sobre novedades de Gestiona.</p>
                 </div>
-                <div class="feature-card">
+                <div class="feature-card phase" data-phase="3">
                     <div class="icon-circle icon-circle--lg mx-auto" aria-hidden="true"><i class="fa-solid fa-people-line"></i></div>
                     <p class="metric-number">100</p>
-                    <p>Asistentes a <strong>laboratorios</strong> y formaciones de terceros.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="icon-circle icon-circle--lg mx-auto" aria-hidden="true"><i class="fa-solid fa-network-wired"></i></div>
-                    <p class="metric-number">1</p>
-                    <p>Ecosistema · <strong>comunidad</strong> del Hub de transformación digital.</p>
+                    <p>Asistentes a <strong>sesiones de co-creación</strong> o formaciones de terceros.</p>
                 </div>
             </div>
         </div>
+        <span class="slide-number">7 / 11</span>
     </section>
 
     <!-- 8. ESTRATEGIA DE COMUNICACIÓN -->
     <section class="slide-container" aria-label="Estrategia de comunicación y puesta en marcha">
-        <div class="section-title-layout">
-            <h2>Estrategia de comunicación y puesta en marcha</h2>
-            <hr aria-hidden="true">
-            <div class="mt-lg" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; max-width: 1040px; margin-left: auto; margin-right: auto;">
-                <div class="step-card">
-                    <span class="step-number">1</span>
-                    <p><strong style="color: var(--color-primary-light);">Certificados como palanca</strong><br>Los usuarios certificados atraen a otros usuarios de Gestiona a las instalaciones.</p>
+        <h2 class="slide-title">Estrategia de comunicación y puesta en marcha</h2>
+        <div class="content-area">
+            <div class="two-column">
+                <div class="card card--bordered phase" data-phase="1">
+                    <h3><i class="fa-solid fa-certificate" aria-hidden="true"></i> Certificados como palanca</h3>
+                    <p>Los usuarios certificados <strong>atraen</strong> a otros usuarios de Gestiona a las instalaciones.</p>
                 </div>
-                <div class="step-card">
-                    <span class="step-number">2</span>
-                    <p><strong style="color: var(--color-primary-light);">Comercial + medios</strong><br>Convocar perfiles clave vía equipo comercial y medios propios.</p>
+                <div class="card card--bordered phase" data-phase="2">
+                    <h3><i class="fa-solid fa-bullhorn" aria-hidden="true"></i> Equipo Ecityclic</h3>
+                    <p>Convocatoria de <strong>perfiles clave</strong> de las organizaciones impulsada por Red y Comercial.</p>
                 </div>
-                <div class="step-card">
-                    <span class="step-number">3</span>
-                    <p><strong style="color: var(--color-primary-light);">Evento de inauguración</strong><br>Explicar en qué consiste el Hub de transformación digital de ecityclic.</p>
+                <div class="card card--bordered phase" data-phase="3">
+                    <h3><i class="fa-solid fa-flag-checkered" aria-hidden="true"></i> Evento de inauguración</h3>
+                    <p>Explicar en qué consiste el <strong>Hub de Transformación Digital</strong> de ecityclic.</p>
                 </div>
-                <div class="step-card">
-                    <span class="step-number">4</span>
-                    <p><strong style="color: var(--color-primary-light);">Newsletter Gestiona Avanza (vCAT)</strong><br>A la lista de distribución alrededor de los participantes del Hub.</p>
+                <div class="card card--bordered phase" data-phase="4">
+                    <h3><i class="fa-solid fa-envelope-open-text" aria-hidden="true"></i> Newsletter Gestiona Avanza (vCAT)</h3>
+                    <p>Contenido específico del Hub en la <strong>versión catalana</strong>.</p>
                 </div>
             </div>
         </div>
+        <span class="slide-number">8 / 11</span>
     </section>
 
     <!-- 9. FASE I — DEFINICIÓN E IMPULSO (2026) -->
     <section class="slide-container" aria-label="Fase I: definición e impulso 2026">
-        <h2 class="slide-title">Fase I · Definición e impulso <span>(2026)</span></h2>
+        <h2 class="slide-title">Fase I - Definición e impulso (2026)</h2>
         <div class="content-area">
             <div class="two-column">
-                <div class="card card--bordered">
+                <div class="card card--bordered phase" data-phase="1">
                     <h3><i class="fa-solid fa-calendar-day" aria-hidden="true"></i> 2T – 3T 2026</h3>
                     <p><strong>Stakeholders:</strong> consells comarcals y usuarios certificados de Cataluña.</p>
                     <p><strong>Acciones:</strong> reuniones en las instalaciones para definir el modelo y validar las propuestas de uso de los espacios.</p>
+                    <div class="team-bar">
+                        <p class="team-label">Equipo responsable</p>
+                        <p class="team-names"><strong>Desarrollo de Medios Gestiona</strong> · Diseño, planificación y ejecución  |  <strong>Equipo de Medios Ecityclic</strong> · Ejecución</p>
+                    </div>
                 </div>
-                <div class="card card--bordered">
+                <div class="card card--bordered phase" data-phase="2">
                     <h3><i class="fa-solid fa-calendar-week" aria-hidden="true"></i> 3T – 4T 2026</h3>
-                    <p><strong>Stakeholders:</strong> usuarios de Gestiona en Cataluña.</p>
+                    <p><strong>Stakeholders:</strong> usuarios de Gestiona en Cataluña de diferentes perfiles.</p>
                     <p><strong>Acciones:</strong> programa de formación en configuración avanzada y programa de novedades, módulos y versiones.</p>
+                    <div class="team-bar">
+                        <p class="team-label">Equipo responsable</p>
+                        <p class="team-names"><strong>Desarrollo de Medios Gestiona</strong> · Diseño, planificación y ejecución  |  <strong>Equipo de Medios Ecityclic</strong> · Ejecución y planificación</p>
+                    </div>
                 </div>
             </div>
         </div>
+        <span class="slide-number">9 / 11</span>
     </section>
 
     <!-- 10. FASE II — AMPLIACIÓN (2027) -->
-    <section class="slide-container" aria-label="Fase II: ampliación 2027">
-        <h2 class="slide-title">Fase II · Ampliación del alcance <span>(2027)</span></h2>
+    <section class="slide-container" aria-label="Fase II: ampliación de alcance y consolidación 2027">
+        <h2 class="slide-title">Fase II - Ampliación de alcance y consolidación (2027)</h2>
         <div class="content-area">
             <div class="two-column">
-                <div class="card card--bordered">
+                <div class="card card--bordered phase" data-phase="1">
                     <h3><i class="fa-solid fa-calendar-day" aria-hidden="true"></i> 1T – 2T 2027</h3>
                     <p><strong>Stakeholders:</strong> usuarios de Gestiona en Cataluña y responsables de proyectos provinciales.</p>
                     <p><strong>Acciones:</strong> laboratorios de diseño provincial y autonómico, y desayunos de expertos del grupo esPublico.</p>
+                    <div class="team-bar">
+                        <p class="team-label">Equipo responsable</p>
+                        <p class="team-names"><strong>Desarrollo de Medios Gestiona</strong> · Apoyo y transferencia del conocimiento  |  <strong>Equipo de Medios Ecityclic</strong> · Ejecución</p>
+                    </div>
                 </div>
-                <div class="card card--bordered">
+                <div class="card card--bordered phase" data-phase="2">
                     <h3><i class="fa-solid fa-calendar-week" aria-hidden="true"></i> 3T – 4T 2027</h3>
-                    <p><strong>Stakeholders:</strong> usuarios, responsables provinciales e <strong>instituciones de e-admin en Cataluña</strong>.</p>
+                    <p><strong>Stakeholders:</strong> usuarios, responsables provinciales e instituciones de e-admin en Cataluña.</p>
                     <p><strong>Acciones:</strong> formaciones a cargo de empresas colaboradoras (Fractal, AGTIC, …).</p>
+                    <div class="team-bar">
+                        <p class="team-label">Equipo responsable</p>
+                        <p class="team-names"><strong>Desarrollo de Medios Gestiona</strong> · Apoyo y soporte  |  <strong>Equipo de Medios Ecityclic</strong> · Planificación y ejecución</p>
+                    </div>
                 </div>
             </div>
         </div>
+        <span class="slide-number">10 / 11</span>
     </section>
 
-    <!-- 11. DECISIÓN / PRÓXIMOS PASOS -->
-    <section class="slide-container" aria-label="Decisión y próximos pasos">
-        <div class="section-title-layout">
-            <h2>Qué pedimos a la Dirección</h2>
-            <hr aria-hidden="true">
-            <div class="mt-lg" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1100px; margin-left: auto; margin-right: auto;">
-                <div class="card--glass">
-                    <h3><i class="fa-solid fa-circle-check" aria-hidden="true" style="margin-right: 8px;"></i>Validación estratégica</h3>
+    <!-- 11. NECESIDADES Y SIGUIENTES PASOS -->
+    <section class="slide-container" aria-label="Necesidades y siguientes pasos">
+        <h2 class="slide-title">Necesidades y siguientes pasos</h2>
+        <div class="content-area">
+            <div class="tiled-content tile-triple">
+                <article class="tile phase" data-phase="1">
+                    <div class="icon" aria-hidden="true"><i class="fa-solid fa-circle-check"></i></div>
+                    <h3>Validación estratégica</h3>
                     <p>Confirmar el modelo POR / CON / PARA el usuario y el papel de ecityclic como Hub.</p>
-                </div>
-                <div class="card--glass">
-                    <h3><i class="fa-solid fa-coins" aria-hidden="true" style="margin-right: 8px;"></i>Aprobación de presupuesto</h3>
+                </article>
+                <article class="tile phase" data-phase="2">
+                    <div class="icon" aria-hidden="true"><i class="fa-solid fa-coins"></i></div>
+                    <h3>Aprobación de presupuesto</h3>
                     <p>Recursos para programas de formación, laboratorios, eventos y newsletter en 2026 – 2027.</p>
-                </div>
-                <div class="card--glass">
-                    <h3><i class="fa-solid fa-users-gear" aria-hidden="true" style="margin-right: 8px;"></i>Refuerzo equipo Lleida</h3>
-                    <p>Plan de capacitación del equipo local — gap identificado en la reunión.</p>
-                </div>
+                </article>
+                <article class="tile phase" data-phase="3">
+                    <div class="icon" aria-hidden="true"><i class="fa-solid fa-users-gear"></i></div>
+                    <h3>Refuerzo equipo Lleida</h3>
+                    <p>Plan de capacitación del equipo de medios responsable y contratación de perfiles dedicados.</p>
+                </article>
             </div>
         </div>
+        <span class="slide-number">11 / 11</span>
     </section>
 
 </main>
