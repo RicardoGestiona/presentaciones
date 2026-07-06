@@ -240,6 +240,88 @@
             margin-right: 8px;
         }
 
+        /* Línea temporal 2007-2026 (contexto tecnológico de las AA PP) */
+        .tech-timeline {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr) 0.6fr;
+            gap: 14px;
+            margin-top: 40px;
+            position: relative;
+        }
+        .tech-timeline::before {
+            content: "";
+            position: absolute;
+            top: 46px;
+            left: 2%;
+            right: 8%;
+            height: 4px;
+            background: var(--color-bg-light);
+            border-radius: 2px;
+        }
+        .tech-year-node { text-align: center; position: relative; }
+        .tech-year-node .tech-year {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--color-primary);
+            margin-bottom: 14px;
+        }
+        .tech-year-node .tech-dot {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: var(--color-primary);
+            margin: 0 auto 16px;
+            border: 4px solid white;
+            box-shadow: 0 0 0 2px var(--color-border);
+            position: relative;
+            z-index: 1;
+        }
+        .tech-year-node .tech-card {
+            background: var(--color-bg-light);
+            border-radius: var(--radius-sm);
+            padding: 14px 10px;
+            height: 100%;
+        }
+        .tech-year-node .icon {
+            font-size: 22px;
+            color: var(--color-primary);
+            margin-bottom: 8px;
+        }
+        .tech-year-node h3 {
+            font-size: 14px;
+            margin-bottom: 6px;
+            line-height: 1.2;
+        }
+        .tech-year-node p {
+            font-size: 12px;
+            line-height: 1.35;
+            margin: 0;
+            color: var(--color-text-muted);
+        }
+        .tech-timeline-ellipsis {
+            display: flex;
+            justify-content: center;
+            padding-top: 40px;
+        }
+        .tech-timeline-ellipsis span {
+            font-size: 30px;
+            font-weight: 700;
+            color: var(--color-text-subtle);
+            line-height: 1;
+        }
+
+        /* Isotipo de marca: fijo en la esquina superior derecha, sobre el .stage
+           (igual que los dots/contador de navigation.js), visible en todas las slides. */
+        .brand-isotipo {
+            position: absolute;
+            top: 22px;
+            right: 26px;
+            width: 32px;
+            height: auto;
+            z-index: 40;
+            pointer-events: none;
+        }
+
         /* Tabla compacta (roster de alumnos) */
         .roster.table-layout th { font-size: 13px; padding: 9px 16px; }
         .roster.table-layout td { font-size: 12.5px; padding: 5px 16px; }
@@ -410,6 +492,22 @@
             letter-spacing: -0.2px;
         }
 
+        /* Bloques icono + título sin descripción (slides "Objetivos del programa" y
+           "Comunidad Gestiona Avanza"): fila compacta en vez de columna con párrafo. */
+        .tile--compact {
+            flex-direction: row;
+            align-items: center;
+            gap: 16px;
+            padding: 18px 22px;
+        }
+        .tile--compact .icon {
+            margin-bottom: 0;
+            font-size: 24px;
+        }
+        .tile--compact h3 {
+            margin-bottom: 0;
+        }
+
         /* Lista de objetivos/puntos ampliada: ocupa más espacio, mayor legibilidad */
         .bullet-list--lg { font-size: 24px; }
         .bullet-list--lg li {
@@ -491,6 +589,7 @@
     </style>
 </head>
 <body data-brand="gestiona-avanza">
+<div class="stage">
 <main role="presentation">
 
     <!-- SLIDE 1: Portada -->
@@ -516,37 +615,62 @@
     <section class="slide-container" aria-label="Contexto tecnológico de las Administraciones Públicas">
         <h2 class="slide-title">Contexto tecnológico de las AA PP</h2>
         <div class="content-area">
-            <div class="tiled-content tile-triple">
-                <article class="tile phase" data-phase="1">
-                    <div class="icon" aria-hidden="true"><i class="fa-solid fa-laptop-file"></i></div>
-                    <h3>Digitalización</h3>
-                    <p>El expediente y el procedimiento electrónico como norma, no como excepción.</p>
-                </article>
-                <article class="tile phase" data-phase="2">
-                    <div class="icon" aria-hidden="true"><i class="fa-solid fa-shield-halved"></i></div>
-                    <h3>Interoperabilidad y seguridad</h3>
-                    <p>ENS, ENI y plataformas de intermediación como marco obligado de trabajo.</p>
-                </article>
-                <article class="tile phase" data-phase="3">
-                    <div class="icon" aria-hidden="true"><i class="fa-solid fa-arrows-spin"></i></div>
-                    <h3>Transformación digital</h3>
-                    <p>Cambio organizativo y cultural, más allá del cambio de herramienta.</p>
-                </article>
-                <article class="tile phase" data-phase="4">
-                    <div class="icon" aria-hidden="true"><i class="fa-solid fa-ruler-combined"></i></div>
-                    <h3>Normalización y simplificación</h3>
-                    <p>Procedimientos normalizados, cargas reducidas y servicios más simples.</p>
-                </article>
-                <article class="tile phase" data-phase="5">
-                    <div class="icon" aria-hidden="true"><i class="fa-solid fa-robot"></i></div>
-                    <h3>Automatización</h3>
-                    <p>Actuación administrativa automatizada y tramitación reglada.</p>
-                </article>
-                <article class="tile phase" data-phase="6">
-                    <div class="icon" aria-hidden="true"><i class="fa-solid fa-chart-line"></i></div>
-                    <h3>Datos e inteligencia artificial</h3>
-                    <p>Análisis de datos y IA como palancas de la próxima década.</p>
-                </article>
+            <div class="tech-timeline">
+                <div class="tech-year-node phase" data-phase="1">
+                    <div class="tech-year">2007</div>
+                    <div class="tech-dot"></div>
+                    <div class="tech-card">
+                        <div class="icon" aria-hidden="true"><i class="fa-solid fa-laptop-file"></i></div>
+                        <h3>Digitalización</h3>
+                        <p>El expediente y el procedimiento electrónico como norma, no como excepción.</p>
+                    </div>
+                </div>
+                <div class="tech-year-node phase" data-phase="2">
+                    <div class="tech-year">2015</div>
+                    <div class="tech-dot"></div>
+                    <div class="tech-card">
+                        <div class="icon" aria-hidden="true"><i class="fa-solid fa-shield-halved"></i></div>
+                        <h3>Interoperabilidad y seguridad</h3>
+                        <p>ENS, ENI y plataformas de intermediación como marco obligado de trabajo.</p>
+                    </div>
+                </div>
+                <div class="tech-year-node phase" data-phase="3">
+                    <div class="tech-year">2018</div>
+                    <div class="tech-dot"></div>
+                    <div class="tech-card">
+                        <div class="icon" aria-hidden="true"><i class="fa-solid fa-arrows-spin"></i></div>
+                        <h3>Transformación digital</h3>
+                        <p>Cambio organizativo y cultural, más allá del cambio de herramienta.</p>
+                    </div>
+                </div>
+                <div class="tech-year-node phase" data-phase="4">
+                    <div class="tech-year">2021</div>
+                    <div class="tech-dot"></div>
+                    <div class="tech-card">
+                        <div class="icon" aria-hidden="true"><i class="fa-solid fa-ruler-combined"></i></div>
+                        <h3>Normalización y simplificación</h3>
+                        <p>Procedimientos normalizados, cargas reducidas y servicios más simples.</p>
+                    </div>
+                </div>
+                <div class="tech-year-node phase" data-phase="5">
+                    <div class="tech-year">2024</div>
+                    <div class="tech-dot"></div>
+                    <div class="tech-card">
+                        <div class="icon" aria-hidden="true"><i class="fa-solid fa-robot"></i></div>
+                        <h3>Automatización</h3>
+                        <p>Actuación administrativa automatizada y tramitación reglada.</p>
+                    </div>
+                </div>
+                <div class="tech-year-node phase" data-phase="6">
+                    <div class="tech-year">2026</div>
+                    <div class="tech-dot"></div>
+                    <div class="tech-card">
+                        <div class="icon" aria-hidden="true"><i class="fa-solid fa-chart-line"></i></div>
+                        <h3>Datos e inteligencia artificial</h3>
+                        <p>Análisis de datos y IA como palancas de la próxima década.</p>
+                    </div>
+                </div>
+                <div class="tech-timeline-ellipsis" aria-hidden="true"><span>&hellip;</span></div>
             </div>
         </div>
     </section>
@@ -621,25 +745,21 @@
         <h2 class="slide-title">Objetivos del programa</h2>
         <div class="content-area">
             <div class="tiled-content">
-                <article class="tile phase" data-phase="1">
+                <article class="tile tile--compact phase" data-phase="1">
                     <div class="icon" aria-hidden="true"><i class="fa-solid fa-sliders"></i></div>
                     <h3>Capacitar</h3>
-                    <p>En la configuración, parametrización y mantenimiento de Gestiona.</p>
                 </article>
-                <article class="tile phase" data-phase="2">
+                <article class="tile tile--compact phase" data-phase="2">
                     <div class="icon" aria-hidden="true"><i class="fa-solid fa-diagram-project"></i></div>
                     <h3>Transmitir una metodología</h3>
-                    <p>Una forma de trabajo para la implantación continua en vuestras entidades.</p>
                 </article>
-                <article class="tile phase" data-phase="3">
+                <article class="tile tile--compact phase" data-phase="3">
                     <div class="icon" aria-hidden="true"><i class="fa-solid fa-graduation-cap"></i></div>
                     <h3>Formación continua</h3>
-                    <p>Espacios de aprendizaje alineados con el evolutivo de Gestiona.</p>
                 </article>
-                <article class="tile phase" data-phase="4">
+                <article class="tile tile--compact phase" data-phase="4">
                     <div class="icon" aria-hidden="true"><i class="fa-solid fa-people-group"></i></div>
                     <h3>Comunidad</h3>
-                    <p>Colaboración y comunicación de la comunidad tecnológica de Gestiona.</p>
                 </article>
             </div>
         </div>
@@ -682,25 +802,21 @@
         <h2 class="slide-title">Comunidad Gestiona Avanza</h2>
         <div class="content-area">
             <div class="tiled-content">
-                <article class="tile phase" data-phase="1">
+                <article class="tile tile--compact phase" data-phase="1">
                     <div class="icon" aria-hidden="true"><i class="fa-solid fa-users"></i></div>
                     <h3>Red de administradores</h3>
-                    <p>Usuarios certificados de toda España conectados entre sí y con esPublico.</p>
                 </article>
-                <article class="tile phase" data-phase="2">
+                <article class="tile tile--compact phase" data-phase="2">
                     <div class="icon" aria-hidden="true"><i class="fa-solid fa-comments"></i></div>
                     <h3>Espacios de colaboración</h3>
-                    <p>Foros y canales para compartir dudas, soluciones y buenas prácticas.</p>
                 </article>
-                <article class="tile phase" data-phase="3">
+                <article class="tile tile--compact phase" data-phase="3">
                     <div class="icon" aria-hidden="true"><i class="fa-solid fa-rocket"></i></div>
                     <h3>Evolutivo de Gestiona</h3>
-                    <p>Acceso preferente a novedades del producto y formación continua asociada.</p>
                 </article>
-                <article class="tile phase" data-phase="4">
+                <article class="tile tile--compact phase" data-phase="4">
                     <div class="icon" aria-hidden="true"><i class="fa-solid fa-calendar-days"></i></div>
                     <h3>Eventos</h3>
-                    <p>Encuentros periódicos de la comunidad, online y presenciales.</p>
                 </article>
             </div>
         </div>
@@ -1363,7 +1479,7 @@
     <section class="slide-container" aria-label="Curso 05: por qué un curso de analítica de datos">
         <h2 class="slide-title">¿Por qué un curso de analítica de datos?</h2>
         <div class="content-area" style="justify-content: center;">
-            <p style="font-size: 18px; line-height: 1.6; max-width: 1050px;">La analítica de datos convierte la información de Gestiona en <strong>conocimiento accionable</strong> para la entidad:</p>
+            <p style="font-size: 18px; line-height: 1.6; max-width: 1050px;">La analítica de datos convierte la información de Gestiona en conocimiento para <strong>optimizar procesos y mejorar la gestión</strong> de la entidad:</p>
             <div class="feature-cards mt-lg">
                 <div class="feature-card phase" data-phase="1">
                     <div class="icon-circle icon-circle--lg mx-auto"><i class="fa-solid fa-chart-simple" aria-hidden="true"></i></div>
@@ -1451,6 +1567,8 @@
     </section>
 
 </main>
+<img class="brand-isotipo" src="img-corp-gestiona-avanza/Gestiona-Avanza-isotipo-blanco.png" alt="" aria-hidden="true">
+</div>
 <script src="../assets/js/navigation.js"></script>
 </body>
 </html>
