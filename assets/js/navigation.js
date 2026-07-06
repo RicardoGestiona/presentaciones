@@ -98,6 +98,40 @@
         getPhases(slideIndex).forEach(function (el) { el.classList.remove("visible"); });
     }
 
+    /** Actualiza el rótulo de contexto (icono + título del bloque de contenido activo), si
+        la slide define data-phase-titles (JSON {numFase: {text, icon}}) y un elemento
+        [data-phase-label] con [data-phase-label-icon] y [data-phase-label-text] dentro. */
+    function updatePhaseLabel(slideIndex) {
+        var slide = slides[slideIndex];
+        var titlesAttr = slide.getAttribute("data-phase-titles");
+        if (!titlesAttr) return;
+        var labelEl = slide.querySelector("[data-phase-label]");
+        if (!labelEl) return;
+
+        var titles;
+        try {
+            titles = JSON.parse(titlesAttr);
+        } catch (e) {
+            return;
+        }
+
+        var visibleNums = Array.from(slide.querySelectorAll(".phase.visible[data-phase]"))
+            .map(function (el) { return Number(el.dataset.phase); });
+        var activePhase = visibleNums.length ? Math.max.apply(null, visibleNums) : null;
+        var entry = activePhase ? titles[activePhase] : null;
+
+        var textEl = labelEl.querySelector("[data-phase-label-text]");
+        var iconEl = labelEl.querySelector("[data-phase-label-icon]");
+        if (entry) {
+            if (textEl) textEl.textContent = entry.text || "";
+            if (iconEl) iconEl.className = "fa-solid " + (entry.icon || "");
+            labelEl.classList.add("is-active");
+        } else {
+            if (textEl) textEl.textContent = "";
+            labelEl.classList.remove("is-active");
+        }
+    }
+
     /** Muestra la siguiente fase de la slide actual. Devuelve true si había fase pendiente */
     function advancePhase() {
         var phases = getPhases(current);
@@ -116,6 +150,7 @@
                     el.classList.add("previous");
                 }
             });
+            updatePhaseLabel(current);
             return true;
         }
         return false;
@@ -140,6 +175,7 @@
                 hideAllPhases(current);
             }
         }
+        updatePhaseLabel(current);
     }
 
     function handleNext() {

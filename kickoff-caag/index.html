@@ -370,6 +370,46 @@
             color: var(--color-text-muted);
         }
 
+        /* Rótulo dinámico de contexto: icono + nombre del curso/bloque activo (entre el
+           título de la slide y la rejilla de elementos), actualizado por navigation.js
+           según la fase visible. */
+        .phase-context-label {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            width: fit-content;
+            margin: 4px 0 28px;
+            padding: 10px 24px 10px 12px;
+            border-radius: var(--radius-md);
+            background: var(--color-primary-soft);
+            border: 2px solid var(--color-primary);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .phase-context-label.is-active {
+            opacity: 1;
+        }
+        .phase-context-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--color-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .phase-context-icon i {
+            font-size: 20px;
+            color: var(--color-white);
+        }
+        .phase-context-text {
+            font-size: 25px;
+            font-weight: 700;
+            color: var(--color-primary-dark);
+            letter-spacing: -0.2px;
+        }
+
         /* Lista de objetivos/puntos ampliada: ocupa más espacio, mayor legibilidad */
         .bullet-list--lg { font-size: 24px; }
         .bullet-list--lg li {
@@ -721,8 +761,12 @@
     </section>
 
     <!-- SLIDE 15: Plan de aprendizaje (10 bloques) -->
-    <section class="slide-container" aria-label="Plan de aprendizaje">
+    <section class="slide-container" aria-label="Plan de aprendizaje" data-phase-titles='{"1":{"text":"01 · Administración general de Gestiona","icon":"fa-sliders"},"2":{"text":"02 · Gestión documental y archivo","icon":"fa-folder-open"},"3":{"text":"03 · Escritorio de tramitación","icon":"fa-inbox"},"4":{"text":"04 · Gestión económica","icon":"fa-coins"},"5":{"text":"05 · Analítica de datos","icon":"fa-chart-line"}}'>
         <h2 class="slide-title">Plan de aprendizaje</h2>
+        <div class="phase-context-label" data-phase-label aria-live="polite">
+            <span class="phase-context-icon" aria-hidden="true"><i data-phase-label-icon></i></span>
+            <span class="phase-context-text" data-phase-label-text></span>
+        </div>
         <div class="content-area">
             <div class="blocks-grid">
                 <div class="block-item phase" data-phase="1"><span class="block-num">1</span><p>Configuración general de Gestiona</p></div>
@@ -740,8 +784,12 @@
     </section>
 
     <!-- SLIDE 16: Talleres online -->
-    <section class="slide-container" aria-label="Talleres online">
+    <section class="slide-container" aria-label="Talleres online" data-phase-titles='{"1":{"text":"01 · Administración general de Gestiona","icon":"fa-sliders"},"2":{"text":"02 · Gestión documental y archivo","icon":"fa-folder-open"},"3":{"text":"03 · Escritorio de tramitación","icon":"fa-inbox"},"4":{"text":"04 · Gestión económica","icon":"fa-coins"},"5":{"text":"05 · Analítica de datos","icon":"fa-chart-line"}}'>
         <h2 class="slide-title">Talleres online</h2>
+        <div class="phase-context-label" data-phase-label aria-live="polite">
+            <span class="phase-context-icon" aria-hidden="true"><i data-phase-label-icon></i></span>
+            <span class="phase-context-text" data-phase-label-text></span>
+        </div>
         <div class="content-area">
             <div class="blocks-grid" style="grid-template-columns: repeat(3, 1fr);">
                 <!-- Bloque 1 -->
@@ -768,34 +816,32 @@
     </section>
 
     <!-- SLIDE 17: Sesiones presenciales -->
-    <section class="slide-container" aria-label="Sesiones presenciales">
+    <section class="slide-container" aria-label="Sesiones presenciales" data-phase-titles='{"1":{"text":"01 · Administración general de Gestiona","icon":"fa-sliders"},"2":{"text":"02 · Gestión documental y archivo","icon":"fa-folder-open"},"3":{"text":"03 · Escritorio de tramitación","icon":"fa-inbox"},"4":{"text":"04 · Gestión económica","icon":"fa-coins"},"5":{"text":"05 · Analítica de datos","icon":"fa-chart-line"}}'>
         <h2 class="slide-title">Sesiones presenciales</h2>
+        <div class="phase-context-label" data-phase-label aria-live="polite">
+            <span class="phase-context-icon" aria-hidden="true"><i data-phase-label-icon></i></span>
+            <span class="phase-context-text" data-phase-label-text></span>
+        </div>
         <div class="content-area">
-            <div class="workshop-grid" style="grid-template-columns: repeat(2, 1fr);">
-                <div class="workshop-block workshop-block--active phase phase--slide-left" data-phase="1">
-                    <h3>Sesión presencial 1</h3>
-                    <ul>
-                        <li>Taller 1 — Configuración básica de trámites externos, tesauros y sede electrónica.</li>
-                        <li>Taller 2 — Gestiona Code.</li>
-                        <li>Taller 3 — Construcción de documentos inteligentes.</li>
-                        <li>Taller 4 — Configuración de órganos, circuitos de tramitación y pies de recursos.</li>
-                        <li>Taller 5 — Circuito de resolución singular.</li>
-                        <li>Taller 6 — Circuito de resolución plural.</li>
-                        <li>Taller 7 — Tramitación reglada y subprocesos.</li>
-                        <li>Taller 8 — Búsqueda avanzada de Gestiona.</li>
-                    </ul>
-                </div>
-                <div class="workshop-block workshop-block--active phase phase--slide-right" data-phase="2">
-                    <h3>Sesión presencial 2</h3>
-                    <ul>
-                        <li>Taller 9 — Módulo de diseño de Control Interno.</li>
-                        <li>Taller 10 — Tramitación 360º de expedientes con gasto.</li>
-                        <li>Taller 11 — Autoliquidaciones y liquidaciones tributarias.</li>
-                        <li>Taller 12 — Gestión de facturas.</li>
-                        <li>Taller 13 — Creación de dashboards de analítica de datos.</li>
-                        <li>Taller 14 — Personalización de cuadros de mando para tramitación reglada.</li>
-                    </ul>
-                </div>
+            <div class="blocks-grid" style="grid-template-columns: repeat(3, 1fr);">
+                <!-- Bloque 2: Gestión documental y archivo -->
+                <div class="block-item phase" data-phase="2"><span class="block-num">1</span><p>Configuración básica de trámites externos, tesauros y sede electrónica.</p></div>
+                <div class="block-item phase" data-phase="2"><span class="block-num">2</span><p>Gestiona Code.</p></div>
+                <div class="block-item phase" data-phase="2"><span class="block-num">3</span><p>Construcción de documentos inteligentes.</p></div>
+                <!-- Bloque 3: Escritorio de tramitación -->
+                <div class="block-item phase" data-phase="3"><span class="block-num">4</span><p>Configuración de órganos, circuitos de tramitación y pies de recursos.</p></div>
+                <div class="block-item phase" data-phase="3"><span class="block-num">5</span><p>Circuito de resolución singular.</p></div>
+                <div class="block-item phase" data-phase="3"><span class="block-num">6</span><p>Circuito de resolución plural.</p></div>
+                <div class="block-item phase" data-phase="3"><span class="block-num">7</span><p>Tramitación reglada y subprocesos.</p></div>
+                <!-- Bloque 4: Gestión económica -->
+                <div class="block-item phase" data-phase="4"><span class="block-num">9</span><p>Módulo de diseño de Control Interno.</p></div>
+                <div class="block-item phase" data-phase="4"><span class="block-num">10</span><p>Tramitación 360º de expedientes con gasto.</p></div>
+                <div class="block-item phase" data-phase="4"><span class="block-num">11</span><p>Autoliquidaciones y liquidaciones tributarias.</p></div>
+                <div class="block-item phase" data-phase="4"><span class="block-num">12</span><p>Gestión de facturas.</p></div>
+                <!-- Bloque 5: Analítica de datos -->
+                <div class="block-item phase" data-phase="5"><span class="block-num">8</span><p>Búsqueda avanzada de Gestiona.</p></div>
+                <div class="block-item phase" data-phase="5"><span class="block-num">13</span><p>Creación de dashboards de analítica de datos.</p></div>
+                <div class="block-item phase" data-phase="5"><span class="block-num">14</span><p>Personalización de cuadros de mando para tramitación reglada.</p></div>
             </div>
         </div>
     </section>
