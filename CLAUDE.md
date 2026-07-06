@@ -48,7 +48,7 @@ Máximo 4 líneas por entrada. Sin "lessons learned" ni historial de commits —
 
 Cada producto del portfolio esPublico tiene su Pantone propio. **Nunca asumir una marca por defecto.** Si el usuario no la indica, preguntar.
 
-Marcas soportadas: `espublico`, `gestiona`, `esfirma`, `hacienda-local`, `rrhh`, `videoactas`, `tecnologia`, `sistemas`, `drag`, `ecityclic`, `medidata`. Aplicar con `<body data-brand="<marca>">`. Detalle completo en [`AGENTS.md` §1bis](./AGENTS.md). Manual oficial: <https://design.g3stiona.com/recursos-nuevo-espublico/>.
+Marcas soportadas: `espublico`, `gestiona`, `gestiona-avanza`, `esfirma`, `hacienda-local`, `rrhh`, `videoactas`, `tecnologia`, `sistemas`, `drag`, `ecityclic`, `medidata`. Aplicar con `<body data-brand="<marca>">`. Detalle completo en [`AGENTS.md` §1bis](./AGENTS.md). Manual oficial: <https://design.g3stiona.com/recursos-nuevo-espublico/>.
 
 ---
 

@@ -84,6 +84,15 @@
     --color-primary-soft: rgba(0, 109, 133, 0.07);
 }
 
+/* Gestiona Avanza — cian — submarca formación/comunidad/eventos de Gestiona */
+[data-brand="gestiona-avanza"] {
+    --color-primary: #00a2c4;
+    --color-primary-light: #4dbed6;
+    --color-primary-dark: #007a93;
+    --color-accent: #99dae7;
+    --color-primary-soft: rgba(0, 162, 196, 0.07);
+}
+
 /* esFirma — Pantone 618 C — dorado */
 [data-brand="esfirma"] {
     --color-primary: #aa9944;
@@ -208,20 +217,36 @@ main[role="presentation"] {
 }
 
 /* Paginación visual (bullets) — la inyecta navigation.js dentro de .stage.
-   Indicador de solo lectura, centrado abajo; el dot activo se expande a pastilla
-   con el color de marca. Hereda --color-primary / --color-text-subtle del tema. */
+   Indicador y navegación directa: cada dot es un <button> clicable que salta a
+   su slide; el dot activo se expande a pastilla con el color de marca. Hereda
+   --color-primary / --color-text-subtle del tema. El botón es más grande que el
+   punto visible (::before) para ampliar el área de clic sin alterar el diseño. */
 .slide-dots {
     position: absolute;
-    bottom: 22px;
+    bottom: 16px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
     align-items: center;
-    gap: 10px;
     z-index: 50;
-    pointer-events: none;
 }
 .slide-dot {
+    appearance: none;
+    -webkit-appearance: none;
+    border: 0;
+    margin: 0;
+    padding: 0;
+    background: none;
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.slide-dot::before {
+    content: "";
+    display: block;
     width: 7px;
     height: 7px;
     border-radius: 999px;
@@ -231,14 +256,48 @@ main[role="presentation"] {
                 opacity 0.45s ease,
                 background-color 0.45s ease;
 }
-.slide-dot.is-active {
+.slide-dot:hover::before {
+    opacity: 0.55;
+}
+.slide-dot.is-active::before {
     width: 22px;
     opacity: 1;
     background: var(--color-primary);
 }
+.slide-dot:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+    border-radius: 999px;
+}
 @media (prefers-reduced-motion: reduce) {
-    .slide-dot {
+    .slide-dot::before {
         transition: opacity 0.2s ease, background-color 0.2s ease;
+    }
+}
+
+/* Contador "N/total" (esquina inferior derecha) — lo inyecta navigation.js
+   dentro de .stage, junto a los dots. Solo lectura; la portada (índice 0) se
+   deja con texto vacío a propósito (:empty lo oculta) porque cuenta para el
+   total pero nunca se muestra. */
+.slide-number {
+    position: absolute;
+    bottom: 22px;
+    right: 28px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--color-text-subtle);
+    letter-spacing: 0.02em;
+    font-variant-numeric: tabular-nums;
+    z-index: 50;
+    pointer-events: none;
+}
+.slide-number:empty {
+    display: none;
+}
+
+@media print {
+    .slide-number {
+        display: none !important;
     }
 }
 

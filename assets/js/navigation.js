@@ -23,19 +23,24 @@
     var current = 0;
     var SLIDE_WIDTH = 1280;
 
-    /* Paginación visual (bullets): indicador de la diapositiva activa. Se genera
-       dinámicamente (un dot por slide) y se ancla a .stage, por lo que flota sobre
-       el área visible y escala con el deck. Estilos en corporate.css (.slide-dots).
-       Es de solo lectura; goToSlide() actualiza el dot activo. */
+    /* Paginación visual (bullets): indicador y navegación directa a una slide.
+       Se genera dinámicamente (un dot por slide) y se ancla a .stage, por lo que
+       flota sobre el área visible y escala con el deck. Estilos en corporate.css
+       (.slide-dots). Cada dot es un <button> clicable que llama a goToSlide(). */
     var dots = [];
     if (total > 1) {
         var dotsNav = document.createElement("nav");
         dotsNav.className = "slide-dots";
         dotsNav.setAttribute("aria-label", "Paginación de diapositivas");
+        var makeDotHandler = function (index) {
+            return function () { goToSlide(index); };
+        };
         for (var d = 0; d < total; d++) {
-            var dot = document.createElement("span");
+            var dot = document.createElement("button");
+            dot.type = "button";
             dot.className = "slide-dot";
-            dot.setAttribute("aria-hidden", "true");
+            dot.setAttribute("aria-label", "Ir a la diapositiva " + (d + 1) + " de " + total);
+            dot.addEventListener("click", makeDotHandler(d));
             dotsNav.appendChild(dot);
             dots.push(dot);
         }
@@ -44,8 +49,30 @@
 
     function updateDots(index) {
         for (var i = 0; i < dots.length; i++) {
-            dots[i].classList.toggle("is-active", i === index);
+            var isActive = i === index;
+            dots[i].classList.toggle("is-active", isActive);
+            if (isActive) {
+                dots[i].setAttribute("aria-current", "true");
+            } else {
+                dots[i].removeAttribute("aria-current");
+            }
         }
+    }
+
+    /* Contador "N/total" (esquina inferior derecha): igual que los dots, es de
+       solo lectura y se ancla a .stage. La portada (índice 0) nunca lo muestra
+       aunque cuenta para el total; el resto de slides muestran su posición. */
+    var slideNumberEl = null;
+    if (total > 1) {
+        slideNumberEl = document.createElement("div");
+        slideNumberEl.className = "slide-number";
+        slideNumberEl.setAttribute("aria-hidden", "true");
+        stage.appendChild(slideNumberEl);
+    }
+
+    function updateSlideNumber(index) {
+        if (!slideNumberEl) return;
+        slideNumberEl.textContent = index === 0 ? "" : (index + 1) + "/" + total;
     }
 
     /** Obtiene las fases de una slide, ordenadas por data-phase */
@@ -96,6 +123,7 @@
         current = index;
         main.style.transform = "translateX(-" + (current * SLIDE_WIDTH) + "px)";
         updateDots(current);
+        updateSlideNumber(current);
 
         // Al retroceder, mostrar todas las fases de la slide destino
         if (index < prev) {

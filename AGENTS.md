@@ -35,7 +35,7 @@ El selector CSS es `[data-brand="X"]`, no está acoplado al `<body>`. Las variab
 
 Si el usuario no menciona marca en su prompt, la respuesta correcta es preguntar:
 
-> ¿Qué marca? Productos disponibles: **espublico** (matriz, naranja), **gestiona** (azul petróleo), **esfirma** (dorado), **hacienda-local** (verde), **rrhh** (rojo), **videoactas** (azul oscuro), **tecnologia** (azul cielo), **sistemas** (azul marino), **drag** (azul profundo), **ecityclic** (verde lima), **medidata** (verde selva). ¿Cuál usamos?
+> ¿Qué marca? Productos disponibles: **espublico** (matriz, naranja), **gestiona** (azul petróleo), **gestiona-avanza** (cian), **esfirma** (dorado), **hacienda-local** (verde), **rrhh** (rojo), **videoactas** (azul oscuro), **tecnologia** (azul cielo), **sistemas** (azul marino), **drag** (azul profundo), **ecityclic** (verde lima), **medidata** (verde selva). ¿Cuál usamos?
 
 **Nunca asumir Gestiona por defecto.** Es la paleta del `:root` solo por motivos históricos del sistema; no es una decisión de diseño implícita.
 
@@ -45,6 +45,7 @@ Si el usuario no menciona marca en su prompt, la respuesta correcta es preguntar
 |---|---|---|---|---|
 | `espublico` | esPublico (matriz) | 144 C | `#ff9900` | Naranja corporativo. Alias: `corporativa`, `corporativa-ae`, `contratacion` |
 | `gestiona` | Gestiona | 3145 C | `#006d85` | Azul petróleo. Alias: `factory` |
+| `gestiona-avanza` | Gestiona Avanza | — | `#00a2c4` | Cian. Submarca de formación, comunidad y eventos de Gestiona |
 | `esfirma` | esFirma | 618 C | `#aa9944` | Dorado |
 | `hacienda-local` | Hacienda Local (HL) | 3252 C | `#00bb88` | Verde |
 | `rrhh` | Recursos Humanos | 1925 C | `#ee0055` | Rojo |
@@ -96,7 +97,7 @@ Toda presentación nueva debe importar los assets compartidos vía `../assets/`:
 
 Cada slide es un `<section class="slide-container">` de 1280×720 px. La transición horizontal entre slides la gestiona `navigation.js` mediante `translateX` sobre `<main role="presentation">`.
 
-`navigation.js` inyecta automáticamente una **paginación visual** (bullets) centrada abajo: un `.slide-dot` por slide dentro de `.stage`, con el dot activo expandido a pastilla en el color de marca. Es de solo lectura y no requiere markup; se desactiva sola si solo hay un slide. Estilos en `corporate.css` (`.slide-dots` / `.slide-dot`).
+`navigation.js` inyecta automáticamente una **paginación visual** (bullets) centrada abajo: un `.slide-dot` (`<button>`) por slide dentro de `.stage`, con el dot activo expandido a pastilla en el color de marca. Es clicable — cada dot llama a `goToSlide()` para saltar directamente a esa diapositiva — y no requiere markup; se desactiva sola si solo hay un slide. Estilos en `corporate.css` (`.slide-dots` / `.slide-dot`).
 
 ```html
 <main role="presentation">
