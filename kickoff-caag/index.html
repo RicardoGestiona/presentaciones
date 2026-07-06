@@ -404,87 +404,6 @@
             line-height: 1.1;
         }
 
-        /* Talleres online: grid de grupos con animación de emergencia */
-        .workshop-groups-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 24px;
-            margin-top: 16px;
-        }
-        .workshop-group {
-            position: relative;
-            padding: 24px;
-            background: var(--color-bg-light);
-            border-radius: var(--radius-md);
-            border: 2px solid var(--color-border);
-            transition: border-color 0.3s ease, background-color 0.3s ease;
-            cursor: pointer;
-        }
-        .workshop-group:hover {
-            border-color: var(--color-primary);
-            background: var(--color-primary-soft);
-        }
-        .workshop-group-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 12px;
-            opacity: 0;
-            transform: translate(0, 0);
-            animation: none;
-            transition: opacity 0.3s ease, transform 0.3s ease;
-        }
-        .workshop-group-item:last-child {
-            margin-bottom: 0;
-        }
-        .workshop-group:hover .workshop-group-item {
-            animation: workshopEmerge 0.5s ease forwards;
-        }
-        .workshop-group-item[data-position="0"] { animation-delay: 0s; }
-        .workshop-group-item[data-position="1"] { animation-delay: 0.1s; }
-        .workshop-group-item[data-position="2"] { animation-delay: 0.2s; }
-        .workshop-group-item[data-position="3"] { animation-delay: 0.3s; }
-
-        .workshop-group:not(:hover) .workshop-group-item {
-            opacity: 1;
-            transform: translate(0, 0);
-        }
-
-        .workshop-item-tag {
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            background: var(--color-primary);
-            color: white;
-            font-weight: 700;
-            font-size: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            box-shadow: 0 2px 8px rgba(0, 162, 196, 0.3);
-        }
-        .workshop-group-item p {
-            margin: 0;
-            font-size: 14px;
-            line-height: 1.4;
-            color: var(--color-text-body);
-        }
-        @keyframes workshopEmerge {
-            0% {
-                opacity: 0;
-                transform: scale(0.85) translate(0, 8px);
-            }
-            50% {
-                opacity: 1;
-                transform: scale(1.02) translate(0, -4px);
-            }
-            100% {
-                opacity: 1;
-                transform: scale(1) translate(0, 0);
-            }
-        }
-
         /* Print / exportación PDF: un slide por página */
         @media print {
             @page { size: 1280px 720px; margin: 0; }
@@ -824,78 +743,26 @@
     <section class="slide-container" aria-label="Talleres online">
         <h2 class="slide-title">Talleres online</h2>
         <div class="content-area">
-            <div class="workshop-groups-grid">
-                <!-- Grupo 1: Talleres 1, 2, 3 -->
-                <div class="workshop-group" data-group="1">
-                    <div class="workshop-group-item" data-position="0">
-                        <div class="workshop-item-tag">1</div>
-                        <p>Configuración básica de trámites externos, tesauros y sede electrónica.</p>
-                    </div>
-                    <div class="workshop-group-item" data-position="1">
-                        <div class="workshop-item-tag">2</div>
-                        <p>Gestiona Code.</p>
-                    </div>
-                    <div class="workshop-group-item" data-position="2">
-                        <div class="workshop-item-tag">3</div>
-                        <p>Construcción de documentos inteligentes.</p>
-                    </div>
-                </div>
-
-                <!-- Grupo 2: Talleres 4, 5, 6, 7 -->
-                <div class="workshop-group" data-group="2">
-                    <div class="workshop-group-item" data-position="0">
-                        <div class="workshop-item-tag">4</div>
-                        <p>Configuración de órganos, circuitos de tramitación y pies de recursos.</p>
-                    </div>
-                    <div class="workshop-group-item" data-position="1">
-                        <div class="workshop-item-tag">5</div>
-                        <p>Circuito de resolución singular.</p>
-                    </div>
-                    <div class="workshop-group-item" data-position="2">
-                        <div class="workshop-item-tag">6</div>
-                        <p>Circuito de resolución plural.</p>
-                    </div>
-                    <div class="workshop-group-item" data-position="3">
-                        <div class="workshop-item-tag">7</div>
-                        <p>Tramitación reglada y subprocesos.</p>
-                    </div>
-                </div>
-
-                <!-- Grupo 3: Talleres 9, 10, 11, 12 -->
-                <div class="workshop-group" data-group="3">
-                    <div class="workshop-group-item" data-position="0">
-                        <div class="workshop-item-tag">9</div>
-                        <p>Módulo de diseño de Control Interno.</p>
-                    </div>
-                    <div class="workshop-group-item" data-position="1">
-                        <div class="workshop-item-tag">10</div>
-                        <p>Tramitación 360º de expedientes con gasto.</p>
-                    </div>
-                    <div class="workshop-group-item" data-position="2">
-                        <div class="workshop-item-tag">11</div>
-                        <p>Autoliquidaciones y liquidaciones tributarias.</p>
-                    </div>
-                    <div class="workshop-group-item" data-position="3">
-                        <div class="workshop-item-tag">12</div>
-                        <p>Gestión de facturas.</p>
-                    </div>
-                </div>
-
-                <!-- Grupo 4: Talleres 8, 13, 14 -->
-                <div class="workshop-group" data-group="4">
-                    <div class="workshop-group-item" data-position="0">
-                        <div class="workshop-item-tag">8</div>
-                        <p>Búsqueda avanzada de Gestiona.</p>
-                    </div>
-                    <div class="workshop-group-item" data-position="1">
-                        <div class="workshop-item-tag">13</div>
-                        <p>Creación de dashboards de analítica de datos.</p>
-                    </div>
-                    <div class="workshop-group-item" data-position="2">
-                        <div class="workshop-item-tag">14</div>
-                        <p>Personalización de cuadros de mando para tramitación reglada.</p>
-                    </div>
-                </div>
+            <div class="blocks-grid" style="grid-template-columns: repeat(3, 1fr);">
+                <!-- Bloque 1 -->
+                <div class="block-item phase" data-phase="1"><span class="block-num">1</span><p>Configuración básica de trámites externos, tesauros y sede electrónica.</p></div>
+                <!-- Bloque 2 -->
+                <div class="block-item phase" data-phase="2"><span class="block-num">2</span><p>Gestiona Code.</p></div>
+                <div class="block-item phase" data-phase="2"><span class="block-num">3</span><p>Construcción de documentos inteligentes.</p></div>
+                <!-- Bloque 3 -->
+                <div class="block-item phase" data-phase="3"><span class="block-num">4</span><p>Configuración de órganos, circuitos de tramitación y pies de recursos.</p></div>
+                <div class="block-item phase" data-phase="3"><span class="block-num">5</span><p>Circuito de resolución singular.</p></div>
+                <div class="block-item phase" data-phase="3"><span class="block-num">6</span><p>Circuito de resolución plural.</p></div>
+                <div class="block-item phase" data-phase="3"><span class="block-num">7</span><p>Tramitación reglada y subprocesos.</p></div>
+                <!-- Bloque 4 -->
+                <div class="block-item phase" data-phase="4"><span class="block-num">9</span><p>Módulo de diseño de Control Interno.</p></div>
+                <div class="block-item phase" data-phase="4"><span class="block-num">10</span><p>Tramitación 360º de expedientes con gasto.</p></div>
+                <div class="block-item phase" data-phase="4"><span class="block-num">11</span><p>Autoliquidaciones y liquidaciones tributarias.</p></div>
+                <div class="block-item phase" data-phase="4"><span class="block-num">12</span><p>Gestión de facturas.</p></div>
+                <!-- Bloque 5 -->
+                <div class="block-item phase" data-phase="5"><span class="block-num">8</span><p>Búsqueda avanzada de Gestiona.</p></div>
+                <div class="block-item phase" data-phase="5"><span class="block-num">13</span><p>Creación de dashboards de analítica de datos.</p></div>
+                <div class="block-item phase" data-phase="5"><span class="block-num">14</span><p>Personalización de cuadros de mando para tramitación reglada.</p></div>
             </div>
         </div>
     </section>
