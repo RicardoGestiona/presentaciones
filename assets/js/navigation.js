@@ -163,6 +163,9 @@
         main.style.transform = "translateX(-" + (current * SLIDE_WIDTH) + "px)";
         updateDots(current);
         updateSlideNumber(current);
+        // Marca de fondo oscuro (slides de portada de sección tipo .section-title-layout),
+        // por si la presentación necesita adaptar elementos fijos anclados a .stage (logos, etc.)
+        stage.classList.toggle("is-dark-slide", !!slides[current].querySelector(".section-title-layout"));
 
         // Al retroceder, mostrar todas las fases de la slide destino
         if (index < prev) {
