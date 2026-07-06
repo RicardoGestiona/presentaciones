@@ -110,6 +110,10 @@
             phases.forEach(function (el) {
                 if (el.dataset.phase === phaseNum) {
                     el.classList.add("visible");
+                    el.classList.remove("previous");
+                } else if (el.classList.contains("visible")) {
+                    // Los elementos ya mostrados pasan a "previous" (gris)
+                    el.classList.add("previous");
                 }
             });
             return true;
