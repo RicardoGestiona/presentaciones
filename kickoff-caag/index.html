@@ -734,14 +734,12 @@
     </section>
 
     <!-- SLIDE 13: Calendario interactivo Promoción 33 -->
-    <section class="slide-container" aria-label="Calendario interactivo de la Promoción 33">
-        <h2 class="slide-title">Calendario de la Promoción 33</h2>
-        <div class="content-area">
-            <iframe src="./calendario-promocion-33.embed.html"
-                    title="Calendario interactivo de la Promoción 33"
-                    loading="lazy"
-                    style="flex-grow: 1; width: 100%; min-height: 0; border: none; border-radius: 12px; background: var(--color-white);"></iframe>
-        </div>
+    <section class="slide-container" aria-label="Calendario interactivo de la Promoción 33" style="padding: 0;">
+        <!-- El embed dibuja un lienzo fijo de 1920x1080 (16:9): se escala a 2/3 para llenar el slide de 1280x720 -->
+        <iframe src="./calendario-promocion-33.embed.html"
+                title="Calendario interactivo de la Promoción 33"
+                loading="lazy"
+                style="width: 1920px; height: 1080px; flex: none; border: none; transform: scale(calc(1280 / 1920)); transform-origin: top left; position: relative; z-index: 1;"></iframe>
     </section>
 
     <!-- SLIDE 14: Recursos de aprendizaje -->
