@@ -22,10 +22,12 @@
         /* Portada: logotipo completo Gestiona Avanza sobre el título */
         .cover-logo {
             display: block;
-            width: 240px;
+            width: 340px;
             height: auto;
-            margin: 0 auto 24px;
+            margin: -48px auto 32px;
         }
+        /* En la portada el logotipo completo ya identifica la marca: fuera isotipo */
+        .stage.is-first-slide .brand-isotipo { display: none; }
 
         /* Portada: título en dos niveles (categoría + titular) */
         .title-eyebrow {
@@ -790,62 +792,10 @@
     <section class="slide-container" aria-label="Portada: Gestiona for Developers">
         <div class="title-layout">
             <img class="cover-logo" src="img-corp-gestiona-avanza/Gestiona-Avanza-RGB.png" alt="Gestiona Avanza">
-            <span class="badge badge-gestiona mx-auto mb-md">Promoción 5</span>
             <p class="title-eyebrow">Certificación Gestiona Avanza</p>
             <h1>Gestiona <span>for Developers</span></h1>
             <p class="subtitle">Integra Gestiona sin complicaciones</p>
-            <p class="text-sm text-muted mt-md">Sesión de kick-off · 14 de septiembre de 2026</p>
-        </div>
-    </section>
-
-    <!-- SLIDE: Nuestra API -->
-    <section class="slide-container" aria-label="Nuestra API: potente, documentada, gratuita y de arquitectura abierta">
-        <h2 class="slide-title">Nuestra API</h2>
-        <div class="content-area">
-            <div class="tiled-content">
-                <article class="tile phase" data-phase="1">
-                    <div class="icon" aria-hidden="true"><i class="fa-solid fa-bolt"></i></div>
-                    <h3>Potente</h3>
-                    <p>219 recursos REST agrupados en 46 espacios.</p>
-                </article>
-                <article class="tile phase" data-phase="2">
-                    <div class="icon" aria-hidden="true"><i class="fa-solid fa-book-open"></i></div>
-                    <h3>Documentada</h3>
-                    <p>developers.gestiona.espublico.com</p>
-                </article>
-                <article class="tile phase" data-phase="3">
-                    <div class="icon" aria-hidden="true"><i class="fa-solid fa-gift"></i></div>
-                    <h3>Gratuita</h3>
-                    <p>Con servicio de soporte a desarrolladores.</p>
-                </article>
-                <article class="tile phase" data-phase="4">
-                    <div class="icon" aria-hidden="true"><i class="fa-solid fa-diagram-project"></i></div>
-                    <h3>Arquitectura abierta</h3>
-                    <p>Diseñada para conectarse a todo.</p>
-                </article>
-            </div>
-        </div>
-    </section>
-
-    <!-- SLIDE: Cómo se integra -->
-    <section class="slide-container" aria-label="Cómo se integra: flujos documentales y procesos reglados">
-        <h2 class="slide-title">Dos formas de integrarse con Gestiona</h2>
-        <div class="content-area" style="justify-content: center;">
-            <div class="two-column">
-                <div class="card card--bordered phase" data-phase="1" style="text-align: center;">
-                    <div class="icon-circle mx-auto mb-sm"><i class="fa-solid fa-file-signature" aria-hidden="true"></i></div>
-                    <h3>Flujos documentales</h3>
-                    <p>La lógica se parametriza en el circuito de firma; el conector solo envía el documento e invoca el flujo. Cambiar la lógica no exige tocar la integración.</p>
-                </div>
-                <div class="card card--bordered phase" data-phase="2" style="text-align: center;">
-                    <div class="icon-circle mx-auto mb-sm"><i class="fa-solid fa-diagram-project" aria-hidden="true"></i></div>
-                    <h3>Procesos reglados</h3>
-                    <p>La lógica de negocio vive en la tramitación reglada; el conector se limita a intercambiar datos. El mismo conector sirve para cualquier procedimiento.</p>
-                </div>
-            </div>
-            <div class="highlight-box mt-md phase phase--fade" data-phase="3">
-                <p>Modelo <strong>low-code</strong>: desarrollo ágil de conectores y bajo mantenimiento.</p>
-            </div>
+            <span class="badge badge-gestiona mx-auto mt-md">Promoción 5</span>
         </div>
     </section>
 
@@ -1120,12 +1070,12 @@
                 <div class="feature-card phase" data-phase="1">
                     <div class="icon-circle icon-circle--lg mx-auto"><i class="fa-solid fa-people-group" aria-hidden="true"></i></div>
                     <h3>Comunidad</h3>
-                    <p>Canal de la promoción en Slack: dudas compartidas y conversación entre alumnos.</p>
+                    <p>Canales para conversar con docentes y compañeros de cualquier cosa.</p>
                 </div>
                 <div class="feature-card phase" data-phase="2">
                     <div class="icon-circle icon-circle--lg mx-auto"><i class="fa-solid fa-comment-dots" aria-hidden="true"></i></div>
-                    <h3>Consultas directas</h3>
-                    <p>Mensajes directos con el equipo docente para cuestiones concretas.</p>
+                    <h3>#canales-temáticos</h3>
+                    <p>Canales de soporte, tutorización y apoyo al alumno.</p>
                 </div>
                 <div class="feature-card phase" data-phase="3">
                     <div class="icon-circle icon-circle--lg mx-auto"><i class="fa-solid fa-bullhorn" aria-hidden="true"></i></div>
@@ -1288,34 +1238,6 @@
                             <li><i class="fa-solid fa-check" aria-hidden="true"></i> Diseño de una integración. Soporte y asistencia al diseño de una integración.</li>
                         </ul>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SLIDE 12: Calendario interactivo Promoción 33 -->
-    <section class="slide-container" aria-label="Hitos del programa formativo">
-        <h2 class="slide-title">Hitos programa formativo</h2>
-        <div class="content-area" style="justify-content: center;">
-            <div class="timeline-legend mb-md">
-                <span><span class="legend-dot" style="background: var(--color-primary);"></span>Evento online</span>
-                <span><span class="legend-dot" style="background: var(--color-bg-dark);"></span>Sesión presencial</span>
-            </div>
-            <div class="months-timeline" style="grid-template-columns: repeat(3, 1fr);">
-                <div class="month-node phase" data-phase="1">
-                    <div class="month-name">Septiembre 2026</div>
-                    <div class="month-dot month-dot--online"></div>
-                    <div class="month-event"><strong>Kickoff</strong>Sesión de inicio online · 14 de septiembre.</div>
-                </div>
-                <div class="month-node phase" data-phase="2">
-                    <div class="month-name">Noviembre 2026</div>
-                    <div class="month-dot month-dot--onsite"></div>
-                    <div class="month-event"><strong>Sesión presencial 1</strong>Talleres y actividades prácticas.</div>
-                </div>
-                <div class="month-node phase" data-phase="3">
-                    <div class="month-name">Marzo 2027</div>
-                    <div class="month-dot month-dot--online"></div>
-                    <div class="month-event"><strong>Evaluación</strong>Límite de presentación: 31 de marzo.</div>
                 </div>
             </div>
         </div>
@@ -1524,6 +1446,66 @@
     </section>
 
     <!-- SLIDE 24: SECCIÓN Módulo 01 -->
+    <!-- SLIDE: SECCIÓN Módulo 00 API de Gestiona -->
+    <section class="slide-container" aria-label="Sección: Módulo 00 API de Gestiona">
+        <div class="section-title-layout">
+            <h2>00 · API de Gestiona</h2>
+            <hr aria-hidden="true">
+            <p class="subtitle">Evolución y estrategia</p>
+        </div>
+    </section>
+
+    <!-- SLIDE: Nuestra API -->
+    <section class="slide-container" aria-label="Nuestra API: potente, documentada, gratuita y de arquitectura abierta">
+        <h2 class="slide-title">Nuestra API</h2>
+        <div class="content-area">
+            <div class="tiled-content">
+                <article class="tile phase" data-phase="1">
+                    <div class="icon" aria-hidden="true"><i class="fa-solid fa-bolt"></i></div>
+                    <h3>Potente</h3>
+                    <p>219 recursos REST agrupados en 46 espacios.</p>
+                </article>
+                <article class="tile phase" data-phase="2">
+                    <div class="icon" aria-hidden="true"><i class="fa-solid fa-book-open"></i></div>
+                    <h3>Documentada</h3>
+                    <p>developers.gestiona.espublico.com</p>
+                </article>
+                <article class="tile phase" data-phase="3">
+                    <div class="icon" aria-hidden="true"><i class="fa-solid fa-gift"></i></div>
+                    <h3>Gratuita</h3>
+                    <p>Con servicio de soporte a desarrolladores.</p>
+                </article>
+                <article class="tile phase" data-phase="4">
+                    <div class="icon" aria-hidden="true"><i class="fa-solid fa-diagram-project"></i></div>
+                    <h3>Arquitectura abierta</h3>
+                    <p>Diseñada para conectarse a todo.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE: Cómo se integra -->
+    <section class="slide-container" aria-label="Cómo se integra: flujos documentales y procesos reglados">
+        <h2 class="slide-title">Dos formas de integrarse con Gestiona</h2>
+        <div class="content-area" style="justify-content: center;">
+            <div class="two-column">
+                <div class="card card--bordered phase" data-phase="1" style="text-align: center;">
+                    <div class="icon-circle mx-auto mb-sm"><i class="fa-solid fa-file-signature" aria-hidden="true"></i></div>
+                    <h3>Flujos documentales</h3>
+                    <p>La lógica se parametriza en el circuito de firma; el conector solo envía el documento e invoca el flujo. Cambiar la lógica no exige tocar la integración.</p>
+                </div>
+                <div class="card card--bordered phase" data-phase="2" style="text-align: center;">
+                    <div class="icon-circle mx-auto mb-sm"><i class="fa-solid fa-diagram-project" aria-hidden="true"></i></div>
+                    <h3>Procesos reglados</h3>
+                    <p>La lógica de negocio vive en la tramitación reglada; el conector se limita a intercambiar datos. El mismo conector sirve para cualquier procedimiento.</p>
+                </div>
+            </div>
+            <div class="highlight-box mt-md phase phase--fade" data-phase="3">
+                <p>Modelo <strong>low-code</strong>: desarrollo ágil de conectores y bajo mantenimiento.</p>
+            </div>
+        </div>
+    </section>
+
     <section class="slide-container" aria-label="Sección: Módulo 01 Gestiona Basics">
         <div class="section-title-layout">
             <h2>01 · Gestiona Basics</h2>

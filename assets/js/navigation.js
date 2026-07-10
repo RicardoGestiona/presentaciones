@@ -166,6 +166,8 @@
         // Marca de fondo oscuro (slides de portada de sección tipo .section-title-layout),
         // por si la presentación necesita adaptar elementos fijos anclados a .stage (logos, etc.)
         stage.classList.toggle("is-dark-slide", !!slides[current].querySelector(".section-title-layout"));
+        // Marca de portada, por si la presentación quiere ocultar/adaptar elementos fijos en la slide 1
+        stage.classList.toggle("is-first-slide", current === 0);
 
         // Al retroceder, mostrar todas las fases de la slide destino
         if (index < prev) {
