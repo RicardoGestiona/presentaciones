@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kick-off Certificación Administración Avanzada — Gestiona Avanza</title>
+    <title>Kick-off Gestiona for Developers — Gestiona Avanza</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
@@ -208,7 +208,7 @@
             width: 22px;
             height: 22px;
             border-radius: 50%;
-            margin: 0 auto 18px;
+            margin: 15px auto 18px;
             position: relative;
             z-index: 1;
             border: 4px solid white;
@@ -575,31 +575,31 @@
         .blocks-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 12px 24px;
+            gap: 20px 32px;
             margin-top: 16px;
         }
         .block-item {
             display: flex;
             align-items: center;
-            gap: 14px;
+            gap: 18px;
             background: var(--color-bg-light);
             border-radius: var(--radius-sm);
-            padding: 12px 16px;
+            padding: 20px 24px;
         }
         .block-item .block-num {
-            width: 34px;
-            height: 34px;
+            width: 44px;
+            height: 44px;
             border-radius: 50%;
             background: var(--color-primary);
             color: white;
             font-weight: 700;
-            font-size: 15px;
+            font-size: 17px;
             display: flex;
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
         }
-        .block-item p { margin: 0; font-size: 15px; line-height: 1.3; }
+        .block-item p { margin: 0; font-size: 17px; line-height: 1.4; }
         .block-item .block-module {
             margin: 0 0 2px;
             font-size: 12px;
@@ -620,7 +620,7 @@
             opacity: 1;
             pointer-events: auto;
             background: var(--color-primary-soft);
-            border: 2px solid var(--color-primary);
+            border: 1px solid var(--color-primary);
         }
         .block-item.phase.visible .block-num {
             background: var(--color-primary);
@@ -647,6 +647,13 @@
         .block-item.phase.previous p {
             color: var(--color-text-muted);
         }
+        /* Variante compacta: para grids de 4+ filas que si no invaden la banda
+           inferior de paginación (.slide-dots, fija sobre el stage). Mantiene
+           el mismo estilo visual, solo con menos espacio vertical. */
+        .blocks-grid--compact { gap: 12px 32px; margin-top: 8px; }
+        .blocks-grid--compact .block-item { padding: 12px 22px; }
+        .blocks-grid--compact .block-item .block-num { width: 36px; height: 36px; font-size: 15px; }
+        .blocks-grid--compact .block-item p { font-size: 16px; }
 
         /* Rótulo dinámico de contexto: icono + nombre del curso/bloque activo (entre el
            título de la slide y la rejilla de elementos), actualizado por navigation.js
@@ -654,13 +661,11 @@
         .phase-context-label {
             display: flex;
             align-items: center;
-            gap: 16px;
+            gap: 14px;
             width: fit-content;
-            margin: 4px 0 28px;
-            padding: 10px 24px 10px 12px;
-            border-radius: var(--radius-md);
-            background: var(--color-primary-soft);
-            border: 2px solid var(--color-primary);
+            margin: 24px 0 56px;
+            padding-left: 18px;
+            border-left: 4px solid var(--color-primary);
             opacity: 0;
             transition: opacity 0.3s ease;
         }
@@ -668,9 +673,9 @@
             opacity: 1;
         }
         .phase-context-icon {
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
             background: var(--color-primary);
             display: flex;
             align-items: center;
@@ -678,14 +683,15 @@
             flex-shrink: 0;
         }
         .phase-context-icon i {
-            font-size: 20px;
+            font-size: 17px;
             color: var(--color-white);
         }
         .phase-context-text {
-            font-size: 25px;
+            font-size: 23px;
             font-weight: 700;
             color: var(--color-primary-dark);
-            letter-spacing: -0.2px;
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
         }
 
         /* Lista de objetivos/puntos ampliada: ocupa más espacio, mayor legibilidad */
@@ -773,21 +779,64 @@
 <main role="presentation">
 
     <!-- SLIDE 1: Portada -->
-    <section class="slide-container" aria-label="Portada: Certificación Administración Avanzada de Gestiona">
+    <section class="slide-container" aria-label="Portada: Gestiona for Developers">
         <div class="title-layout">
-            <span class="badge badge-gestiona mx-auto mb-md">Promoción 33</span>
+            <span class="badge badge-gestiona mx-auto mb-md">Promoción 5</span>
             <p class="title-eyebrow">Certificación Gestiona Avanza</p>
-            <h1><span>Administración avanzada</span> de Gestiona</h1>
-            <p class="subtitle">Sesión de kick-off · 6 de julio de 2026</p>
+            <h1>Gestiona <span>for Developers</span></h1>
+            <p class="subtitle">Integra Gestiona sin complicaciones</p>
+            <p class="text-sm text-muted mt-md">Sesión de kick-off · 14 de septiembre de 2026</p>
         </div>
     </section>
 
-    <!-- SLIDE 2: Por qué un programa de certificación -->
-    <section class="slide-container" aria-label="Por qué un programa de certificación">
-        <h2 class="slide-title">¿Por qué un programa de certificación?</h2>
-        <div class="quote-layout">
-            <blockquote class="phase phase--fade" data-phase="1">Queremos que aprovechéis al máximo <strong>todo el potencial de Gestiona</strong></blockquote>
-            <hr class="accent-line mt-lg phase phase--fade" data-phase="1" aria-hidden="true">
+    <!-- SLIDE: Nuestra API -->
+    <section class="slide-container" aria-label="Nuestra API: potente, documentada, gratuita y de arquitectura abierta">
+        <h2 class="slide-title">Nuestra API</h2>
+        <div class="content-area">
+            <div class="tiled-content">
+                <article class="tile phase" data-phase="1">
+                    <div class="icon" aria-hidden="true"><i class="fa-solid fa-bolt"></i></div>
+                    <h3>Potente</h3>
+                    <p>219 recursos REST agrupados en 46 espacios.</p>
+                </article>
+                <article class="tile phase" data-phase="2">
+                    <div class="icon" aria-hidden="true"><i class="fa-solid fa-book-open"></i></div>
+                    <h3>Documentada</h3>
+                    <p>developers.gestiona.espublico.com</p>
+                </article>
+                <article class="tile phase" data-phase="3">
+                    <div class="icon" aria-hidden="true"><i class="fa-solid fa-gift"></i></div>
+                    <h3>Gratuita</h3>
+                    <p>Con servicio de soporte a desarrolladores.</p>
+                </article>
+                <article class="tile phase" data-phase="4">
+                    <div class="icon" aria-hidden="true"><i class="fa-solid fa-diagram-project"></i></div>
+                    <h3>Arquitectura abierta</h3>
+                    <p>Diseñada para conectarse a todo.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE: Cómo se integra -->
+    <section class="slide-container" aria-label="Cómo se integra: flujos documentales y procesos reglados">
+        <h2 class="slide-title">Dos formas de integrarse con Gestiona</h2>
+        <div class="content-area" style="justify-content: center;">
+            <div class="two-column">
+                <div class="card card--bordered phase" data-phase="1" style="text-align: center;">
+                    <div class="icon-circle mx-auto mb-sm"><i class="fa-solid fa-file-signature" aria-hidden="true"></i></div>
+                    <h3>Flujos documentales</h3>
+                    <p>La lógica se parametriza en el circuito de firma; el conector solo envía el documento e invoca el flujo. Cambiar la lógica no exige tocar la integración.</p>
+                </div>
+                <div class="card card--bordered phase" data-phase="2" style="text-align: center;">
+                    <div class="icon-circle mx-auto mb-sm"><i class="fa-solid fa-diagram-project" aria-hidden="true"></i></div>
+                    <h3>Procesos reglados</h3>
+                    <p>La lógica de negocio vive en la tramitación reglada; el conector se limita a intercambiar datos. El mismo conector sirve para cualquier procedimiento.</p>
+                </div>
+            </div>
+            <div class="highlight-box mt-md phase phase--fade" data-phase="3">
+                <p>Modelo <strong>low-code</strong>: desarrollo ágil de conectores y bajo mantenimiento.</p>
+            </div>
         </div>
     </section>
 
@@ -849,6 +898,64 @@
         </div>
     </section>
 
+    <!-- SLIDE 2: Por qué un programa de certificación -->
+    <section class="slide-container" aria-label="Por qué un programa de certificación">
+        <h2 class="slide-title">¿Por qué un programa de certificación?</h2>
+        <div class="quote-layout">
+            <blockquote class="phase phase--fade" data-phase="1">Queremos que aprovechéis al máximo <strong>todo el potencial del API de Gestiona</strong></blockquote>
+            <hr class="accent-line mt-lg phase phase--fade" data-phase="1" aria-hidden="true">
+        </div>
+    </section>
+
+    <!-- SLIDE: Cómo hemos llegado aquí -->
+    <section class="slide-container" aria-label="Cómo hemos llegado hasta Gestiona for Developers">
+        <h2 class="slide-title">¿Cómo hemos llegado aquí?</h2>
+        <div class="content-area">
+            <div class="tech-timeline" style="grid-template-columns: repeat(5, 1fr);">
+                <div class="tech-year-node phase" data-phase="1">
+                    <div class="tech-year">2014</div>
+                    <div class="tech-dot"></div>
+                    <div class="tech-card">
+                        <div class="icon" aria-hidden="true"><i class="fa-solid fa-headset"></i></div>
+                        <h3>Soporte técnico API</h3>
+                    </div>
+                </div>
+                <div class="tech-year-node phase" data-phase="2">
+                    <div class="tech-year">2016</div>
+                    <div class="tech-dot"></div>
+                    <div class="tech-card">
+                        <div class="icon" aria-hidden="true"><i class="fa-solid fa-comments"></i></div>
+                        <h3>Consultoría funcional</h3>
+                    </div>
+                </div>
+                <div class="tech-year-node phase" data-phase="3">
+                    <div class="tech-year">2020</div>
+                    <div class="tech-dot"></div>
+                    <div class="tech-card">
+                        <div class="icon" aria-hidden="true"><i class="fa-solid fa-diagram-project"></i></div>
+                        <h3>OTP Gestiona</h3>
+                    </div>
+                </div>
+                <div class="tech-year-node phase" data-phase="4">
+                    <div class="tech-year">2024</div>
+                    <div class="tech-dot"></div>
+                    <div class="tech-card">
+                        <div class="icon" aria-hidden="true"><i class="fa-solid fa-industry"></i></div>
+                        <h3>Factory Gestiona</h3>
+                    </div>
+                </div>
+                <div class="tech-year-node phase" data-phase="5">
+                    <div class="tech-year">2025</div>
+                    <div class="tech-dot"></div>
+                    <div class="tech-card">
+                        <div class="icon" aria-hidden="true"><i class="fa-solid fa-code"></i></div>
+                        <h3>Gestiona for Developers</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- SLIDE 4: Fases del aprendizaje -->
     <section class="slide-container" aria-label="Las fases del aprendizaje de Maslow: un ciclo continuo">
         <h2 class="slide-title">Las fases del aprendizaje de Maslow</h2>
@@ -885,28 +992,28 @@
                         <div class="cycle-badge">1</div>
                         <div class="cycle-label">
                             <h3>Incompetencia inconsciente</h3>
-                            <p>No sé lo que no sé. Uso Gestiona sin ser consciente de todo su potencial.</p>
+                            <p>No sé lo que no sé. Uso Gestiona a diario. Creo que tenía una API, pero no la he utilizado nunca.</p>
                         </div>
                     </div>
                     <div class="cycle-node cycle-node--2 phase phase--fade" data-phase="2">
                         <div class="cycle-badge">2</div>
                         <div class="cycle-label">
                             <h3>Incompetencia consciente</h3>
-                            <p>Descubro todo lo que la herramienta puede hacer y lo que aún no domino. Me inscribo en el programa de certificación.</p>
+                            <p>Me explican las posibilidades que tiene la API y lo que podríamos hacer para integrar las apps de la entidad. Me inscribo en el programa de certificación.</p>
                         </div>
                     </div>
                     <div class="cycle-node cycle-node--3 phase phase--fade" data-phase="3">
                         <div class="cycle-badge">3</div>
                         <div class="cycle-label">
                             <h3>Competencia consciente</h3>
-                            <p>Como ya soy certificado, aplico lo aprendido con método: configuro y parametrizo con criterio y control.</p>
+                            <p>Ya soy usuario certificado. He desplegado integraciones en producción que aportan mucho valor en mi entidad.</p>
                         </div>
                     </div>
                     <div class="cycle-node cycle-node--4 phase phase--fade" data-phase="4">
                         <div class="cycle-badge">4</div>
                         <div class="cycle-label">
                             <h3>Competencia inconsciente</h3>
-                            <p>Domino todo lo que necesito para mi día a día... hasta que un nuevo módulo o novedad de Gestiona abra otro ciclo.</p>
+                            <p>Domino la API. Se me ocurren cada día nuevos usos para la API... hasta que un nuevo módulo o novedad de Gestiona me descubra lo que aún no sé que no sé.</p>
                         </div>
                     </div>
                 </div>
@@ -918,22 +1025,26 @@
     <section class="slide-container" aria-label="Objetivos del programa">
         <h2 class="slide-title">Objetivos del programa</h2>
         <div class="content-area" style="justify-content: center;">
-            <div class="feature-cards">
+            <div class="feature-cards" style="max-width: 1152px;">
                 <div class="feature-card phase" data-phase="1">
-                    <div class="icon-circle icon-circle--lg mx-auto"><i class="fa-solid fa-sliders" aria-hidden="true"></i></div>
-                    <h3>Capacitar</h3>
+                    <div class="icon-circle icon-circle--lg mx-auto"><i class="fa-solid fa-plug" aria-hidden="true"></i></div>
+                    <h3>Integraciones con Gestiona</h3>
                 </div>
                 <div class="feature-card phase" data-phase="2">
                     <div class="icon-circle icon-circle--lg mx-auto"><i class="fa-solid fa-diagram-project" aria-hidden="true"></i></div>
-                    <h3>Transmitir una metodología</h3>
+                    <h3>Metodología de trabajo</h3>
                 </div>
                 <div class="feature-card phase" data-phase="3">
+                    <div class="icon-circle icon-circle--lg mx-auto"><i class="fa-solid fa-user-graduate" aria-hidden="true"></i></div>
+                    <h3>Expertos del Grupo</h3>
+                </div>
+                <div class="feature-card phase" data-phase="4">
                     <div class="icon-circle icon-circle--lg mx-auto"><i class="fa-solid fa-graduation-cap" aria-hidden="true"></i></div>
                     <h3>Formación continua</h3>
                 </div>
-                <div class="feature-card phase" data-phase="4">
+                <div class="feature-card phase" data-phase="5">
                     <div class="icon-circle icon-circle--lg mx-auto"><i class="fa-solid fa-people-group" aria-hidden="true"></i></div>
-                    <h3>Comunidad</h3>
+                    <h3>Comunidad tecnológica</h3>
                 </div>
             </div>
         </div>
@@ -974,7 +1085,7 @@
             <div class="feature-cards">
                 <div class="feature-card phase" data-phase="1">
                     <div class="icon-circle icon-circle--lg mx-auto"><i class="fa-solid fa-users" aria-hidden="true"></i></div>
-                    <h3>Red de administradores</h3>
+                    <h3>Red de desarrolladores</h3>
                 </div>
                 <div class="feature-card phase" data-phase="2">
                     <div class="icon-circle icon-circle--lg mx-auto"><i class="fa-solid fa-comments" aria-hidden="true"></i></div>
@@ -992,20 +1103,20 @@
         </div>
     </section>
 
-    <!-- SLIDE: Canales de WhatsApp -->
-    <section class="slide-container" aria-label="WhatsApp Gestiona Avanza">
-        <h2 class="slide-title">WhatsApp Gestiona Avanza</h2>
+    <!-- SLIDE: Slack Gestiona for Developers -->
+    <section class="slide-container" aria-label="Comunicación: Slack Gestiona for Developers">
+        <h2 class="slide-title">Slack Gestiona for Developers</h2>
         <div class="content-area" style="justify-content: center;">
             <div class="feature-cards">
                 <div class="feature-card phase" data-phase="1">
                     <div class="icon-circle icon-circle--lg mx-auto"><i class="fa-solid fa-people-group" aria-hidden="true"></i></div>
                     <h3>Comunidad</h3>
-                    <p>Canal del grupo de la promoción: dudas compartidas y conversación entre alumnos.</p>
+                    <p>Canal de la promoción en Slack: dudas compartidas y conversación entre alumnos.</p>
                 </div>
                 <div class="feature-card phase" data-phase="2">
                     <div class="icon-circle icon-circle--lg mx-auto"><i class="fa-solid fa-comment-dots" aria-hidden="true"></i></div>
                     <h3>Consultas directas</h3>
-                    <p>Línea abierta con el equipo docente para cuestiones concretas.</p>
+                    <p>Mensajes directos con el equipo docente para cuestiones concretas.</p>
                 </div>
                 <div class="feature-card phase" data-phase="3">
                     <div class="icon-circle icon-circle--lg mx-auto"><i class="fa-solid fa-bullhorn" aria-hidden="true"></i></div>
@@ -1033,6 +1144,171 @@
             <h2>Programa académico</h2>
             <hr aria-hidden="true">
             <p class="subtitle">Recursos, calendario, plan de aprendizaje y evaluación</p>
+        </div>
+    </section>
+
+    <!-- SLIDE 14: Recursos de aprendizaje -->
+    <section class="slide-container" aria-label="Recursos de aprendizaje">
+        <h2 class="slide-title">Recursos de aprendizaje</h2>
+        <div class="content-area" style="justify-content: center;">
+            <div class="feature-cards">
+                <div class="feature-card phase" data-phase="1">
+                    <div class="icon-circle icon-circle--lg mx-auto"><i class="fa-solid fa-book" aria-hidden="true"></i></div>
+                    <h3>1 · Plan de aprendizaje</h3>
+                    <p>Estudio del contenido teórico en la plataforma, al ritmo de cada alumno.</p>
+                </div>
+                <div class="feature-card phase" data-phase="2">
+                    <div class="icon-circle icon-circle--lg mx-auto"><i class="fa-solid fa-video" aria-hidden="true"></i></div>
+                    <h3>2 · Talleres online</h3>
+                    <p>Sesiones monográficas en directo sobre funcionalidades clave.</p>
+                </div>
+                <div class="feature-card phase" data-phase="3">
+                    <div class="icon-circle icon-circle--lg mx-auto"><i class="fa-solid fa-chalkboard-user" aria-hidden="true"></i></div>
+                    <h3>3 · Sesiones presenciales</h3>
+                    <p>Dos semanas de formación práctica con docentes especialistas.</p>
+                </div>
+                <div class="feature-card phase" data-phase="4">
+                    <div class="icon-circle icon-circle--lg mx-auto"><i class="fa-solid fa-mug-hot" aria-hidden="true"></i></div>
+                    <h3>4 · Coffee &amp; Rest</h3>
+                    <p>Sesiones voluntarias para resolver dudas y compartir experiencias entre alumnos y docentes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE 15: Plan de aprendizaje (6 módulos) -->
+    <section class="slide-container" aria-label="Plan de aprendizaje" data-phase-titles='{"1":{"text":"01 · Gestiona Basics","icon":"fa-cubes"},"2":{"text":"02 · API de Gestiona","icon":"fa-plug"},"3":{"text":"03 · Automatización y orquestación","icon":"fa-gears"}}'>
+        <h2 class="slide-title">Plan de aprendizaje</h2>
+        <div class="content-area">
+            <div class="phase-context-label" data-phase-label aria-live="polite">
+                <span class="phase-context-icon" aria-hidden="true"><i data-phase-label-icon></i></span>
+                <span class="phase-context-text" data-phase-label-text></span>
+            </div>
+            <div class="blocks-grid" style="grid-template-columns: repeat(2, 1fr); max-width: 760px; margin-left: auto; margin-right: auto;">
+                <div class="block-item phase" data-phase="1"><span class="block-num">1</span><p>Gestiona Basics</p></div>
+                <div class="block-item phase" data-phase="1"><span class="block-num">2</span><p>Programación con Gestiona Code</p></div>
+                <div class="block-item phase" data-phase="2"><span class="block-num">3</span><p>API de Gestiona</p></div>
+                <div class="block-item phase" data-phase="2"><span class="block-num">4</span><p>Integraciones unidireccionales</p></div>
+                <div class="block-item phase" data-phase="2"><span class="block-num">5</span><p>Integraciones bidireccionales</p></div>
+                <div class="block-item phase" data-phase="3"><span class="block-num">6</span><p>Automatización de procesos con n8n</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE: Objetivos de aprendizaje -->
+    <section class="slide-container" aria-label="Objetivos de aprendizaje del programa">
+        <h2 class="slide-title">Objetivos de aprendizaje</h2>
+        <div class="content-area" style="justify-content: center;">
+            <ul class="bullet-list bullet-list--lg" style="max-width: 1120px;">
+                <li><i class="fa-solid fa-code" aria-hidden="true"></i> Capacitar en la <strong>programación de procedimientos</strong> con la plataforma low-code de Gestiona.</li>
+                <li><i class="fa-solid fa-plug" aria-hidden="true"></i> Conocer los <strong>recursos de integración</strong> de la API de Gestiona.</li>
+                <li><i class="fa-solid fa-arrow-right-to-bracket" aria-hidden="true"></i> Desarrollar una <strong>integración unidireccional</strong> con Gestiona.</li>
+                <li><i class="fa-solid fa-right-left" aria-hidden="true"></i> Configurar un <strong>procedimiento reglado</strong> que incluya una integración de intercambio de datos entre sistemas.</li>
+                <li><i class="fa-solid fa-gears" aria-hidden="true"></i> Capacitar en el uso de <strong>herramientas de automatización</strong>.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- SLIDE: Competencias a desarrollar -->
+    <section class="slide-container" aria-label="Competencias a desarrollar">
+        <h2 class="slide-title">Competencias a desarrollar</h2>
+        <div class="content-area" style="justify-content: center;">
+            <ul class="bullet-list" style="max-width: 1152px;">
+                <li><i class="fa-solid fa-sliders" aria-hidden="true"></i> <strong>Configuración general de Gestiona:</strong> usuarios, catálogo de procedimientos, procesos de firma, registro electrónico y tramitación de expedientes en el escritorio de tramitación.</li>
+                <li><i class="fa-solid fa-diagram-project" aria-hidden="true"></i> <strong>Diseño de integraciones:</strong> capacidad de abstracción para diseñar flujos de integración entre sistemas, adaptando la lógica a las necesidades de ambos.</li>
+                <li><i class="fa-solid fa-book" aria-hidden="true"></i> <strong>Utilización de la API:</strong> conocimiento exhaustivo de la documentación oficial, espacios, métodos y recursos de integración disponibles.</li>
+                <li><i class="fa-solid fa-arrow-right-to-bracket" aria-hidden="true"></i> <strong>Integraciones unidireccionales:</strong> despliegue de integraciones en las que un sistema consulta información y realiza operaciones de inserción en Gestiona.</li>
+                <li><i class="fa-solid fa-right-left" aria-hidden="true"></i> <strong>Orquestación de flujos con integración:</strong> desarrollo de integraciones bidireccionales que combinan lógica programada en Gestiona con sistemas externos.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- SLIDE 16: Talleres online -->
+    <section class="slide-container" aria-label="Talleres online" data-phase-titles='{"1":{"text":"01 · Gestiona Basics","icon":"fa-cubes"},"2":{"text":"02 · API de Gestiona","icon":"fa-plug"},"3":{"text":"03 · Automatización y orquestación","icon":"fa-gears"}}'>
+        <h2 class="slide-title">Talleres online</h2>
+        <div class="content-area">
+            <div class="phase-context-label" data-phase-label aria-live="polite">
+                <span class="phase-context-icon" aria-hidden="true"><i data-phase-label-icon></i></span>
+                <span class="phase-context-text" data-phase-label-text></span>
+            </div>
+            <div class="blocks-grid blocks-grid--compact" style="grid-template-columns: repeat(2, 1fr); max-width: 760px; margin-left: auto; margin-right: auto;">
+                <!-- Bloque 1: Gestiona Basics -->
+                <div class="block-item phase" data-phase="1"><span class="block-num">1</span><p>Gestiona Code y tramitación reglada.</p></div>
+                <!-- Bloque 2: API de Gestiona -->
+                <div class="block-item phase" data-phase="2"><span class="block-num">2</span><p>Autorización de token y generación de expediente.</p></div>
+                <div class="block-item phase" data-phase="2"><span class="block-num">3</span><p>Carga de archivos y gestión de expediente.</p></div>
+                <div class="block-item phase" data-phase="2"><span class="block-num">4</span><p>Terceros.</p></div>
+                <div class="block-item phase" data-phase="2"><span class="block-num">5</span><p>Registro de entradas, listados y paginación.</p></div>
+                <div class="block-item phase" data-phase="2"><span class="block-num">6</span><p>Tramitación y registro de salida.</p></div>
+                <div class="block-item phase" data-phase="2"><span class="block-num">7</span><p>Bus de eventos y conector externo.</p></div>
+                <!-- Bloque 3: Automatización y orquestación -->
+                <div class="block-item phase" data-phase="3"><span class="block-num">8</span><p>Operaciones externas.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE 17: Sesiones presenciales -->
+    <section class="slide-container" aria-label="Sesiones presenciales">
+        <h2 class="slide-title">Sesiones presenciales</h2>
+        <div class="content-area">
+            <div class="two-column" style="align-items: stretch;">
+                <div class="card card--bordered tutor-card phase" data-phase="1" style="display: flex; align-items: flex-start; gap: 14px; height: 100%;">
+                    <div class="icon-circle" style="flex-shrink: 0;"><i class="fa-solid fa-screwdriver-wrench" aria-hidden="true"></i></div>
+                    <div style="display: flex; flex-direction: column;">
+                        <span class="badge badge-gestiona mb-sm">Sesión 1</span>
+                        <h3>Talleres y actividades prácticas</h3>
+                        <p>Talleres 100% prácticos para poner en marcha lo aprendido en los módulos y sentar la base del proyecto de integración.</p>
+                        <ul class="bullet-list text-sm mt-sm">
+                            <li><i class="fa-solid fa-check" aria-hidden="true"></i> Programación de procedimientos en Gestiona.</li>
+                            <li><i class="fa-solid fa-check" aria-hidden="true"></i> Gestiona Code.</li>
+                            <li><i class="fa-solid fa-check" aria-hidden="true"></i> Definición funcional de integración.</li>
+                            <li><i class="fa-solid fa-check" aria-hidden="true"></i> Definición técnica de integración.</li>
+                            <li><i class="fa-solid fa-check" aria-hidden="true"></i> Integraciones bidireccionales I.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card card--bordered tutor-card phase" data-phase="2" style="display: flex; align-items: flex-start; gap: 14px; height: 100%;">
+                    <div class="icon-circle" style="flex-shrink: 0;"><i class="fa-solid fa-rocket" aria-hidden="true"></i></div>
+                    <div style="display: flex; flex-direction: column;">
+                        <span class="badge badge-gestiona mb-sm">Sesión 2</span>
+                        <h3>Soporte y asistencia en el desarrollo</h3>
+                        <p>Los docentes acompañan al alumno en el despliegue en <strong>PRE</strong> de su integración: diseño, configuración, validación y despliegue dentro de un proyecto real, con el alcance ya delimitado.</p>
+                        <ul class="bullet-list text-sm mt-sm">
+                            <li><i class="fa-solid fa-check" aria-hidden="true"></i> Integraciones bidireccionales II.</li>
+                            <li><i class="fa-solid fa-check" aria-hidden="true"></i> Procesos de API y operaciones genéricas con n8n.</li>
+                            <li><i class="fa-solid fa-check" aria-hidden="true"></i> Diseño de una integración. Soporte y asistencia al diseño de una integración.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE 12: Calendario interactivo Promoción 33 -->
+    <section class="slide-container" aria-label="Hitos del programa formativo">
+        <h2 class="slide-title">Hitos programa formativo</h2>
+        <div class="content-area" style="justify-content: center;">
+            <div class="timeline-legend mb-md">
+                <span><span class="legend-dot" style="background: var(--color-primary);"></span>Evento online</span>
+                <span><span class="legend-dot" style="background: var(--color-bg-dark);"></span>Sesión presencial</span>
+            </div>
+            <div class="months-timeline" style="grid-template-columns: repeat(3, 1fr);">
+                <div class="month-node phase" data-phase="1">
+                    <div class="month-name">Septiembre 2026</div>
+                    <div class="month-dot month-dot--online"></div>
+                    <div class="month-event"><strong>Kickoff</strong>Sesión de inicio online · 14 de septiembre.</div>
+                </div>
+                <div class="month-node phase" data-phase="2">
+                    <div class="month-name">Noviembre 2026</div>
+                    <div class="month-dot month-dot--onsite"></div>
+                    <div class="month-event"><strong>Sesión presencial 1</strong>Talleres y actividades prácticas.</div>
+                </div>
+                <div class="month-node phase" data-phase="3">
+                    <div class="month-name">Marzo 2027</div>
+                    <div class="month-dot month-dot--online"></div>
+                    <div class="month-event"><strong>Evaluación</strong>Límite de presentación: 31 de marzo.</div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -1064,117 +1340,6 @@
         </div>
     </section>
 
-    <!-- SLIDE 14: Recursos de aprendizaje -->
-    <section class="slide-container" aria-label="Recursos de aprendizaje">
-        <h2 class="slide-title">Recursos de aprendizaje</h2>
-        <div class="content-area" style="justify-content: center;">
-            <div class="feature-cards">
-                <div class="feature-card phase" data-phase="1">
-                    <div class="icon-circle icon-circle--lg mx-auto"><i class="fa-solid fa-book" aria-hidden="true"></i></div>
-                    <h3>1 · Plan de aprendizaje</h3>
-                    <p>Estudio del contenido teórico en la plataforma, al ritmo de cada alumno.</p>
-                </div>
-                <div class="feature-card phase" data-phase="2">
-                    <div class="icon-circle icon-circle--lg mx-auto"><i class="fa-solid fa-video" aria-hidden="true"></i></div>
-                    <h3>2 · Talleres online</h3>
-                    <p>Sesiones monográficas en directo sobre funcionalidades clave.</p>
-                </div>
-                <div class="feature-card phase" data-phase="3">
-                    <div class="icon-circle icon-circle--lg mx-auto"><i class="fa-solid fa-chalkboard-user" aria-hidden="true"></i></div>
-                    <h3>3 · Sesiones presenciales</h3>
-                    <p>Dos semanas de formación práctica con docentes especialistas.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SLIDE 15: Plan de aprendizaje (10 bloques) -->
-    <section class="slide-container" aria-label="Plan de aprendizaje" data-phase-titles='{"1":{"text":"01 · Administración general de Gestiona","icon":"fa-sliders"},"2":{"text":"02 · Gestión documental y archivo","icon":"fa-folder-open"},"3":{"text":"03 · Escritorio de tramitación","icon":"fa-inbox"},"4":{"text":"04 · Gestión económica","icon":"fa-coins"},"5":{"text":"05 · Analítica de datos","icon":"fa-chart-line"}}'>
-        <h2 class="slide-title">Plan de aprendizaje</h2>
-        <div class="phase-context-label" data-phase-label aria-live="polite">
-            <span class="phase-context-icon" aria-hidden="true"><i data-phase-label-icon></i></span>
-            <span class="phase-context-text" data-phase-label-text></span>
-        </div>
-        <div class="content-area">
-            <div class="blocks-grid">
-                <div class="block-item phase" data-phase="1"><span class="block-num">1</span><p>Configuración general de Gestiona</p></div>
-                <div class="block-item phase" data-phase="2"><span class="block-num">2</span><p>Gestión documental y archivo</p></div>
-                <div class="block-item phase" data-phase="2"><span class="block-num">3</span><p>Gestiona Code</p></div>
-                <div class="block-item phase" data-phase="3"><span class="block-num">4</span><p>Escritorio de tramitación</p></div>
-                <div class="block-item phase" data-phase="3"><span class="block-num">5</span><p>Actos plurales</p></div>
-                <div class="block-item phase" data-phase="3"><span class="block-num">6</span><p>Tramitación reglada</p></div>
-                <div class="block-item phase" data-phase="4"><span class="block-num">7</span><p>Gestión económica: diseño de control interno</p></div>
-                <div class="block-item phase" data-phase="4"><span class="block-num">8</span><p>Gestión económica: ejecución de control interno</p></div>
-                <div class="block-item phase" data-phase="5"><span class="block-num">9</span><p>Búsquedas avanzadas</p></div>
-                <div class="block-item phase" data-phase="5"><span class="block-num">10</span><p>Analítica de datos</p></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SLIDE 16: Talleres online -->
-    <section class="slide-container" aria-label="Talleres online" data-phase-titles='{"1":{"text":"01 · Administración general de Gestiona","icon":"fa-sliders"},"2":{"text":"02 · Gestión documental y archivo","icon":"fa-folder-open"},"3":{"text":"03 · Escritorio de tramitación","icon":"fa-inbox"},"4":{"text":"04 · Gestión económica","icon":"fa-coins"},"5":{"text":"05 · Analítica de datos","icon":"fa-chart-line"}}'>
-        <h2 class="slide-title">Talleres online</h2>
-        <div class="phase-context-label" data-phase-label aria-live="polite">
-            <span class="phase-context-icon" aria-hidden="true"><i data-phase-label-icon></i></span>
-            <span class="phase-context-text" data-phase-label-text></span>
-        </div>
-        <div class="content-area">
-            <div class="blocks-grid" style="grid-template-columns: repeat(3, 1fr);">
-                <!-- Bloque 1 -->
-                <div class="block-item phase" data-phase="1"><span class="block-num">1</span><p>Configuración básica de trámites externos, tesauros y sede electrónica.</p></div>
-                <!-- Bloque 2 -->
-                <div class="block-item phase" data-phase="2"><span class="block-num">2</span><p>Gestiona Code.</p></div>
-                <div class="block-item phase" data-phase="2"><span class="block-num">3</span><p>Construcción de documentos inteligentes.</p></div>
-                <!-- Bloque 3 -->
-                <div class="block-item phase" data-phase="3"><span class="block-num">4</span><p>Configuración de órganos, circuitos de tramitación y pies de recursos.</p></div>
-                <div class="block-item phase" data-phase="3"><span class="block-num">5</span><p>Circuito de resolución singular.</p></div>
-                <div class="block-item phase" data-phase="3"><span class="block-num">6</span><p>Circuito de resolución plural.</p></div>
-                <div class="block-item phase" data-phase="3"><span class="block-num">7</span><p>Tramitación reglada y subprocesos.</p></div>
-                <!-- Bloque 4 -->
-                <div class="block-item phase" data-phase="4"><span class="block-num">9</span><p>Módulo de diseño de Control Interno.</p></div>
-                <div class="block-item phase" data-phase="4"><span class="block-num">10</span><p>Tramitación 360º de expedientes con gasto.</p></div>
-                <div class="block-item phase" data-phase="4"><span class="block-num">11</span><p>Autoliquidaciones y liquidaciones tributarias.</p></div>
-                <div class="block-item phase" data-phase="4"><span class="block-num">12</span><p>Gestión de facturas.</p></div>
-                <!-- Bloque 5 -->
-                <div class="block-item phase" data-phase="5"><span class="block-num">8</span><p>Búsqueda avanzada de Gestiona.</p></div>
-                <div class="block-item phase" data-phase="5"><span class="block-num">13</span><p>Creación de dashboards de analítica de datos.</p></div>
-                <div class="block-item phase" data-phase="5"><span class="block-num">14</span><p>Personalización de cuadros de mando para tramitación reglada.</p></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SLIDE 17: Sesiones presenciales -->
-    <section class="slide-container" aria-label="Talleres presenciales" data-phase-titles='{"1":{"text":"01 · Administración general de Gestiona","icon":"fa-sliders"},"2":{"text":"02 · Gestión documental y archivo","icon":"fa-folder-open"},"3":{"text":"03 · Escritorio de tramitación","icon":"fa-inbox"},"4":{"text":"04 · Gestión económica","icon":"fa-coins"},"5":{"text":"05 · Analítica de datos","icon":"fa-chart-line"}}'>
-        <h2 class="slide-title">Talleres presenciales</h2>
-        <div class="phase-context-label" data-phase-label aria-live="polite">
-            <span class="phase-context-icon" aria-hidden="true"><i data-phase-label-icon></i></span>
-            <span class="phase-context-text" data-phase-label-text></span>
-        </div>
-        <div class="content-area">
-            <div class="blocks-grid" style="grid-template-columns: repeat(3, 1fr);">
-                <!-- Bloque 2: Gestión documental y archivo -->
-                <div class="block-item phase" data-phase="2"><span class="block-num">1</span><p>Configuración básica de trámites externos, tesauros y sede electrónica.</p></div>
-                <div class="block-item phase" data-phase="2"><span class="block-num">2</span><p>Gestiona Code.</p></div>
-                <div class="block-item phase" data-phase="2"><span class="block-num">3</span><p>Construcción de documentos inteligentes.</p></div>
-                <!-- Bloque 3: Escritorio de tramitación -->
-                <div class="block-item phase" data-phase="3"><span class="block-num">4</span><p>Configuración de órganos, circuitos de tramitación y pies de recursos.</p></div>
-                <div class="block-item phase" data-phase="3"><span class="block-num">5</span><p>Circuito de resolución singular.</p></div>
-                <div class="block-item phase" data-phase="3"><span class="block-num">6</span><p>Circuito de resolución plural.</p></div>
-                <div class="block-item phase" data-phase="3"><span class="block-num">7</span><p>Tramitación reglada y subprocesos.</p></div>
-                <!-- Bloque 4: Gestión económica -->
-                <div class="block-item phase" data-phase="4"><span class="block-num">9</span><p>Módulo de diseño de Control Interno.</p></div>
-                <div class="block-item phase" data-phase="4"><span class="block-num">10</span><p>Tramitación 360º de expedientes con gasto.</p></div>
-                <div class="block-item phase" data-phase="4"><span class="block-num">11</span><p>Autoliquidaciones y liquidaciones tributarias.</p></div>
-                <div class="block-item phase" data-phase="4"><span class="block-num">12</span><p>Gestión de facturas.</p></div>
-                <!-- Bloque 5: Analítica de datos -->
-                <div class="block-item phase" data-phase="5"><span class="block-num">8</span><p>Búsqueda avanzada de Gestiona.</p></div>
-                <div class="block-item phase" data-phase="5"><span class="block-num">13</span><p>Creación de dashboards de analítica de datos.</p></div>
-                <div class="block-item phase" data-phase="5"><span class="block-num">14</span><p>Personalización de cuadros de mando para tramitación reglada.</p></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SLIDE 18: Tutorización alumnos -->
     <section class="slide-container" aria-label="Tutorización alumnos">
         <h2 class="slide-title">Tutorización alumnos</h2>
         <div class="content-area">
@@ -1205,9 +1370,46 @@
         </div>
     </section>
 
-    <!-- SLIDE 19: Alumnos y tutores Promoción 33 -->
-    <section class="slide-container" aria-label="Alumnos y tutores asignados de la Promoción 33">
-        <h2 class="slide-title">Alumnos y tutores · Promoción 33</h2>
+    <!-- SLIDE: Coffee & Rest -->
+    <section class="slide-container" aria-label="Coffee & Rest: espacios de comunicación abiertos">
+        <h2 class="slide-title">Coffee &amp; Rest</h2>
+        <div class="content-area">
+            <div class="two-column" style="align-items: stretch;">
+                <div class="card card--bordered tutor-card phase" data-phase="1" style="display: flex; align-items: flex-start; gap: 14px; height: 100%;">
+                    <div class="icon-circle" style="flex-shrink: 0;"><i class="fa-solid fa-mug-hot" aria-hidden="true"></i></div>
+                    <div>
+                        <span class="badge badge-gestiona mb-sm">Sesiones voluntarias</span>
+                        <h3>¿Qué son y cómo funcionan?</h3>
+                        <p>Espacios de comunicación abiertos, convocados a lo largo del programa, para resolver dudas, compartir experiencias e impartir pequeñas píldoras formativas.</p>
+                        <p class="mt-sm">Los docentes comparten trucos y consejos, y se ponen a disposición del grupo para resolver dudas conjuntamente. También es el momento en que otros compañeros comparten sus proyectos y experiencias.</p>
+                        <ul class="bullet-list text-sm mt-sm">
+                            <li><i class="fa-solid fa-check" aria-hidden="true"></i> Carácter voluntario.</li>
+                            <li><i class="fa-solid fa-check" aria-hidden="true"></i> No se graban.</li>
+                            <li><i class="fa-solid fa-check" aria-hidden="true"></i> No computan en la evaluación.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card card--bordered tutor-card phase phase--fade" data-phase="2" style="display: flex; align-items: flex-start; gap: 14px; height: 100%;">
+                    <div class="icon-circle" style="flex-shrink: 0;"><i class="fa-solid fa-list-check" aria-hidden="true"></i></div>
+                    <div>
+                        <span class="badge badge-gestiona mb-sm">4 sesiones</span>
+                        <h3>Temas de los talleres</h3>
+                        <p>Cada sesión profundiza en un bloque distinto de la integración con Gestiona:</p>
+                        <ul class="bullet-list text-sm mt-sm">
+                            <li><i class="fa-solid fa-mug-hot" aria-hidden="true"></i> 1 · Configuración entorno Gestiona + Postman</li>
+                            <li><i class="fa-solid fa-mug-hot" aria-hidden="true"></i> 2 · Expedientes</li>
+                            <li><i class="fa-solid fa-mug-hot" aria-hidden="true"></i> 3 · Terceros y registro</li>
+                            <li><i class="fa-solid fa-mug-hot" aria-hidden="true"></i> 4 · Tramitación y bus de eventos</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE 19: Alumnos y tutores Promoción 5 -->
+    <section class="slide-container" aria-label="Alumnos y tutores asignados de la Promoción 5">
+        <h2 class="slide-title">Alumnos y tutores · Promoción 5</h2>
         <div class="content-area table-layout roster">
             <table>
                 <thead>
@@ -1218,22 +1420,22 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr><td>Eduardo Escrivá Planells</td><td>Ayuntamiento de Carcaixent</td><td>Elena Serrano</td></tr>
-                    <tr><td>Raúl García Ruiz</td><td>Oficina Andaluza contra el Fraude y la Corrupción</td><td>Elena Serrano</td></tr>
-                    <tr><td>María García Medina</td><td>Ayuntamiento de Torres de la Alameda</td><td>Javier García-Aráez</td></tr>
-                    <tr><td>Adrià Maestre Rams</td><td>Ajuntament de Constantí</td><td>Javier García-Aráez</td></tr>
-                    <tr><td>Eric Domenech Sena</td><td>Colegio Oficial de Farmacéuticos de Murcia</td><td>Javier García-Aráez</td></tr>
-                    <tr><td>Javier Jiménez Marcelo</td><td>Autoridad Portuaria de Sevilla</td><td>José Manuel Juan</td></tr>
-                    <tr><td>Xavier Badia Diaz</td><td>Ajuntament de Torredembarra</td><td>José Manuel Juan</td></tr>
-                    <tr><td>Cristina Prieto Castaño</td><td>Ayuntamiento de Torredembarra</td><td>José Manuel Juan</td></tr>
-                    <tr><td>Francisco José Gil Jiménez</td><td>Ayuntamiento de Barberà del Vallès</td><td>Raúl Argente</td></tr>
-                    <tr><td>Daniel Anillo Rodrigo</td><td>Autoridad Portuaria de Sevilla</td><td>Raúl Argente</td></tr>
-                    <tr><td>Susana Asensio Ancos</td><td>Ayuntamiento de Torres de la Alameda</td><td>Raúl Argente</td></tr>
-                    <tr><td>Olga Dalmau Martínez</td><td>Consell Comarcal de l'Anoia</td><td>Raúl Mestre</td></tr>
-                    <tr><td>Juan Miguel Lozano Iniesta</td><td>Ayuntamiento de Rivas Vaciamadrid</td><td>Pablo Ferrer</td></tr>
-                    <tr><td>Margarita Aldeamil Visus</td><td>Ajuntament de Barberà del Vallès</td><td>Pablo Ferrer</td></tr>
-                    <tr><td>Susana Castro Burgos</td><td>Ajuntament de Santa Margarida i els Monjos</td><td>Pablo Ferrer</td></tr>
-                    <tr><td>Aarón Peña González</td><td>Ajuntament de Barberà del Vallès</td><td>Pablo Ferrer</td></tr>
+                    <tr><td>Eduardo Escrivá Planells</td><td>Ayuntamiento de Carcaixent</td><td>Alejandro Navarrete</td></tr>
+                    <tr><td>Raúl García Ruiz</td><td>Oficina Andaluza contra el Fraude y la Corrupción</td><td>Álvaro Quintano</td></tr>
+                    <tr><td>María García Medina</td><td>Ayuntamiento de Torres de la Alameda</td><td>Álvaro Quintano</td></tr>
+                    <tr><td>Adrià Maestre Rams</td><td>Ajuntament de Constantí</td><td>Javier Santos</td></tr>
+                    <tr><td>Eric Domenech Sena</td><td>Colegio Oficial de Farmacéuticos de Murcia</td><td>Alejandro Navarrete</td></tr>
+                    <tr><td>Javier Jiménez Marcelo</td><td>Autoridad Portuaria de Sevilla</td><td>Javier Santos</td></tr>
+                    <tr><td>Xavier Badia Diaz</td><td>Ajuntament de Torredembarra</td><td>Alejandro Navarrete</td></tr>
+                    <tr><td>Cristina Prieto Castaño</td><td>Ayuntamiento de Torredembarra</td><td>Álvaro Quintano</td></tr>
+                    <tr><td>Francisco José Gil Jiménez</td><td>Ayuntamiento de Barberà del Vallès</td><td>Alejandro Navarrete</td></tr>
+                    <tr><td>Daniel Anillo Rodrigo</td><td>Autoridad Portuaria de Sevilla</td><td>Alejandro Navarrete</td></tr>
+                    <tr><td>Susana Asensio Ancos</td><td>Ayuntamiento de Torres de la Alameda</td><td>Javier Santos</td></tr>
+                    <tr><td>Olga Dalmau Martínez</td><td>Consell Comarcal de l'Anoia</td><td>Álvaro Quintano</td></tr>
+                    <tr><td>Juan Miguel Lozano Iniesta</td><td>Ayuntamiento de Rivas Vaciamadrid</td><td>Javier Santos</td></tr>
+                    <tr><td>Margarita Aldeamil Visus</td><td>Ajuntament de Barberà del Vallès</td><td>Álvaro Quintano</td></tr>
+                    <tr><td>Susana Castro Burgos</td><td>Ajuntament de Santa Margarida i els Monjos</td><td>Alejandro Navarrete</td></tr>
+                    <tr><td>Aarón Peña González</td><td>Ajuntament de Barberà del Vallès</td><td>Javier Santos</td></tr>
                 </tbody>
             </table>
         </div>
@@ -1247,7 +1449,8 @@
                 <li><i class="fa-solid fa-route" aria-hidden="true"></i> <strong>Navegación libre</strong> por el contenido, aunque recomendamos seguir el orden establecido de los bloques.</li>
                 <li><i class="fa-solid fa-flask" aria-hidden="true"></i> <strong>Actividades prácticas</strong> en el entorno demo y test de cada uno de los bloques realizados.</li>
                 <li><i class="fa-solid fa-chalkboard-user" aria-hidden="true"></i> Las <strong>sesiones presenciales son obligatorias</strong>.</li>
-                <li><i class="fa-solid fa-video" aria-hidden="true"></i> La asistencia a los <strong>talleres online</strong> es muy recomendable.</li>
+                <li><i class="fa-solid fa-video" aria-hidden="true"></i> La asistencia a los <strong>talleres online</strong> es opcional (sesiones grabadas).</li>
+                <li><i class="fa-solid fa-mug-hot" aria-hidden="true"></i> Asistencia a <strong>Coffee &amp; Rest</strong> opcional (sesiones grabadas).</li>
             </ul>
         </div>
     </section>
@@ -1257,10 +1460,11 @@
         <h2 class="slide-title">Evaluación</h2>
         <div class="content-area" style="justify-content: center;">
             <ul class="bullet-list bullet-list--lg" style="max-width: 1120px;">
-                <li><i class="fa-solid fa-hourglass-half" aria-hidden="true"></i> <strong>Plazo:</strong> el alumno deberá presentarse a la evaluación dentro del plazo marcado (hasta el 05/03/2027).</li>
+                <li><i class="fa-solid fa-hourglass-half" aria-hidden="true"></i> <strong>Plazo:</strong> el alumno deberá presentarse a la evaluación final dentro del plazo marcado.</li>
+                <li><i class="fa-solid fa-chalkboard-user" aria-hidden="true"></i> Durante la <strong>sesión presencial 2</strong> los docentes asistirán a los alumnos en el diseño del proyecto de evaluación.</li>
                 <li><i class="fa-solid fa-file-signature" aria-hidden="true"></i> La <strong>solicitud</strong> se realizará a través del formulario online que se habilitará en la plataforma una vez revisado todo el contenido.</li>
-                <li><i class="fa-solid fa-video" aria-hidden="true"></i> La evaluación se realiza <strong>online, por videoconferencia</strong>, y será grabada.</li>
-                <li><i class="fa-solid fa-certificate" aria-hidden="true"></i> Los alumnos calificados como <strong>APTO</strong> obtendrán el certificado de Administración Avanzada de Gestiona.</li>
+                <li><i class="fa-solid fa-video" aria-hidden="true"></i> Evaluación de un <strong>proyecto de integración personalizado</strong>, con caso real útil para la entidad: sesión online <strong>grabada y certificada</strong>.</li>
+                <li><i class="fa-solid fa-certificate" aria-hidden="true"></i> Los alumnos calificados como <strong>APTO</strong> obtendrán el certificado de <strong>Gestiona for Developers</strong>.</li>
                 <li><i class="fa-solid fa-rotate" aria-hidden="true"></i> Transcurridos <strong>dos años</strong> desde su obtención, la certificación deberá renovarse.</li>
             </ul>
         </div>
@@ -1272,24 +1476,24 @@
         <div class="content-area">
             <div class="tiled-content">
                 <article class="tile phase" data-phase="1">
-                    <div class="icon" aria-hidden="true"><i class="fa-solid fa-book-open-reader"></i></div>
-                    <h3>Revisión de contenidos</h3>
-                    <p>Todos los cursos y bloques de la plataforma completados.</p>
+                    <div class="icon" aria-hidden="true"><i class="fa-solid fa-diagram-project"></i></div>
+                    <h3>Proyecto personalizado</h3>
+                    <p>Integración diseñada a medida de las necesidades de la entidad del alumno.</p>
                 </article>
                 <article class="tile phase" data-phase="2">
-                    <div class="icon" aria-hidden="true"><i class="fa-solid fa-flask"></i></div>
-                    <h3>Actividades prácticas</h3>
-                    <p>Ejecución de las actividades en el entorno demo.</p>
+                    <div class="icon" aria-hidden="true"><i class="fa-solid fa-building"></i></div>
+                    <h3>Caso real</h3>
+                    <p>Proyecto que resuelve un problema o una necesidad real de la entidad y se puede desplegar en producción.</p>
                 </article>
                 <article class="tile phase" data-phase="3">
-                    <div class="icon" aria-hidden="true"><i class="fa-solid fa-list-check"></i></div>
-                    <h3>Test de evaluación final</h3>
-                    <p>Test de todos los cursos del programa.</p>
+                    <div class="icon" aria-hidden="true"><i class="fa-solid fa-sliders"></i></div>
+                    <h3>Proyecto integral 360</h3>
+                    <p>Configuración y parametrización del procedimiento de principio a fin.</p>
                 </article>
                 <article class="tile phase" data-phase="4">
-                    <div class="icon" aria-hidden="true"><i class="fa-solid fa-diagram-project"></i></div>
-                    <h3>Proyecto de evaluación final</h3>
-                    <p>Parametrización en demo de un procedimiento habitual de la entidad que incluya los contenidos del programa.</p>
+                    <div class="icon" aria-hidden="true"><i class="fa-solid fa-video"></i></div>
+                    <h3>Sesión certificada</h3>
+                    <p>Presentación del proyecto ante tribunal docente, grabado y certificado.</p>
                 </article>
             </div>
         </div>
@@ -1300,472 +1504,295 @@
         <h2 class="slide-title">Elementos evaluables en el proyecto final</h2>
         <div class="content-area" style="justify-content: center;">
             <ul class="bullet-list" style="font-size: 19px; max-width: 900px;">
-                <li><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> Trámite externo.</li>
-                <li><i class="fa-solid fa-tags" aria-hidden="true"></i> Tesauros, al menos de 4 tipos diferentes.</li>
-                <li><i class="fa-solid fa-paragraph" aria-hidden="true"></i> Párrafos condicionados.</li>
-                <li><i class="fa-solid fa-folder-plus" aria-hidden="true"></i> Apertura automática de expediente.</li>
-                <li><i class="fa-solid fa-list-ol" aria-hidden="true"></i> Tramitación reglada con diferentes tipos de tareas.</li>
-                <li><i class="fa-solid fa-coins" aria-hidden="true"></i> Elemento de gestión económica (CR con gasto o autoliquidaciones).</li>
-                <li><i class="fa-solid fa-magnifying-glass-chart" aria-hidden="true"></i> Casos de uso de búsquedas avanzadas.</li>
-                <li><i class="fa-solid fa-table-cells" aria-hidden="true"></i> Configuración de hoja básica de analítica de datos.</li>
+                <li><i class="fa-solid fa-arrow-right-to-bracket" aria-hidden="true"></i> Integración unidireccional con Gestiona: creación de objetos (documentos, expedientes, registros).</li>
+                <li><i class="fa-solid fa-right-left" aria-hidden="true"></i> Procedimiento reglado con intercambio de datos entre sistemas.</li>
+                <li><i class="fa-solid fa-plug" aria-hidden="true"></i> Utilización de recursos de los principales espacios de la API de Gestiona.</li>
+                <li><i class="fa-solid fa-gears" aria-hidden="true"></i> Uso de herramientas de automatización (n8n).</li>
+                <li><i class="fa-solid fa-server" aria-hidden="true"></i> Despliegue de la integración en <strong>producción</strong>.</li>
+                <li><i class="fa-solid fa-chart-simple" aria-hidden="true"></i> Infografía de síntesis del proyecto.</li>
             </ul>
         </div>
     </section>
 
-    <!-- SLIDE 24: SECCIÓN Curso 01 -->
-    <section class="slide-container" aria-label="Sección: Curso 01 Administración general de Gestiona">
+    <!-- SLIDE 24: SECCIÓN Módulo 01 -->
+    <section class="slide-container" aria-label="Sección: Módulo 01 Gestiona Basics">
         <div class="section-title-layout">
-            <h2>01 · Administración general de Gestiona</h2>
+            <h2>01 · Gestiona Basics</h2>
             <hr aria-hidden="true">
-            <p class="subtitle">Certificación Administración Avanzada de Gestiona</p>
+            <p class="subtitle">Gestiona for Developers</p>
         </div>
     </section>
 
-    <!-- SLIDE 25: Curso 01 introducción -->
-    <section class="slide-container" aria-label="Curso 01: por qué un curso de configuración general de Gestiona">
-        <h2 class="slide-title">¿Por qué un curso de configuración general?</h2>
+    <!-- SLIDE 25: Módulo 01 introducción -->
+    <section class="slide-container" aria-label="Módulo 01: por qué Gestiona Basics">
+        <h2 class="slide-title">¿Por qué Gestiona Basics?</h2>
         <div class="content-area" style="justify-content: center;">
-            <p style="font-size: 18px; line-height: 1.6; max-width: 1050px;">La configuración y administración de una plataforma de gestión administrativa, que afecta a un gran número de usuarios y variedad de perfiles, es una <strong>labor compleja y sostenida en el tiempo</strong> que requiere un conocimiento exhaustivo de todas las posibilidades de parametrización de la herramienta.</p>
+            <p style="font-size: 18px; line-height: 1.6; max-width: 1050px;">Conocer el negocio de cualquier software es esencial a la hora de confeccionar y diseñar posibles interacciones del mismo con otros sistemas de información. Este módulo capacita al alumno en las cuestiones de <strong>tramitación con Gestiona</strong> imprescindibles para definir funcionalmente una integración que aporte valor y no interfiera en el funcionamiento normal de la entidad.</p>
             <div class="feature-cards mt-lg">
                 <div class="feature-card phase" data-phase="1">
                     <div class="icon-circle icon-circle--lg mx-auto"><i class="fa-solid fa-sliders" aria-hidden="true"></i></div>
-                    <h3>Configurar</h3>
+                    <h3>Administración y configuración</h3>
+                    <p>Nociones básicas de la plataforma.</p>
                 </div>
                 <div class="feature-card phase" data-phase="2">
+                    <div class="icon-circle icon-circle--lg mx-auto"><i class="fa-solid fa-users-gear" aria-hidden="true"></i></div>
+                    <h3>Operativa de usuarios</h3>
+                    <p>Módulos y secciones de la plataforma.</p>
+                </div>
+                <div class="feature-card phase" data-phase="3">
+                    <div class="icon-circle icon-circle--lg mx-auto"><i class="fa-solid fa-plug" aria-hidden="true"></i></div>
+                    <h3>Convivencia con la API</h3>
+                    <p>Recursos de integración de cada módulo.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE 26: Módulo 01 objetivos -->
+    <section class="slide-container" aria-label="Módulo 01: objetivos del módulo">
+        <h2 class="slide-title">Objetivos del módulo</h2>
+        <div class="content-area" style="justify-content: center;">
+            <ul class="bullet-list bullet-list--lg" style="max-width: 1120px;">
+                <li><i class="fa-solid fa-book" aria-hidden="true"></i> Conocer el <strong>negocio y la operativa de Gestiona</strong> antes de plantear una integración.</li>
+                <li><i class="fa-solid fa-gear" aria-hidden="true"></i> Adquirir <strong>nociones de administración y configuración</strong> de la plataforma.</li>
+                <li><i class="fa-solid fa-users-gear" aria-hidden="true"></i> Comprender la <strong>operativa de los usuarios</strong> en los módulos y secciones de Gestiona.</li>
+                <li><i class="fa-solid fa-plug" aria-hidden="true"></i> Identificar los <strong>recursos de integración con la API</strong> que conviven con cada módulo.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- SLIDE 27: SECCIÓN Módulo 02 -->
+    <section class="slide-container" aria-label="Sección: Módulo 02 Programación con Gestiona Code">
+        <div class="section-title-layout">
+            <h2>02 · Programación con Gestiona Code</h2>
+            <hr aria-hidden="true">
+            <p class="subtitle">Gestiona for Developers</p>
+        </div>
+    </section>
+
+    <!-- SLIDE 28: Módulo 02 introducción -->
+    <section class="slide-container" aria-label="Módulo 02: por qué Gestiona Code">
+        <h2 class="slide-title">¿Por qué Gestiona Code?</h2>
+        <div class="content-area" style="justify-content: center;">
+            <p style="font-size: 18px; line-height: 1.6; max-width: 1050px;">Gestiona incorpora una <strong>librería de programación low-code</strong> que permite definir y programar procedimientos a medida, sin que ello suponga altos costes de diseño y mantenimiento de integraciones o aplicaciones a medida en la organización.</p>
+            <div class="feature-cards mt-lg">
+                <div class="feature-card phase" data-phase="1">
+                    <div class="icon-circle icon-circle--lg mx-auto"><i class="fa-solid fa-code" aria-hidden="true"></i></div>
+                    <h3>Low-code</h3>
+                    <p>Definición de procedimientos a medida.</p>
+                </div>
+                <div class="feature-card phase" data-phase="2">
+                    <div class="icon-circle icon-circle--lg mx-auto"><i class="fa-solid fa-database" aria-hidden="true"></i></div>
+                    <h3>Set de datos y lógicas</h3>
+                    <p>Definición de datos de la actividad o procedimiento.</p>
+                </div>
+                <div class="feature-card phase" data-phase="3">
                     <div class="icon-circle icon-circle--lg mx-auto"><i class="fa-solid fa-screwdriver-wrench" aria-hidden="true"></i></div>
-                    <h3>Mantener</h3>
-                </div>
-                <div class="feature-card phase" data-phase="3">
-                    <div class="icon-circle icon-circle--lg mx-auto"><i class="fa-solid fa-arrows-rotate" aria-hidden="true"></i></div>
-                    <h3>Actualizar</h3>
+                    <h3>Menos mantenimiento</h3>
+                    <p>La lógica reside en Gestiona, no en la integración.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SLIDE 26: Curso 01 objetivos -->
-    <section class="slide-container" aria-label="Curso 01: objetivos del curso">
-        <h2 class="slide-title">Objetivos del curso</h2>
+    <!-- SLIDE 29: Módulo 02 objetivos -->
+    <section class="slide-container" aria-label="Módulo 02: objetivos del módulo">
+        <h2 class="slide-title">Objetivos del módulo</h2>
         <div class="content-area" style="justify-content: center;">
             <ul class="bullet-list bullet-list--lg" style="max-width: 1120px;">
-                <li><i class="fa-solid fa-gear" aria-hidden="true"></i> Conocer los parámetros de <strong>configuración y administración básica</strong> de Gestiona.</li>
-                <li><i class="fa-solid fa-user-gear" aria-hidden="true"></i> Comprender las pautas y mecanismos para una correcta <strong>gestión de usuarios</strong>.</li>
-                <li><i class="fa-solid fa-database" aria-hidden="true"></i> Poner en práctica las herramientas de <strong>depuración de la base de datos de terceros</strong>.</li>
-                <li><i class="fa-solid fa-cubes" aria-hidden="true"></i> Arrancar y explotar las funcionalidades de los <strong>módulos de Gestiona</strong>.</li>
-                <li><i class="fa-solid fa-people-arrows" aria-hidden="true"></i> Conocer las <strong>herramientas colaborativas</strong> que ofrece Gestiona.</li>
+                <li><i class="fa-solid fa-code" aria-hidden="true"></i> Manejar la <strong>librería de programación low-code</strong> de Gestiona Code.</li>
+                <li><i class="fa-solid fa-file-pen" aria-hidden="true"></i> Definir y <strong>programar procedimientos a medida</strong>.</li>
+                <li><i class="fa-solid fa-hand-holding-dollar" aria-hidden="true"></i> Personalizar procedimientos <strong>sin altos costes de mantenimiento</strong>.</li>
+                <li><i class="fa-solid fa-screwdriver-wrench" aria-hidden="true"></i> Reducir el mantenimiento: la lógica reside en <strong>Gestiona, no en la integración</strong>.</li>
             </ul>
         </div>
     </section>
 
-    <!-- SLIDE 27: Talleres online (activo: bloque 1) -->
-    <section class="slide-container" aria-label="Calendario de talleres online, bloque 1 destacado">
-        <h2 class="slide-title">Calendario de talleres online · Promoción 33</h2>
-        <div class="content-area">
-            <div class="workshop-grid">
-                <div class="workshop-block workshop-block--active">
-                    <h3>Bloque 1 · Administración general de Gestiona</h3>
-                    <ul>
-                        <li>Taller de condición de usuario apoderado. Implicaciones y responsabilidades.</li>
-                    </ul>
-                </div>
-                <div class="workshop-block">
-                    <h3>Bloques 2-3 · Gestión documental y archivo</h3>
-                    <ul>
-                        <li>Taller de contextualización y configuración del catálogo.</li>
-                        <li>Taller de tesauros.</li>
-                        <li>Taller de construcción de documentos inteligentes.</li>
-                    </ul>
-                </div>
-                <div class="workshop-block">
-                    <h3>Bloques 4-6 · Escritorio de tramitación</h3>
-                    <ul>
-                        <li>Taller de configuración de circuitos de resolución singulares.</li>
-                        <li>Taller de configuración de circuitos de resolución plurales.</li>
-                        <li>Taller de simplificación administrativa.</li>
-                    </ul>
-                </div>
-                <div class="workshop-block">
-                    <h3>Bloques 7-8 · Gestión económica</h3>
-                    <ul>
-                        <li>Taller del módulo de diseño.</li>
-                        <li>Taller de circuitos de resolución con gasto.</li>
-                    </ul>
-                </div>
-                <div class="workshop-block">
-                    <h3>Bloques 9-10 · Analítica de datos</h3>
-                    <ul>
-                        <li>Taller de búsquedas avanzadas. Conceptos y opciones disponibles.</li>
-                        <li>Taller de analítica de datos. Elementos básicos para la construcción de cuadros de mando.</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SLIDE 28: SECCIÓN Curso 02 -->
-    <section class="slide-container" aria-label="Sección: Curso 02 Gestión documental y archivo">
+    <!-- SLIDE 30: SECCIÓN Módulo 03 -->
+    <section class="slide-container" aria-label="Sección: Módulo 03 API Gestiona">
         <div class="section-title-layout">
-            <h2>02 · Gestión documental y archivo</h2>
+            <h2>03 · API Gestiona</h2>
             <hr aria-hidden="true">
-            <p class="subtitle">Certificación Administración Avanzada de Gestiona</p>
+            <p class="subtitle">Gestiona for Developers</p>
         </div>
     </section>
 
-    <!-- SLIDE 29: Curso 02 introducción -->
-    <section class="slide-container" aria-label="Curso 02: por qué un curso de gestión documental y archivo">
-        <h2 class="slide-title">¿Por qué un curso de gestión documental y archivo?</h2>
+    <!-- SLIDE 31: Módulo 03 introducción -->
+    <section class="slide-container" aria-label="Módulo 03: por qué la API de Gestiona">
+        <h2 class="slide-title">¿Por qué la API de Gestiona?</h2>
         <div class="content-area" style="justify-content: center;">
-            <p style="font-size: 18px; line-height: 1.6; max-width: 1050px;">La gestión documental es la base de una <strong>tramitación eficiente y coherente</strong> en toda la entidad:</p>
+            <p style="font-size: 18px; line-height: 1.6; max-width: 1050px;">La API de Gestiona dispone de recursos para integrar sistemas de información que requieren <strong>enviar operaciones a Gestiona, o recibir inputs de ella</strong> de forma automática. Conocer su funcionamiento de forma exhaustiva permite resolver la mayoría de las cuestiones a las que se enfrentan los desarrolladores.</p>
             <div class="feature-cards mt-lg">
                 <div class="feature-card phase" data-phase="1">
-                    <div class="icon-circle icon-circle--lg mx-auto"><i class="fa-solid fa-circle-nodes" aria-hidden="true"></i></div>
-                    <h3>Interconexión de categorías</h3>
-                    <p>Las piezas del modelo documental se relacionan entre sí y sus efectos se propagan.</p>
+                    <div class="icon-circle icon-circle--lg mx-auto"><i class="fa-solid fa-right-left" aria-hidden="true"></i></div>
+                    <h3>Envío y recepción</h3>
+                    <p>Operaciones hacia y desde Gestiona.</p>
                 </div>
                 <div class="feature-card phase" data-phase="2">
-                    <div class="icon-circle icon-circle--lg mx-auto"><i class="fa-solid fa-folder-open" aria-hidden="true"></i></div>
-                    <h3>Gestión y tramitación eficientes</h3>
-                    <p>Una buena base documental hace la tramitación organizada y eficiente.</p>
-                </div>
-                <div class="feature-card phase" data-phase="3">
-                    <div class="icon-circle icon-circle--lg mx-auto"><i class="fa-solid fa-file-lines" aria-hidden="true"></i></div>
-                    <h3>Normalización documental</h3>
-                    <p>Producción documental homogénea en toda la entidad.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SLIDE 30: Curso 02 objetivos -->
-    <section class="slide-container" aria-label="Curso 02: objetivos del curso">
-        <h2 class="slide-title">Objetivos del curso</h2>
-        <div class="content-area" style="justify-content: center;">
-            <ul class="bullet-list bullet-list--lg" style="max-width: 1120px;">
-                <li><i class="fa-solid fa-diagram-project" aria-hidden="true"></i> <strong>Modelo de gestión documental:</strong> conocer las posibilidades y características del modelo, sus opciones de parametrización y cada uno de los módulos que lo determinan.</li>
-                <li><i class="fa-solid fa-gears" aria-hidden="true"></i> <strong>Detalles de configuración de los módulos:</strong> estudio en detalle de cada módulo, con atención especial a los efectos producidos.</li>
-                <li><i class="fa-solid fa-arrows-turn-to-dots" aria-hidden="true"></i> <strong>Interacciones entre funcionalidades:</strong> concretar la relación entre actividades, procedimientos, series documentales, trámites, categorías de registro, modelos de datos…</li>
-                <li><i class="fa-solid fa-lightbulb" aria-hidden="true"></i> <strong>Casos prácticos y buenas prácticas:</strong> diseño y configuración de modelos de gestión documental y ejemplos de parametrización de la herramienta.</li>
-            </ul>
-        </div>
-    </section>
-
-    <!-- SLIDE 31: Talleres online (activo: bloques 2-3) -->
-    <section class="slide-container" aria-label="Calendario de talleres online, bloques 2-3 destacados">
-        <h2 class="slide-title">Calendario de talleres online · Promoción 33</h2>
-        <div class="content-area">
-            <div class="workshop-grid">
-                <div class="workshop-block">
-                    <h3>Bloque 1 · Administración general de Gestiona</h3>
-                    <ul>
-                        <li>Taller de condición de usuario apoderado. Implicaciones y responsabilidades.</li>
-                    </ul>
-                </div>
-                <div class="workshop-block workshop-block--active">
-                    <h3>Bloques 2-3 · Gestión documental y archivo</h3>
-                    <ul>
-                        <li>Taller de contextualización y configuración del catálogo.</li>
-                        <li>Taller de tesauros.</li>
-                        <li>Taller de construcción de documentos inteligentes.</li>
-                    </ul>
-                </div>
-                <div class="workshop-block">
-                    <h3>Bloques 4-6 · Escritorio de tramitación</h3>
-                    <ul>
-                        <li>Taller de configuración de circuitos de resolución singulares.</li>
-                        <li>Taller de configuración de circuitos de resolución plurales.</li>
-                        <li>Taller de simplificación administrativa.</li>
-                    </ul>
-                </div>
-                <div class="workshop-block">
-                    <h3>Bloques 7-8 · Gestión económica</h3>
-                    <ul>
-                        <li>Taller del módulo de diseño.</li>
-                        <li>Taller de circuitos de resolución con gasto.</li>
-                    </ul>
-                </div>
-                <div class="workshop-block">
-                    <h3>Bloques 9-10 · Analítica de datos</h3>
-                    <ul>
-                        <li>Taller de búsquedas avanzadas. Conceptos y opciones disponibles.</li>
-                        <li>Taller de analítica de datos. Elementos básicos para la construcción de cuadros de mando.</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SLIDE 32: SECCIÓN Curso 03 -->
-    <section class="slide-container" aria-label="Sección: Curso 03 Escritorio de tramitación">
-        <div class="section-title-layout">
-            <h2>03 · Escritorio de tramitación</h2>
-            <hr aria-hidden="true">
-            <p class="subtitle">Certificación Administración Avanzada de Gestiona</p>
-        </div>
-    </section>
-
-    <!-- SLIDE 33: Curso 03 introducción -->
-    <section class="slide-container" aria-label="Curso 03: por qué un curso del escritorio de tramitación">
-        <h2 class="slide-title">¿Por qué un curso del escritorio de tramitación?</h2>
-        <div class="content-area" style="justify-content: center;">
-            <p style="font-size: 18px; line-height: 1.6; max-width: 1050px;">Gestiona tiene <strong>distintos niveles de tramitación</strong>, para adaptarse a las diferentes necesidades de la entidad e incluso del procedimiento concreto:</p>
-            <div class="feature-cards mt-lg">
-                <div class="feature-card phase" data-phase="1">
-                    <div class="icon-circle icon-circle--lg mx-auto"><i class="fa-solid fa-hand-pointer" aria-hidden="true"></i></div>
-                    <h3>Tramitación libre</h3>
-                    <p>Máxima flexibilidad: el tramitador decide cada paso del expediente.</p>
-                </div>
-                <div class="feature-card phase" data-phase="2">
-                    <div class="icon-circle icon-circle--lg mx-auto"><i class="fa-solid fa-signs-post" aria-hidden="true"></i></div>
-                    <h3>Tramitación guiada</h3>
-                    <p>Circuitos de resolución y actos plurales que ordenan el trabajo.</p>
-                </div>
-                <div class="feature-card phase" data-phase="3">
-                    <div class="icon-circle icon-circle--lg mx-auto"><i class="fa-solid fa-list-ol" aria-hidden="true"></i></div>
-                    <h3>Tramitación reglada</h3>
-                    <p>El procedimiento completo modelado en tareas: máximo control y trazabilidad.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SLIDE 34: Curso 03 objetivos -->
-    <section class="slide-container" aria-label="Curso 03: objetivos del curso">
-        <h2 class="slide-title">Objetivos del curso</h2>
-        <div class="content-area" style="justify-content: center;">
-            <ul class="bullet-list bullet-list--lg" style="max-width: 1120px;">
-                <li><i class="fa-solid fa-layer-group" aria-hidden="true"></i> Capacitar en los diferentes <strong>niveles de tramitación</strong> de Gestiona.</li>
-                <li><i class="fa-solid fa-rocket" aria-hidden="true"></i> Potenciar en vuestras entidades el uso de las <strong>funcionalidades más avanzadas</strong>.</li>
-                <li><i class="fa-solid fa-comments" aria-hidden="true"></i> Fomentar el <strong>debate y el trabajo en común</strong>: buenas prácticas y brain reflection.</li>
-                <li><i class="fa-solid fa-dumbbell" aria-hidden="true"></i> <strong>Training</strong> en Gestiona de las funcionalidades avanzadas.</li>
-                <li><i class="fa-solid fa-scale-balanced" aria-hidden="true"></i> Descubrir <strong>oportunidades de mejora</strong>, pero también riesgos.</li>
-            </ul>
-        </div>
-    </section>
-
-    <!-- SLIDE 35: Talleres online (activo: bloques 4-6) -->
-    <section class="slide-container" aria-label="Calendario de talleres online, bloques 4-6 destacados">
-        <h2 class="slide-title">Calendario de talleres online · Promoción 33</h2>
-        <div class="content-area">
-            <div class="workshop-grid">
-                <div class="workshop-block">
-                    <h3>Bloque 1 · Administración general de Gestiona</h3>
-                    <ul>
-                        <li>Taller de condición de usuario apoderado. Implicaciones y responsabilidades.</li>
-                    </ul>
-                </div>
-                <div class="workshop-block">
-                    <h3>Bloques 2-3 · Gestión documental y archivo</h3>
-                    <ul>
-                        <li>Taller de contextualización y configuración del catálogo.</li>
-                        <li>Taller de tesauros.</li>
-                        <li>Taller de construcción de documentos inteligentes.</li>
-                    </ul>
-                </div>
-                <div class="workshop-block workshop-block--active">
-                    <h3>Bloques 4-6 · Escritorio de tramitación</h3>
-                    <ul>
-                        <li>Taller de configuración de circuitos de resolución singulares.</li>
-                        <li>Taller de configuración de circuitos de resolución plurales.</li>
-                        <li>Taller de simplificación administrativa.</li>
-                    </ul>
-                </div>
-                <div class="workshop-block">
-                    <h3>Bloques 7-8 · Gestión económica</h3>
-                    <ul>
-                        <li>Taller del módulo de diseño.</li>
-                        <li>Taller de circuitos de resolución con gasto.</li>
-                    </ul>
-                </div>
-                <div class="workshop-block">
-                    <h3>Bloques 9-10 · Analítica de datos</h3>
-                    <ul>
-                        <li>Taller de búsquedas avanzadas. Conceptos y opciones disponibles.</li>
-                        <li>Taller de analítica de datos. Elementos básicos para la construcción de cuadros de mando.</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SLIDE 36: SECCIÓN Curso 04 -->
-    <section class="slide-container" aria-label="Sección: Curso 04 Gestión económica">
-        <div class="section-title-layout">
-            <h2>04 · Gestión económica</h2>
-            <hr aria-hidden="true">
-            <p class="subtitle">Certificación Administración Avanzada de Gestiona</p>
-        </div>
-    </section>
-
-    <!-- SLIDE 37: Curso 04 introducción -->
-    <section class="slide-container" aria-label="Curso 04: por qué un curso sobre gestión económica">
-        <h2 class="slide-title">¿Por qué un curso sobre gestión económica?</h2>
-        <div class="content-area" style="justify-content: center;">
-            <p style="font-size: 18px; line-height: 1.6; max-width: 1050px;">La gestión económica en Gestiona abarca <strong>el control interno y la tramitación de ingresos y facturas</strong>, con pleno cumplimiento normativo:</p>
-            <div class="feature-cards mt-lg">
-                <div class="feature-card phase" data-phase="1">
                     <div class="icon-circle icon-circle--lg mx-auto"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i></div>
-                    <h3>Control interno</h3>
-                    <p>Obligatorio para todo el sector público local: garantiza el cumplimiento del RD 424/2017.</p>
-                </div>
-                <div class="feature-card phase" data-phase="2">
-                    <div class="icon-circle icon-circle--lg mx-auto"><i class="fa-solid fa-coins" aria-hidden="true"></i></div>
-                    <h3>Gestión de ingresos</h3>
-                    <p>Tasas, precios públicos, plusvalía.</p>
+                    <h3>Integraciones sin fricción</h3>
+                    <p>Sin afectar al día a día de los usuarios.</p>
                 </div>
                 <div class="feature-card phase" data-phase="3">
-                    <div class="icon-circle icon-circle--lg mx-auto"><i class="fa-solid fa-file-invoice" aria-hidden="true"></i></div>
-                    <h3>Gestión de facturas</h3>
-                    <p>Registro, conformidad y fiscalización.</p>
+                    <div class="icon-circle icon-circle--lg mx-auto"><i class="fa-solid fa-layer-group" aria-hidden="true"></i></div>
+                    <h3>Espacios de integración</h3>
+                    <p>Casuísticas asociadas a cada uno de ellos.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SLIDE 38: Curso 04 objetivos -->
-    <section class="slide-container" aria-label="Curso 04: objetivos del curso">
-        <h2 class="slide-title">Objetivos del curso</h2>
+    <!-- SLIDE 32: Módulo 03 objetivos -->
+    <section class="slide-container" aria-label="Módulo 03: objetivos del módulo">
+        <h2 class="slide-title">Objetivos del módulo</h2>
         <div class="content-area" style="justify-content: center;">
             <ul class="bullet-list bullet-list--lg" style="max-width: 1120px;">
-                <li><i class="fa-solid fa-shield-halved" aria-hidden="true"></i> Comprender el funcional del módulo de <strong>Control Interno</strong> y sus tres herramientas: diseño, ejecución y análisis.</li>
-                <li><i class="fa-solid fa-file-invoice" aria-hidden="true"></i> Dominar la <strong>tramitación de facturas</strong>: registro, conformidad y fiscalización.</li>
-                <li><i class="fa-solid fa-coins" aria-hidden="true"></i> Conocer las nuevas funcionalidades de <strong>autoliquidaciones y liquidaciones</strong>, incluidos los pagos en sede y OAMR.</li>
+                <li><i class="fa-solid fa-plug" aria-hidden="true"></i> Conocer los <strong>recursos de la API</strong> para enviar y recibir operaciones de Gestiona.</li>
+                <li><i class="fa-solid fa-shield-halved" aria-hidden="true"></i> Diseñar integraciones que <strong>no afecten al día a día</strong> de los usuarios de la plataforma.</li>
+                <li><i class="fa-solid fa-layer-group" aria-hidden="true"></i> Conocer ampliamente los <strong>diferentes espacios de integración</strong> disponibles.</li>
+                <li><i class="fa-solid fa-list-check" aria-hidden="true"></i> Resolver las <strong>casuísticas asociadas</strong> a cada espacio de la API.</li>
             </ul>
         </div>
     </section>
 
-    <!-- SLIDE 39: Talleres online (activo: bloques 7-8) -->
-    <section class="slide-container" aria-label="Calendario de talleres online, bloques 7-8 destacados">
-        <h2 class="slide-title">Calendario de talleres online · Promoción 33</h2>
-        <div class="content-area">
-            <div class="workshop-grid">
-                <div class="workshop-block">
-                    <h3>Bloque 1 · Administración general de Gestiona</h3>
-                    <ul>
-                        <li>Taller de condición de usuario apoderado. Implicaciones y responsabilidades.</li>
-                    </ul>
-                </div>
-                <div class="workshop-block">
-                    <h3>Bloques 2-3 · Gestión documental y archivo</h3>
-                    <ul>
-                        <li>Taller de contextualización y configuración del catálogo.</li>
-                        <li>Taller de tesauros.</li>
-                        <li>Taller de construcción de documentos inteligentes.</li>
-                    </ul>
-                </div>
-                <div class="workshop-block">
-                    <h3>Bloques 4-6 · Escritorio de tramitación</h3>
-                    <ul>
-                        <li>Taller de configuración de circuitos de resolución singulares.</li>
-                        <li>Taller de configuración de circuitos de resolución plurales.</li>
-                        <li>Taller de simplificación administrativa.</li>
-                    </ul>
-                </div>
-                <div class="workshop-block workshop-block--active">
-                    <h3>Bloques 7-8 · Gestión económica</h3>
-                    <ul>
-                        <li>Taller del módulo de diseño.</li>
-                        <li>Taller de circuitos de resolución con gasto.</li>
-                    </ul>
-                </div>
-                <div class="workshop-block">
-                    <h3>Bloques 9-10 · Analítica de datos</h3>
-                    <ul>
-                        <li>Taller de búsquedas avanzadas. Conceptos y opciones disponibles.</li>
-                        <li>Taller de analítica de datos. Elementos básicos para la construcción de cuadros de mando.</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SLIDE 40: SECCIÓN Curso 05 -->
-    <section class="slide-container" aria-label="Sección: Curso 05 Analítica de datos">
+    <!-- SLIDE 33: SECCIÓN Módulo 04 -->
+    <section class="slide-container" aria-label="Sección: Módulo 04 Automatización y orquestación de procesos con n8n">
         <div class="section-title-layout">
-            <h2>05 · Analítica de datos</h2>
+            <h2>04 · Automatización y orquestación con n8n</h2>
             <hr aria-hidden="true">
-            <p class="subtitle">Certificación Administración Avanzada de Gestiona</p>
+            <p class="subtitle">Gestiona for Developers</p>
         </div>
     </section>
 
-    <!-- SLIDE 41: Curso 05 introducción -->
-    <section class="slide-container" aria-label="Curso 05: por qué un curso de analítica de datos">
-        <h2 class="slide-title">¿Por qué un curso de analítica de datos?</h2>
+    <!-- SLIDE 34: Módulo 04 introducción -->
+    <section class="slide-container" aria-label="Módulo 04: por qué n8n">
+        <h2 class="slide-title">¿Por qué automatizar con n8n?</h2>
         <div class="content-area" style="justify-content: center;">
-            <p style="font-size: 18px; line-height: 1.6; max-width: 1050px;">La analítica de datos convierte la información de Gestiona en conocimiento para <strong>optimizar procesos y mejorar la gestión</strong> de la entidad:</p>
+            <p style="font-size: 18px; line-height: 1.6; max-width: 1050px;">La capacidad de conectar sistemas de forma rápida y sin incurrir en altos costes de desarrollo es fundamental. Los alumnos dominarán <strong>n8n</strong>, una herramienta líder en el mercado, para diseñar secuencias lógicas de integración de manera <strong>ágil y escalable</strong>, utilizándola como middleware entre Gestiona y cualquier sistema externo.</p>
             <div class="feature-cards mt-lg">
                 <div class="feature-card phase" data-phase="1">
-                    <div class="icon-circle icon-circle--lg mx-auto"><i class="fa-solid fa-chart-simple" aria-hidden="true"></i></div>
-                    <h3>Decisiones basadas en datos</h3>
-                    <p>Del dato en bruto al criterio de gestión: decidir con evidencia.</p>
+                    <div class="icon-circle icon-circle--lg mx-auto"><i class="fa-solid fa-diagram-project" aria-hidden="true"></i></div>
+                    <h3>Diseño visual</h3>
+                    <p>Flujos de trabajo basados en nodos, sin escribir código.</p>
                 </div>
                 <div class="feature-card phase" data-phase="2">
-                    <div class="icon-circle icon-circle--lg mx-auto"><i class="fa-solid fa-gauge-high" aria-hidden="true"></i></div>
-                    <h3>Control en tiempo real</h3>
-                    <p>Estado de la entidad y de la tramitación siempre visible.</p>
+                    <div class="icon-circle icon-circle--lg mx-auto"><i class="fa-solid fa-vial" aria-hidden="true"></i></div>
+                    <h3>Simulación ágil</h3>
+                    <p>Probar y validar operaciones antes de producción.</p>
                 </div>
                 <div class="feature-card phase" data-phase="3">
-                    <div class="icon-circle icon-circle--lg mx-auto"><i class="fa-solid fa-magnifying-glass-chart" aria-hidden="true"></i></div>
-                    <h3>Mejoras y necesidades</h3>
-                    <p>Identificar cuellos de botella y oportunidades de simplificación.</p>
+                    <div class="icon-circle icon-circle--lg mx-auto"><i class="fa-solid fa-gears" aria-hidden="true"></i></div>
+                    <h3>Middleware</h3>
+                    <p>Orquesta la comunicación entre Gestiona y terceros.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SLIDE 42: Curso 05 objetivos -->
-    <section class="slide-container" aria-label="Curso 05: objetivos del curso">
-        <h2 class="slide-title">Objetivos del curso</h2>
+    <!-- SLIDE 35: Módulo 04 objetivos -->
+    <section class="slide-container" aria-label="Módulo 04: objetivos del módulo">
+        <h2 class="slide-title">Objetivos del módulo</h2>
         <div class="content-area" style="justify-content: center;">
             <ul class="bullet-list bullet-list--lg" style="max-width: 1120px;">
-                <li><i class="fa-solid fa-bullseye" aria-hidden="true"></i> Conocer el <strong>alcance de las herramientas de analítica de datos</strong> en Gestiona.</li>
-                <li><i class="fa-solid fa-book-open" aria-hidden="true"></i> Estudiar el <strong>funcionamiento y características</strong> de estas funcionalidades.</li>
-                <li><i class="fa-solid fa-sliders" aria-hidden="true"></i> Identificar las necesidades de <strong>configuración y parametrización de Analiza</strong>.</li>
+                <li><i class="fa-solid fa-diagram-project" aria-hidden="true"></i> Diseñar <strong>flujos de trabajo</strong> de forma visual, reduciendo drásticamente los tiempos de desarrollo.</li>
+                <li><i class="fa-solid fa-vial" aria-hidden="true"></i> <strong>Simular y validar</strong> operaciones contra la API de Gestiona antes de llevarlas a producción.</li>
+                <li><i class="fa-solid fa-satellite-dish" aria-hidden="true"></i> Gestionar <strong>webhooks y APIs externas</strong> para desencadenar respuestas automáticas.</li>
+                <li><i class="fa-solid fa-code-branch" aria-hidden="true"></i> Combinar la orquestación externa con n8n y la <strong>lógica low-code de Gestiona Code</strong>.</li>
             </ul>
         </div>
     </section>
 
-    <!-- SLIDE 43: Talleres online (activo: bloques 9-10) -->
-    <section class="slide-container" aria-label="Calendario de talleres online, bloques 9-10 destacados">
-        <h2 class="slide-title">Calendario de talleres online · Promoción 33</h2>
-        <div class="content-area">
-            <div class="workshop-grid">
-                <div class="workshop-block">
-                    <h3>Bloque 1 · Administración general de Gestiona</h3>
-                    <ul>
-                        <li>Taller de condición de usuario apoderado. Implicaciones y responsabilidades.</li>
-                    </ul>
+    <!-- SLIDE 36: SECCIÓN Módulo 05 -->
+    <section class="slide-container" aria-label="Sección: Módulo 05 Integraciones unidireccionales">
+        <div class="section-title-layout">
+            <h2>05 · Integraciones unidireccionales</h2>
+            <hr aria-hidden="true">
+            <p class="subtitle">Gestiona for Developers</p>
+        </div>
+    </section>
+
+    <!-- SLIDE 37: Módulo 05 introducción -->
+    <section class="slide-container" aria-label="Módulo 05: por qué las integraciones unidireccionales">
+        <h2 class="slide-title">¿Por qué integraciones unidireccionales?</h2>
+        <div class="content-area" style="justify-content: center;">
+            <p style="font-size: 18px; line-height: 1.6; max-width: 1050px;">Este módulo se centra en las integraciones en las que <strong>sistemas externos invocan recursos</strong> con destino final en Gestiona, que una vez procesados envía una respuesta al sistema de origen. A través de casos de uso reales, el alumno aprenderá a crear y consultar objetos en Gestiona.</p>
+            <div class="feature-cards mt-lg">
+                <div class="feature-card phase" data-phase="1">
+                    <div class="icon-circle icon-circle--lg mx-auto"><i class="fa-solid fa-arrow-right-to-bracket" aria-hidden="true"></i></div>
+                    <h3>Invocación externa</h3>
+                    <p>El sistema externo origina la operación.</p>
                 </div>
-                <div class="workshop-block">
-                    <h3>Bloques 2-3 · Gestión documental y archivo</h3>
-                    <ul>
-                        <li>Taller de contextualización y configuración del catálogo.</li>
-                        <li>Taller de tesauros.</li>
-                        <li>Taller de construcción de documentos inteligentes.</li>
-                    </ul>
+                <div class="feature-card phase" data-phase="2">
+                    <div class="icon-circle icon-circle--lg mx-auto"><i class="fa-solid fa-folder-plus" aria-hidden="true"></i></div>
+                    <h3>Creación de objetos</h3>
+                    <p>Documentos, expedientes y registros.</p>
                 </div>
-                <div class="workshop-block">
-                    <h3>Bloques 4-6 · Escritorio de tramitación</h3>
-                    <ul>
-                        <li>Taller de configuración de circuitos de resolución singulares.</li>
-                        <li>Taller de configuración de circuitos de resolución plurales.</li>
-                        <li>Taller de simplificación administrativa.</li>
-                    </ul>
-                </div>
-                <div class="workshop-block">
-                    <h3>Bloques 7-8 · Gestión económica</h3>
-                    <ul>
-                        <li>Taller del módulo de diseño.</li>
-                        <li>Taller de circuitos de resolución con gasto.</li>
-                    </ul>
-                </div>
-                <div class="workshop-block workshop-block--active">
-                    <h3>Bloques 9-10 · Analítica de datos</h3>
-                    <ul>
-                        <li>Taller de búsquedas avanzadas. Conceptos y opciones disponibles.</li>
-                        <li>Taller de analítica de datos. Elementos básicos para la construcción de cuadros de mando.</li>
-                    </ul>
+                <div class="feature-card phase" data-phase="3">
+                    <div class="icon-circle icon-circle--lg mx-auto"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i></div>
+                    <h3>Consulta de información</h3>
+                    <p>Obtención de datos ya existentes en Gestiona.</p>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- SLIDE 38: Módulo 05 objetivos -->
+    <section class="slide-container" aria-label="Módulo 05: objetivos del módulo">
+        <h2 class="slide-title">Objetivos del módulo</h2>
+        <div class="content-area" style="justify-content: center;">
+            <ul class="bullet-list bullet-list--lg" style="max-width: 1120px;">
+                <li><i class="fa-solid fa-arrow-right-to-bracket" aria-hidden="true"></i> Comprender las integraciones donde <strong>sistemas externos invocan recursos</strong> con destino en Gestiona.</li>
+                <li><i class="fa-solid fa-folder-plus" aria-hidden="true"></i> Crear objetos en Gestiona: <strong>documentos, expedientes y registros</strong>.</li>
+                <li><i class="fa-solid fa-lightbulb" aria-hidden="true"></i> Practicar con <strong>casos de uso reales</strong> para interactuar con los objetos creados.</li>
+                <li><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i> Consultar y obtener <strong>información existente</strong> en la plataforma.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- SLIDE 39: SECCIÓN Módulo 06 -->
+    <section class="slide-container" aria-label="Sección: Módulo 06 Integraciones bidireccionales">
+        <div class="section-title-layout">
+            <h2>06 · Integraciones bidireccionales</h2>
+            <hr aria-hidden="true">
+            <p class="subtitle">Gestiona for Developers</p>
+        </div>
+    </section>
+
+    <!-- SLIDE 40: Módulo 06 introducción -->
+    <section class="slide-container" aria-label="Módulo 06: por qué las integraciones bidireccionales">
+        <h2 class="slide-title">¿Por qué integraciones bidireccionales?</h2>
+        <div class="content-area" style="justify-content: center;">
+            <p style="font-size: 18px; line-height: 1.6; max-width: 1050px;">Aquellas integraciones que requieren procesar datos obtenidos en sistemas externos, en función de los cuales se desencadenan flujos en Gestiona, suponen el <strong>máximo nivel de posibilidades de integración</strong> con la plataforma, minimizando el impacto de su mantenimiento.</p>
+            <div class="feature-cards mt-lg">
+                <div class="feature-card phase" data-phase="1">
+                    <div class="icon-circle icon-circle--lg mx-auto"><i class="fa-solid fa-right-left" aria-hidden="true"></i></div>
+                    <h3>Consumo de datos externos</h3>
+                    <p>Gestiona incorpora variables de otros sistemas.</p>
+                </div>
+                <div class="feature-card phase" data-phase="2">
+                    <div class="icon-circle icon-circle--lg mx-auto"><i class="fa-solid fa-sitemap" aria-hidden="true"></i></div>
+                    <h3>Tramitación condicionada</h3>
+                    <p>Los datos externos determinan el resultado.</p>
+                </div>
+                <div class="feature-card phase" data-phase="3">
+                    <div class="icon-circle icon-circle--lg mx-auto"><i class="fa-solid fa-screwdriver-wrench" aria-hidden="true"></i></div>
+                    <h3>Mínimo mantenimiento</h3>
+                    <p>La lógica descansa en Gestiona, no en la app externa.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE 41: Módulo 06 objetivos -->
+    <section class="slide-container" aria-label="Módulo 06: objetivos del módulo">
+        <h2 class="slide-title">Objetivos del módulo</h2>
+        <div class="content-area" style="justify-content: center;">
+            <ul class="bullet-list bullet-list--lg" style="max-width: 1120px;">
+                <li><i class="fa-solid fa-right-left" aria-hidden="true"></i> Alcanzar el <strong>máximo nivel de integración</strong>: Gestiona consume datos de sistemas externos.</li>
+                <li><i class="fa-solid fa-sitemap" aria-hidden="true"></i> Condicionar la <strong>tramitación de expedientes</strong> según variables procedentes de otros sistemas.</li>
+                <li><i class="fa-solid fa-building" aria-hidden="true"></i> Integrar los <strong>sistemas propios de la entidad</strong> de forma sencilla.</li>
+                <li><i class="fa-solid fa-screwdriver-wrench" aria-hidden="true"></i> Minimizar el mantenimiento: la lógica reside en <strong>Gestiona</strong>, no en la aplicación externa.</li>
+            </ul>
         </div>
     </section>
 
@@ -1774,7 +1801,7 @@
         <div class="section-title-layout">
             <h2>Muchas gracias</h2>
             <hr aria-hidden="true">
-            <p class="subtitle">Certificación Administración Avanzada de Gestiona</p>
+            <p class="subtitle">Gestiona for Developers</p>
         </div>
     </section>
 
