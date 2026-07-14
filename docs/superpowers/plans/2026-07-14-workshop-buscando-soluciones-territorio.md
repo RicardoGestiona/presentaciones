@@ -4,14 +4,14 @@
 
 **Goal:** Build `brainstorming-hub/index.html`, a 15-slide HTML presentation that serves as the on-screen guide for the "Workshop: Buscando soluciones para el territorio" co-design session, following the facilitation guide in `brainstorming-hub/Guia_facilitacion_como_ayudar_a_quienes_ayudan_al_ciudadano.docx`.
 
-**Architecture:** Static HTML/CSS/JS, no build step. Single `index.html` file with 15 `<section class="slide-container">` elements inside `<main role="presentation">`, importing shared design system via `../assets/css/corporate.css` and `../assets/js/navigation.js`. Brand applied via `<body data-brand="ecityclic">`. Reuses existing corporate.css components (`.title-layout`, `.bullet-list`, `.tiled-content`/`.tile`, `.card--bordered`, `.two-column`, `.highlight-box`, `.section-title-layout`) — no new CSS components, only slide-specific inline `<style>` overrides if truly needed.
+**Architecture:** Static HTML/CSS/JS, no build step. Single `index.html` file with 15 `<section class="slide-container">` elements inside `<main role="presentation">`, importing shared design system via `assets/css/corporate.css` and `assets/js/navigation.js`. Brand applied via `<body data-brand="ecityclic">`. Reuses existing corporate.css components (`.title-layout`, `.bullet-list`, `.tiled-content`/`.tile`, `.card--bordered`, `.two-column`, `.highlight-box`, `.section-title-layout`) — no new CSS components, only slide-specific inline `<style>` overrides if truly needed.
 
 **Tech Stack:** Plain HTML5, CSS custom properties (corporate.css), vanilla JS (navigation.js). Font Awesome 6.5.1 (CDN), Roboto (Google Fonts).
 
 ## Global Constraints
 
 - `data-brand="ecityclic"` on `<body>` — verde lima `#7fb927`. Never assume another brand.
-- Import shared assets via `../assets/css/corporate.css` and `../assets/js/navigation.js` (relative path, since `brainstorming-hub/` sits next to `hub-td-ecityclic/` at repo root level) — never copy `corporate.css`/`navigation.js` into the subdirectory.
+- Import shared assets via `assets/css/corporate.css` and `assets/js/navigation.js` (relative path, since `brainstorming-hub/` sits next to `hub-td-ecityclic/` at repo root level) — never copy `corporate.css`/`navigation.js` into the subdirectory.
 - Never redefine canonical `.phase` CSS inline — it lives in corporate.css.
 - Content language: Spanish. Class names / identifiers: English.
 - Each `<section class="slide-container">` is one slide, 1280×720px, with a descriptive `aria-label`.
@@ -49,7 +49,7 @@ No other files are created or modified. The `.docx` guide and any other files al
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="../assets/css/corporate.css">
+    <link rel="stylesheet" href="assets/css/corporate.css">
     <style>
         /* Barra de acento del título en verde de marca (override del dorado por defecto) */
         .slide-title {
@@ -79,7 +79,7 @@ No other files are created or modified. The `.docx` guide and any other files al
     </section>
 
 </main>
-<script src="../assets/js/navigation.js"></script>
+<script src="assets/js/navigation.js"></script>
 </body>
 </html>
 ```
@@ -91,7 +91,7 @@ Run: `cd /Users/ricardoespublico/Documents/proyectos-espublico/presentaciones &&
 Open `http://localhost:8080/brainstorming-hub/` in a browser. Expected:
 - Cover slide shows "Workshop / Buscando soluciones para el territorio" in the ecityclic verde lima accent color.
 - Second slide shows the lema as title and the working question inside a highlighted box, revealed via the phase mechanism (press → / space to advance).
-- No console errors, no broken asset requests (check Network tab for 404s on `../assets/...`).
+- No console errors, no broken asset requests (check Network tab for 404s on `assets/...`).
 
 - [ ] **Step 3: Commit**
 
@@ -451,12 +451,12 @@ git commit -m "feat(brainstorming-hub): add agenda phases 5-7 slides"
     </section>
 
 </main>
-<script src="../assets/js/navigation.js"></script>
+<script src="assets/js/navigation.js"></script>
 </body>
 </html>
 ```
 
-Note: this replaces the previous final `</main><script src="../assets/js/navigation.js"></script></body></html>` block — ensure there is exactly one copy of the closing tags after this insertion, not a duplicate.
+Note: this replaces the previous final `</main><script src="assets/js/navigation.js"></script></body></html>` block — ensure there is exactly one copy of the closing tags after this insertion, not a duplicate.
 
 - [ ] **Step 2: Full deck preview and verification**
 
