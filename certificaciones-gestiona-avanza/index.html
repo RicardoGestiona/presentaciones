@@ -10,6 +10,25 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="../assets/css/corporate.css">
     <style>
+        /* Logotipo completo Gestiona Avanza: solo en portada y cierre */
+        .cover-logo {
+            display: block;
+            width: 260px;
+            height: auto;
+            margin: 0 auto 32px;
+        }
+
+        /* Isotipo de marca: esquina superior derecha, en el resto de diapositivas */
+        .brand-isotipo {
+            position: absolute;
+            top: 28px;
+            right: 32px;
+            width: 36px;
+            height: auto;
+            z-index: 5;
+            pointer-events: none;
+        }
+
         /* Tiles más compactos en la diapositiva de metodología */
         .tiled-content--compact .tile {
             padding: 18px;
@@ -70,6 +89,7 @@
     <!-- 1. PORTADA -->
     <section class="slide-container" aria-label="Portada">
         <div class="title-layout">
+            <img class="cover-logo" src="img-corp-gestiona-avanza/Gestiona-Avanza-RGB.png" alt="Gestiona Avanza">
             <h1>Certificaciones <span>Gestiona Avanza</span></h1>
             <p class="subtitle">Capacitación y transferencia de conocimiento para usuarios avanzados</p>
         </div>
@@ -77,6 +97,7 @@
 
     <!-- 2. VALOR PARA LA ENTIDAD -->
     <section class="slide-container" aria-label="Valor para la entidad">
+        <img class="brand-isotipo" src="img-corp-gestiona-avanza/Gestiona-Avanza-isotipo-RGB.png" alt="" aria-hidden="true">
         <h2 class="slide-title">Propuesta de valor</h2>
         <div class="content-area">
             <ol class="bullet-list">
@@ -90,6 +111,7 @@
 
     <!-- 3. CÓMO FUNCIONA EL MODELO -->
     <section class="slide-container" aria-label="Metodología del modelo de certificación">
+        <img class="brand-isotipo" src="img-corp-gestiona-avanza/Gestiona-Avanza-isotipo-RGB.png" alt="" aria-hidden="true">
         <h2 class="slide-title">Metodología</h2>
         <div class="content-area">
             <div class="tiled-content tiled-content--compact">
@@ -119,6 +141,7 @@
 
     <!-- 4. CERTIFICACIÓN: ADMINISTRACIÓN AVANZADA DE GESTIONA -->
     <section class="slide-container cert-detail" aria-label="Certificación Administración avanzada de Gestiona">
+        <img class="brand-isotipo" src="img-corp-gestiona-avanza/Gestiona-Avanza-isotipo-RGB.png" alt="" aria-hidden="true">
         <h2 class="slide-title">Administración avanzada de Gestiona</h2>
         <div class="content-area">
             <div class="highlight-box">
@@ -152,6 +175,7 @@
 
     <!-- 5. CERTIFICACIÓN: ANALIZA -->
     <section class="slide-container cert-detail" aria-label="Certificación Analiza">
+        <img class="brand-isotipo" src="img-corp-gestiona-avanza/Gestiona-Avanza-isotipo-RGB.png" alt="" aria-hidden="true">
         <h2 class="slide-title">Analiza</h2>
         <div class="content-area">
             <div class="highlight-box">
@@ -183,6 +207,7 @@
 
     <!-- 6. CERTIFICACIÓN: GESTIONA FOR DEVELOPERS -->
     <section class="slide-container cert-detail" aria-label="Certificación Gestiona for Developers">
+        <img class="brand-isotipo" src="img-corp-gestiona-avanza/Gestiona-Avanza-isotipo-RGB.png" alt="" aria-hidden="true">
         <h2 class="slide-title">Gestiona for Developers</h2>
         <div class="content-area">
             <div class="highlight-box">
@@ -215,6 +240,7 @@
     <!-- 7. CIERRE -->
     <section class="slide-container" aria-label="Cierre">
         <div class="title-layout">
+            <img class="cover-logo" src="img-corp-gestiona-avanza/Gestiona-Avanza-RGB.png" alt="Gestiona Avanza">
             <h1>Seguimos <span>aprendiendo juntos</span></h1>
         </div>
     </section>
