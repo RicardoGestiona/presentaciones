@@ -23,16 +23,16 @@ Pilares:
 1. **Itinerarios especializados por perfil/rol** — cada certificación dirigida a un perfil distinto (administrador, developer, analista).
 2. **Aprendizaje aplicado** — entorno demo, proyecto final, tutor personal desde el inicio.
 3. **Evaluación con acreditación oficial** — evaluación teórico-práctica ante tribunal examinador, certificación oficial de esPublico.
-4. **Comunidad viva post-certificación** — comunidad "Gestiona Avanza", renovación cada 2 años, encuentro anual presencial.
+4. **Modalidad híbrida sostenida en el tiempo** — semipresencial (telemática + presencial), carga lectiva estructurada por calendario y niveles de dificultad progresivos.
 
 ### Slide 3 — Valor para la entidad
 Layout: `slide-title` + `bullet-list` o `tile-triple`.
-Eje: beneficio/ROI para el cliente, no mecánica del programa.
+Eje: beneficio/ROI para el cliente, sin repetir la mecánica descrita en el slide 2.
 Puntos:
 1. **Autonomía real** — la entidad configura y explota Gestiona sin depender de terceros.
 2. **Reducción de riesgo** — administración cualificada de una plataforma crítica y transversal.
 3. **Máximo aprovechamiento de la inversión** — visión 360º de las capacidades de la plataforma.
-4. **Evolución continua** — capacitación sostenida en el tiempo, no formación puntual (renovación, comunidad, novedades).
+4. **Comunidad de referencia entre entidades** — al certificarse, el personal se integra en "Gestiona Avanza": acceso a novedades, proyectos piloto y red de contactos con otras administraciones certificadas.
 
 ### Slide 4 — Certificación: Administración avanzada de Gestiona
 Layout: `slide-title` + `two-column` o `feature-cards`.
