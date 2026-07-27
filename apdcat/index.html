@@ -10,35 +10,22 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="../assets/css/corporate.css">
     <style>
-        /* Deck-specific adjustments. Everything else comes from corporate.css. */
+        /* Ajustes específicos de este deck. Todo lo demás viene de corporate.css. */
 
-        /* Six figures in a 3x2 grid: .tiled-content is 2x2 by default. */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-            width: 100%;
-        }
-        .stat-tile {
-            background: var(--color-bg-light);
-            border-radius: var(--radius-md);
-            border-top: 4px solid var(--color-primary);
-            padding: 22px 24px;
-            text-align: center;
-        }
-        .stat-tile .stat-figure {
+        /* Tipografía de las cifras destacadas del slide 2 (sobre .tile). */
+        .stat-figure {
             font-size: 2.4rem;
             font-weight: 700;
             color: var(--color-primary);
             line-height: 1.1;
         }
-        .stat-tile .stat-label {
+        .stat-label {
             font-size: 0.95rem;
             color: var(--color-text-muted);
             margin-top: 6px;
         }
 
-        /* Compact chips for dense enumerations (modules, common services). */
+        /* Chips compactos para enumeraciones densas (módulos, servicios comunes). */
         .chip-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -65,7 +52,7 @@
             flex-shrink: 0;
         }
 
-        /* .step-cards is a nowrap flex; eight steps need two rows. */
+        /* .step-cards es un flex nowrap; ocho pasos necesitan dos filas. */
         .step-cards--wrap {
             flex-wrap: wrap;
         }
@@ -73,7 +60,7 @@
             flex: 0 0 calc(25% - 21px);
         }
 
-        /* Four feature cards need tighter padding than the default three. */
+        /* Cuatro feature cards necesitan menos padding que las tres por defecto. */
         .feature-cards--quad .feature-card {
             padding: 24px 20px;
         }
@@ -94,36 +81,36 @@
             <h1>Impulsem la <span>transformació digital</span></h1>
             <p class="subtitle">Solucions digitals innovadores per a entitats transformadores</p>
             <hr class="accent-line mt-md mb-sm" aria-hidden="true">
-            <p class="text-sm text-muted">Autoritat Catalana de Protecció de Dades · Juliol 2026</p>
+            <p class="text-sm text-muted">Autoritat Catalana de Protecció de Dades · juliol 2026</p>
         </div>
     </section>
 
-    <!-- 2. EL GRUP EN XIFRES -->
+    <!-- 2. EL GRUPO EN CIFRAS -->
     <section class="slide-container" aria-label="El grup en xifres">
         <h2 class="slide-title">El grup en xifres</h2>
         <div class="content-area">
-            <div class="stats-grid">
-                <div class="stat-tile">
+            <div class="tiled-content tile-triple">
+                <div class="tile text-center">
                     <div class="stat-figure">7.300</div>
                     <div class="stat-label">Administracions clients</div>
                 </div>
-                <div class="stat-tile">
+                <div class="tile text-center">
                     <div class="stat-figure">510</div>
                     <div class="stat-label">Persones a l'equip</div>
                 </div>
-                <div class="stat-tile">
+                <div class="tile text-center">
                     <div class="stat-figure">&gt;190K</div>
                     <div class="stat-label">Usuaris de Gestiona</div>
                 </div>
-                <div class="stat-tile">
+                <div class="tile text-center">
                     <div class="stat-figure">&gt;79M</div>
                     <div class="stat-label">Signatures electròniques a l'any</div>
                 </div>
-                <div class="stat-tile">
+                <div class="tile text-center">
                     <div class="stat-figure">6 PB</div>
                     <div class="stat-label">Allotjament i custòdia</div>
                 </div>
-                <div class="stat-tile">
+                <div class="tile text-center">
                     <div class="stat-figure">&gt;65M€</div>
                     <div class="stat-label">Facturació recurrent</div>
                 </div>
@@ -134,9 +121,9 @@
         </div>
     </section>
 
-    <!-- 3. MAPA DE SOLUCIONS -->
+    <!-- 3. MAPA DE SOLUCIONES -->
     <section class="slide-container" aria-label="Mapa de solucions">
-        <h2 class="slide-title">Un portfolio complet</h2>
+        <h2 class="slide-title">Un catàleg complet</h2>
         <div class="content-area">
             <div class="chip-grid chip-grid--wide">
                 <div class="chip"><i class="fa-solid fa-folder-open" aria-hidden="true"></i> Gestió d'Expedients</div>
@@ -161,7 +148,7 @@
         </div>
     </section>
 
-    <!-- 4. SEPARADOR: COM EVOLUCIONA EL PRODUCTE -->
+    <!-- 4. SEPARADOR: CÓMO EVOLUCIONA EL PRODUCTO -->
     <section class="slide-container" aria-label="Separador: com evoluciona el producte">
         <div class="section-title-layout">
             <h2>Com evoluciona el producte</h2>
@@ -170,7 +157,7 @@
         </div>
     </section>
 
-    <!-- 5. FILOSOFIA DE PRODUCTE -->
+    <!-- 5. FILOSOFÍA DE PRODUCTO -->
     <section class="slide-container" aria-label="Filosofia de producte">
         <h2 class="slide-title">Filosofia de producte</h2>
         <div class="content-area" style="align-items: center;">
@@ -210,7 +197,7 @@
         </div>
     </section>
 
-    <!-- 6. EVOLUCIÓ SOSTINGUDA -->
+    <!-- 6. EVOLUCIÓN SOSTENIDA -->
     <section class="slide-container" aria-label="Evolució sostinguda">
         <div class="section-title-layout">
             <h2>Evolució sostinguda</h2>
@@ -238,7 +225,7 @@
         </div>
     </section>
 
-    <!-- 7. SEPARADOR: INTEROPERABILITAT I COMPLIMENT -->
+    <!-- 7. SEPARADOR: INTEROPERABILIDAD Y CUMPLIMIENTO -->
     <section class="slide-container" aria-label="Separador: interoperabilitat i compliment">
         <div class="section-title-layout">
             <h2>Interoperabilitat i compliment</h2>
@@ -247,7 +234,7 @@
         </div>
     </section>
 
-    <!-- 8. INTEROPERABILITAT NATIVA -->
+    <!-- 8. INTEROPERABILIDAD NATIVA -->
     <section class="slide-container" aria-label="Interoperabilitat nativa amb els serveis comuns">
         <h2 class="slide-title">Interoperabilitat nativa</h2>
         <div class="content-area">
@@ -263,12 +250,12 @@
                 <div class="chip"><i class="fa-solid fa-handshake" aria-hidden="true"></i> Relació amb els proveïdors</div>
             </div>
             <div class="highlight-box mt-md">
-                <p><strong>Punt de Presència (PdP) de la Xarxa SARA:</strong> més de 7.000 administracions públiques integrades amb els serveis de l'Administració General de l'Estat.</p>
+                <p><strong>Punt de Presència (PdP) de la Xarxa SARA:</strong> a través nostre, les administracions catalanes i de la resta de l'Estat accedeixen als serveis comuns de l'Administració General de l'Estat.</p>
             </div>
         </div>
     </section>
 
-    <!-- 9. SEGURETAT I PROTECCIÓ DE DADES -->
+    <!-- 9. SEGURIDAD Y PROTECCIÓN DE DATOS -->
     <section class="slide-container" aria-label="Seguretat i protecció de dades">
         <h2 class="slide-title">Seguretat i protecció de dades</h2>
         <div class="content-area" style="align-items: center;">
@@ -284,8 +271,8 @@
                     <div class="icon-circle icon-circle--lg mx-auto">
                         <i class="fa-solid fa-certificate" aria-hidden="true"></i>
                     </div>
-                    <h3>Certificacions</h3>
-                    <p>ENS categoria Alta, Esquema Nacional d'Interoperabilitat i ITIL. Més enllà del compliment estricte, defineixen els nostres protocols.</p>
+                    <h3>Compliment i certificacions</h3>
+                    <p>Certificats en conformitat amb l'ENS, categoria Alta. Seguim els esquemes ENI i les bones pràctiques ITIL, que defineixen els nostres protocols.</p>
                 </div>
                 <div class="feature-card">
                     <div class="icon-circle icon-circle--lg mx-auto">
@@ -305,7 +292,7 @@
         </div>
     </section>
 
-    <!-- 10. SEPARADOR: ARQUITECTURA D'INTEGRACIÓ -->
+    <!-- 10. SEPARADOR: ARQUITECTURA DE INTEGRACIÓN -->
     <section class="slide-container" aria-label="Separador: arquitectura d'integració">
         <div class="section-title-layout">
             <h2>Arquitectura d'integració</h2>
@@ -314,7 +301,7 @@
         </div>
     </section>
 
-    <!-- 11. LA NOSTRA API REST -->
+    <!-- 11. NUESTRA API REST -->
     <section class="slide-container" aria-label="La nostra API REST">
         <h2 class="slide-title">La nostra API REST</h2>
         <div class="content-area" style="align-items: center;">
@@ -338,7 +325,7 @@
                         <i class="fa-solid fa-gift" aria-hidden="true"></i>
                     </div>
                     <h3>Gratuïta</h3>
-                    <p>Sense cost addicional per l'ús de l'API ni per les integracions que hi desenvolupeu.</p>
+                    <p>Sense cost addicional per l'ús de l'API ni per les integracions que hi desenvolupis.</p>
                 </div>
                 <div class="feature-card">
                     <div class="icon-circle icon-circle--lg mx-auto">
@@ -354,27 +341,24 @@
         </div>
     </section>
 
-    <!-- 12. LES SET CARACTERÍSTIQUES DE L'API -->
-    <section class="slide-container" aria-label="Les set característiques de l'API">
-        <h2 class="slide-title">Set característiques que la defineixen</h2>
+    <!-- 12. LAS CUATRO CARACTERÍSTICAS DE LA API -->
+    <section class="slide-container" aria-label="Les quatre característiques de l'API">
+        <h2 class="slide-title">Quatre característiques que la defineixen</h2>
         <div class="content-area">
             <div class="two-column">
                 <ul class="bullet-list">
                     <li class="phase" data-phase="1"><i class="fa-solid fa-circle-check" aria-hidden="true"></i> <strong>Completa.</strong> Permet executar qualsevol operació que es pot fer des de la web.</li>
                     <li class="phase" data-phase="2"><i class="fa-solid fa-circle-check" aria-hidden="true"></i> <strong>Adaptable.</strong> Operacions síncrones, asíncrones o processos batch, segons el problema.</li>
-                    <li class="phase" data-phase="3"><i class="fa-solid fa-circle-check" aria-hidden="true"></i> <strong>Documentada.</strong> Serveis REST publicats amb exemples per cas d'ús.</li>
-                    <li class="phase" data-phase="4"><i class="fa-solid fa-circle-check" aria-hidden="true"></i> <strong>Oberta.</strong> Comunica Gestiona amb totes les aplicacions de l'organització.</li>
                 </ul>
                 <ul class="bullet-list">
-                    <li class="phase" data-phase="5"><i class="fa-solid fa-circle-check" aria-hidden="true"></i> <strong>Estable.</strong> Control de compatibilitat i gestió de canvis comunicada.</li>
-                    <li class="phase" data-phase="6"><i class="fa-solid fa-circle-check" aria-hidden="true"></i> <strong>Segura.</strong> Securitzada amb token d'accés; cada client queda identificat.</li>
-                    <li class="phase" data-phase="7"><i class="fa-solid fa-circle-check" aria-hidden="true"></i> <strong>Traçable.</strong> Totes les accions queden recollides i certificades.</li>
+                    <li class="phase" data-phase="3"><i class="fa-solid fa-circle-check" aria-hidden="true"></i> <strong>Oberta.</strong> Comunica Gestiona amb totes les aplicacions de l'organització.</li>
+                    <li class="phase" data-phase="4"><i class="fa-solid fa-circle-check" aria-hidden="true"></i> <strong>Segura.</strong> Securitzada amb token d'accés; cada client queda identificat.</li>
                 </ul>
             </div>
         </div>
     </section>
 
-    <!-- 13. MODEL LOW CODE DE CONNECTORS -->
+    <!-- 13. MODELO LOW CODE DE CONECTORES -->
     <section class="slide-container" aria-label="Model Low Code de connectors">
         <h2 class="slide-title">Desenvolupament àgil de connectors</h2>
         <div class="content-area">
@@ -394,7 +378,7 @@
         </div>
     </section>
 
-    <!-- 14. FLUXOS DOCUMENTALS I PROCESSOS REGLATS -->
+    <!-- 14. FLUJOS DOCUMENTALES Y PROCESOS REGLADOS -->
     <section class="slide-container" aria-label="Fluxos documentals i processos reglats">
         <h2 class="slide-title">Dues vies d'integració</h2>
         <div class="content-area">
@@ -416,59 +400,57 @@
         </div>
     </section>
 
-    <!-- 15. METODOLOGIA D'INTEGRACIONS -->
+    <!-- 15. METODOLOGÍA DE INTEGRACIONES -->
     <section class="slide-container" aria-label="Metodologia d'integracions">
         <div class="section-title-layout">
             <h2>Metodologia d'integracions</h2>
             <hr aria-hidden="true">
             <div class="step-cards step-cards--wrap mt-lg">
-                <div class="step-card">
+                <div class="step-card phase" data-phase="1">
                     <div class="step-number">1</div>
-                    <p class="phase" data-phase="1">Presentació de la situació inicial</p>
+                    <p>Presentació de la situació inicial</p>
                 </div>
-                <div class="step-card">
+                <div class="step-card phase" data-phase="1">
                     <div class="step-number">2</div>
-                    <p class="phase" data-phase="1">Estudi de la capa d'integracions i RPA</p>
+                    <p>Estudi de la capa d'integracions i RPA</p>
                 </div>
-                <div class="step-card">
+                <div class="step-card phase" data-phase="1">
                     <div class="step-number">3</div>
-                    <p class="phase" data-phase="1">Divisió per mòduls i fases</p>
+                    <p>Divisió per mòduls i fases</p>
                 </div>
-                <div class="step-card">
+                <div class="step-card phase" data-phase="1">
                     <div class="step-number">4</div>
-                    <p class="phase" data-phase="1">Abast final definitiu</p>
+                    <p>Abast final definitiu</p>
                 </div>
-                <div class="step-card">
+                <div class="step-card phase" data-phase="2">
                     <div class="step-number">5</div>
-                    <p class="phase" data-phase="2">Desenvolupament de la integració</p>
+                    <p>Desenvolupament de la integració</p>
                 </div>
-                <div class="step-card">
+                <div class="step-card phase" data-phase="2">
                     <div class="step-number">6</div>
-                    <p class="phase" data-phase="2">Test tècnic</p>
+                    <p>Test tècnic</p>
                 </div>
-                <div class="step-card">
+                <div class="step-card phase" data-phase="2">
                     <div class="step-number">7</div>
-                    <p class="phase" data-phase="2">Validació funcional a PRE</p>
+                    <p>Validació funcional a PRE</p>
                 </div>
-                <div class="step-card">
+                <div class="step-card phase" data-phase="2">
                     <div class="step-number">8</div>
-                    <p class="phase" data-phase="2">Posada en producció</p>
+                    <p>Posada en producció</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 16. TANCAMENT -->
+    <!-- 16. CIERRE -->
     <section class="slide-container" aria-label="Tancament">
         <div class="section-title-layout">
             <h2>T'acompanyem fins on vulguis arribar</h2>
             <hr aria-hidden="true">
             <p class="subtitle">Més de 900 integracions en client ens avalen</p>
-            <div class="mt-lg" style="display: flex; gap: 32px;">
-                <div class="card--glass">
-                    <h3><i class="fa-solid fa-calendar-check" aria-hidden="true" style="margin-right: 8px;"></i>El següent pas</h3>
-                    <p>Una reunió tècnica de detall per analitzar els punts d'integració concrets de l'APDCAT.</p>
-                </div>
+            <div class="card--glass mt-lg">
+                <h3><i class="fa-solid fa-calendar-check" aria-hidden="true" style="margin-right: 8px;"></i>El següent pas</h3>
+                <p>Una reunió tècnica de detall per analitzar els punts d'integració concrets de l'APDCAT.</p>
             </div>
         </div>
     </section>
