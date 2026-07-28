@@ -117,6 +117,53 @@
         .feature-cards--quad .feature-card p {
             font-size: 0.88rem;
         }
+
+        /* Tabla compacta para las qüestions a tractar per línia de treball (migració Annexa). */
+        .table-layout--compact th {
+            padding: 10px 18px;
+            font-size: 14.5px;
+        }
+        .table-layout--compact td {
+            padding: 10px 18px;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+        .table-layout--compact td:first-child {
+            width: 72%;
+        }
+        .table-layout--3col td:first-child {
+            width: 54%;
+        }
+        .table-layout--3col th:nth-child(2),
+        .table-layout--3col th:nth-child(3),
+        .table-layout--3col td:nth-child(2),
+        .table-layout--3col td:nth-child(3) {
+            width: 23%;
+            text-align: center;
+        }
+        .status-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+        .status-pill--yes {
+            background: var(--color-primary-soft);
+            color: var(--color-primary-dark);
+        }
+        .status-pill--no {
+            background: var(--color-white);
+            border: 1px solid var(--color-border);
+            color: var(--color-text-muted);
+        }
+        .status-pill--pending {
+            background: var(--color-gold-soft);
+            color: var(--color-gold);
+        }
     </style>
 </head>
 <body data-brand="ecityclic">
@@ -128,7 +175,7 @@
             <h1>Impulsem la <span>transformació digital</span></h1>
             <p class="subtitle">Solucions digitals innovadores per a entitats transformadores</p>
             <hr class="accent-line mt-md mb-sm" aria-hidden="true">
-            <p class="text-sm text-muted">Autoritat Catalana de Protecció de Dades · juliol 2026</p>
+            <p class="text-sm text-muted">Autoritat Catalana de Protecció de Dades · 28 de juliol de 2026</p>
         </div>
     </section>
 
@@ -328,7 +375,7 @@
                     <p>Servei de suport a desenvolupadors per acompanyar cada integració.</p>
                 </div>
             </div>
-            <div class="highlight-box mt-md">
+            <div class="highlight-box mt-md" style="max-width: 1060px; margin-left: auto; margin-right: auto;">
                 <p><strong>Desacoblada de l'aplicació web:</strong> en cas d'atac o col·lapse de l'API, els usuaris finals de Gestiona no en resulten afectats.</p>
             </div>
         </div>
@@ -480,16 +527,193 @@
         </div>
     </section>
 
+    <!-- SEPARADOR: MIGRACIÓN ANEXA A GESTIONA -->
+    <section class="slide-container" aria-label="Separador: Migració Anexa a Gestiona">
+        <div class="section-title-layout">
+            <h2>Migració Anexa a Gestiona</h2>
+            <hr aria-hidden="true">
+        </div>
+    </section>
+
+    <!-- LÍNEAS DE TRABAJO MIGRACIÓN ANEXA -->
+    <section class="slide-container" aria-label="Línies de treball">
+        <h2 class="slide-title">Línies de treball</h2>
+        <div class="content-area">
+            <div class="feature-cards">
+                <div class="feature-card">
+                    <div class="icon-circle icon-circle--lg mx-auto">
+                        <i class="fa-solid fa-route" aria-hidden="true"></i>
+                    </div>
+                    <h3>Roadmap Gestiona</h3>
+                    <p>Funcionalidades desarrolladas y desplegadas dentro de la estrategia general de desarrollo de producto</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon-circle icon-circle--lg mx-auto">
+                        <i class="fa-solid fa-industry" aria-hidden="true"></i>
+                    </div>
+                    <h3>Gestiona Factory</h3>
+                    <p>Desenvolupaments a mida per a necessitats específiques no previstes al roadmap.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon-circle icon-circle--lg mx-auto">
+                        <i class="fa-solid fa-clipboard-check" aria-hidden="true"></i>
+                    </div>
+                    <h3>Implantació</h3>
+                    <p>Funcionalitats ja cobertes pel producte estàndard, a configurar durant el projecte d'implantació.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ROADMAP GESTIONA: DETALLE -->
+    <section class="slide-container" aria-label="Roadmap Gestiona">
+        <h2 class="slide-title">Roadmap Gestiona</h2>
+        <div class="content-area table-layout table-layout--compact table-layout--3col">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Qüestió a tractar</th>
+                        <th>Ho cobreix Gestiona avui?</th>
+                        <th>Roadmap Gestiona 2026</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>ENI que segueixi unes pautes específiques</td><td><span class="status-pill status-pill--yes">Sí</span></td><td class="text-subtle">—</td></tr>
+                    <tr><td>SEU: idioma aranès</td><td><span class="status-pill status-pill--no">No</span></td><td><span class="status-pill status-pill--yes">Sí</span></td></tr>
+                    <tr><td>Integració S@RCAT (actualment a Annexa es resol amb RPA que trasllada els registres al S@RCAT)</td><td><span class="status-pill status-pill--no">No</span></td><td><span class="status-pill status-pill--no">No</span></td></tr>
+                    <tr><td>Integració e-VALISA</td><td><span class="status-pill status-pill--no">No</span></td><td><span class="status-pill status-pill--yes">Sí</span></td></tr>
+                    <tr><td>Número d'expedient per procediment (no únic)</td><td><span class="status-pill status-pill--no">No</span></td><td><span class="status-pill status-pill--no">No</span></td></tr>
+                    <tr><td>Tipologies documentals amb nivell d'accés propi, que pot prevaler sobre el de l'expedient</td><td><span class="status-pill status-pill--no">No</span></td><td><span class="status-pill status-pill--yes">Sí</span></td></tr>
+                    <tr><td>Rols de tercers</td><td><span class="status-pill status-pill--no">No</span></td><td><span class="status-pill status-pill--no">No</span></td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- GESTIONA FACTORY: DETALLE -->
+    <section class="slide-container" aria-label="Gestiona Factory">
+        <h2 class="slide-title">Gestiona Factory</h2>
+        <div class="content-area" style="align-items: center;">
+            <div class="feature-cards">
+                <div class="feature-card">
+                    <div class="icon-circle icon-circle--lg mx-auto">
+                        <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+                    </div>
+                    <h3>Cercador de dictàmens</h3>
+                    <p>SEU: cercador de "Dictàmens, informes i resolucions".</p>
+                    <span class="status-pill status-pill--no mt-sm">No cobert avui</span>
+                </div>
+                <div class="feature-card">
+                    <div class="icon-circle icon-circle--lg mx-auto">
+                        <i class="fa-solid fa-user-shield" aria-hidden="true"></i>
+                    </div>
+                    <h3>Mòdul de CENSUS</h3>
+                    <p>Per al Delegat de Protecció de Dades (DPD).</p>
+                    <span class="status-pill status-pill--no mt-sm">No cobert avui</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- IMPLANTACIÓ: DETALLE (1/3) -->
+    <section class="slide-container" aria-label="Implantació (1 de 3)">
+        <h2 class="slide-title">Implantació <span class="text-subtle">(1 de 3)</span></h2>
+        <div class="content-area table-layout table-layout--compact">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Qüestió a tractar</th>
+                        <th>Ho cobreix Gestiona avui?</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Plena capacitat de les auditories: àgils, senzilles i detallades</td><td><span class="status-pill status-pill--yes">Sí</span></td></tr>
+                    <tr><td>Accés únic dels usuaris mitjançant Microsoft, sense usuari ni contrasenya</td><td><span class="status-pill status-pill--yes">Sí</span></td></tr>
+                    <tr><td>SEU: requisits d'imatge</td><td><span class="status-pill status-pill--yes">Sí</span></td></tr>
+                    <tr><td>Descriptors: metadades personalitzades als documents de resolució anonimitzada publicats a la SEU, en grups de 4 nivells</td><td><span class="status-pill status-pill--yes">Sí</span></td></tr>
+                    <tr><td>Integració EACAT 3.0</td><td><span class="status-pill status-pill--yes">Sí</span></td></tr>
+                    <tr><td>Resta d'integracions AOC</td><td><span class="status-pill status-pill--yes">Sí</span></td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- IMPLANTACIÓ: DETALLE (2/3) -->
+    <section class="slide-container" aria-label="Implantació (2 de 3)">
+        <h2 class="slide-title">Implantació <span class="text-subtle">(2 de 3)</span></h2>
+        <div class="content-area table-layout table-layout--compact">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Qüestió a tractar</th>
+                        <th>Ho cobreix Gestiona avui?</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Vulnerabilitats</td><td><span class="status-pill status-pill--yes">Sí</span></td></tr>
+                    <tr><td>Metadades eEMGDE8 (seguretat) i eEMGDE9 (drets d'accés, ús i reutilització): restricció d'accés del personal intern segons aquests valors</td><td><span class="status-pill status-pill--yes">Sí</span></td></tr>
+                    <tr><td>Camps personalitzats i extracció de dades per a la seva anàlisi</td><td><span class="status-pill status-pill--yes">Sí</span></td></tr>
+                    <tr><td>Gestió de volums d'arxius grans</td><td><span class="status-pill status-pill--yes">Sí</span></td></tr>
+                    <tr><td>Consultes: alternativa amb Analiza</td><td><span class="status-pill status-pill--yes">Sí</span></td></tr>
+                    <tr><td>Obrir/crear expedient a partir d'un altre amb trasllat de dades (p. ex. crear IP a partir de PT, o PS a partir d'IP)</td><td><span class="status-pill status-pill--yes">Sí</span></td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- IMPLANTACIÓ: DETALLE (3/3) -->
+    <section class="slide-container" aria-label="Implantació (3 de 3)">
+        <h2 class="slide-title">Implantació <span class="text-subtle">(3 de 3)</span></h2>
+        <div class="content-area table-layout table-layout--compact">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Qüestió a tractar</th>
+                        <th>Ho cobreix Gestiona avui?</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Edició en línia dels documents (Word)</td><td><span class="status-pill status-pill--yes">Sí</span></td></tr>
+                    <tr><td>Notificacions en paper que cal dipositar a la SEU</td><td><span class="status-pill status-pill--yes">Sí</span></td></tr>
+                    <tr><td>Firma amb targeta T-CAT</td><td><span class="status-pill status-pill--yes">Sí</span></td></tr>
+                    <tr><td>Entorn de preproducció</td><td><span class="status-pill status-pill--yes">Sí</span></td></tr>
+                    <tr><td>Creació de documents a partir d'un altre</td><td><span class="status-pill status-pill--yes">Sí</span></td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- PROPUESTA DE IMPLANTACIÓN: GEMELO DIGITAL EN DEMO -->
+    <section class="slide-container" aria-label="Proposta d'implantació">
+        <h2 class="slide-title">Proposta d'implantació</h2>
+        <div class="content-area" style="align-items: center;">
+            <div class="highlight-box" style="max-width: 1060px; margin-left: auto; margin-right: auto;">
+                <p><strong>Proposta:</strong> construcció d'un <strong>bessó digital</strong> en entorn demo, a càrrec de l'equip d'especialistes de Gestiona, com a base objectiva per a la presa de decisió final sobre la implantació.</p>
+            </div>
+            <div class="feature-cards mt-lg">
+                <div class="feature-card">
+                    <div class="icon-circle icon-circle--lg mx-auto">
+                        <i class="fa-solid fa-flask" aria-hidden="true"></i>
+                    </div>
+                    <h3>Validació</h3>
+                    <p>El <strong>bessó digital</strong> en entorn demo, construït per <u>l'equip d'especialistes</u> de Gestiona.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon-circle icon-circle--lg mx-auto">
+                        <i class="fa-solid fa-rocket" aria-hidden="true"></i>
+                    </div>
+                    <h3>Desplegament</h3>
+                    <p>El mateix entorn demo esdevé la base sobre la qual construir el pas a producció.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- CIERRE -->
     <section class="slide-container" aria-label="Tancament">
         <div class="section-title-layout">
             <h2>T'acompanyem fins on vulguis arribar</h2>
             <hr aria-hidden="true">
-            <p class="subtitle">Més de 900 integracions en client ens avalen</p>
-            <div class="card--glass mt-lg">
-                <h3><i class="fa-solid fa-calendar-check" aria-hidden="true" style="margin-right: 8px;"></i>El següent pas</h3>
-                <p>Una reunió tècnica de detall per analitzar els punts d'integració concrets de l'APDCAT.</p>
-            </div>
         </div>
     </section>
 
