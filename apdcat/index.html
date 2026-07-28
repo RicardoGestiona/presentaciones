@@ -60,6 +60,53 @@
             flex: 0 0 calc(25% - 21px);
         }
 
+        /* Línea de tiempo horizontal de hitos (slide "Evolució sostinguda"). */
+        .timeline {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 16px;
+            margin-top: 40px;
+            position: relative;
+        }
+        .timeline::before {
+            content: "";
+            position: absolute;
+            top: 40px;
+            left: 8%;
+            right: 8%;
+            height: 4px;
+            background: var(--color-bg-light);
+            border-radius: 2px;
+        }
+        .timeline-node {
+            text-align: center;
+            position: relative;
+        }
+        .timeline-year {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            margin-bottom: 14px;
+        }
+        .timeline-dot {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: var(--color-primary);
+            margin: 0 auto 16px;
+            border: 4px solid white;
+            box-shadow: 0 0 0 2px var(--color-border);
+            position: relative;
+            z-index: 1;
+        }
+        .timeline-node p {
+            font-size: 0.88rem;
+            line-height: 1.35;
+            color: var(--color-text-body);
+            margin: 0;
+            padding: 0 6px;
+        }
+
         /* Cuatro feature cards necesitan menos padding que las tres por defecto. */
         .feature-cards--quad .feature-card {
             padding: 24px 20px;
@@ -91,19 +138,19 @@
         <div class="content-area">
             <div class="tiled-content tile-triple">
                 <div class="tile text-center">
-                    <div class="stat-figure">7.300</div>
+                    <div class="stat-figure">+8.000</div>
                     <div class="stat-label">Administracions clients</div>
                 </div>
                 <div class="tile text-center">
-                    <div class="stat-figure">510</div>
+                    <div class="stat-figure">650</div>
                     <div class="stat-label">Persones a l'equip</div>
                 </div>
                 <div class="tile text-center">
-                    <div class="stat-figure">&gt;190K</div>
+                    <div class="stat-figure">220K</div>
                     <div class="stat-label">Usuaris de Gestiona</div>
                 </div>
                 <div class="tile text-center">
-                    <div class="stat-figure">&gt;79M</div>
+                    <div class="stat-figure">&gt;85M</div>
                     <div class="stat-label">Signatures electròniques a l'any</div>
                 </div>
                 <div class="tile text-center">
@@ -111,19 +158,16 @@
                     <div class="stat-label">Allotjament i custòdia</div>
                 </div>
                 <div class="tile text-center">
-                    <div class="stat-figure">&gt;65M€</div>
-                    <div class="stat-label">Facturació recurrent</div>
+                    <div class="stat-figure">+900</div>
+                    <div class="stat-label">Integracions desplegades</div>
                 </div>
-            </div>
-            <div class="highlight-box mt-md">
-                <p><strong>Primer operador tecnològic del sector públic:</strong> punt de presència (PdP) de la Xarxa SARA i més de 900 integracions desplegades en client.</p>
             </div>
         </div>
     </section>
 
     <!-- 3. MAPA DE SOLUCIONES -->
     <section class="slide-container" aria-label="Mapa de solucions">
-        <h2 class="slide-title">Un catàleg complet</h2>
+        <h2 class="slide-title">Un catàleg complet de mòduls i funcionalitats</h2>
         <div class="content-area">
             <div class="chip-grid chip-grid--wide">
                 <div class="chip"><i class="fa-solid fa-folder-open" aria-hidden="true"></i> Gestió d'Expedients</div>
@@ -144,6 +188,7 @@
                 <div class="chip"><i class="fa-solid fa-comments" aria-hidden="true"></i> Eines de Comunicació</div>
                 <div class="chip"><i class="fa-solid fa-headset" aria-hidden="true"></i> Oficina d'Assistència</div>
                 <div class="chip"><i class="fa-solid fa-cubes" aria-hidden="true"></i> Eines d'Integració</div>
+                <div class="chip"><strong class="text-primary">…</strong></div>
             </div>
         </div>
     </section>
@@ -159,7 +204,7 @@
 
     <!-- 5. FILOSOFÍA DE PRODUCTO -->
     <section class="slide-container" aria-label="Filosofia de producte">
-        <h2 class="slide-title">Filosofia de producte</h2>
+        <h2 class="slide-title">Roadmap: incrementar les capacitats de la plataforma</h2>
         <div class="content-area" style="align-items: center;">
             <div class="feature-cards feature-cards--quad">
                 <div class="feature-card">
@@ -181,7 +226,7 @@
                         <i class="fa-solid fa-compass" aria-hidden="true"></i>
                     </div>
                     <h3>Evolució guiada</h3>
-                    <p>Prioritzem segons la normativa vigent i les necessitats reals d'una comunitat de 7.300 administracions.</p>
+                    <p>Prioritzem segons la normativa vigent i les necessitats reals d'una comunitat de més de 8.000 administracions.</p>
                 </div>
                 <div class="feature-card">
                     <div class="icon-circle icon-circle--lg mx-auto">
@@ -191,52 +236,51 @@
                     <p>No deixem implantada cap funcionalitat que l'entitat no pugui mantenir de manera autònoma, sense dependre de nosaltres.</p>
                 </div>
             </div>
-            <div class="highlight-box mt-md">
-                <p><strong>Marc normatiu que guia l'evolució:</strong> Lleis 39/2015 i 40/2015, Reial Decret 203/2021, Esquema Nacional de Seguretat i Esquema Nacional d'Interoperabilitat.</p>
-            </div>
         </div>
     </section>
 
-    <!-- 6. EVOLUCIÓN SOSTENIDA -->
-    <section class="slide-container" aria-label="Evolució sostinguda">
-        <div class="section-title-layout">
-            <h2>Evolució sostinguda</h2>
-            <hr aria-hidden="true">
-            <p class="subtitle">Una dècada ampliant la capacitat d'integració</p>
-            <div class="step-cards mt-lg">
-                <div class="step-card">
-                    <div class="step-number">2014</div>
-                    <p>Consultoria funcional</p>
-                </div>
-                <div class="step-card">
-                    <div class="step-number">2016</div>
-                    <p>OTP Gestiona</p>
-                </div>
-                <div class="step-card">
-                    <div class="step-number">2020</div>
-                    <p>Factory Gestiona</p>
-                </div>
-                <div class="step-card">
-                    <div class="step-number">2025</div>
-                    <p>Gestiona for developers</p>
-                </div>
-            </div>
-            <p class="text-sm text-white mt-md text-center">L'API creix de manera contínua amb nous serveis: població, territori, comptabilitat, tributària i nòmina.</p>
-        </div>
-    </section>
-
-    <!-- 7. SEPARADOR: INTEROPERABILIDAD Y CUMPLIMIENTO -->
+    <!-- 6. SEPARADOR: INTEROPERABILIDAD Y CUMPLIMIENTO -->
     <section class="slide-container" aria-label="Separador: interoperabilitat i compliment">
         <div class="section-title-layout">
-            <h2>Interoperabilitat i compliment</h2>
+            <h2>Interoperabilitat</h2>
             <hr aria-hidden="true">
             <p class="subtitle">Connectats de manera nativa amb els serveis comuns de l'Administració</p>
         </div>
     </section>
 
-    <!-- 8. INTEROPERABILIDAD NATIVA -->
-    <section class="slide-container" aria-label="Interoperabilitat nativa amb els serveis comuns">
-        <h2 class="slide-title">Interoperabilitat nativa</h2>
+    <!-- 7. TRES VÍAS DE INTEGRACIÓN -->
+    <section class="slide-container" aria-label="Tres vies d'integració">
+        <h2 class="slide-title">Tres vies d'integració</h2>
+        <div class="content-area">
+            <div class="feature-cards">
+                <div class="feature-card">
+                    <div class="icon-circle icon-circle--lg mx-auto">
+                        <i class="fa-solid fa-cubes" aria-hidden="true"></i>
+                    </div>
+                    <h3>Integracions de producte</h3>
+                    <p>Connectors natius del catàleg, ja disponibles i llestos per activar sense desenvolupament addicional.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon-circle icon-circle--lg mx-auto">
+                        <i class="fa-solid fa-industry" aria-hidden="true"></i>
+                    </div>
+                    <h3>Integracions Factory</h3>
+                    <p>El nostre equip de Gestiona Factory construeix la integració a mida, amb el mateix estàndard i qualitat del producte.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon-circle icon-circle--lg mx-auto">
+                        <i class="fa-solid fa-code" aria-hidden="true"></i>
+                    </div>
+                    <h3>Integracions desenvolupades per l'entitat</h3>
+                    <p>L'entitat, amb equip tècnic propi, desenvolupa la integració fent servir la nostra API oberta i documentada.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. INTEGRACIONES DE PRODUCTO -->
+    <section class="slide-container" aria-label="Integracions de producte">
+        <h2 class="slide-title">Integracions de producte</h2>
         <div class="content-area">
             <div class="chip-grid">
                 <div class="chip"><i class="fa-solid fa-list-check" aria-hidden="true"></i> Catàleg de procediments</div>
@@ -250,12 +294,47 @@
                 <div class="chip"><i class="fa-solid fa-handshake" aria-hidden="true"></i> Relació amb els proveïdors</div>
             </div>
             <div class="highlight-box mt-md">
-                <p><strong>Punt de Presència (PdP) de la Xarxa SARA:</strong> a través nostre, les administracions catalanes i de la resta de l'Estat accedeixen als serveis comuns de l'Administració General de l'Estat.</p>
+                <p style="font-size: 0.92rem;"><strong>Punt de Presència (PdP) de la Xarxa SARA:</strong> a través nostre, les administracions catalanes i de la resta de l'Estat accedeixen als serveis comuns de l'Administració General de l'Estat i de la Generalitat de Catalunya, a través del Consorci AOC.</p>
             </div>
         </div>
     </section>
 
-    <!-- 9. SEGURIDAD Y PROTECCIÓN DE DATOS -->
+    <!-- 9. EVOLUCIÓN SOSTENIDA -->
+    <section class="slide-container" aria-label="Evolució sostinguda">
+        <h2 class="slide-title">Més d'una dècada ampliant la capacitat d'integració</h2>
+        <div class="content-area">
+            <div class="timeline">
+                <div class="timeline-node">
+                    <div class="timeline-year">2014</div>
+                    <div class="timeline-dot"></div>
+                    <p>API oberta i gratuïta</p>
+                </div>
+                <div class="timeline-node">
+                    <div class="timeline-year">2016</div>
+                    <div class="timeline-dot"></div>
+                    <p>Suport API com a servei</p>
+                </div>
+                <div class="timeline-node">
+                    <div class="timeline-year">2019</div>
+                    <div class="timeline-dot"></div>
+                    <p>OTP Gestiona</p>
+                </div>
+                <div class="timeline-node">
+                    <div class="timeline-year">2024</div>
+                    <div class="timeline-dot"></div>
+                    <p>Gestiona Factory</p>
+                </div>
+                <div class="timeline-node">
+                    <div class="timeline-year">2026</div>
+                    <div class="timeline-dot"></div>
+                    <p>Gestiona for developers</p>
+                </div>
+            </div>
+            <p class="text-sm text-muted mt-lg text-center">L'API creix de manera contínua amb nous serveis: població, territori, comptabilitat, tributària i nòmina.</p>
+        </div>
+    </section>
+
+    <!-- 10. SEGURIDAD Y PROTECCIÓN DE DATOS -->
     <section class="slide-container" aria-label="Seguretat i protecció de dades">
         <h2 class="slide-title">Seguretat i protecció de dades</h2>
         <div class="content-area" style="align-items: center;">
@@ -292,7 +371,7 @@
         </div>
     </section>
 
-    <!-- 10. SEPARADOR: ARQUITECTURA DE INTEGRACIÓN -->
+    <!-- 11. SEPARADOR: ARQUITECTURA DE INTEGRACIÓN -->
     <section class="slide-container" aria-label="Separador: arquitectura d'integració">
         <div class="section-title-layout">
             <h2>Arquitectura d'integració</h2>
@@ -301,7 +380,7 @@
         </div>
     </section>
 
-    <!-- 11. NUESTRA API REST -->
+    <!-- 12. NUESTRA API REST -->
     <section class="slide-container" aria-label="La nostra API REST">
         <h2 class="slide-title">La nostra API REST</h2>
         <div class="content-area" style="align-items: center;">
@@ -341,7 +420,7 @@
         </div>
     </section>
 
-    <!-- 12. LAS CUATRO CARACTERÍSTICAS DE LA API -->
+    <!-- 13. LAS CUATRO CARACTERÍSTICAS DE LA API -->
     <section class="slide-container" aria-label="Les quatre característiques de l'API">
         <h2 class="slide-title">Quatre característiques que la defineixen</h2>
         <div class="content-area">
@@ -358,7 +437,7 @@
         </div>
     </section>
 
-    <!-- 13. MODELO LOW CODE DE CONECTORES -->
+    <!-- 14. MODELO LOW CODE DE CONECTORES -->
     <section class="slide-container" aria-label="Model Low Code de connectors">
         <h2 class="slide-title">Desenvolupament àgil de connectors</h2>
         <div class="content-area">
@@ -378,7 +457,7 @@
         </div>
     </section>
 
-    <!-- 14. FLUJOS DOCUMENTALES Y PROCESOS REGLADOS -->
+    <!-- 15. FLUJOS DOCUMENTALES Y PROCESOS REGLADOS -->
     <section class="slide-container" aria-label="Fluxos documentals i processos reglats">
         <h2 class="slide-title">Dues vies d'integració</h2>
         <div class="content-area">
@@ -400,7 +479,7 @@
         </div>
     </section>
 
-    <!-- 15. METODOLOGÍA DE INTEGRACIONES -->
+    <!-- 16. METODOLOGÍA DE INTEGRACIONES -->
     <section class="slide-container" aria-label="Metodologia d'integracions">
         <div class="section-title-layout">
             <h2>Metodologia d'integracions</h2>
@@ -442,7 +521,7 @@
         </div>
     </section>
 
-    <!-- 16. CIERRE -->
+    <!-- 17. CIERRE -->
     <section class="slide-container" aria-label="Tancament">
         <div class="section-title-layout">
             <h2>T'acompanyem fins on vulguis arribar</h2>
