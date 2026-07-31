@@ -1,0 +1,6 @@
+.tools/.venv/
+.tools/shots_pdf/
+
+# Permitir los deliverables finales de esta presentación
+!apdcat.pptx
+!apdcat.pdf
