@@ -45,7 +45,7 @@ Si el usuario no menciona marca en su prompt, la respuesta correcta es preguntar
 |---|---|---|---|---|
 | `espublico` | esPublico (matriz) | 144 C | `#ff9900` | Naranja corporativo. Alias: `corporativa`, `corporativa-ae`, `contratacion` |
 | `gestiona` | Gestiona | 3145 C | `#006d85` | Azul petróleo. Alias: `factory` |
-| `gestiona-avanza` | Gestiona Avanza | — | `#00a2c4` | Cian. Submarca de formación, comunidad y eventos de Gestiona |
+| `gestiona-avanza` | Gestiona Avanza | — | `#00b4d3` | Cian. Submarca de formación, comunidad y eventos de Gestiona. Sin Pantone: muestreado del logotipo oficial (sistema `img-gestiona-avanza`) |
 | `esfirma` | esFirma | 618 C | `#aa9944` | Dorado |
 | `hacienda-local` | Hacienda Local (HL) | 3252 C | `#00bb88` | Verde |
 | `rrhh` | Recursos Humanos | 1925 C | `#ee0055` | Rojo |

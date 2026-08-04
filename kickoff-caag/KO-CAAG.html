@@ -114,13 +114,16 @@
     --color-primary-soft: rgba(0, 109, 133, 0.07);
 }
 
-/* Gestiona Avanza — cian — submarca formación/comunidad/eventos de Gestiona */
+/* Gestiona Avanza — cian — submarca formación/comunidad/eventos de Gestiona
+   Sin Pantone: el cian se muestreó píxel a píxel del logotipo oficial, y los
+   cuatro derivados son pasos de la rampa del sistema img-gestiona-avanza
+   (cyan-400 / 500 / 700 y cyan-200). No los ajustes a ojo aquí. */
 [data-brand="gestiona-avanza"] {
-    --color-primary: #00a2c4;
-    --color-primary-light: #4dbed6;
-    --color-primary-dark: #007a93;
-    --color-accent: #99dae7;
-    --color-primary-soft: rgba(0, 162, 196, 0.07);
+    --color-primary: #00b4d3;
+    --color-primary-light: #4cc4e0;
+    --color-primary-dark: #00839e;
+    --color-accent: #b1e9f8;
+    --color-primary-soft: rgba(0, 180, 211, 0.07);
 }
 
 /* esFirma — Pantone 618 C — dorado */
@@ -1416,7 +1419,7 @@ img {
         }
         .block-item.phase.visible .block-num {
             background: var(--color-primary);
-            box-shadow: 0 4px 12px rgba(0, 162, 196, 0.4);
+            box-shadow: 0 4px 12px rgba(0, 180, 211, 0.4);
         }
         .block-item.phase.visible .block-module {
             color: var(--color-primary-dark);
