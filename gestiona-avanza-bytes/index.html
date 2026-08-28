@@ -66,31 +66,54 @@
             font-weight: 700;
             color: var(--color-primary);
         }
+        .traits-wrap {
+            flex: 1;
+            min-height: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 64px;
+        }
+        .traits-title {
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--color-text-dark);
+            text-align: center;
+            margin: 0;
+        }
         .trait-row {
             display: flex;
             align-items: flex-start;
             justify-content: center;
-            gap: 10px;
+            gap: 16px;
             flex-wrap: wrap;
         }
         .trait {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 8px;
+            gap: 14px;
             text-align: center;
-            width: 112px;
+            width: 168px;
+        }
+        .trait .icon-circle {
+            width: 108px;
+            height: 108px;
+        }
+        .trait .icon-circle i {
+            font-size: 44px;
         }
         .trait span {
-            font-size: 14px;
+            font-size: 16px;
             font-weight: 600;
             color: var(--color-text-dark);
             line-height: 1.25;
         }
         .trait-arrow {
             color: var(--color-border);
-            font-size: 14px;
-            margin-top: 18px;
+            font-size: 18px;
+            margin-top: 46px;
         }
         .formula-quote {
             font-style: italic;
@@ -125,39 +148,36 @@
             <div class="highlight-box">
                 <p><em class="text-dark">Gestiona Avanza Bytes</em> es una propuesta de <u>canal de microformación</u> dentro del ecosistema <span class="text-primary">Gestiona Avanza</span>, que facilita el conocimiento y aprovechamiento de las funcionalidades de Gestiona a sus usuarios.</p>
             </div>
-            <p class="text-center text-sm text-muted mt-lg">¿Cómo son los contenidos de Gestiona Avanza Bytes?</p>
-            <div class="trait-row mt-sm">
-                <div class="trait phase" data-phase="1">
-                    <div class="icon-circle icon-circle--lg" aria-hidden="true"><i class="fa-solid fa-bolt"></i></div>
-                    <span>Breves</span>
-                </div>
-                <i class="fa-solid fa-chevron-right trait-arrow phase" data-phase="2" aria-hidden="true"></i>
-                <div class="trait phase" data-phase="2">
-                    <div class="icon-circle icon-circle--lg" aria-hidden="true"><i class="fa-solid fa-fingerprint"></i></div>
-                    <span>Reconocibles</span>
-                </div>
-                <i class="fa-solid fa-chevron-right trait-arrow phase" data-phase="3" aria-hidden="true"></i>
-                <div class="trait phase" data-phase="3">
-                    <div class="icon-circle icon-circle--lg" aria-hidden="true"><i class="fa-solid fa-arrows-rotate"></i></div>
-                    <span>Reutilizables</span>
-                </div>
-                <i class="fa-solid fa-chevron-right trait-arrow phase" data-phase="4" aria-hidden="true"></i>
-                <div class="trait phase" data-phase="4">
-                    <div class="icon-circle icon-circle--lg" aria-hidden="true"><i class="fa-solid fa-bullseye"></i></div>
-                    <span>Orientados a la acción</span>
+            <div class="traits-wrap">
+                <p class="traits-title">¿Cómo son los contenidos de Gestiona Avanza Bytes?</p>
+                <div class="trait-row">
+                    <div class="trait phase" data-phase="1">
+                        <div class="icon-circle icon-circle--lg" aria-hidden="true"><i class="fa-solid fa-bolt"></i></div>
+                        <span>Breves</span>
+                    </div>
+                    <i class="fa-solid fa-chevron-right trait-arrow phase" data-phase="2" aria-hidden="true"></i>
+                    <div class="trait phase" data-phase="2">
+                        <div class="icon-circle icon-circle--lg" aria-hidden="true"><i class="fa-solid fa-fingerprint"></i></div>
+                        <span>Reconocibles</span>
+                    </div>
+                    <i class="fa-solid fa-chevron-right trait-arrow phase" data-phase="3" aria-hidden="true"></i>
+                    <div class="trait phase" data-phase="3">
+                        <div class="icon-circle icon-circle--lg" aria-hidden="true"><i class="fa-solid fa-arrows-rotate"></i></div>
+                        <span>Reutilizables</span>
+                    </div>
+                    <i class="fa-solid fa-chevron-right trait-arrow phase" data-phase="4" aria-hidden="true"></i>
+                    <div class="trait phase" data-phase="4">
+                        <div class="icon-circle icon-circle--lg" aria-hidden="true"><i class="fa-solid fa-bullseye"></i></div>
+                        <span>Orientados a la acción</span>
+                    </div>
                 </div>
             </div>
-            <ul class="bullet-list mt-lg">
-                <li class="phase" data-phase="5"><i class="fa-solid fa-check" aria-hidden="true"></i> Formato audiovisual inspirado en Reel/Short, adaptado a un contexto profesional y formativo.</li>
-                <li class="phase" data-phase="6"><i class="fa-solid fa-check" aria-hidden="true"></i> Modelo complementario de microaprendizaje continuo: no sustituye a la formación estructurada.</li>
-                <li class="phase" data-phase="7"><i class="fa-solid fa-check" aria-hidden="true"></i> Acompaña al usuario en el conocimiento progresivo de la plataforma.</li>
-            </ul>
         </div>
     </section>
 
     <!-- 3. EL CONCEPTO "BYTE" -->
     <section class="slide-container" aria-label="El concepto Byte">
-        <h2 class="slide-title">El concepto: un <em>Byte</em> de conocimiento</h2>
+        <h2 class="slide-title">El concepto de Byte</h2>
         <div class="content-area">
             <div class="two-column">
                 <div>
