@@ -66,6 +66,32 @@
             font-weight: 700;
             color: var(--color-primary);
         }
+        .trait-row {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .trait {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            text-align: center;
+            width: 112px;
+        }
+        .trait span {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--color-text-dark);
+            line-height: 1.25;
+        }
+        .trait-arrow {
+            color: var(--color-border);
+            font-size: 14px;
+            margin-top: 18px;
+        }
         .formula-quote {
             font-style: italic;
             color: var(--color-primary);
@@ -96,11 +122,31 @@
     <section class="slide-container" aria-label="Resumen ejecutivo">
         <h2 class="slide-title">Resumen ejecutivo</h2>
         <div class="content-area">
-            <p>Gestiona Avanza Bytes es una propuesta de nuevo canal de contenidos breves, visuales y eminentemente prácticos dentro del ecosistema Gestiona Avanza, que facilita el conocimiento y aprovechamiento de las funcionalidades de Gestiona mediante microcontenidos audiovisuales.</p>
-            <div class="highlight-box mt-md">
-                <p><strong>Transformar</strong> pequeñas unidades de conocimiento sobre Gestiona en contenidos breves, reconocibles, reutilizables y orientados a la acción.</p>
+            <div class="highlight-box">
+                <p>Gestiona Avanza Bytes es una propuesta de canal de microformación dentro del ecosistema Gestiona Avanza, que facilita el conocimiento y aprovechamiento de las funcionalidades de Gestiona.</p>
             </div>
-            <ul class="bullet-list mt-md">
+            <div class="trait-row mt-lg">
+                <div class="trait">
+                    <div class="icon-circle" aria-hidden="true"><i class="fa-solid fa-bolt"></i></div>
+                    <span>Breves</span>
+                </div>
+                <i class="fa-solid fa-chevron-right trait-arrow" aria-hidden="true"></i>
+                <div class="trait">
+                    <div class="icon-circle" aria-hidden="true"><i class="fa-solid fa-fingerprint"></i></div>
+                    <span>Reconocibles</span>
+                </div>
+                <i class="fa-solid fa-chevron-right trait-arrow" aria-hidden="true"></i>
+                <div class="trait">
+                    <div class="icon-circle" aria-hidden="true"><i class="fa-solid fa-arrows-rotate"></i></div>
+                    <span>Reutilizables</span>
+                </div>
+                <i class="fa-solid fa-chevron-right trait-arrow" aria-hidden="true"></i>
+                <div class="trait">
+                    <div class="icon-circle" aria-hidden="true"><i class="fa-solid fa-bullseye"></i></div>
+                    <span>Orientados a la acción</span>
+                </div>
+            </div>
+            <ul class="bullet-list mt-lg">
                 <li class="phase" data-phase="1"><i class="fa-solid fa-check" aria-hidden="true"></i> Formato audiovisual inspirado en Reel/Short, adaptado a un contexto profesional y formativo.</li>
                 <li class="phase" data-phase="2"><i class="fa-solid fa-check" aria-hidden="true"></i> Modelo complementario de microaprendizaje continuo: no sustituye a la formación estructurada.</li>
                 <li class="phase" data-phase="3"><i class="fa-solid fa-check" aria-hidden="true"></i> Acompaña al usuario en el conocimiento progresivo de la plataforma.</li>
