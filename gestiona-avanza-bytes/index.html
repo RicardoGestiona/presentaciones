@@ -125,6 +125,19 @@
         .step-card strong {
             color: var(--color-primary-light);
         }
+        /* Slide 2: texto destacado y enumeración a mayor tamaño (hay espacio de sobra). */
+        section[aria-label="Qué es Gestiona Avanza Bytes"] .highlight-box p {
+            font-size: 22px;
+            line-height: 1.6;
+        }
+        section[aria-label="Qué es Gestiona Avanza Bytes"] .bullet-list li {
+            font-size: 22px;
+            padding-left: 42px;
+        }
+        section[aria-label="Qué es Gestiona Avanza Bytes"] .bullet-list li i {
+            font-size: 24px;
+            top: 6px;
+        }
     </style>
 </head>
 <body data-brand="gestiona-avanza">
@@ -148,8 +161,23 @@
             <div class="highlight-box">
                 <p><em class="text-dark">Gestiona Avanza Bytes</em> es una propuesta de <u>canal de microformación</u> dentro del ecosistema <span class="text-primary">Gestiona Avanza</span>, que facilita el conocimiento y aprovechamiento de las funcionalidades de Gestiona a sus usuarios.</p>
             </div>
+            <ul class="bullet-list mt-lg">
+                <li class="phase" data-phase="1"><i class="fa-solid fa-check" aria-hidden="true"></i> Formato audiovisual inspirado en Reel/Short, adaptado a un contexto profesional y formativo.</li>
+                <li class="phase" data-phase="2"><i class="fa-solid fa-check" aria-hidden="true"></i> Modelo complementario de microaprendizaje continuo: no sustituye a la formación estructurada.</li>
+                <li class="phase" data-phase="3"><i class="fa-solid fa-check" aria-hidden="true"></i> Acompaña al usuario en el conocimiento progresivo de la plataforma.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- 3. EL CONCEPTO "BYTE" -->
+    <section class="slide-container" aria-label="El concepto Byte">
+        <h2 class="slide-title">El concepto de Byte</h2>
+        <div class="content-area">
+            <div class="highlight-box">
+                <p>El término <strong>byte</strong> en tecnología alude a una pequeña unidad de información. <strong>Gestiona Avanza Bytes</strong> es una colección de píldoras formativas sobre los diferentes módulos y funcionalidades de Gestiona.</p>
+            </div>
             <div class="traits-wrap">
-                <p class="traits-title">¿Cómo son los contenidos de Gestiona Avanza Bytes?</p>
+                <p class="traits-title">¿Cómo serán los contenidos de Gestiona Avanza Bytes?</p>
                 <div class="trait-row">
                     <div class="trait phase" data-phase="1">
                         <div class="icon-circle icon-circle--lg" aria-hidden="true"><i class="fa-solid fa-bolt"></i></div>
@@ -170,30 +198,6 @@
                         <div class="icon-circle icon-circle--lg" aria-hidden="true"><i class="fa-solid fa-bullseye"></i></div>
                         <span>Orientados a la acción</span>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 3. EL CONCEPTO "BYTE" -->
-    <section class="slide-container" aria-label="El concepto Byte">
-        <h2 class="slide-title">El concepto de Byte</h2>
-        <div class="content-area">
-            <div class="two-column">
-                <div>
-                    <p>El nombre <strong>Bytes</strong> establece una relación directa entre tecnología y conocimiento: en el ámbito digital, un byte representa una pequeña unidad de información.</p>
-                    <p>Dentro de Gestiona Avanza, un <strong>Byte</strong> es una pequeña unidad de conocimiento sobre Gestiona:</p>
-                    <ul class="bullet-list">
-                        <li><i class="fa-solid fa-check" aria-hidden="true"></i> Concreta y breve</li>
-                        <li><i class="fa-solid fa-check" aria-hidden="true"></i> Visual y práctica</li>
-                        <li><i class="fa-solid fa-check" aria-hidden="true"></i> Fácilmente consumible y directamente aplicable</li>
-                    </ul>
-                </div>
-                <div class="card card--bordered">
-                    <h3>Colección vs. unidad</h3>
-                    <p><strong>Bytes</strong> — la colección, el canal completo.</p>
-                    <p><strong>Byte #001, #002, #003…</strong> — cada pieza individual, numerada.</p>
-                    <p>La numeración construye progresivamente un catálogo reconocible de contenidos.</p>
                 </div>
             </div>
         </div>
