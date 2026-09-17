@@ -12,11 +12,17 @@
         body {
             background: var(--color-bg-dark);
             color: white;
+            /* corporate.css fija body a 100vh sin scroll para los decks; la home
+               necesita crecer con el contenido y desplazarse */
+            width: auto;
+            height: auto;
             min-height: 100vh;
+            overflow-y: auto;
+            box-sizing: border-box;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start;
             padding: 40px 24px;
             margin: 0;
         }
