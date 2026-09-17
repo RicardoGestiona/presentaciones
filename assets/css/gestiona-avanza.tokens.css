@@ -1,0 +1,210 @@
+/* ==========================================================================
+   Gestiona Avanza — tokens de diseño
+   CSS puro, sin dependencias. Válido en cualquier HTML y en Tailwind v4.
+   Los valores de marca #006d87 y #00b4d3 están muestreados del logotipo
+   oficial. No los modifiques sin actualizar el manual y volver a ejecutar
+   tokens/audit.py.
+   ========================================================================== */
+
+:root {
+  color-scheme: light;
+
+  /* --- Rampa petróleo (matiz OKLCH 222) --------------------------------- */
+  --ga-petrol-50:  #f0f9fc;
+  --ga-petrol-100: #dbeff7;
+  --ga-petrol-200: #bce0ed;
+  --ga-petrol-300: #92c7db;
+  --ga-petrol-400: #52a0b9;
+  --ga-petrol-500: #2c86a1;
+  --ga-petrol-600: #187994;
+  --ga-petrol-700: #006d87;   /* marca */
+  --ga-petrol-800: #005469;
+  --ga-petrol-900: #013947;
+  --ga-petrol-950: #032029;
+
+  /* --- Rampa cian (matiz OKLCH 216) ------------------------------------- */
+  --ga-cyan-50:  #effbff;
+  --ga-cyan-100: #d6f5fd;
+  --ga-cyan-200: #b1e9f8;
+  --ga-cyan-300: #76d4eb;
+  --ga-cyan-400: #4cc4e0;
+  --ga-cyan-500: #00b4d3;     /* marca */
+  --ga-cyan-600: #009dbc;
+  --ga-cyan-700: #00839e;
+  --ga-cyan-800: #00677d;
+  --ga-cyan-900: #004b5b;
+
+  /* --- Rampa neutra (matiz OKLCH 225, croma casi nulo) ------------------- */
+  --ga-neutral-0:   #ffffff;
+  --ga-neutral-50:  #f9fbfd;
+  --ga-neutral-100: #f1f5f7;
+  --ga-neutral-200: #e2e8eb;
+  --ga-neutral-300: #d1d8db;
+  --ga-neutral-400: #9aa5aa;
+  --ga-neutral-500: #717f86;
+  --ga-neutral-600: #58686e;
+  --ga-neutral-700: #3d4e55;
+  --ga-neutral-800: #1f3138;
+  --ga-neutral-900: #112127;
+  --ga-neutral-950: #061318;
+
+  /* --- Superficies y texto ---------------------------------------------- */
+  --background: #f9fbfd;
+  --foreground: #112127;
+  --card: #ffffff;
+  --card-foreground: #112127;
+  --popover: #ffffff;
+  --popover-foreground: #112127;
+
+  /* --- Acción ------------------------------------------------------------ */
+  --primary: #006d87;
+  --primary-foreground: #ffffff;
+  --secondary: #f1f5f7;
+  --secondary-foreground: #112127;
+  --muted: #f1f5f7;
+  --muted-foreground: #58686e;
+  --accent: #effbff;
+  --accent-foreground: #005064;
+
+  /* --- Estado ------------------------------------------------------------ */
+  --destructive: #cb2526;
+  --destructive-foreground: #ffffff;
+  --success: #1f7c4b;
+  --success-foreground: #ffffff;
+  --warning: #bd7d00;
+  --warning-foreground: #112127;   /* tinta oscura: con blanco el par cae a 3.44:1 */
+
+  /* --- Trazo -------------------------------------------------------------- */
+  --border: #e2e8eb;
+  --input: #d1d8db;
+  --ring: #009dbc;
+  --edge: #009dbc;            /* filo cian de 3 px */
+
+  /* --- Navegación (petróleo oscuro en ambos temas) ----------------------- */
+  --sidebar: #032029;
+  --sidebar-foreground: #d6e0e4;
+  --sidebar-active: #00b4d3;
+  --sidebar-border: #153843;
+
+  /* --- Datos: categórico, orden fijo, nunca ciclado ---------------------- */
+  --chart-1: #00839e;         /* cian */
+  --chart-2: #5a8a01;         /* lima */
+  --chart-3: #683597;         /* violeta */
+  --chart-4: #cc6900;         /* naranja */
+  --chart-5: #8d2160;         /* rosa */
+
+  /* --- Datos: secuencial, un solo matiz, claro -> oscuro ----------------- */
+  --chart-seq-1: #4cc4e0;
+  --chart-seq-2: #009dbc;
+  --chart-seq-3: #00839e;
+  --chart-seq-4: #00677d;
+  --chart-seq-5: #004b5b;
+
+  /* --- Datos: divergente, cian <- neutro -> naranja ---------------------- */
+  --chart-div-1: #00697e;
+  --chart-div-2: #0090aa;
+  --chart-div-3: #61b9cf;
+  --chart-div-4: #dadfe1;     /* punto medio neutro */
+  --chart-div-5: #e3a072;
+  --chart-div-6: #d07936;
+  --chart-div-7: #a3591c;
+
+  /* --- Forma -------------------------------------------------------------- */
+  --ga-angle: 20deg;
+  --radius: 0.5rem;
+  --ga-edge-width: 3px;
+
+  /* --- Tipografía: la superfamilia Roboto, tres registros ---------------- */
+  --ga-font-sans: "Roboto", ui-sans-serif, system-ui, sans-serif;
+  --ga-font-slab: "Roboto Slab", ui-serif, Georgia, serif;
+  --ga-font-mono: "Roboto Mono", ui-monospace, monospace;
+
+  /* --- Escala tipográfica: ocho tamaños, ninguno más --------------------- */
+  /* En rem, no px: así respeta el tamaño de fuente que la persona haya fijado
+     en el navegador. Los sufijos siguen los nombres de utilidad de Tailwind
+     para que la capa mapee uno a uno y el nombre diga qué se escribe. */
+  --ga-text-xs: 0.75rem;      /* 12 px — metadatos, etiquetas de estado */
+  --ga-text-dense: 0.8125rem; /* 13 px — filas de tabla densa */
+  --ga-text-sm: 0.875rem;     /* 14 px — BASE DE UI: controles, formularios, tabla */
+  --ga-text-base: 1rem;       /* 16 px — lectura: párrafos, ayuda */
+  --ga-text-lg: 1.125rem;     /* 18 px — subtítulos, cabecera de card */
+  --ga-text-xl: 1.375rem;     /* 22 px — títulos de bloque (Roboto) */
+  --ga-text-2xl: 1.75rem;     /* 28 px — títulos de página (Roboto Slab) */
+  --ga-text-3xl: 2.25rem;     /* 36 px — momentos de marca (Roboto Slab) */
+
+  /* --- Interlineado ------------------------------------------------------- */
+  --ga-leading-chrome: 1.4;   /* controles, tablas, navegación */
+  --ga-leading-prose: 1.6;    /* párrafos, ayuda, contenido largo */
+  --ga-leading-title: 1.25;   /* 22 px en adelante: un título de dos líneas a
+                                 1.4 abre un hueco que parte el bloque en dos */
+
+  /* --- Movimiento --------------------------------------------------------- */
+  --ga-duration-fast: 120ms;
+  --ga-duration-base: 200ms;
+  --ga-duration-slow: 320ms;
+  --ga-ease: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* --- Elevación: solo overlays, teñida de petróleo ---------------------- */
+  --ga-shadow-overlay: 0 8px 24px rgba(0, 48, 64, 0.12);
+  --ga-shadow-popover: 0 2px 10px rgba(0, 48, 64, 0.10);
+}
+
+.dark {
+  color-scheme: dark;
+
+  --background: #071318;
+  --foreground: #ecf1f3;
+  --card: #0f1e24;
+  --card-foreground: #ecf1f3;
+  --popover: #12232a;
+  --popover-foreground: #ecf1f3;
+
+  --primary: #00b4d3;
+  --primary-foreground: #001a24;
+  --secondary: #1d2e35;
+  --secondary-foreground: #ecf1f3;
+  --muted: #1d2e35;
+  --muted-foreground: #99a7ad;
+  --accent: #153843;
+  --accent-foreground: #76d4eb;
+
+  --destructive: #e7534a;
+  --destructive-foreground: #071318;
+  --success: #4ab074;
+  --success-foreground: #071318;
+  --warning: #e9aa47;
+  --warning-foreground: #071318;
+
+  --border: #28353b;
+  --input: #2e3d43;
+  --ring: #00b4d3;
+  --edge: #00b4d3;
+
+  --sidebar: #030d11;
+  --sidebar-foreground: #d6e0e4;
+  --sidebar-active: #00b4d3;
+  --sidebar-border: #223036;
+
+  --chart-1: #009dbc;
+  --chart-2: #598a00;
+  --chart-3: #814fb3;
+  --chart-4: #cd6a01;
+  --chart-5: #ab3f7a;
+
+  --chart-seq-1: #b1e9f8;
+  --chart-seq-2: #4cc4e0;
+  --chart-seq-3: #009dbc;
+  --chart-seq-4: #00839e;
+  --chart-seq-5: #00677d;
+
+  --chart-div-1: #6ec6dc;
+  --chart-div-2: #0fa3bf;
+  --chart-div-3: #007e95;
+  --chart-div-4: #383e41;
+  --chart-div-5: #a76029;
+  --chart-div-6: #d77f3d;
+  --chart-div-7: #eeae82;
+
+  --ga-shadow-overlay: 0 8px 24px rgba(0, 0, 0, 0.55);
+  --ga-shadow-popover: 0 2px 10px rgba(0, 0, 0, 0.45);
+}
