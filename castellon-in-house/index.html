@@ -1,0 +1,1643 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificación in-house Configuración Avanzada de Procedimientos — Ajuntament de Castelló</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/corporate.css">
+    <style>
+        /* ===== Estilos específicos de esta presentación ===== */
+
+        /* Barra del título en color de marca (el base de corporate.css usa gold) */
+        .slide-title { border-left-color: var(--color-primary); }
+
+        /* ===== Portada: co-branding Gestiona Avanza + Ajuntament de Castelló ===== */
+        .title-layout h1 { font-weight: 600; }
+        .title-layout h1 span { color: #000; }
+        .cover-brands {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+            margin: -24px 0 52px;
+        }
+        .cover-brands img { display: block; height: auto; }
+        .cover-brands .cover-logo { width: 300px; }
+        .cover-brands .cover-client { width: 210px; }
+        .cover-brands-divider {
+            width: 1px;
+            height: 72px;
+            background: var(--color-border);
+        }
+        .title-eyebrow {
+            font-size: 21px;
+            font-weight: 300;
+            color: var(--color-primary);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin: 0 0 10px;
+        }
+        .cover-meta {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 36px;
+        }
+        /* En la portada el logotipo completo ya identifica la marca: fuera isotipo */
+        .stage.is-first-slide .brand-isotipo { display: none; }
+
+        /* Isotipo de marca fijo sobre el .stage; variante blanca en slides oscuras */
+        .brand-isotipo {
+            position: absolute;
+            top: 22px;
+            right: 26px;
+            width: 40px;
+            height: auto;
+            z-index: 40;
+            pointer-events: none;
+        }
+        .brand-isotipo--dark { display: none; }
+        .stage.is-dark-slide .brand-isotipo--light { display: none; }
+        .stage.is-dark-slide .brand-isotipo--dark { display: block; }
+
+        /* ===== Ciclo de las fases del aprendizaje ===== */
+        .cycle-diagram {
+            position: relative;
+            width: 1000px;
+            height: 480px;
+            margin: 0 auto;
+        }
+        .cycle-ellipse {
+            position: absolute;
+            top: 90px;
+            left: 120px;
+            width: 760px;
+            height: 300px;
+        }
+        .cycle-ellipse svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+        }
+        .cycle-arc { fill: none; stroke-width: 3; stroke-linecap: round; }
+        .cycle-arc--1 { stroke: var(--color-primary-dark); }
+        .cycle-arc--2 { stroke: var(--color-primary); }
+        .cycle-arc--3 { stroke: var(--color-primary-light); }
+        .cycle-arc--4 { stroke: var(--color-text-subtle); stroke-dasharray: 7 7; }
+        .cycle-orbit-dot {
+            fill: var(--color-primary);
+            filter: drop-shadow(0 0 6px var(--color-primary-light));
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .cycle-orbit-dot { display: none; }
+        }
+        .cycle-arrow-fill--1 { fill: var(--color-primary-dark); }
+        .cycle-arrow-fill--2 { fill: var(--color-primary); }
+        .cycle-arrow-fill--3 { fill: var(--color-primary-light); }
+        .cycle-arrow-fill--4 { fill: var(--color-text-subtle); }
+        .cycle-node { position: absolute; }
+        .cycle-badge {
+            position: absolute;
+            top: 0;
+            left: 0;
+            transform: translate(-50%, -50%);
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            color: white;
+            font-size: 19px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-card);
+            z-index: 2;
+        }
+        .cycle-label { position: absolute; width: 232px; z-index: 2; }
+        .cycle-label h3 {
+            font-size: 16px;
+            line-height: 1.25;
+            margin: 0 0 4px;
+            color: var(--color-text-dark);
+        }
+        .cycle-label p {
+            font-size: 12.5px;
+            line-height: 1.42;
+            margin: 0;
+            color: var(--color-text-muted);
+        }
+        .cycle-node--1 { top: 44px; left: 649px; }
+        .cycle-node--2 { top: 256px; left: 649px; }
+        .cycle-node--3 { top: 256px; left: 111px; }
+        .cycle-node--4 { top: 44px;  left: 111px; }
+        .cycle-node--1 .cycle-badge { background: var(--color-text-subtle); }
+        .cycle-node--2 .cycle-badge { background: var(--color-primary-dark); }
+        .cycle-node--3 .cycle-badge { background: var(--color-primary); }
+        .cycle-node--4 .cycle-badge { background: var(--color-primary-light); }
+        .cycle-node--1 .cycle-label { left: 0; bottom: 44px; text-align: left; }
+        .cycle-node--2 .cycle-label { left: 0; top: 44px; text-align: left; }
+        .cycle-node--3 .cycle-label { right: 0; top: 44px; text-align: right; }
+        .cycle-node--4 .cycle-label { right: 0; bottom: 44px; text-align: right; }
+
+        /* ===== Contexto tecnológico: tendencias por contrato ===== */
+        .contract-timeline {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            position: relative;
+        }
+        /* Línea que une los tres contratos a la altura de los puntos */
+        .contract-timeline::before {
+            content: "";
+            position: absolute;
+            top: 71px;
+            left: 8%;
+            right: 8%;
+            height: 4px;
+            background: var(--color-bg-light);
+            border-radius: 2px;
+        }
+        .contract { text-align: center; position: relative; }
+        .contract-name {
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--color-text-subtle);
+            margin: 0;
+        }
+        .contract-years {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--color-text-dark);
+            margin: 2px 0 12px;
+        }
+        .contract-dot {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: var(--color-primary);
+            margin: 0 auto 22px;
+            border: 4px solid white;
+            box-shadow: 0 0 0 2px var(--color-border);
+            position: relative;
+            z-index: 1;
+        }
+        .contract-trends { display: flex; flex-direction: column; gap: 12px; }
+        .trend-card {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            text-align: left;
+            background: var(--color-bg-light);
+            border-radius: var(--radius-sm);
+            padding: 16px 18px;
+        }
+        .trend-card i { font-size: 22px; color: var(--color-primary); width: 28px; text-align: center; }
+        .trend-card h3 { font-size: 17px; line-height: 1.25; margin: 0; color: var(--color-text-dark); }
+        .contract--current .contract-name { color: var(--color-primary-dark); }
+        .contract--current .contract-dot {
+            background: var(--color-primary-dark);
+            box-shadow: 0 0 0 2px var(--color-primary), 0 0 14px var(--color-primary-light);
+        }
+        .contract--current .trend-card { background: var(--color-primary); }
+        .contract--current .trend-card i,
+        .contract--current .trend-card h3 { color: white; }
+
+        /* ===== ¿Por qué? Cita + imagen ===== */
+        .quote-split {
+            display: grid;
+            grid-template-columns: 1.05fr 1fr;
+            gap: 56px;
+            align-items: center;
+        }
+        .quote-split blockquote {
+            font-size: 36px;
+            font-weight: 500;
+            line-height: 1.35;
+            color: var(--color-text-dark);
+            margin: 0;
+        }
+        .quote-split blockquote strong { color: var(--color-primary); }
+        .quote-split .image-wrapper { height: 420px; }
+
+        /* ===== Objetivos: filas numeradas ===== */
+        .objective-list {
+            list-style: none;
+            margin: 0 auto;
+            padding: 0;
+            width: 100%;
+            max-width: 1040px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .objective-list li {
+            display: flex;
+            align-items: center;
+            gap: 22px;
+            background: var(--color-bg-light);
+            border-radius: var(--radius-md);
+            padding: 14px 24px;
+            font-size: 20px;
+            line-height: 1.4;
+            color: var(--color-text-body);
+        }
+        .objective-list .icon-circle { width: 48px; height: 48px; }
+        .objective-list .icon-circle i { font-size: 20px; }
+
+        /* ===== Metodología: itinerario de 3 pasos ===== */
+        .journey {
+            display: flex;
+            align-items: stretch;
+            gap: 14px;
+        }
+        .journey-step {
+            flex: 1;
+            background: var(--color-bg-light);
+            border-radius: var(--radius-md);
+            border-top: 4px solid var(--color-primary);
+            padding: 34px 26px;
+            text-align: center;
+        }
+        .journey-step .step-index {
+            display: block;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--color-primary-dark);
+            margin: 18px 0 6px;
+        }
+        .journey-step h3 { font-size: 23px; line-height: 1.25; margin: 0 0 10px; color: var(--color-text-dark); }
+        .journey-step p { font-size: 16px; line-height: 1.5; margin: 0; }
+        .journey-arrow {
+            display: flex;
+            align-items: center;
+            color: var(--color-primary);
+            font-size: 24px;
+        }
+
+        /* ===== Plataforma e-learning: capturas ===== */
+        .screens {
+            display: grid;
+            grid-template-columns: 1.15fr 1fr;
+            gap: 28px;
+            align-items: start;
+        }
+        .screen {
+            margin: 0;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 48, 64, 0.14);
+            border: 1px solid var(--color-border);
+            background: white;
+        }
+        .screen img { display: block; width: 100%; height: 300px; object-fit: cover; object-position: top; }
+        .screen figcaption {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--color-text-muted);
+            padding: 10px 16px;
+            border-top: 1px solid var(--color-border);
+        }
+        .contact-bar {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 34px;
+        }
+        .contact-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 24px;
+            border-radius: 999px;
+            background: var(--color-primary-soft);
+            border: 1.5px solid var(--color-primary);
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--color-primary-dark);
+            text-decoration: none;
+        }
+        .contact-chip i { color: var(--color-primary); }
+        .contact-chip:hover { background: var(--color-primary); color: white; }
+        .contact-chip:hover i { color: white; }
+
+        /* ===== Talleres online / sesiones presenciales: foto + datos ===== */
+        .media-split {
+            display: grid;
+            grid-template-columns: 1.35fr 1fr;
+            gap: 48px;
+            align-items: center;
+        }
+        .media-split .image-wrapper { height: 440px; }
+        .fact-list { display: flex; flex-direction: column; gap: 18px; }
+        .fact {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+        .fact-value {
+            margin: 0;
+            font-size: 22px;
+            font-weight: 700;
+            line-height: 1.2;
+            color: var(--color-text-dark);
+        }
+        .fact-label { margin: 2px 0 0; font-size: 15px; line-height: 1.35; }
+
+        /* ===== Funcionamiento del programa ===== */
+        .rules-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 22px;
+        }
+        .rule-card {
+            grid-column: span 2;
+            background: var(--color-bg-light);
+            border-radius: var(--radius-md);
+            border-top: 4px solid var(--color-primary);
+            padding: 26px 24px;
+            text-align: center;
+        }
+        /* Fila inferior de dos tarjetas centrada bajo la de tres */
+        .rule-card:nth-child(4) { grid-column: 2 / span 2; }
+        .rule-card:nth-child(5) { grid-column: 4 / span 2; }
+        .rule-card .icon-circle { margin: 0 auto 16px; }
+        .rule-card p { margin: 0; font-size: 18px; line-height: 1.45; color: var(--color-text-body); }
+        .rule-card--required { border-top-color: var(--color-primary-dark); }
+        .tag-required {
+            display: inline-block;
+            margin-top: 12px;
+            padding: 3px 12px;
+            border-radius: 999px;
+            background: var(--color-primary-dark);
+            color: white;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+
+        /* ===== Evaluación final ===== */
+        .eval-hero {
+            display: flex;
+            align-items: center;
+            gap: 26px;
+            background: var(--color-primary);
+            border-radius: var(--radius-lg);
+            padding: 28px 36px;
+            margin-bottom: 26px;
+        }
+        .eval-hero .icon-circle { background: white; }
+        .eval-hero .icon-circle i { color: var(--color-primary); }
+        .eval-hero p { margin: 0; color: rgba(255, 255, 255, 0.85); font-size: 16px; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; }
+        .eval-hero h3 { margin: 2px 0 0; color: white; font-size: 32px; }
+        .eval-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+        .eval-grid .tile { padding: 24px; }
+        .eval-grid .tile h3 { font-size: 20px; margin: 0; color: var(--color-text-dark); }
+
+        /* ===== Elementos evaluables ===== */
+        .checklist-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: repeat(4, auto);
+            grid-auto-flow: column;
+            gap: 14px 28px;
+            max-width: 1080px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        .check-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            background: var(--color-bg-light);
+            border-radius: var(--radius-sm);
+            padding: 16px 20px;
+        }
+        .check-item i { font-size: 20px; color: var(--color-primary); width: 26px; text-align: center; }
+        .check-item p { margin: 0; font-size: 18px; line-height: 1.35; color: var(--color-text-body); }
+
+        /* ===== Claves para preparar el proyecto final ===== */
+        .keys-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+        .key-step {
+            background: var(--color-bg-light);
+            border-radius: var(--radius-md);
+            padding: 26px 26px 22px;
+            position: relative;
+        }
+        .key-step-num {
+            display: inline-block;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: white;
+            background: var(--color-primary);
+            border-radius: 999px;
+            padding: 4px 14px;
+        }
+        .key-step h3 { font-size: 22px; line-height: 1.25; margin: 14px 0 14px; color: var(--color-text-dark); }
+        .key-step .bullet-list { margin: 0; }
+        .key-step .bullet-list li { font-size: 16px; margin-bottom: 10px; padding-left: 28px; }
+        .key-step .bullet-list li i { font-size: 15px; top: 5px; }
+
+        /* ===== Calendario sesiones presenciales (línea temporal) ===== */
+        .milestones {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 18px;
+            position: relative;
+        }
+        .milestones::before {
+            content: "";
+            position: absolute;
+            top: 69px;
+            left: 9%;
+            right: 9%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--color-primary-light), var(--color-primary-dark));
+            border-radius: 2px;
+            opacity: 0.35;
+        }
+        .milestone { text-align: center; position: relative; }
+        .milestone-date {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--color-primary);
+            margin: 0;
+            line-height: 1.1;
+        }
+        .milestone-weekday {
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--color-text-subtle);
+            margin: 4px 0 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+        }
+        .milestone-dot {
+            width: 24px;
+            height: 24px;
+            margin: 0 auto 20px;
+            position: relative;
+            z-index: 1;
+            border: 4px solid white;
+            box-shadow: 0 0 0 2px var(--color-border);
+            border-radius: 50%;
+            background: var(--color-primary);
+        }
+        .milestone--onsite .milestone-dot { background: var(--color-bg-dark); border-radius: 6px; }
+        .milestone--limit .milestone-dot { background: var(--color-gold); border-radius: 4px; transform: rotate(45deg); }
+        .milestone-card {
+            background: var(--color-bg-light);
+            border-radius: var(--radius-sm);
+            padding: 16px 12px;
+            min-height: 96px;
+        }
+        .milestone--onsite .milestone-card { background: var(--color-bg-dark); }
+        .milestone--onsite .milestone-card h3,
+        .milestone--onsite .milestone-card p { color: white; }
+        .milestone-card h3 { font-size: 17px; line-height: 1.25; margin: 0 0 6px; color: var(--color-text-dark); }
+        .milestone-card p { font-size: 14px; line-height: 1.35; margin: 0; }
+
+        /* ===== Calendario del programa (rejilla generada desde CAL_EVENTS) ===== */
+        .cal-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px 36px;
+            width: 100%;
+            max-width: 1140px;
+            margin-inline: auto;
+        }
+        .cal-month-name {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--color-primary);
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .cal-weekdays,
+        .cal-days {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 3px;
+        }
+        .cal-weekdays {
+            margin-bottom: 6px;
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--color-text-subtle);
+            text-transform: uppercase;
+        }
+        .cal-weekdays span { text-align: center; }
+        .cal-day {
+            position: relative;
+            height: 34px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            color: var(--color-text-muted);
+            border-radius: 6px;
+        }
+        .cal-day--pad { visibility: hidden; }
+        .cal-day.is-eval { background: rgba(0, 180, 211, 0.12); }
+        .cal-day.is-eval-start { border-radius: 6px 0 0 6px; }
+        .cal-day.is-eval-end   { border-radius: 0 6px 6px 0; }
+        .cal-day.is-eval-mid   { border-radius: 0; }
+        .cal-day.is-event {
+            font-weight: 700;
+            color: var(--color-white);
+            cursor: default;
+            transition: transform 0.18s ease, opacity 0.18s ease;
+        }
+        .cal-day.is-event::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 29px;
+            height: 29px;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            z-index: 0;
+        }
+        .cal-day.is-event > span { position: relative; z-index: 1; }
+        .cal-day[data-type="kickoff"]::before    { background: var(--color-primary-dark); }
+        .cal-day[data-type="taller"]::before     { background: var(--color-primary); }
+        .cal-day[data-type="presencial"]::before { background: var(--color-bg-dark); border-radius: 7px; }
+        .cal-day[data-type="limite"]::before {
+            background: var(--color-gold);
+            border-radius: 3px;
+            width: 25px;
+            height: 25px;
+            transform: translate(-50%, -50%) rotate(45deg);
+        }
+        .cal-day[data-type="limite"] { color: var(--color-text-dark); }
+        .cal-day.is-event:hover { transform: scale(1.12); }
+        .cal-day.is-dimmed { opacity: 0.18; }
+        .cal-day.is-dimmed:hover { transform: none; }
+        .cal-day.is-eval.is-dimmed:not(.is-event) { opacity: 1; background: transparent; }
+        .cal-day[data-tip]:hover::after {
+            content: attr(data-tip);
+            position: absolute;
+            bottom: calc(100% + 8px);
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 5;
+            width: max-content;
+            max-width: 220px;
+            padding: 8px 11px;
+            font-size: 12px;
+            font-weight: 500;
+            line-height: 1.35;
+            color: var(--color-white);
+            background: var(--color-bg-dark);
+            border-radius: var(--radius-sm);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.22);
+            pointer-events: none;
+        }
+        .cal-day[data-tip].tip-below:hover::after { bottom: auto; top: calc(100% + 8px); }
+        .cal-day.is-dimmed[data-tip]:hover::after { display: none; }
+        @media (prefers-reduced-motion: reduce) {
+            .cal-day.is-event { transition: none; }
+            .cal-day.is-event:hover { transform: none; }
+        }
+        .cal-legend {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 40px;
+        }
+        .cal-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 13px 6px 10px;
+            font-family: inherit;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--color-text-body);
+            background: var(--color-white);
+            border: 1.5px solid var(--color-border);
+            border-radius: 999px;
+            cursor: pointer;
+            transition: border-color 0.2s ease, background 0.2s ease, opacity 0.2s ease;
+        }
+        .cal-chip:hover { border-color: var(--color-primary); }
+        .cal-chip:focus-visible { outline: 3px solid var(--color-primary); outline-offset: 2px; }
+        .cal-chip[aria-pressed="false"] { opacity: 0.42; background: var(--color-bg-light); }
+        .cal-swatch { display: inline-block; width: 13px; height: 13px; border-radius: 50%; flex-shrink: 0; }
+        .cal-swatch--kickoff    { background: var(--color-primary-dark); }
+        .cal-swatch--taller     { background: var(--color-primary); }
+        .cal-swatch--presencial { background: var(--color-bg-dark); border-radius: 4px; }
+        .cal-swatch--evaluacion { background: rgba(0, 180, 211, 0.18); border: 1.5px solid var(--color-primary); border-radius: 3px; }
+        .cal-swatch--limite { background: var(--color-gold); border-radius: 2px; transform: rotate(45deg) scale(0.82); }
+
+        /* ===== Plan de aprendizaje: módulos ===== */
+        .module-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px 24px;
+        }
+        .module-card {
+            background: var(--color-bg-light);
+            border-radius: var(--radius-md);
+            border-left: 4px solid var(--color-primary);
+            padding: 18px 24px;
+        }
+        .module-head { display: flex; align-items: center; gap: 14px; margin-bottom: 10px; }
+        .module-head .icon-circle { width: 42px; height: 42px; }
+        .module-head .icon-circle i { font-size: 18px; }
+        .module-kicker {
+            margin: 0;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--color-primary-dark);
+            line-height: 1.2;
+        }
+        .module-head h3 { font-size: 20px; margin: 0; color: var(--color-text-dark); line-height: 1.2; }
+        .module-card ul { list-style: none; margin: 0; padding: 0 0 0 56px; }
+        .module-card li {
+            position: relative;
+            font-size: 15px;
+            line-height: 1.4;
+            margin-bottom: 4px;
+            padding-left: 16px;
+            color: var(--color-text-body);
+        }
+        .module-card li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 9px;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--color-primary);
+        }
+
+        /* ===== Calendario de talleres online ===== */
+        .workshop-columns { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+        .workshop-col h3 {
+            font-size: 15px;
+            line-height: 1.25;
+            margin: 0 0 12px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid var(--color-primary);
+            color: var(--color-text-dark);
+            min-height: 48px;
+        }
+        .workshop-col h3 span {
+            display: block;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--color-primary-dark);
+        }
+        .workshop-item {
+            background: var(--color-bg-light);
+            border-radius: var(--radius-sm);
+            padding: 12px 14px;
+            margin-bottom: 10px;
+        }
+        .workshop-item .workshop-date {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--color-primary-dark);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            margin: 0 0 4px;
+        }
+        .workshop-item p { font-size: 14.5px; line-height: 1.35; margin: 0; color: var(--color-text-body); }
+        .schedule-note {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            align-self: center;
+            margin-top: 22px;
+            padding: 8px 20px;
+            border-radius: 999px;
+            background: var(--color-primary-soft);
+            border: 1.5px solid var(--color-primary);
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--color-primary-dark);
+        }
+        .schedule-note i { color: var(--color-primary); }
+
+        /* ===== Calendario de talleres presenciales ===== */
+        .onsite-weeks { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+        .onsite-week-title {
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--color-text-subtle);
+            margin: 0 0 10px;
+        }
+        .onsite-days { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+        .onsite-day {
+            background: var(--color-bg-light);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+        }
+        .onsite-day-head {
+            background: var(--color-bg-dark);
+            color: white;
+            padding: 12px 16px;
+        }
+        .onsite-day-head p { margin: 0; color: rgba(255, 255, 255, 0.75); font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; }
+        .onsite-day-head h3 { margin: 0; color: white; font-size: 22px; }
+        .onsite-day ul { list-style: none; margin: 0; padding: 12px 16px 14px; }
+        .onsite-day li {
+            position: relative;
+            font-size: 14px;
+            line-height: 1.38;
+            padding-left: 16px;
+            margin-bottom: 8px;
+            color: var(--color-text-body);
+        }
+        .onsite-day li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--color-primary);
+        }
+
+        /* ===== Registro de asistencia ===== */
+        .qr-layout {
+            display: grid;
+            grid-template-columns: 420px 1fr;
+            gap: 64px;
+            align-items: center;
+            max-width: 1040px;
+            margin: 0 auto;
+        }
+        .qr-layout img {
+            display: block;
+            width: 420px;
+            height: 420px;
+            border-radius: var(--radius-lg);
+            box-shadow: 0 12px 34px rgba(0, 48, 64, 0.18);
+        }
+        .qr-layout h3 { font-size: 34px; line-height: 1.2; color: var(--color-text-dark); margin: 18px 0 14px; }
+        .qr-layout p { font-size: 20px; margin: 0; }
+
+        /* Print / exportación PDF: un slide por página */
+        @media print {
+            @page { size: 1280px 720px; margin: 0; }
+            html, body {
+                background: white !important;
+                width: 1280px !important;
+                height: auto !important;
+                overflow: visible !important;
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+            .stage {
+                width: 1280px !important;
+                height: auto !important;
+                overflow: visible !important;
+                transform: none !important;
+                position: static !important;
+            }
+            main[role="presentation"] {
+                display: block !important;
+                height: auto !important;
+                width: 1280px !important;
+                transform: none !important;
+                transition: none !important;
+            }
+            .slide-container {
+                width: 1280px !important;
+                min-width: 1280px !important;
+                height: 720px !important;
+                margin: 0 !important;
+                border-radius: 0 !important;
+                box-shadow: none !important;
+                page-break-after: always !important;
+                break-after: page !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+            .slide-dots { display: none !important; }
+            .phase {
+                opacity: 1 !important;
+                visibility: visible !important;
+                transform: none !important;
+            }
+        }
+    </style>
+</head>
+<body data-brand="gestiona-avanza">
+<div class="stage">
+<main role="presentation">
+
+    <!-- SLIDE 1: Portada -->
+    <section class="slide-container" aria-label="Portada: Programa de certificación in-house Configuración Avanzada de Procedimientos, Ajuntament de Castelló">
+        <div class="title-layout">
+            <div class="cover-brands">
+                <img class="cover-logo" src="img-corp-gestiona-avanza/Gestiona-Avanza-RGB.png" alt="Gestiona Avanza">
+                <span class="cover-brands-divider" aria-hidden="true"></span>
+                <img class="cover-client" src="img/ajuntament-castello.png" alt="Ajuntament de Castelló">
+            </div>
+            <p class="title-eyebrow">Programa de certificación in-house</p>
+            <h1><span>Configuración avanzada</span> de procedimientos</h1>
+            <div class="cover-meta">
+                <span class="badge badge-gestiona">Sesión 01 · Kick-off</span>
+                <span class="text-subtle" style="font-size: 17px;">17 de septiembre de 2026</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE 2: Fases del aprendizaje -->
+    <section class="slide-container" aria-label="Las fases del aprendizaje de Maslow: un ciclo continuo">
+        <h2 class="slide-title">Las fases del aprendizaje de Maslow</h2>
+        <div class="content-area">
+            <div class="cycle-diagram">
+                <div class="cycle-ellipse">
+                    <svg viewBox="0 0 760 300" aria-hidden="true">
+                        <defs>
+                            <marker id="cycleArrow1" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                                <path d="M0,0 L10,5 L0,10 Z" class="cycle-arrow-fill--1"></path>
+                            </marker>
+                            <marker id="cycleArrow2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                                <path d="M0,0 L10,5 L0,10 Z" class="cycle-arrow-fill--2"></path>
+                            </marker>
+                            <marker id="cycleArrow3" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                                <path d="M0,0 L10,5 L0,10 Z" class="cycle-arrow-fill--3"></path>
+                            </marker>
+                            <marker id="cycleArrow4" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                                <path d="M0,0 L10,5 L0,10 Z" class="cycle-arrow-fill--4"></path>
+                            </marker>
+                            <path id="cycleLoopPath" fill="none" stroke="none" d="M649,44 A380,150 0 0,1 649,256 A380,150 0 0,1 111,256 A380,150 0 0,1 111,44 A380,150 0 0,1 649,44 Z"></path>
+                        </defs>
+                        <path class="cycle-arc cycle-arc--1 phase phase--fade" data-phase="2" d="M649,44 A380,150 0 0,1 704,228" marker-end="url(#cycleArrow1)"></path>
+                        <path class="cycle-arc cycle-arc--2 phase phase--fade" data-phase="3" d="M649,256 A380,150 0 0,1 181,278" marker-end="url(#cycleArrow2)"></path>
+                        <path class="cycle-arc cycle-arc--3 phase phase--fade" data-phase="4" d="M111,256 A380,150 0 0,1 56,72" marker-end="url(#cycleArrow3)"></path>
+                        <path class="cycle-arc cycle-arc--4 phase phase--fade" data-phase="5" d="M111,44 A380,150 0 0,1 579,22" marker-end="url(#cycleArrow4)"></path>
+                        <circle class="cycle-orbit-dot phase phase--fade" data-phase="5" r="7">
+                            <animateMotion dur="6s" repeatCount="indefinite">
+                                <mpath href="#cycleLoopPath"></mpath>
+                            </animateMotion>
+                        </circle>
+                    </svg>
+                    <div class="cycle-node cycle-node--1 phase phase--fade" data-phase="1">
+                        <div class="cycle-badge">1</div>
+                        <div class="cycle-label">
+                            <h3>Inconscientemente incompetente</h3>
+                            <p>No configuro procedimientos. Ese es un tema de informática. Utilizo Gestiona igual desde hace más de 5 años.</p>
+                        </div>
+                    </div>
+                    <div class="cycle-node cycle-node--2 phase phase--fade" data-phase="2">
+                        <div class="cycle-badge">2</div>
+                        <div class="cycle-label">
+                            <h3>Conscientemente incompetente</h3>
+                            <p>Descubro lo que la herramienta puede hacer y lo que aún no domino.</p>
+                        </div>
+                    </div>
+                    <div class="cycle-node cycle-node--3 phase phase--fade" data-phase="3">
+                        <div class="cycle-badge">3</div>
+                        <div class="cycle-label">
+                            <h3>Conscientemente competente</h3>
+                            <p>Aplico lo aprendido con método: configuro y parametrizo con criterio y control.</p>
+                        </div>
+                    </div>
+                    <div class="cycle-node cycle-node--4 phase phase--fade" data-phase="4">
+                        <div class="cycle-badge">4</div>
+                        <div class="cycle-label">
+                            <h3>Inconscientemente competente</h3>
+                            <p>Lo domino en mi día a día… hasta que una novedad de Gestiona abre otro ciclo.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE 3: Contexto tecnológico -->
+    <section class="slide-container" aria-label="Contexto tecnológico de las Administraciones Públicas por periodo de contrato">
+        <h2 class="slide-title">Contexto tecnológico de las AA PP</h2>
+        <div class="content-area">
+            <div class="contract-timeline">
+                <div class="contract phase" data-phase="1">
+                    <p class="contract-name">Contrato 1</p>
+                    <p class="contract-years">2012 – 2016</p>
+                    <div class="contract-dot" aria-hidden="true"></div>
+                    <div class="contract-trends">
+                        <div class="trend-card"><i class="fa-solid fa-laptop-file" aria-hidden="true"></i><h3>Digitalización</h3></div>
+                        <div class="trend-card"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i><h3>Interoperabilidad y seguridad</h3></div>
+                    </div>
+                </div>
+                <div class="contract phase" data-phase="2">
+                    <p class="contract-name">Contrato 2</p>
+                    <p class="contract-years">2017 – 2022</p>
+                    <div class="contract-dot" aria-hidden="true"></div>
+                    <div class="contract-trends">
+                        <div class="trend-card"><i class="fa-solid fa-arrows-spin" aria-hidden="true"></i><h3>Transformación digital</h3></div>
+                        <div class="trend-card"><i class="fa-solid fa-ruler-combined" aria-hidden="true"></i><h3>Normalización y simplificación</h3></div>
+                    </div>
+                </div>
+                <div class="contract contract--current phase" data-phase="3">
+                    <p class="contract-name">Contrato actual</p>
+                    <p class="contract-years">2023 – 2028</p>
+                    <div class="contract-dot" aria-hidden="true"></div>
+                    <div class="contract-trends">
+                        <div class="trend-card"><i class="fa-solid fa-robot" aria-hidden="true"></i><h3>Automatización</h3></div>
+                        <div class="trend-card"><i class="fa-solid fa-chart-line" aria-hidden="true"></i><h3>Análisis de datos, inteligencia artificial…</h3></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE 4: Por qué este programa -->
+    <section class="slide-container" aria-label="Por qué este programa de certificación">
+        <h2 class="slide-title">¿Por qué este programa de certificación?</h2>
+        <div class="content-area">
+            <div class="quote-split">
+                <div>
+                    <blockquote class="phase phase--fade" data-phase="1">“Queremos que aprovechéis al máximo <strong>todo el potencial de Gestiona</strong>”</blockquote>
+                    <hr class="accent-line mt-lg phase phase--fade" data-phase="1" aria-hidden="true">
+                </div>
+                <div class="image-wrapper">
+                    <img src="img/escalera-objetivo.jpg" alt="Mano colocando el último peldaño de una escalera ascendente que llega a una diana">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE 5: Objetivos del programa -->
+    <section class="slide-container" aria-label="Objetivos del programa">
+        <h2 class="slide-title">Objetivos del programa</h2>
+        <div class="content-area">
+            <ol class="objective-list">
+                <li class="phase phase--slide-left" data-phase="1"><span class="icon-circle"><i class="fa-solid fa-sliders" aria-hidden="true"></i></span><span><strong>Capacitar</strong> en la configuración y parametrización de procedimientos.</span></li>
+                <li class="phase phase--slide-left" data-phase="2"><span class="icon-circle"><i class="fa-solid fa-people-arrows" aria-hidden="true"></i></span><span><strong>Transferir</strong> el diseño y la definición de procedimientos a las áreas gestoras.</span></li>
+                <li class="phase phase--slide-left" data-phase="3"><span class="icon-circle"><i class="fa-solid fa-ruler-combined" aria-hidden="true"></i></span><span><strong>Impulsar</strong> la simplificación administrativa y la normalización de trámites y servicios.</span></li>
+                <li class="phase phase--slide-left" data-phase="4"><span class="icon-circle"><i class="fa-solid fa-rocket" aria-hidden="true"></i></span><span><strong>Acompañar</strong> en el despliegue y puesta en producción de procedimientos reglados.</span></li>
+                <li class="phase phase--slide-left" data-phase="5"><span class="icon-circle"><i class="fa-solid fa-lightbulb" aria-hidden="true"></i></span><span><strong>Crear</strong> espacios de aprendizaje y mejora continua internos.</span></li>
+            </ol>
+        </div>
+    </section>
+
+    <!-- SLIDE 6: SECCIÓN Metodología de aprendizaje -->
+    <section class="slide-container" aria-label="Sección: Metodología de aprendizaje">
+        <div class="section-title-layout">
+            <h2>Metodología de aprendizaje</h2>
+            <hr aria-hidden="true">
+            <p class="subtitle">Academy, talleres online y sesiones presenciales</p>
+        </div>
+    </section>
+
+    <!-- SLIDE 7: Metodología de aprendizaje -->
+    <section class="slide-container" aria-label="Metodología de aprendizaje en tres pasos">
+        <h2 class="slide-title">Metodología de aprendizaje</h2>
+        <div class="content-area">
+            <div class="journey">
+                <div class="journey-step phase phase--slide-left" data-phase="1">
+                    <div class="icon-circle icon-circle--lg mx-auto"><i class="fa-solid fa-book-open-reader" aria-hidden="true"></i></div>
+                    <span class="step-index">Paso 1</span>
+                    <h3>Revisión autónoma de contenido teórico</h3>
+                    <p>A tu ritmo, en la plataforma Academy.</p>
+                </div>
+                <div class="journey-arrow phase phase--fade" data-phase="2" aria-hidden="true"><i class="fa-solid fa-arrow-right"></i></div>
+                <div class="journey-step phase phase--slide-left" data-phase="2">
+                    <div class="icon-circle icon-circle--lg mx-auto"><i class="fa-solid fa-video" aria-hidden="true"></i></div>
+                    <span class="step-index">Paso 2</span>
+                    <h3>Asistencia y participación en talleres online</h3>
+                    <p>Sesiones en directo sobre cada módulo.</p>
+                </div>
+                <div class="journey-arrow phase phase--fade" data-phase="3" aria-hidden="true"><i class="fa-solid fa-arrow-right"></i></div>
+                <div class="journey-step phase phase--slide-left" data-phase="3">
+                    <div class="icon-circle icon-circle--lg mx-auto"><i class="fa-solid fa-chalkboard-user" aria-hidden="true"></i></div>
+                    <span class="step-index">Paso 3</span>
+                    <h3>Preparación y seguimiento de sesiones presenciales</h3>
+                    <p>Formación práctica con docentes especialistas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE 8: Plataforma de e-learning -->
+    <section class="slide-container" aria-label="Plataforma de e-learning Gestiona Academy">
+        <h2 class="slide-title">Plataforma de e-learning</h2>
+        <div class="content-area">
+            <div class="screens">
+                <figure class="screen">
+                    <img src="img/academy-catalogo.jpg" alt="Catálogo de formaciones de la plataforma Academy con el plan de aprendizaje Configuración Avanzada de Procedimientos">
+                    <figcaption>Catálogo de formaciones · Academy</figcaption>
+                </figure>
+                <figure class="screen">
+                    <img src="img/sitio-programa.jpg" alt="Página del programa de certificación in-house Configuración avanzada de procedimientos con sesiones y módulos">
+                    <figcaption>Espacio del programa in-house</figcaption>
+                </figure>
+            </div>
+            <div class="contact-bar">
+                <a class="contact-chip" href="https://espublico.gestiona.academy/" target="_blank" rel="noopener"><i class="fa-solid fa-globe" aria-hidden="true"></i>espublico.gestiona.academy</a>
+                <a class="contact-chip" href="mailto:formaciongestiona@espublico.com"><i class="fa-solid fa-envelope" aria-hidden="true"></i>formaciongestiona@espublico.com</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE 9: Talleres online -->
+    <section class="slide-container" aria-label="Talleres online">
+        <h2 class="slide-title">Talleres online</h2>
+        <div class="content-area">
+            <div class="media-split">
+                <div class="image-wrapper">
+                    <img src="img/talleres-online.jpg" alt="Videoconferencia de un taller online con participantes de varias entidades">
+                </div>
+                <div class="fact-list">
+                    <div class="fact phase phase--slide-right" data-phase="1">
+                        <span class="icon-circle"><i class="fa-solid fa-video" aria-hidden="true"></i></span>
+                        <div><p class="fact-value">8 talleres</p><p class="fact-label">Sesiones en directo vinculadas a los 4 módulos</p></div>
+                    </div>
+                    <div class="fact phase phase--slide-right" data-phase="2">
+                        <span class="icon-circle"><i class="fa-solid fa-calendar-days" aria-hidden="true"></i></span>
+                        <div><p class="fact-value">21/09 – 13/11</p><p class="fact-label">Lunes y viernes</p></div>
+                    </div>
+                    <div class="fact phase phase--slide-right" data-phase="3">
+                        <span class="icon-circle"><i class="fa-solid fa-clock" aria-hidden="true"></i></span>
+                        <div><p class="fact-value">10:00 – 11:00 h</p><p class="fact-label">Una hora por taller</p></div>
+                    </div>
+                    <div class="fact phase phase--slide-right" data-phase="4">
+                        <span class="icon-circle"><i class="fa-solid fa-user-check" aria-hidden="true"></i></span>
+                        <div><p class="fact-value">Asistencia obligatoria</p><p class="fact-label">Participación activa en cada sesión</p></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE 10: Sesiones presenciales -->
+    <section class="slide-container" aria-label="Sesiones presenciales">
+        <h2 class="slide-title">Sesiones presenciales</h2>
+        <div class="content-area">
+            <div class="media-split">
+                <div class="image-wrapper">
+                    <img src="img/sesion-presencial.jpg" alt="Alumnos con portátiles en una sesión de formación presencial de esPublico">
+                </div>
+                <div class="fact-list">
+                    <div class="fact phase phase--slide-right" data-phase="1">
+                        <span class="icon-circle"><i class="fa-solid fa-chalkboard-user" aria-hidden="true"></i></span>
+                        <div><p class="fact-value">2 sesiones · 4 jornadas</p><p class="fact-label">Formación práctica con docentes especialistas</p></div>
+                    </div>
+                    <div class="fact phase phase--slide-right" data-phase="2">
+                        <span class="icon-circle"><i class="fa-solid fa-calendar-days" aria-hidden="true"></i></span>
+                        <div><p class="fact-value">20-21/10 y 17-18/11</p><p class="fact-label">Martes y miércoles</p></div>
+                    </div>
+                    <div class="fact phase phase--slide-right" data-phase="3">
+                        <span class="icon-circle"><i class="fa-solid fa-clock" aria-hidden="true"></i></span>
+                        <div><p class="fact-value">8:00 – 14:30 h</p><p class="fact-label">Jornada completa de mañana</p></div>
+                    </div>
+                    <div class="fact phase phase--slide-right" data-phase="4">
+                        <span class="icon-circle"><i class="fa-solid fa-user-check" aria-hidden="true"></i></span>
+                        <div><p class="fact-value">Asistencia obligatoria</p><p class="fact-label">Requisito para la certificación</p></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE 11: Funcionamiento del programa -->
+    <section class="slide-container" aria-label="Funcionamiento del programa">
+        <h2 class="slide-title">Funcionamiento del programa</h2>
+        <div class="content-area">
+            <div class="rules-grid">
+                <div class="rule-card phase" data-phase="1">
+                    <div class="icon-circle"><i class="fa-solid fa-route" aria-hidden="true"></i></div>
+                    <p><strong>Navegación libre</strong>, aunque recomendamos seguir el orden establecido.</p>
+                </div>
+                <div class="rule-card phase" data-phase="2">
+                    <div class="icon-circle"><i class="fa-solid fa-flask" aria-hidden="true"></i></div>
+                    <p><strong>Actividades prácticas</strong> en el entorno demo y test de cada módulo.</p>
+                </div>
+                <div class="rule-card rule-card--required phase" data-phase="3">
+                    <div class="icon-circle"><i class="fa-solid fa-chalkboard-user" aria-hidden="true"></i></div>
+                    <p><strong>Sesiones presenciales</strong></p>
+                    <span class="tag-required">Obligatorias</span>
+                </div>
+                <div class="rule-card rule-card--required phase" data-phase="4">
+                    <div class="icon-circle"><i class="fa-solid fa-video" aria-hidden="true"></i></div>
+                    <p><strong>Asistencia a los talleres online</strong></p>
+                    <span class="tag-required">Obligatoria</span>
+                </div>
+                <div class="rule-card phase" data-phase="5">
+                    <div class="icon-circle"><i class="fa-solid fa-circle-check" aria-hidden="true"></i></div>
+                    <p><strong>Puesta en producción</strong> de un procedimiento por alumno.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE 12: Evaluación final -->
+    <section class="slide-container" aria-label="Evaluación final">
+        <h2 class="slide-title">Evaluación final</h2>
+        <div class="content-area">
+            <div class="eval-hero">
+                <div class="icon-circle icon-circle--lg"><i class="fa-solid fa-award" aria-hidden="true"></i></div>
+                <div>
+                    <p>Proyecto final</p>
+                    <h3>Configuración de un procedimiento real</h3>
+                </div>
+            </div>
+            <div class="eval-grid">
+                <article class="tile phase" data-phase="1">
+                    <div class="icon" aria-hidden="true"><i class="fa-solid fa-database"></i></div>
+                    <h3>Dataset específico del área</h3>
+                </article>
+                <article class="tile phase" data-phase="2">
+                    <div class="icon" aria-hidden="true"><i class="fa-solid fa-list-ol"></i></div>
+                    <h3>Instrucción del procedimiento reglada</h3>
+                </article>
+                <article class="tile phase" data-phase="3">
+                    <div class="icon" aria-hidden="true"><i class="fa-solid fa-gears"></i></div>
+                    <h3>Resolución del procedimiento automatizada</h3>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE 13: Elementos evaluables -->
+    <section class="slide-container" aria-label="Elementos evaluables en el proyecto final">
+        <h2 class="slide-title">Elementos evaluables en el proyecto final</h2>
+        <div class="content-area">
+            <div class="checklist-grid">
+                <div class="check-item"><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i><p>Trámite externo</p></div>
+                <div class="check-item"><i class="fa-solid fa-tags" aria-hidden="true"></i><p>Tesauros, diferentes tipologías</p></div>
+                <div class="check-item"><i class="fa-solid fa-calculator" aria-hidden="true"></i><p>Párrafos condicionados / campos calculados</p></div>
+                <div class="check-item"><i class="fa-solid fa-list-check" aria-hidden="true"></i><p>Tramitación reglada, uso de diferentes tipos de tareas</p></div>
+                <div class="check-item"><i class="fa-solid fa-diagram-next" aria-hidden="true"></i><p>Secuencia de tareas regladas</p></div>
+                <div class="check-item"><i class="fa-solid fa-arrows-rotate" aria-hidden="true"></i><p>Cambios de estado</p></div>
+                <div class="check-item"><i class="fa-solid fa-signs-post" aria-hidden="true"></i><p>Circuitos de resolución</p></div>
+                <div class="check-item"><i class="fa-solid fa-folder-closed" aria-hidden="true"></i><p>Cierre del expediente</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE 14: Claves para preparar el proyecto final -->
+    <section class="slide-container" aria-label="Claves para preparar el proyecto final en tres pasos">
+        <h2 class="slide-title">Claves para preparar el proyecto final</h2>
+        <div class="content-area">
+            <div class="keys-grid">
+                <div class="key-step phase" data-phase="1">
+                    <span class="key-step-num">Paso 1</span>
+                    <h3>Identificar el procedimiento a trabajar</h3>
+                    <ul class="bullet-list">
+                        <li><i class="fa-solid fa-repeat" aria-hidden="true"></i> Recurrente y homogeneizable.</li>
+                        <li><i class="fa-solid fa-check" aria-hidden="true"></i> Que contenga los elementos mínimos a evaluar.</li>
+                    </ul>
+                </div>
+                <div class="key-step phase" data-phase="2">
+                    <span class="key-step-num">Paso 2</span>
+                    <h3>Consultoría</h3>
+                    <ul class="bullet-list">
+                        <li><i class="fa-solid fa-folder-open" aria-hidden="true"></i> Acopio de varios expedientes con resultados distintos.</li>
+                        <li><i class="fa-solid fa-users" aria-hidden="true"></i> Identificar personas / grupos.</li>
+                        <li><i class="fa-solid fa-diagram-project" aria-hidden="true"></i> Pintar un flujo.</li>
+                        <li><i class="fa-solid fa-scale-balanced" aria-hidden="true"></i> Revisar la normativa: simplificar lo superfluo.</li>
+                    </ul>
+                </div>
+                <div class="key-step phase" data-phase="3">
+                    <span class="key-step-num">Paso 3</span>
+                    <h3>Biblioteca de datos y plantillas</h3>
+                    <ul class="bullet-list">
+                        <li><i class="fa-solid fa-database" aria-hidden="true"></i> Datos: nombre, origen y tipología.</li>
+                        <li><i class="fa-solid fa-file-lines" aria-hidden="true"></i> Plantillas de cada fase.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE 15: SECCIÓN Programa académico -->
+    <section class="slide-container" aria-label="Sección: Programa académico">
+        <div class="section-title-layout">
+            <h2>Programa académico</h2>
+            <hr aria-hidden="true">
+            <p class="subtitle">Calendario, plan de aprendizaje y talleres</p>
+        </div>
+    </section>
+
+    <!-- SLIDE 16: Calendario sesiones presenciales -->
+    <section class="slide-container" aria-label="Calendario de sesiones presenciales e hitos del programa">
+        <h2 class="slide-title">Calendario sesiones presenciales</h2>
+        <div class="content-area">
+            <div class="milestones">
+                <div class="milestone phase" data-phase="1">
+                    <p class="milestone-date">17/09</p>
+                    <p class="milestone-weekday">Jueves</p>
+                    <div class="milestone-dot" aria-hidden="true"></div>
+                    <div class="milestone-card"><h3>Inicio del programa</h3><p>Kick-off</p></div>
+                </div>
+                <div class="milestone milestone--onsite phase" data-phase="2">
+                    <p class="milestone-date">20 – 21/10</p>
+                    <p class="milestone-weekday">Martes y miércoles</p>
+                    <div class="milestone-dot" aria-hidden="true"></div>
+                    <div class="milestone-card"><h3>1.ª sesión presencial</h3></div>
+                </div>
+                <div class="milestone milestone--onsite phase" data-phase="3">
+                    <p class="milestone-date">17 – 18/11</p>
+                    <p class="milestone-weekday">Martes y miércoles</p>
+                    <div class="milestone-dot" aria-hidden="true"></div>
+                    <div class="milestone-card"><h3>2.ª sesión presencial</h3></div>
+                </div>
+                <div class="milestone phase" data-phase="4">
+                    <p class="milestone-date">18/11</p>
+                    <p class="milestone-weekday">Miércoles</p>
+                    <div class="milestone-dot" aria-hidden="true"></div>
+                    <div class="milestone-card"><h3>Fin del programa</h3></div>
+                </div>
+                <div class="milestone milestone--limit phase" data-phase="5">
+                    <p class="milestone-date">18/12/2026</p>
+                    <p class="milestone-weekday">Viernes</p>
+                    <div class="milestone-dot" aria-hidden="true"></div>
+                    <div class="milestone-card"><h3>Fecha fin evaluación final</h3></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE 17: Calendario — contenido generado desde CAL_EVENTS -->
+    <section class="slide-container" aria-label="Calendario del programa de septiembre a diciembre de 2026">
+        <h2 class="slide-title">Calendario</h2>
+        <div class="content-area">
+            <div class="cal-grid" data-calendar></div>
+            <div class="cal-legend" role="group" aria-label="Filtrar hitos por tipo" data-cal-legend>
+                <button type="button" class="cal-chip" data-type="kickoff" aria-pressed="true">
+                    <span class="cal-swatch cal-swatch--kickoff" aria-hidden="true"></span>Presentación del programa
+                </button>
+                <button type="button" class="cal-chip" data-type="taller" aria-pressed="true">
+                    <span class="cal-swatch cal-swatch--taller" aria-hidden="true"></span>Talleres online
+                </button>
+                <button type="button" class="cal-chip" data-type="presencial" aria-pressed="true">
+                    <span class="cal-swatch cal-swatch--presencial" aria-hidden="true"></span>Sesiones presenciales
+                </button>
+                <button type="button" class="cal-chip" data-type="evaluacion" aria-pressed="true">
+                    <span class="cal-swatch cal-swatch--evaluacion" aria-hidden="true"></span>Periodo de evaluación
+                </button>
+                <button type="button" class="cal-chip" data-type="limite" aria-pressed="true">
+                    <span class="cal-swatch cal-swatch--limite" aria-hidden="true"></span>Fin evaluación final
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE 18: Plan de aprendizaje -->
+    <section class="slide-container" aria-label="Plan de aprendizaje: cuatro módulos">
+        <h2 class="slide-title">Plan de aprendizaje</h2>
+        <div class="content-area">
+            <div class="module-grid">
+                <div class="module-card phase" data-phase="1">
+                    <div class="module-head">
+                        <span class="icon-circle"><i class="fa-solid fa-sitemap" aria-hidden="true"></i></span>
+                        <div><p class="module-kicker">Módulo 1</p><h3>Arquitectura de tramitación</h3></div>
+                    </div>
+                    <ul>
+                        <li>Catálogo de actividades de Gestiona</li>
+                        <li>Catálogo de procedimientos</li>
+                        <li>Activos semánticos del procedimiento</li>
+                        <li>Construcción de documentos inteligentes</li>
+                        <li>Definición y configuración de trámites externos</li>
+                    </ul>
+                </div>
+                <div class="module-card phase" data-phase="2">
+                    <div class="module-head">
+                        <span class="icon-circle"><i class="fa-solid fa-inbox" aria-hidden="true"></i></span>
+                        <div><p class="module-kicker">Módulo 2</p><h3>Escritorio de tramitación</h3></div>
+                    </div>
+                    <ul>
+                        <li>Circuitos de tramitación y libros oficiales</li>
+                        <li>Circuitos de resolución</li>
+                    </ul>
+                </div>
+                <div class="module-card phase" data-phase="3">
+                    <div class="module-head">
+                        <span class="icon-circle"><i class="fa-solid fa-list-ol" aria-hidden="true"></i></span>
+                        <div><p class="module-kicker">Módulo 3</p><h3>Tramitación reglada</h3></div>
+                    </div>
+                    <ul>
+                        <li>Tramitación reglada de procedimientos</li>
+                        <li>Circuitos de resolución avanzados</li>
+                        <li>Simplificación administrativa</li>
+                        <li>Tareas genéricas y subprocesos</li>
+                        <li>Configuración de campos calculados</li>
+                    </ul>
+                </div>
+                <div class="module-card phase" data-phase="4">
+                    <div class="module-head">
+                        <span class="icon-circle"><i class="fa-solid fa-chart-line" aria-hidden="true"></i></span>
+                        <div><p class="module-kicker">Módulo 4</p><h3>Analítica de datos</h3></div>
+                    </div>
+                    <ul>
+                        <li>Búsquedas avanzadas</li>
+                        <li>Conceptos del business intelligence</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE 19: Calendario de talleres online -->
+    <section class="slide-container" aria-label="Calendario de talleres online por módulo">
+        <h2 class="slide-title">Calendario de talleres online</h2>
+        <div class="content-area">
+            <div class="workshop-columns">
+                <div class="workshop-col phase" data-phase="1">
+                    <h3><span>Módulo 1</span>Arquitectura de tramitación</h3>
+                    <div class="workshop-item"><p class="workshop-date"><span>Lun 21/09</span><span>T01</span></p><p>Contextualización y configuración del catálogo de actividades</p></div>
+                    <div class="workshop-item"><p class="workshop-date"><span>Vie 25/09</span><span>T02</span></p><p>Configuración de campos personalizados y construcción de documentos inteligentes</p></div>
+                    <div class="workshop-item"><p class="workshop-date"><span>Lun 28/09</span><span>T03</span></p><p>Configuración de trámites externos</p></div>
+                </div>
+                <div class="workshop-col phase" data-phase="2">
+                    <h3><span>Módulo 2</span>Escritorio de tramitación</h3>
+                    <div class="workshop-item"><p class="workshop-date"><span>Vie 02/10</span><span>T04</span></p><p>Configuración de circuitos de resolución</p></div>
+                </div>
+                <div class="workshop-col phase" data-phase="3">
+                    <h3><span>Módulo 3</span>Tramitación reglada</h3>
+                    <div class="workshop-item"><p class="workshop-date"><span>Lun 05/10</span><span>T05</span></p><p>Configuración de campos calculados</p></div>
+                    <div class="workshop-item"><p class="workshop-date"><span>Lun 26/10</span><span>T06</span></p><p>Configuración de circuitos de resolución avanzados</p></div>
+                    <div class="workshop-item"><p class="workshop-date"><span>Lun 09/11</span><span>T07</span></p><p>Configuración de un workflow en Gestiona</p></div>
+                </div>
+                <div class="workshop-col phase" data-phase="4">
+                    <h3><span>Módulo 4</span>Analítica de datos</h3>
+                    <div class="workshop-item"><p class="workshop-date"><span>Vie 13/11</span><span>T08</span></p><p>Búsquedas avanzadas y dashboards personalizados</p></div>
+                </div>
+            </div>
+            <p class="schedule-note"><i class="fa-solid fa-clock" aria-hidden="true"></i>De 10:00 h a 11:00 h</p>
+        </div>
+    </section>
+
+    <!-- SLIDE 20: Calendario de talleres presenciales -->
+    <section class="slide-container" aria-label="Calendario de talleres presenciales por jornada">
+        <h2 class="slide-title">Calendario de talleres presenciales</h2>
+        <div class="content-area">
+            <div class="onsite-weeks">
+                <div class="phase" data-phase="1">
+                    <p class="onsite-week-title">1.ª sesión presencial</p>
+                    <div class="onsite-days">
+                        <div class="onsite-day">
+                            <div class="onsite-day-head"><p>Martes</p><h3>20/10/2026</h3></div>
+                            <ul>
+                                <li>Metodología de análisis de un procedimiento</li>
+                                <li>Configuración básica de trámites externos y tesauros</li>
+                                <li>Gestiona Code</li>
+                                <li>Construcción de documentos inteligentes</li>
+                            </ul>
+                        </div>
+                        <div class="onsite-day">
+                            <div class="onsite-day-head"><p>Miércoles</p><h3>21/10/2026</h3></div>
+                            <ul>
+                                <li>Conceptualización de la resolución del procedimiento en Gestiona</li>
+                                <li>Circuitos de resolución</li>
+                                <li>Configuración de tramitación reglada</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="phase" data-phase="2">
+                    <p class="onsite-week-title">2.ª sesión presencial</p>
+                    <div class="onsite-days">
+                        <div class="onsite-day">
+                            <div class="onsite-day-head"><p>Martes</p><h3>17/11/2026</h3></div>
+                            <ul>
+                                <li>Tramitación reglada 360</li>
+                            </ul>
+                        </div>
+                        <div class="onsite-day">
+                            <div class="onsite-day-head"><p>Miércoles</p><h3>18/11/2026</h3></div>
+                            <ul>
+                                <li>Búsquedas avanzadas y cuadros de mando</li>
+                                <li>Gestión y mantenimiento de la configuración de procedimientos: tips y buenas prácticas</li>
+                                <li>Parametrización personalizada</li>
+                                <li>Resolución de dudas y cierre del curso</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p class="schedule-note"><i class="fa-solid fa-clock" aria-hidden="true"></i>De 8:00 h a 14:30 h</p>
+        </div>
+    </section>
+
+    <!-- SLIDE 21: Registro de asistencia -->
+    <section class="slide-container" aria-label="Registro de asistencia mediante código QR">
+        <h2 class="slide-title">Registro de asistencia</h2>
+        <div class="content-area">
+            <div class="qr-layout">
+                <img src="img/qr-asistencia.png" alt="Código QR para el registro de asistencia al programa de certificación in-house Configuración Avanzada de Procedimientos">
+                <div>
+                    <div class="icon-circle icon-circle--lg"><i class="fa-solid fa-qrcode" aria-hidden="true"></i></div>
+                    <h3>Escanea el código para registrar tu asistencia</h3>
+                    <p>Programa de certificación in-house · Configuración avanzada de procedimientos</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE 22: Cierre -->
+    <section class="slide-container" aria-label="Cierre: muchas gracias">
+        <div class="section-title-layout">
+            <h2>Muchas gracias</h2>
+            <hr aria-hidden="true">
+            <p class="subtitle">Programa de certificación in-house · Ajuntament de Castelló</p>
+        </div>
+    </section>
+
+</main>
+<img class="brand-isotipo brand-isotipo--light" src="img-corp-gestiona-avanza/Gestiona-Avanza-isotipo-RGB.png" alt="" aria-hidden="true">
+<img class="brand-isotipo brand-isotipo--dark" src="img-corp-gestiona-avanza/Gestiona-Avanza-isotipo-blanco.png" alt="" aria-hidden="true">
+</div>
+<script src="../assets/js/navigation.js"></script>
+<script>
+/* Calendario del programa: renderiza los meses y marca los hitos.
+   Para otra edición solo hay que tocar CAL_MONTHS y CAL_EVENTS. */
+(function () {
+    "use strict";
+
+    var CAL_MONTHS = ["2026-09", "2026-10", "2026-11", "2026-12"];
+    var CAL_EVENTS = [
+        { date: "2026-09-17", type: "kickoff", title: "Presentación del programa", detail: "Kick-off" },
+        { date: "2026-09-21", type: "taller", title: "Taller 01", detail: "Contextualización y configuración del catálogo de actividades" },
+        { date: "2026-09-25", type: "taller", title: "Taller 02", detail: "Campos personalizados y documentos inteligentes" },
+        { date: "2026-09-28", type: "taller", title: "Taller 03", detail: "Configuración de trámites externos" },
+        { date: "2026-10-02", type: "taller", title: "Taller 04", detail: "Configuración de circuitos de resolución" },
+        { date: "2026-10-05", type: "taller", title: "Taller 05", detail: "Configuración de campos calculados" },
+        { date: "2026-10-20", type: "presencial", title: "Sesión presencial 01", detail: "Martes 20" },
+        { date: "2026-10-21", type: "presencial", title: "Sesión presencial 01", detail: "Miércoles 21" },
+        { date: "2026-10-26", type: "taller", title: "Taller 06", detail: "Configuración de circuitos de resolución avanzados" },
+        { date: "2026-11-09", type: "taller", title: "Taller 07", detail: "Configuración de un workflow en Gestiona" },
+        { date: "2026-11-13", type: "taller", title: "Taller 08", detail: "Búsquedas avanzadas y dashboards personalizados" },
+        { date: "2026-11-17", type: "presencial", title: "Sesión presencial 02", detail: "Martes 17" },
+        { date: "2026-11-18", type: "presencial", title: "Sesión presencial 02 · Fin del programa", detail: "Miércoles 18" },
+        { date: "2026-12-18", type: "limite", title: "Fecha fin evaluación final", detail: "Último día para la evaluación" },
+        { from: "2026-11-19", to: "2026-12-17", type: "evaluacion", title: "Periodo de evaluación", detail: "Preparación y presentación del proyecto final" }
+    ];
+
+    var MONTH_NAMES = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
+        "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+    var WEEKDAYS = ["L", "M", "X", "J", "V", "S", "D"];
+    var NAV_KEYS = [" ", "ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown", "PageUp", "PageDown", "Home", "End"];
+
+    var grid = document.querySelector("[data-calendar]");
+    var legend = document.querySelector("[data-cal-legend]");
+    if (!grid || !legend) return;
+
+    /** Índice de columna (0 = lunes) del primer día del mes */
+    function firstWeekdayIndex(year, month) {
+        var jsDay = new Date(year, month - 1, 1).getDay(); // 0 = domingo
+        return (jsDay + 6) % 7;
+    }
+
+    function daysInMonth(year, month) {
+        return new Date(year, month, 0).getDate();
+    }
+
+    function pad2(n) { return n < 10 ? "0" + n : String(n); }
+
+    var pointEvents = {};
+    var ranges = [];
+    CAL_EVENTS.forEach(function (ev) {
+        if (ev.date) {
+            pointEvents[ev.date] = ev;
+        } else if (ev.from && ev.to) {
+            ranges.push(ev);
+        }
+    });
+
+    function rangeFor(iso) {
+        for (var i = 0; i < ranges.length; i++) {
+            if (iso >= ranges[i].from && iso <= ranges[i].to) return ranges[i];
+        }
+        return null;
+    }
+
+    CAL_MONTHS.forEach(function (ym) {
+        var parts = ym.split("-");
+        var year = Number(parts[0]);
+        var month = Number(parts[1]);
+
+        var monthEl = document.createElement("div");
+        monthEl.className = "cal-month";
+
+        var nameEl = document.createElement("div");
+        nameEl.className = "cal-month-name";
+        nameEl.textContent = MONTH_NAMES[month - 1] + " " + year;
+        monthEl.appendChild(nameEl);
+
+        var weekdaysEl = document.createElement("div");
+        weekdaysEl.className = "cal-weekdays";
+        weekdaysEl.setAttribute("aria-hidden", "true");
+        WEEKDAYS.forEach(function (w) {
+            var s = document.createElement("span");
+            s.textContent = w;
+            weekdaysEl.appendChild(s);
+        });
+        monthEl.appendChild(weekdaysEl);
+
+        var daysEl = document.createElement("div");
+        daysEl.className = "cal-days";
+
+        var offset = firstWeekdayIndex(year, month);
+        for (var p = 0; p < offset; p++) {
+            var padEl = document.createElement("div");
+            padEl.className = "cal-day cal-day--pad";
+            padEl.setAttribute("aria-hidden", "true");
+            daysEl.appendChild(padEl);
+        }
+
+        var total = daysInMonth(year, month);
+        for (var d = 1; d <= total; d++) {
+            var iso = year + "-" + pad2(month) + "-" + pad2(d);
+            var cell = document.createElement("div");
+            cell.className = "cal-day";
+
+            var num = document.createElement("span");
+            num.textContent = String(d);
+            cell.appendChild(num);
+
+            var range = rangeFor(iso);
+            if (range) {
+                cell.classList.add("is-eval");
+                var prevIn = rangeFor(year + "-" + pad2(month) + "-" + pad2(d - 1));
+                var nextIn = rangeFor(year + "-" + pad2(month) + "-" + pad2(d + 1));
+                var column = (offset + d - 1) % 7;
+                var startsRow = column === 0;
+                var endsRow = column === 6;
+                if (!prevIn || startsRow) cell.classList.add("is-eval-start");
+                if (!nextIn || endsRow) cell.classList.add("is-eval-end");
+                if (prevIn && nextIn && !startsRow && !endsRow) cell.classList.add("is-eval-mid");
+                cell.dataset.evalType = "evaluacion";
+                cell.dataset.tip = range.title + " · " + range.detail;
+            }
+
+            var ev = pointEvents[iso];
+            if (ev) {
+                cell.classList.add("is-event");
+                cell.dataset.type = ev.type;
+                cell.dataset.tip = ev.title + " · " + ev.detail;
+                cell.setAttribute("aria-label", d + " de " + MONTH_NAMES[month - 1] + ": " + ev.title);
+            }
+
+            // El tooltip se abre hacia abajo en las dos primeras semanas
+            if (offset + d - 1 < 14) cell.classList.add("tip-below");
+
+            daysEl.appendChild(cell);
+        }
+
+        monthEl.appendChild(daysEl);
+        grid.appendChild(monthEl);
+    });
+
+    /** Filtro por tipo desde la leyenda */
+    function applyFilter() {
+        var off = {};
+        Array.prototype.forEach.call(legend.querySelectorAll(".cal-chip"), function (chip) {
+            if (chip.getAttribute("aria-pressed") === "false") off[chip.dataset.type] = true;
+        });
+        Array.prototype.forEach.call(grid.querySelectorAll(".cal-day"), function (cell) {
+            var type = cell.dataset.type || cell.dataset.evalType;
+            cell.classList.toggle("is-dimmed", Boolean(type && off[type]));
+        });
+    }
+
+    legend.addEventListener("click", function (e) {
+        var chip = e.target.closest(".cal-chip");
+        if (!chip) return;
+        chip.setAttribute("aria-pressed", chip.getAttribute("aria-pressed") === "true" ? "false" : "true");
+        applyFilter();
+    });
+
+    /* navigation.js escucha keydown en document: sin esto, pulsar Espacio sobre
+       un chip enfocado alterna el filtro y además avanza de slide. */
+    function trapNavKeys(e) {
+        if (NAV_KEYS.indexOf(e.key) !== -1) e.stopPropagation();
+    }
+    legend.addEventListener("keydown", trapNavKeys);
+    grid.addEventListener("keydown", trapNavKeys);
+})();
+</script>
+</body>
+</html>
