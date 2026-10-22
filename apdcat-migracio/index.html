@@ -12,84 +12,148 @@
     <style>
         /* Ajustes específicos de este deck. Todo lo demás viene de corporate.css. */
 
-        /* Slide "Bessó digital": fecha destacada + calendario mensual. */
-        .milestone-layout {
-            display: grid;
-            grid-template-columns: 1fr 1.1fr;
-            gap: 64px;
-            align-items: center;
-            width: 100%;
+        /* Slide "Dues dimensions": dos vertientes del proyecto, una tarjeta cada una. */
+        .dimension-card {
+            text-align: left;
         }
-        .milestone-date {
-            text-align: center;
+        .dimension-card .icon-circle {
+            margin: 0 0 20px;
         }
-        .milestone-date__day {
-            font-size: 9rem;
-            font-weight: 700;
-            line-height: 1;
-            color: var(--color-primary);
+        .dimension-card h3 {
+            font-size: 1.6rem;
         }
-        .milestone-date__month {
-            font-size: 2rem;
+        .feature-card--gold.dimension-card h3 {
+            color: var(--color-gold);
+        }
+        .dimension-list {
+            list-style: none;
+            margin: 24px 0 0;
+            padding: 0;
+        }
+        .dimension-list li {
+            padding: 14px 0;
+            border-top: 1px solid var(--color-border);
+            font-size: 1.15rem;
             font-weight: 500;
             color: var(--color-text-dark);
-            margin-top: 8px;
-        }
-        .milestone-date__year {
-            font-size: 1.2rem;
-            color: var(--color-text-muted);
-            margin-top: 4px;
         }
 
-        .calendar {
-            background: var(--color-white);
-            border-radius: var(--radius-md);
-            box-shadow: var(--shadow-card);
-            overflow: hidden;
+        /* Slide "Fites del projecte": fases en columnas, una calle por vertiente. */
+        .roadmap {
+            --roadmap-label: 200px;
+            --lane-color: var(--color-primary);
+            width: 100%;
         }
-        .calendar__header {
+        .roadmap__head,
+        .roadmap__lane {
+            display: grid;
+            grid-template-columns: var(--roadmap-label) repeat(4, 1fr);
+            align-items: start;
+        }
+        .roadmap__phase {
+            padding: 0 12px 16px;
+            text-align: center;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--color-text-subtle);
+            border-bottom: 1px solid var(--color-border);
+        }
+        .roadmap__lane {
+            position: relative;
+            padding: 36px 0 28px;
+        }
+        .roadmap__lane + .roadmap__lane {
+            border-top: 1px solid var(--color-border);
+        }
+        .roadmap__lane--gold {
+            --lane-color: var(--color-gold);
+        }
+        /* Línea de la calle: del centro de la 1.ª fase al centro de la 4.ª. */
+        .roadmap__lane::before {
+            content: "";
+            position: absolute;
+            top: 43px;
+            left: calc(var(--roadmap-label) + (100% - var(--roadmap-label)) / 8);
+            right: calc((100% - var(--roadmap-label)) / 8);
+            height: 2px;
+            background: var(--lane-color);
+            opacity: 0.35;
+        }
+        .roadmap__name {
             display: flex;
             align-items: center;
             gap: 12px;
-            padding: 16px 24px;
-            background: var(--color-primary);
-            color: var(--color-white);
-            font-size: 1.25rem;
+            font-size: 1.15rem;
             font-weight: 700;
+            color: var(--lane-color);
         }
-        .calendar__grid {
-            display: grid;
-            grid-template-columns: repeat(7, 1fr);
-            gap: 6px;
-            padding: 18px 20px 22px;
+        .roadmap__name i {
+            font-size: 1.3rem;
+        }
+        .roadmap__step {
+            position: relative;
+            padding: 0 12px;
             text-align: center;
         }
-        .calendar__weekday {
-            font-size: 0.8rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            color: var(--color-text-subtle);
-            padding-bottom: 6px;
-        }
-        .calendar__day {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 44px;
-            height: 44px;
-            margin: 0 auto;
-            font-size: 1rem;
-            color: var(--color-text-body);
+        .roadmap__step::before {
+            content: "";
+            display: block;
+            width: 16px;
+            height: 16px;
+            margin: 0 auto 16px;
             border-radius: 50%;
+            background: var(--lane-color);
+            box-shadow: 0 0 0 5px var(--color-white);
         }
-        .calendar__day--weekend {
-            color: var(--color-text-subtle);
+        .roadmap__step strong {
+            display: block;
+            font-size: 1rem;
+            line-height: 1.3;
+            color: var(--color-text-dark);
         }
-        .calendar__day--highlight {
-            background: var(--color-primary);
-            color: var(--color-white);
+        .roadmap__step span {
+            display: block;
+            margin-top: 4px;
+            font-size: 0.82rem;
+            color: var(--color-text-muted);
+        }
+
+        /* Slide "Punt de partida": enunciado del compromiso + fecha. */
+        .commitment {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .commitment__eyebrow {
+            font-size: 1.1rem;
+            font-weight: 500;
+            letter-spacing: 0.04em;
+            color: var(--color-text-muted);
+        }
+        .commitment__statement {
+            margin-top: 20px;
+            font-size: 2.8rem;
+            font-weight: 500;
+            line-height: 1.2;
+            color: var(--color-text-dark);
+        }
+        .commitment__statement strong {
             font-weight: 700;
-            box-shadow: 0 0 0 6px var(--color-primary-soft);
+            color: var(--color-primary);
+        }
+        .commitment__rule {
+            width: 64px;
+            height: 3px;
+            margin: 40px auto;
+            border: 0;
+            background: var(--color-primary);
+        }
+        .commitment__date {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--color-primary);
         }
 
         /* Cifras destacadas sobre .tile (slides del bessó digital). */
@@ -123,28 +187,38 @@
         }
         .tile--hero {
             justify-content: center;
+            text-align: center;
         }
         .tile--hero .stat-figure {
             font-size: 5rem;
         }
+        /* Desglose: tres mini-cifras en fila, separadas por filetes verticales. */
         .breakdown {
             list-style: none;
-            margin: 24px 0 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
+            margin: 32px 0 0;
+            padding: 24px 0 0;
+            border-top: 1px solid var(--color-border);
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
         }
         .breakdown li {
             display: flex;
-            justify-content: space-between;
-            gap: 12px;
-            padding-bottom: 8px;
-            border-bottom: 1px solid var(--color-border);
-            font-size: 0.95rem;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            padding: 0 8px;
+        }
+        .breakdown li + li {
+            border-left: 1px solid var(--color-border);
         }
         .breakdown strong {
+            font-size: 1.6rem;
             color: var(--color-primary-dark);
+        }
+        .breakdown span {
+            font-size: 0.85rem;
+            line-height: 1.3;
+            color: var(--color-text-muted);
         }
 
         /* Tiles de uso del entorno: cuatro en fila. */
@@ -369,66 +443,14 @@
     </section>
 
     <!-- 3. GEMELO DIGITAL: FECHA -->
-    <section class="slide-container" aria-label="Bessó digital: 30 de setembre">
-        <h2 class="slide-title">Bessó digital</h2>
+    <section class="slide-container" aria-label="Punt de partida: compromís de configurar el bessó digital">
+        <h2 class="slide-title">Punt de partida</h2>
         <div class="content-area" style="justify-content: center;">
-            <div class="milestone-layout">
-                <div class="milestone-date">
-                    <div class="milestone-date__day">30</div>
-                    <div class="milestone-date__month">de setembre</div>
-                    <div class="milestone-date__year">2026</div>
-                </div>
-                <div class="calendar" role="img" aria-label="Calendari de setembre de 2026 amb el dia 30 destacat">
-                    <div class="calendar__header">
-                        <i class="fa-regular fa-calendar" aria-hidden="true"></i>
-                        <span>Setembre 2026</span>
-                    </div>
-                    <div class="calendar__grid" aria-hidden="true">
-                        <span class="calendar__weekday">Dl</span>
-                        <span class="calendar__weekday">Dt</span>
-                        <span class="calendar__weekday">Dc</span>
-                        <span class="calendar__weekday">Dj</span>
-                        <span class="calendar__weekday">Dv</span>
-                        <span class="calendar__weekday">Ds</span>
-                        <span class="calendar__weekday">Dg</span>
-
-                        <span></span>
-                        <span class="calendar__day">1</span>
-                        <span class="calendar__day">2</span>
-                        <span class="calendar__day">3</span>
-                        <span class="calendar__day">4</span>
-                        <span class="calendar__day calendar__day--weekend">5</span>
-                        <span class="calendar__day calendar__day--weekend">6</span>
-
-                        <span class="calendar__day">7</span>
-                        <span class="calendar__day">8</span>
-                        <span class="calendar__day">9</span>
-                        <span class="calendar__day">10</span>
-                        <span class="calendar__day">11</span>
-                        <span class="calendar__day calendar__day--weekend">12</span>
-                        <span class="calendar__day calendar__day--weekend">13</span>
-
-                        <span class="calendar__day">14</span>
-                        <span class="calendar__day">15</span>
-                        <span class="calendar__day">16</span>
-                        <span class="calendar__day">17</span>
-                        <span class="calendar__day">18</span>
-                        <span class="calendar__day calendar__day--weekend">19</span>
-                        <span class="calendar__day calendar__day--weekend">20</span>
-
-                        <span class="calendar__day">21</span>
-                        <span class="calendar__day">22</span>
-                        <span class="calendar__day">23</span>
-                        <span class="calendar__day">24</span>
-                        <span class="calendar__day">25</span>
-                        <span class="calendar__day calendar__day--weekend">26</span>
-                        <span class="calendar__day calendar__day--weekend">27</span>
-
-                        <span class="calendar__day">28</span>
-                        <span class="calendar__day">29</span>
-                        <span class="calendar__day calendar__day--highlight">30</span>
-                    </div>
-                </div>
+            <div class="commitment">
+                <div class="commitment__eyebrow">Compromís d'esPublico</div>
+                <p class="commitment__statement">Configurar el <strong>bessó digital</strong><br>de l'APDCAT a Gestiona</p>
+                <hr class="commitment__rule">
+                <div class="commitment__date">30 de setembre de 2026</div>
             </div>
         </div>
     </section>
@@ -442,9 +464,9 @@
                     <div class="stat-figure">249</div>
                     <div class="stat-label">Tasques reglades</div>
                     <ul class="breakdown">
-                        <li><span>En procediments</span><strong>183</strong></li>
-                        <li><span>En subprocessos</span><strong>46</strong></li>
-                        <li><span>Al procediment genèric</span><strong>20</strong></li>
+                        <li><strong>183</strong><span>En procediments</span></li>
+                        <li><strong>46</strong><span>En subprocessos</span></li>
+                        <li><strong>20</strong><span>Al procediment genèric</span></li>
                     </ul>
                 </div>
                 <div class="tiled-content">
@@ -557,7 +579,6 @@
                 <div class="tile text-center">
                     <div class="stat-figure">44</div>
                     <div class="stat-label">Usuaris creats</div>
-                    <div class="stat-detail">13 hi han accedit</div>
                 </div>
                 <div class="tile text-center">
                     <div class="stat-figure">103</div>
@@ -566,7 +587,6 @@
                 <div class="tile text-center">
                     <div class="stat-figure">108</div>
                     <div class="stat-label">Anotacions de registre</div>
-                    <div class="stat-detail">55 d'entrada · 53 de sortida</div>
                 </div>
                 <div class="tile text-center">
                     <div class="stat-figure">719</div>
@@ -577,8 +597,8 @@
     </section>
 
     <!-- 7. GEMELO DIGITAL: TIEMPO DEDICADO (escala diaria: 1 = 1 d'agost, 71 = 10 d'octubre) -->
-    <section class="slide-container" aria-label="Bessó digital: temps dedicat">
-        <h2 class="slide-title">Temps dedicat</h2>
+    <section class="slide-container" aria-label="Actuacions de l'equip de consultoria">
+        <h2 class="slide-title">Actuacions de l'equip de consultoria</h2>
         <div class="content-area">
             <div class="tiled-content tile-triple">
                 <div class="tile text-center">
@@ -639,38 +659,60 @@
         </div>
     </section>
 
+    <!-- DOS DIMENSIONES DEL PROYECTO -->
+    <section class="slide-container" aria-label="Dues dimensions del projecte">
+        <h2 class="slide-title">Dues dimensions del projecte</h2>
+        <div class="content-area" style="justify-content: center;">
+            <div class="feature-cards">
+                <div class="feature-card dimension-card">
+                    <div class="icon-circle icon-circle--lg">
+                        <i class="fa-solid fa-scale-balanced" aria-hidden="true"></i>
+                    </div>
+                    <h3>Vessant jurídica</h3>
+                    <ul class="dimension-list">
+                        <li>Gestió del canvi</li>
+                        <li>Configuració</li>
+                    </ul>
+                </div>
+                <div class="feature-card feature-card--gold dimension-card">
+                    <div class="icon-circle icon-circle--lg icon-circle--gold">
+                        <i class="fa-solid fa-gears" aria-hidden="true"></i>
+                    </div>
+                    <h3>Vessant tècnica</h3>
+                    <ul class="dimension-list">
+                        <li>Projectes Factory</li>
+                        <li>Migració de dades</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- 9. FASES DEL PROYECTO -->
-    <section class="slide-container" aria-label="Fases del projecte">
-        <h2 class="slide-title">Fases del projecte</h2>
-        <div class="content-area">
-            <div class="feature-cards feature-cards--quad">
-                <div class="feature-card phase" data-phase="1">
-                    <div class="icon-circle icon-circle--lg mx-auto">
-                        <i class="fa-solid fa-compass-drafting" aria-hidden="true"></i>
-                    </div>
-                    <h3>1. Disseny i transició</h3>
-                    <p>Presa d'acords, capacitació a l'Acadèmia Gestiona, migració, interoperabilitat AOC i integracions Factory (SARCAT, Cens DPD, Publicació).</p>
+    <section class="slide-container" aria-label="Fites del projecte per vessant">
+        <h2 class="slide-title">Fases i fites del projecte</h2>
+        <div class="content-area" style="justify-content: center;">
+            <div class="roadmap">
+                <div class="roadmap__head">
+                    <span></span>
+                    <span class="roadmap__phase">1 · Disseny i transició</span>
+                    <span class="roadmap__phase">2 · Activació</span>
+                    <span class="roadmap__phase">3 · Desplegament</span>
+                    <span class="roadmap__phase">4 · Consolidació</span>
                 </div>
-                <div class="feature-card phase" data-phase="2">
-                    <div class="icon-circle icon-circle--lg mx-auto">
-                        <i class="fa-solid fa-power-off" aria-hidden="true"></i>
-                    </div>
-                    <h3>2. Activació</h3>
-                    <p>Procés de ratificacions i activació dels serveis AOC el dia d'arrencada.</p>
+                <div class="roadmap__lane phase" data-phase="1">
+                    <span class="roadmap__name"><i class="fa-solid fa-scale-balanced" aria-hidden="true"></i>Vessant jurídica</span>
+                    <div class="roadmap__step"><strong>Presa d'acords</strong><span>Capacitació a l'Acadèmia Gestiona</span></div>
+                    <div class="roadmap__step"><strong>Procés de ratificacions</strong></div>
+                    <div class="roadmap__step"><strong>Arrencada</strong><span>Registre · Seu · Gestor d'expedients</span></div>
+                    <div class="roadmap__step"><strong>Operació ordinària</strong><span>Analítica de dades</span></div>
                 </div>
-                <div class="feature-card phase" data-phase="3">
-                    <div class="icon-circle icon-circle--lg mx-auto">
-                        <i class="fa-solid fa-rocket" aria-hidden="true"></i>
-                    </div>
-                    <h3>3. Desplegament ràpid</h3>
-                    <p>Registre, Seu electrònica, Gestor d'expedients i Analítica de dades: formació presencial, arrencada i suport posterior.</p>
-                </div>
-                <div class="feature-card phase" data-phase="4">
-                    <div class="icon-circle icon-circle--lg mx-auto">
-                        <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
-                    </div>
-                    <h3>4. Consolidació</h3>
-                    <p>Pas a l'operació ordinària un cop completat el desplegament.</p>
+                <div class="roadmap__lane roadmap__lane--gold phase" data-phase="2">
+                    <span class="roadmap__name"><i class="fa-solid fa-gears" aria-hidden="true"></i>Vessant tècnica</span>
+                    <div class="roadmap__step"><strong>Migració d'expedients vius</strong><span>Alta prioritat</span></div>
+                    <div class="roadmap__step"><strong>Activació dels serveis AOC</strong></div>
+                    <div class="roadmap__step"><strong>Evolutius de producte</strong><span>Aranès · Nou frontweb · Millores</span></div>
+                    <div class="roadmap__step"><strong>Integracions Factory</strong><span>SARCAT · Cens DPD · Publicació</span></div>
                 </div>
             </div>
         </div>
