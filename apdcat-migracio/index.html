@@ -152,63 +152,48 @@
             grid-template-columns: repeat(4, 1fr);
         }
 
-        /* Procedimientos configurados, agrupados por prefijo de código. */
-        .proc-columns {
+        /* Procedimientos configurados: una tarjeta por procedimiento, un slide por bloque. */
+        .proc-grid {
             display: grid;
-            grid-template-columns: 1.25fr 1fr 1fr;
+            grid-template-columns: repeat(3, 1fr);
             gap: 24px;
             width: 100%;
-            align-items: start;
         }
-        .proc-group {
+        .proc-grid--two {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        .proc-card {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            min-height: 170px;
+            padding: 28px 28px;
             background: var(--color-bg-light);
-            border-top: 4px solid var(--color-primary);
+            border-left: 4px solid var(--color-primary);
             border-radius: var(--radius-md);
-            padding: 18px 20px;
         }
-        .proc-group h3 {
-            display: flex;
-            align-items: baseline;
-            justify-content: space-between;
-            margin: 0 0 12px;
-            font-size: 1.1rem;
-            color: var(--color-text-dark);
-        }
-        .proc-group h3 span {
-            font-size: 0.8rem;
-            font-weight: 500;
-            color: var(--color-text-muted);
-        }
-        .proc-list {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            display: flex;
+        .proc-grid--stacked .proc-card {
             flex-direction: column;
-            gap: 8px;
+            justify-content: center;
+            min-height: 300px;
+            text-align: center;
         }
-        .proc-list li {
-            font-size: 0.86rem;
-            line-height: 1.3;
-            color: var(--color-text-body);
+        .proc-card .icon-circle {
+            flex-shrink: 0;
         }
         .proc-code {
             display: block;
-            font-size: 0.7rem;
+            margin-bottom: 4px;
+            font-size: 0.78rem;
             font-weight: 700;
             letter-spacing: 0.3px;
             color: var(--color-primary-dark);
         }
-        .proc-variant {
-            display: inline-block;
-            margin-left: 4px;
-            padding: 1px 7px;
-            border-radius: 10px;
-            font-size: 0.68rem;
-            font-weight: 600;
-            background: var(--color-white);
-            border: 1px solid var(--color-border);
-            color: var(--color-text-muted);
+        .proc-name {
+            font-size: 1.25rem;
+            font-weight: 500;
+            line-height: 1.3;
+            color: var(--color-text-dark);
         }
 
         /* Diagrama de Gantt: la columna de etiquetas es fija y la línea temporal
@@ -383,32 +368,6 @@
         </div>
     </section>
 
-    <!-- 2. PROPUESTA DE IMPLANTACIÓN (slide 22 del deck de julio) -->
-    <section class="slide-container" aria-label="Proposta d'implantació">
-        <h2 class="slide-title">Proposta d'implantació</h2>
-        <div class="content-area" style="align-items: center;">
-            <div class="highlight-box" style="max-width: 1060px; margin-left: auto; margin-right: auto;">
-                <p><strong>Proposta:</strong> construcció d'un <strong>bessó digital</strong> en entorn demo, a càrrec de l'equip d'especialistes de Gestiona, com a base objectiva per a la presa de decisió final sobre la implantació.</p>
-            </div>
-            <div class="feature-cards mt-lg">
-                <div class="feature-card phase" data-phase="1">
-                    <div class="icon-circle icon-circle--lg mx-auto">
-                        <i class="fa-solid fa-flask" aria-hidden="true"></i>
-                    </div>
-                    <h3>Validació</h3>
-                    <p>El <strong>bessó digital</strong> en entorn demo, construït per <u>l'equip d'especialistes</u> de Gestiona.</p>
-                </div>
-                <div class="feature-card phase" data-phase="2">
-                    <div class="icon-circle icon-circle--lg mx-auto">
-                        <i class="fa-solid fa-rocket" aria-hidden="true"></i>
-                    </div>
-                    <h3>Desplegament</h3>
-                    <p>El mateix entorn demo esdevé la base sobre la qual construir el pas a producció.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- 3. GEMELO DIGITAL: FECHA -->
     <section class="slide-container" aria-label="Bessó digital: 30 de setembre">
         <h2 class="slide-title">Bessó digital</h2>
@@ -511,38 +470,80 @@
         </div>
     </section>
 
-    <!-- 5. GEMELO DIGITAL: PROCEDIMIENTOS CONFIGURADOS -->
-    <section class="slide-container" aria-label="Bessó digital: procediments configurats">
-        <h2 class="slide-title">Procediments configurats</h2>
+    <!-- 5a. GEMELO DIGITAL: PROCEDIMIENTOS SG -->
+    <section class="slide-container" aria-label="Procediments configurats: bloc SG">
+        <h2 class="slide-title">Procediments configurats · SG</h2>
         <div class="content-area">
-            <div class="proc-columns">
-                <div class="proc-group">
-                    <h3>SG <span>8 configuracions</span></h3>
-                    <ul class="proc-list">
-                        <li><span class="proc-code">PROC_SG_02</span>Comunicació de la designació del DPD</li>
-                        <li><span class="proc-code">PROC_SG_03</span>Proposta de contractació <span class="proc-variant">+ duplicat</span></li>
-                        <li><span class="proc-code">PROC_SG_04</span>Contracte menor <span class="proc-variant">+ variant sense CR</span></li>
-                        <li><span class="proc-code">PROC_SG_05</span>Contracte no menor</li>
-                        <li><span class="proc-code">PROC_SG_06</span>Atenció pública</li>
-                        <li><span class="proc-code">PROC_SG_06</span>Exercici de drets (accés, limitació, rectificació, supressió, oposició)</li>
-                    </ul>
+            <div class="proc-grid">
+                <div class="proc-card">
+                    <div class="icon-circle icon-circle--lg"><i class="fa-solid fa-user-shield" aria-hidden="true"></i></div>
+                    <div><span class="proc-code">PROC_SG_02</span><div class="proc-name">Comunicació de la designació del DPD</div></div>
                 </div>
-                <div class="proc-group">
-                    <h3>AJ <span>3 procediments</span></h3>
-                    <ul class="proc-list">
-                        <li><span class="proc-code">PROC-AJ-01-CNS</span>Emissió de dictàmens</li>
-                        <li><span class="proc-code">PROC-AJ-02-PD</span>Emissió d'informe sobre disposicions</li>
-                        <li><span class="proc-code">PROC-AJ-12-IAI</span>Informe d'accés a la informació</li>
-                    </ul>
+                <div class="proc-card">
+                    <div class="icon-circle icon-circle--lg"><i class="fa-solid fa-file-signature" aria-hidden="true"></i></div>
+                    <div><span class="proc-code">PROC_SG_03</span><div class="proc-name">Proposta de contractació</div></div>
                 </div>
-                <div class="proc-group">
-                    <h3>INS <span>4 procediments</span></h3>
-                    <ul class="proc-list">
-                        <li><span class="proc-code">PROC-INS-004</span>Accés a la informació pública (AIP)</li>
-                        <li><span class="proc-code">PROC-INS-01-IP</span>Informacions prèvies (IP)</li>
-                        <li><span class="proc-code">PROC-INS-02-PT</span>Procediment de tutela de drets (PT)</li>
-                        <li><span class="proc-code">PROC-INS-03-PS</span>Procediment sancionador (PS)</li>
-                    </ul>
+                <div class="proc-card">
+                    <div class="icon-circle icon-circle--lg"><i class="fa-solid fa-file-contract" aria-hidden="true"></i></div>
+                    <div><span class="proc-code">PROC_SG_04</span><div class="proc-name">Contracte menor</div></div>
+                </div>
+                <div class="proc-card">
+                    <div class="icon-circle icon-circle--lg"><i class="fa-solid fa-handshake" aria-hidden="true"></i></div>
+                    <div><span class="proc-code">PROC_SG_05</span><div class="proc-name">Contracte no menor</div></div>
+                </div>
+                <div class="proc-card">
+                    <div class="icon-circle icon-circle--lg"><i class="fa-solid fa-headset" aria-hidden="true"></i></div>
+                    <div><span class="proc-code">PROC_SG_06</span><div class="proc-name">Atenció pública</div></div>
+                </div>
+                <div class="proc-card">
+                    <div class="icon-circle icon-circle--lg"><i class="fa-solid fa-scale-balanced" aria-hidden="true"></i></div>
+                    <div><span class="proc-code">PROC_SG_06</span><div class="proc-name">Exercici de drets</div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5b. GEMELO DIGITAL: PROCEDIMIENTOS AJ -->
+    <section class="slide-container" aria-label="Procediments configurats: bloc AJ">
+        <h2 class="slide-title">Procediments configurats · AJ</h2>
+        <div class="content-area">
+            <div class="proc-grid proc-grid--stacked">
+                <div class="proc-card">
+                    <div class="icon-circle icon-circle--lg"><i class="fa-solid fa-gavel" aria-hidden="true"></i></div>
+                    <div><span class="proc-code">PROC-AJ-01-CNS</span><div class="proc-name">Emissió de dictàmens</div></div>
+                </div>
+                <div class="proc-card">
+                    <div class="icon-circle icon-circle--lg"><i class="fa-solid fa-book-open" aria-hidden="true"></i></div>
+                    <div><span class="proc-code">PROC-AJ-02-PD</span><div class="proc-name">Emissió d'informe sobre disposicions</div></div>
+                </div>
+                <div class="proc-card">
+                    <div class="icon-circle icon-circle--lg"><i class="fa-solid fa-file-lines" aria-hidden="true"></i></div>
+                    <div><span class="proc-code">PROC-AJ-12-IAI</span><div class="proc-name">Informe d'accés a la informació</div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5c. GEMELO DIGITAL: PROCEDIMIENTOS INS -->
+    <section class="slide-container" aria-label="Procediments configurats: bloc INS">
+        <h2 class="slide-title">Procediments configurats · INS</h2>
+        <div class="content-area">
+            <div class="proc-grid proc-grid--two">
+                <div class="proc-card">
+                    <div class="icon-circle icon-circle--lg"><i class="fa-solid fa-folder-open" aria-hidden="true"></i></div>
+                    <div><span class="proc-code">PROC-INS-004 · AIP</span><div class="proc-name">Accés a la informació pública</div></div>
+                </div>
+                <div class="proc-card">
+                    <div class="icon-circle icon-circle--lg"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i></div>
+                    <div><span class="proc-code">PROC-INS-01-IP</span><div class="proc-name">Informacions prèvies</div></div>
+                </div>
+                <div class="proc-card">
+                    <div class="icon-circle icon-circle--lg"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i></div>
+                    <div><span class="proc-code">PROC-INS-02-PT</span><div class="proc-name">Procediment de tutela de drets</div></div>
+                </div>
+                <div class="proc-card">
+                    <div class="icon-circle icon-circle--lg"><i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i></div>
+                    <div><span class="proc-code">PROC-INS-03-PS</span><div class="proc-name">Procediment sancionador</div></div>
                 </div>
             </div>
         </div>
