@@ -120,6 +120,58 @@
             color: var(--color-text-muted);
         }
 
+        /* Slide "Dues opcions": trimestre de arrancada destacado + datos restantes. */
+        .option-card {
+            text-align: left;
+            padding: 36px 40px;
+        }
+        .option-card h3 {
+            margin-top: 4px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-text-dark);
+        }
+        .option-card__lead {
+            margin: 8px 0 0;
+            font-size: 0.95rem;
+            line-height: 1.45;
+            min-height: calc(1.45em * 3); /* alinea las fechas aunque el subtítulo ocupe 2 o 3 líneas */
+            color: var(--color-text-muted);
+        }
+        .option-card__start {
+            margin-top: 24px;
+            font-size: 3.6rem;
+            font-weight: 700;
+            line-height: 1;
+            color: var(--color-primary);
+        }
+        .option-card__start-label {
+            margin-top: 6px;
+            font-size: 0.95rem;
+            color: var(--color-text-muted);
+        }
+        .option-list {
+            margin: 28px 0 0;
+            padding: 0;
+        }
+        .option-list div {
+            display: flex;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 10px 0;
+            border-top: 1px solid var(--color-border);
+            font-size: 0.92rem;
+        }
+        .option-list dt {
+            color: var(--color-text-muted);
+        }
+        .option-list dd {
+            margin: 0;
+            text-align: right;
+            font-weight: 500;
+            color: var(--color-text-dark);
+        }
+
         /* Slide "Punt de partida": enunciado del compromiso + fecha. */
         .commitment {
             max-width: 900px;
@@ -357,6 +409,12 @@
             border-top-left-radius: 0;
             border-bottom-left-radius: 0;
         }
+        .gantt__phase--gold {
+            color: var(--color-gold);
+        }
+        .gantt__bar--gold {
+            background: var(--color-gold);
+        }
         .gantt__milestone {
             width: 13px;
             height: 13px;
@@ -366,31 +424,6 @@
             transform: rotate(45deg);
         }
 
-        /* Detalle del mes de arranque: tres carriles por módulo. */
-        .gantt--days .gantt__row {
-            min-height: 36px;
-        }
-        .gantt__track--lanes {
-            grid-template-rows: repeat(3, 7px);
-            row-gap: 3px;
-            align-content: center;
-        }
-        .gantt__track--lanes .gantt__bar {
-            height: 7px;
-            border-radius: 4px;
-        }
-        .gantt__bar--training {
-            grid-row: 1;
-            background: var(--color-primary-light);
-        }
-        .gantt__bar--start {
-            grid-row: 2;
-            background: var(--color-primary-dark);
-        }
-        .gantt__bar--support {
-            grid-row: 3;
-            background: var(--color-accent);
-        }
         .gantt-legend {
             display: flex;
             gap: 28px;
@@ -712,216 +745,137 @@
                     <div class="roadmap__step"><strong>Migració d'expedients vius</strong><span>Alta prioritat</span></div>
                     <div class="roadmap__step"><strong>Activació dels serveis AOC</strong><span>Adaptació PICA</span></div>
                     <div class="roadmap__step"><strong>Evolutius de producte</strong><span>Aranès · Nou frontweb · Millores</span></div>
-                    <div class="roadmap__step"><strong>Integracions Factory</strong><span>SARCAT · Cens DPD · Publicació</span></div>
+                    <div class="roadmap__step"><strong>Projecte Gestiona Factory</strong><span>SARCAT · Cens DPD · Publicació</span></div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- 10. DOS OPCIONES: COMPARATIVA -->
-    <section class="slide-container" aria-label="Dues opcions d'implantació">
-        <h2 class="slide-title">Dues opcions d'implantació</h2>
-        <div class="content-area table-layout table-layout--compare">
-            <table>
-                <thead>
-                    <tr>
-                        <th></th>
-                        <th>Opció 1<small>Arrencada ràpida</small></th>
-                        <th>Opció 2<small>Equip certificat abans d'arrencar</small></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td>Inici del projecte</td><td>Novembre 2026</td><td>Gener 2027</td></tr>
-                    <tr><td>Arrencada</td><td><strong>Gener 2027</strong></td><td><strong>Setembre 2027</strong></td></tr>
-                    <tr><td>Migració d'expedients vius</td><td>Novembre 2026 – gener 2027</td><td>Juliol – setembre 2027</td></tr>
-                    <tr><td>Certificacions Acadèmia Gestiona</td><td>Després de l'arrencada (gener – juny)</td><td>Abans de l'arrencada (gener – juliol)</td></tr>
-                    <tr><td>Integracions Factory</td><td>Novembre 2026 – juny 2027</td><td>Gener – setembre 2027</td></tr>
-                    <tr><td>Durada</td><td>8 mesos</td><td>9 mesos</td></tr>
-                </tbody>
-            </table>
+    <section class="slide-container" aria-label="Dues opcions">
+        <h2 class="slide-title">Dues opcions</h2>
+        <div class="content-area" style="justify-content: center;">
+            <div class="feature-cards">
+                <div class="feature-card option-card">
+                    <h3>Gestiona + Anexa</h3>
+                    <p class="option-card__lead">Traslladem la tramitació administrativa a Gestiona i mantenim algunes funcionalitats del projecte Factory a Anexa.</p>
+                    <div class="option-card__start">1T 2027</div>
+                    <div class="option-card__start-label">Arrencada · 28 de febrer de 2027</div>
+                    <dl class="option-list">
+                        <div><dt>Inici del projecte</dt><dd>Novembre 2026</dd></div>
+                        <div><dt>Migració d'expedients i registre</dt><dd>28 de febrer de 2027</dd></div>
+                        <div><dt>Evolutius de producte</dt><dd>28 de febrer de 2027</dd></div>
+                        <div><dt>Projecte Gestiona Factory</dt><dd>Gener – setembre 2027</dd></div>
+                    </dl>
+                </div>
+                <div class="feature-card option-card">
+                    <h3>Gestiona integrat</h3>
+                    <p class="option-card__lead">Condicionem la data d'arrencada al desenvolupament d'un projecte de Gestiona integrat.</p>
+                    <div class="option-card__start">3T 2027</div>
+                    <div class="option-card__start-label">Arrencada · 17 de setembre de 2027</div>
+                    <dl class="option-list">
+                        <div><dt>Inici del projecte</dt><dd>Gener 2027</dd></div>
+                        <div><dt>Migració d'expedients</dt><dd>17 de setembre de 2027</dd></div>
+                        <div><dt>Evolutius de producte</dt><dd>17 de setembre de 2027</dd></div>
+                        <div><dt>Projecte Gestiona Factory</dt><dd>Gener – setembre 2027</dd></div>
+                    </dl>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- 11. OPCIÓN 1: CRONOGRAMA
-         Columnas: 1 acords · 2 nov · 3 des · 4-7 gener (setmanes) · 8 feb · 9 mar · 10 abr · 11 mai · 12 jun -->
-    <section class="slide-container" aria-label="Opció 1: cronograma">
-        <h2 class="slide-title">Opció 1 · Arrencada al gener de 2027</h2>
+    <!-- 11. GESTIONA + ANEXA: CRONOGRAMA
+         Columnas: 1 acords · 2 nov · 3 des · 4 gen · 5-8 febrer (setmanes) · 9 mar · 10 abr · 11 mai · 12 jun · 13 jul · 14 ago · 15 set -->
+    <section class="slide-container" aria-label="Gestiona + Anexa: cronograma">
+        <h2 class="slide-title">Gestiona + Anexa · Arrencada el 28 de febrer de 2027</h2>
         <div class="content-area">
-            <div class="gantt" style="--gantt-cols: 28px repeat(2, 1fr) repeat(4, 0.5fr) repeat(5, 1fr);">
+            <div class="gantt" style="--gantt-cols: 28px repeat(3, 1fr) repeat(4, 0.5fr) repeat(7, 1fr);">
                 <div class="gantt__lines" aria-hidden="true">
-                    <span></span><span></span><span></span>
-                    <span class="is-launch" style="grid-column: 4 / 8;"></span>
-                    <span></span><span></span><span></span><span></span><span></span>
+                    <span></span><span></span><span></span><span></span>
+                    <span class="is-launch" style="grid-column: 5 / 9;"></span>
+                    <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
                 </div>
                 <div class="gantt__row gantt__head">
                     <span class="gantt__label"></span>
                     <div class="gantt__track">
                         <span style="grid-column: 2 / 3;">Nov.</span>
                         <span style="grid-column: 3 / 4;">Des.</span>
-                        <span class="is-launch" style="grid-column: 4 / 8;">Gener</span>
-                        <span style="grid-column: 8 / 9;">Febr.</span>
+                        <span style="grid-column: 4 / 5;">Gen.</span>
+                        <span class="is-launch" style="grid-column: 5 / 9;">Febrer</span>
                         <span style="grid-column: 9 / 10;">Març</span>
                         <span style="grid-column: 10 / 11;">Abr.</span>
                         <span style="grid-column: 11 / 12;">Maig</span>
                         <span style="grid-column: 12 / 13;">Juny</span>
+                        <span style="grid-column: 13 / 14;">Jul.</span>
+                        <span style="grid-column: 14 / 15;">Ag.</span>
+                        <span style="grid-column: 15 / 16;">Set.</span>
                     </div>
                 </div>
 
-                <div class="gantt__phase">Disseny i transició</div>
+                <div class="gantt__phase">Vessant jurídica</div>
                 <div class="gantt__row">
                     <span class="gantt__label">Presa d'acords</span>
                     <div class="gantt__track"><span class="gantt__milestone" style="grid-column: 1 / 2;"></span></div>
                 </div>
                 <div class="gantt__row">
                     <span class="gantt__label">Formació en línia bàsica de Gestiona</span>
-                    <div class="gantt__track"><span class="gantt__bar" style="grid-column: 3 / 4;"></span></div>
+                    <div class="gantt__track"><span class="gantt__bar" style="grid-column: 4 / 5;"></span></div>
+                </div>
+                <div class="gantt__row">
+                    <span class="gantt__label">Procés de ratificacions</span>
+                    <div class="gantt__track"><span class="gantt__milestone" style="grid-column: 8 / 9;"></span></div>
+                </div>
+                <div class="gantt__row">
+                    <span class="gantt__label">Arrencada · Registre, Seu electrònica i Gestor d'expedients <small>· formació presencial i suport</small></span>
+                    <div class="gantt__track"><span class="gantt__bar" style="grid-column: 8 / 10;"></span></div>
+                </div>
+                <div class="gantt__row">
+                    <span class="gantt__label">Arrencada · Analítica de dades</span>
+                    <div class="gantt__track"><span class="gantt__bar" style="grid-column: 9 / 10;"></span></div>
                 </div>
                 <div class="gantt__row">
                     <span class="gantt__label">Certificació Configuració avançada</span>
-                    <div class="gantt__track"><span class="gantt__bar" style="grid-column: 6 / 13;"></span></div>
-                </div>
-                <div class="gantt__row">
-                    <span class="gantt__label">Certificació Developers</span>
-                    <div class="gantt__track"><span class="gantt__bar" style="grid-column: 6 / 13;"></span></div>
+                    <div class="gantt__track"><span class="gantt__bar" style="grid-column: 9 / 14;"></span></div>
                 </div>
                 <div class="gantt__row">
                     <span class="gantt__label">Certificació Analítica de dades</span>
-                    <div class="gantt__track"><span class="gantt__bar" style="grid-column: 10 / 13;"></span></div>
+                    <div class="gantt__track"><span class="gantt__bar" style="grid-column: 11 / 14;"></span></div>
+                </div>
+
+                <div class="gantt__phase gantt__phase--gold">Vessant tècnica</div>
+                <div class="gantt__row">
+                    <span class="gantt__label">Migració d'expedients i registre</span>
+                    <div class="gantt__track"><span class="gantt__bar gantt__bar--gold" style="grid-column: 2 / 9;"></span></div>
                 </div>
                 <div class="gantt__row">
-                    <span class="gantt__label">Migració d'alta prioritat <small>· expedients vius</small></span>
-                    <div class="gantt__track"><span class="gantt__bar" style="grid-column: 2 / 5;"></span></div>
-                </div>
-                <div class="gantt__row">
-                    <span class="gantt__label">Resta de la migració</span>
-                    <div class="gantt__track"><span class="gantt__bar" style="grid-column: 4 / 8;"></span></div>
+                    <span class="gantt__label">Evolutius de producte</span>
+                    <div class="gantt__track"><span class="gantt__bar gantt__bar--gold" style="grid-column: 2 / 9;"></span></div>
                 </div>
                 <div class="gantt__row">
                     <span class="gantt__label">Interoperabilitat AOC <small>· altes i activació</small></span>
-                    <div class="gantt__track">
-                        <span class="gantt__bar" style="grid-column: 2 / 4;"></span>
-                        <span class="gantt__milestone" style="grid-column: 4 / 5;"></span>
-                    </div>
+                    <div class="gantt__track"><span class="gantt__bar gantt__bar--gold" style="grid-column: 3 / 5;"></span><span class="gantt__milestone" style="grid-column: 8 / 9;"></span></div>
                 </div>
                 <div class="gantt__row">
-                    <span class="gantt__label">Integracions Factory <small>· SARCAT, Cens DPD, Publicació</small></span>
-                    <div class="gantt__track"><span class="gantt__bar" style="grid-column: 2 / 13;"></span></div>
-                </div>
-
-                <div class="gantt__phase">Activació</div>
-                <div class="gantt__row">
-                    <span class="gantt__label">Procés de ratificacions</span>
-                    <div class="gantt__track"><span class="gantt__milestone" style="grid-column: 4 / 5;"></span></div>
-                </div>
-
-                <div class="gantt__phase">Desplegament ràpid</div>
-                <div class="gantt__row">
-                    <span class="gantt__label">Registre · Seu electrònica · Gestor d'expedients</span>
-                    <div class="gantt__track"><span class="gantt__bar" style="grid-column: 4 / 7;"></span></div>
+                    <span class="gantt__label">Projecte Gestiona Factory <small>· SARCAT, Cens DPD, Publicació</small></span>
+                    <div class="gantt__track"><span class="gantt__bar gantt__bar--gold" style="grid-column: 4 / 16;"></span></div>
                 </div>
                 <div class="gantt__row">
-                    <span class="gantt__label">Analítica de dades</span>
-                    <div class="gantt__track"><span class="gantt__bar" style="grid-column: 6 / 8;"></span></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 12. OPCIÓN 1: DETALLE DEL MES DE ARRANQUE (jornada 1-20 de gener) -->
-    <section class="slide-container" aria-label="Opció 1: desplegament al gener">
-        <h2 class="slide-title">Opció 1 · Desplegament al gener de 2027</h2>
-        <div class="content-area">
-            <div class="gantt gantt--days" style="--gantt-cols: repeat(20, 1fr);">
-                <div class="gantt__lines" aria-hidden="true">
-                    <span></span><span></span><span></span>
-                    <span class="is-launch"></span>
-                    <span></span><span></span><span></span><span></span><span></span><span></span>
-                    <span></span><span></span><span></span><span></span><span></span><span></span>
-                    <span></span><span></span><span></span><span></span>
-                </div>
-                <div class="gantt__row gantt__head">
-                    <span class="gantt__label">Jornades de gener</span>
-                    <div class="gantt__track">
-                        <span>1</span><span>2</span><span>3</span><span class="is-launch">4</span><span>5</span>
-                        <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
-                        <span>11</span><span>12</span><span>13</span><span>14</span><span>15</span>
-                        <span>16</span><span>17</span><span>18</span><span>19</span><span>20</span>
-                    </div>
-                </div>
-
-                <div class="gantt__phase">Transició</div>
-                <div class="gantt__row">
-                    <span class="gantt__label">Migració d'alta prioritat <small>· des de novembre</small></span>
-                    <div class="gantt__track"><span class="gantt__bar gantt__bar--open-start" style="grid-column: 1 / 4;"></span></div>
-                </div>
-                <div class="gantt__row">
-                    <span class="gantt__label">Resta de la migració</span>
-                    <div class="gantt__track"><span class="gantt__bar" style="grid-column: 1 / 21;"></span></div>
-                </div>
-                <div class="gantt__row">
-                    <span class="gantt__label">Activació AOC · Ratificacions</span>
-                    <div class="gantt__track"><span class="gantt__milestone" style="grid-column: 4 / 5;"></span></div>
-                </div>
-
-                <div class="gantt__phase">Desplegament ràpid</div>
-                <div class="gantt__row">
-                    <span class="gantt__label">Registre</span>
-                    <div class="gantt__track gantt__track--lanes">
-                        <span class="gantt__bar gantt__bar--training" style="grid-column: 4 / 5;"></span>
-                        <span class="gantt__bar gantt__bar--start" style="grid-column: 4 / 5;"></span>
-                        <span class="gantt__bar gantt__bar--support" style="grid-column: 4 / 13;"></span>
-                    </div>
-                </div>
-                <div class="gantt__row">
-                    <span class="gantt__label">Seu electrònica</span>
-                    <div class="gantt__track gantt__track--lanes">
-                        <span class="gantt__bar gantt__bar--start" style="grid-column: 4 / 13;"></span>
-                    </div>
-                </div>
-                <div class="gantt__row">
-                    <span class="gantt__label">Gestor d'expedients <small>· procediments reglats</small></span>
-                    <div class="gantt__track gantt__track--lanes">
-                        <span class="gantt__bar gantt__bar--training" style="grid-column: 4 / 6;"></span>
-                        <span class="gantt__bar gantt__bar--start" style="grid-column: 4 / 6;"></span>
-                        <span class="gantt__bar gantt__bar--support" style="grid-column: 4 / 13;"></span>
-                    </div>
-                </div>
-                <div class="gantt__row">
-                    <span class="gantt__label">Gestor d'expedients <small>· tramitació lliure</small></span>
-                    <div class="gantt__track gantt__track--lanes">
-                        <span class="gantt__bar gantt__bar--training" style="grid-column: 4 / 11;"></span>
-                        <span class="gantt__bar gantt__bar--start" style="grid-column: 4 / 11;"></span>
-                        <span class="gantt__bar gantt__bar--support" style="grid-column: 4 / 13;"></span>
-                    </div>
-                </div>
-                <div class="gantt__row">
-                    <span class="gantt__label">Analítica de dades</span>
-                    <div class="gantt__track gantt__track--lanes">
-                        <span class="gantt__bar gantt__bar--training" style="grid-column: 12 / 13;"></span>
-                        <span class="gantt__bar gantt__bar--start" style="grid-column: 12 / 13;"></span>
-                        <span class="gantt__bar gantt__bar--support" style="grid-column: 12 / 21;"></span>
-                    </div>
-                </div>
-
-                <div class="gantt__phase">Capacitació</div>
-                <div class="gantt__row">
-                    <span class="gantt__label">Certificacions Configuració avançada i Developers <small>· fins al juny</small></span>
-                    <div class="gantt__track"><span class="gantt__bar gantt__bar--open-end" style="grid-column: 12 / 21;"></span></div>
+                    <span class="gantt__label">Certificació Developers</span>
+                    <div class="gantt__track"><span class="gantt__bar gantt__bar--gold" style="grid-column: 9 / 14;"></span></div>
                 </div>
             </div>
             <div class="gantt-legend">
-                <span><i style="background: var(--color-primary-light);"></i>Formació presencial</span>
-                <span><i style="background: var(--color-primary-dark);"></i>Arrencada</span>
-                <span><i style="background: var(--color-accent);"></i>Suport posterior</span>
+                <span><i style="background: var(--color-primary);"></i>Vessant jurídica</span>
+                <span><i style="background: var(--color-gold);"></i>Vessant tècnica</span>
                 <span><span class="gantt__milestone"></span>Fita</span>
             </div>
         </div>
     </section>
 
-    <!-- 13. OPCIÓN 2: CRONOGRAMA
+    <!-- 13. GESTIONA INTEGRAT: CRONOGRAMA
          Columnas: 1 acords · 2 gen · 3 feb · 4 mar · 5 abr · 6 mai · 7 jun · 8 jul · 9 ago · 10-13 setembre (setmanes) -->
-    <section class="slide-container" aria-label="Opció 2: cronograma">
-        <h2 class="slide-title">Opció 2 · Arrencada al setembre de 2027</h2>
+    <section class="slide-container" aria-label="Gestiona integrat: cronograma">
+        <h2 class="slide-title">Gestiona integrat · Arrencada el 17 de setembre de 2027</h2>
         <div class="content-area">
             <div class="gantt" style="--gantt-cols: 28px repeat(8, 1fr) repeat(4, 0.5fr);">
                 <div class="gantt__lines" aria-hidden="true">
@@ -944,7 +898,7 @@
                     </div>
                 </div>
 
-                <div class="gantt__phase">Disseny i transició</div>
+                <div class="gantt__phase">Vessant jurídica</div>
                 <div class="gantt__row">
                     <span class="gantt__label">Presa d'acords</span>
                     <div class="gantt__track"><span class="gantt__milestone" style="grid-column: 1 / 2;"></span></div>
@@ -954,145 +908,51 @@
                     <div class="gantt__track"><span class="gantt__bar" style="grid-column: 9 / 10;"></span></div>
                 </div>
                 <div class="gantt__row">
-                    <span class="gantt__label">Certificació Configuració avançada</span>
-                    <div class="gantt__track">
-                        <span class="gantt__bar" style="grid-column: 2 / 8;"></span>
-                        <span class="gantt__bar" style="grid-column: 13 / 14;"></span>
-                    </div>
+                    <span class="gantt__label">Procés de ratificacions</span>
+                    <div class="gantt__track"><span class="gantt__milestone" style="grid-column: 12 / 13;"></span></div>
                 </div>
                 <div class="gantt__row">
-                    <span class="gantt__label">Certificació Developers</span>
-                    <div class="gantt__track"><span class="gantt__bar" style="grid-column: 2 / 8;"></span></div>
+                    <span class="gantt__label">Arrencada · Registre, Seu electrònica i Gestor d'expedients <small>· formació presencial i suport</small></span>
+                    <div class="gantt__track"><span class="gantt__bar" style="grid-column: 12 / 14;"></span></div>
+                </div>
+                <div class="gantt__row">
+                    <span class="gantt__label">Arrencada · Analítica de dades</span>
+                    <div class="gantt__track"><span class="gantt__bar" style="grid-column: 12 / 14;"></span></div>
+                </div>
+                <div class="gantt__row">
+                    <span class="gantt__label">Certificació Configuració avançada</span>
+                    <div class="gantt__track"><span class="gantt__bar" style="grid-column: 2 / 8;"></span><span class="gantt__bar" style="grid-column: 13 / 14;"></span></div>
                 </div>
                 <div class="gantt__row">
                     <span class="gantt__label">Certificació Analítica de dades</span>
                     <div class="gantt__track"><span class="gantt__bar" style="grid-column: 5 / 9;"></span></div>
                 </div>
+
+                <div class="gantt__phase gantt__phase--gold">Vessant tècnica</div>
                 <div class="gantt__row">
-                    <span class="gantt__label">Migració d'alta prioritat <small>· expedients vius</small></span>
-                    <div class="gantt__track"><span class="gantt__bar" style="grid-column: 8 / 11;"></span></div>
+                    <span class="gantt__label">Migració d'expedients</span>
+                    <div class="gantt__track"><span class="gantt__bar gantt__bar--gold" style="grid-column: 8 / 13;"></span></div>
                 </div>
                 <div class="gantt__row">
-                    <span class="gantt__label">Resta de la migració</span>
-                    <div class="gantt__track"><span class="gantt__bar" style="grid-column: 10 / 14;"></span></div>
+                    <span class="gantt__label">Evolutius de producte</span>
+                    <div class="gantt__track"><span class="gantt__bar gantt__bar--gold" style="grid-column: 2 / 13;"></span></div>
                 </div>
                 <div class="gantt__row">
                     <span class="gantt__label">Interoperabilitat AOC <small>· altes i activació</small></span>
-                    <div class="gantt__track">
-                        <span class="gantt__bar" style="grid-column: 8 / 10;"></span>
-                        <span class="gantt__milestone" style="grid-column: 12 / 13;"></span>
-                    </div>
+                    <div class="gantt__track"><span class="gantt__bar gantt__bar--gold" style="grid-column: 8 / 10;"></span><span class="gantt__milestone" style="grid-column: 12 / 13;"></span></div>
                 </div>
                 <div class="gantt__row">
-                    <span class="gantt__label">Integracions Factory <small>· SARCAT, Cens DPD, Publicació</small></span>
-                    <div class="gantt__track"><span class="gantt__bar" style="grid-column: 2 / 14;"></span></div>
-                </div>
-
-                <div class="gantt__phase">Activació</div>
-                <div class="gantt__row">
-                    <span class="gantt__label">Procés de ratificacions</span>
-                    <div class="gantt__track"><span class="gantt__milestone" style="grid-column: 12 / 13;"></span></div>
-                </div>
-
-                <div class="gantt__phase">Desplegament ràpid</div>
-                <div class="gantt__row">
-                    <span class="gantt__label">Registre · Seu electrònica · Gestor d'expedients</span>
-                    <div class="gantt__track"><span class="gantt__bar" style="grid-column: 12 / 14;"></span></div>
+                    <span class="gantt__label">Projecte Gestiona Factory <small>· SARCAT, Cens DPD, Publicació</small></span>
+                    <div class="gantt__track"><span class="gantt__bar gantt__bar--gold" style="grid-column: 2 / 14;"></span></div>
                 </div>
                 <div class="gantt__row">
-                    <span class="gantt__label">Analítica de dades</span>
-                    <div class="gantt__track"><span class="gantt__bar" style="grid-column: 12 / 14;"></span></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 14. OPCIÓN 2: DETALLE DEL MES DE ARRANQUE (jornada 1-20 de setembre) -->
-    <section class="slide-container" aria-label="Opció 2: desplegament al setembre">
-        <h2 class="slide-title">Opció 2 · Desplegament al setembre de 2027</h2>
-        <div class="content-area">
-            <div class="gantt gantt--days" style="--gantt-cols: repeat(20, 1fr);">
-                <div class="gantt__lines" aria-hidden="true">
-                    <span></span><span></span><span></span><span></span><span></span>
-                    <span></span><span></span><span></span><span></span><span></span>
-                    <span class="is-launch"></span>
-                    <span></span><span></span><span></span><span></span><span></span>
-                    <span></span><span></span><span></span><span></span>
-                </div>
-                <div class="gantt__row gantt__head">
-                    <span class="gantt__label">Jornades de setembre</span>
-                    <div class="gantt__track">
-                        <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
-                        <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
-                        <span class="is-launch">11</span><span>12</span><span>13</span><span>14</span><span>15</span>
-                        <span>16</span><span>17</span><span>18</span><span>19</span><span>20</span>
-                    </div>
-                </div>
-
-                <div class="gantt__phase">Transició</div>
-                <div class="gantt__row">
-                    <span class="gantt__label">Migració d'alta prioritat <small>· des de juliol</small></span>
-                    <div class="gantt__track"><span class="gantt__bar gantt__bar--open-start" style="grid-column: 1 / 4;"></span></div>
-                </div>
-                <div class="gantt__row">
-                    <span class="gantt__label">Resta de la migració</span>
-                    <div class="gantt__track"><span class="gantt__bar" style="grid-column: 1 / 21;"></span></div>
-                </div>
-                <div class="gantt__row">
-                    <span class="gantt__label">Activació AOC · Ratificacions</span>
-                    <div class="gantt__track"><span class="gantt__milestone" style="grid-column: 11 / 12;"></span></div>
-                </div>
-
-                <div class="gantt__phase">Desplegament ràpid</div>
-                <div class="gantt__row">
-                    <span class="gantt__label">Registre</span>
-                    <div class="gantt__track gantt__track--lanes">
-                        <span class="gantt__bar gantt__bar--training" style="grid-column: 11 / 12;"></span>
-                        <span class="gantt__bar gantt__bar--start" style="grid-column: 11 / 12;"></span>
-                        <span class="gantt__bar gantt__bar--support" style="grid-column: 11 / 20;"></span>
-                    </div>
-                </div>
-                <div class="gantt__row">
-                    <span class="gantt__label">Seu electrònica</span>
-                    <div class="gantt__track gantt__track--lanes">
-                        <span class="gantt__bar gantt__bar--start" style="grid-column: 11 / 20;"></span>
-                    </div>
-                </div>
-                <div class="gantt__row">
-                    <span class="gantt__label">Gestor d'expedients <small>· procediments reglats</small></span>
-                    <div class="gantt__track gantt__track--lanes">
-                        <span class="gantt__bar gantt__bar--training" style="grid-column: 11 / 13;"></span>
-                        <span class="gantt__bar gantt__bar--start" style="grid-column: 11 / 13;"></span>
-                        <span class="gantt__bar gantt__bar--support" style="grid-column: 11 / 20;"></span>
-                    </div>
-                </div>
-                <div class="gantt__row">
-                    <span class="gantt__label">Gestor d'expedients <small>· tramitació lliure</small></span>
-                    <div class="gantt__track gantt__track--lanes">
-                        <span class="gantt__bar gantt__bar--training" style="grid-column: 11 / 18;"></span>
-                        <span class="gantt__bar gantt__bar--start" style="grid-column: 11 / 18;"></span>
-                        <span class="gantt__bar gantt__bar--support" style="grid-column: 11 / 20;"></span>
-                    </div>
-                </div>
-                <div class="gantt__row">
-                    <span class="gantt__label">Analítica de dades</span>
-                    <div class="gantt__track gantt__track--lanes">
-                        <span class="gantt__bar gantt__bar--training" style="grid-column: 12 / 13;"></span>
-                        <span class="gantt__bar gantt__bar--start" style="grid-column: 12 / 13;"></span>
-                        <span class="gantt__bar gantt__bar--support" style="grid-column: 12 / 21;"></span>
-                    </div>
-                </div>
-
-                <div class="gantt__phase">Capacitació</div>
-                <div class="gantt__row">
-                    <span class="gantt__label">Certificació Configuració avançada</span>
-                    <div class="gantt__track"><span class="gantt__bar" style="grid-column: 19 / 21;"></span></div>
+                    <span class="gantt__label">Certificació Developers</span>
+                    <div class="gantt__track"><span class="gantt__bar gantt__bar--gold" style="grid-column: 2 / 8;"></span></div>
                 </div>
             </div>
             <div class="gantt-legend">
-                <span><i style="background: var(--color-primary-light);"></i>Formació presencial</span>
-                <span><i style="background: var(--color-primary-dark);"></i>Arrencada</span>
-                <span><i style="background: var(--color-accent);"></i>Suport posterior</span>
+                <span><i style="background: var(--color-primary);"></i>Vessant jurídica</span>
+                <span><i style="background: var(--color-gold);"></i>Vessant tècnica</span>
                 <span><span class="gantt__milestone"></span>Fita</span>
             </div>
         </div>
