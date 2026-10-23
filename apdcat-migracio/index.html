@@ -121,9 +121,17 @@
         }
 
         /* Slide "Dues opcions": trimestre de arrancada destacado + datos restantes. */
+        .option-cards {
+            flex-direction: column;
+            gap: 20px;
+        }
         .option-card {
+            display: grid;
+            grid-template-columns: 1fr 250px 1.3fr; /* anchos fijos: alinea columnas entre tarjetas */
+            align-items: center;
+            column-gap: 48px;
             text-align: left;
-            padding: 36px 40px;
+            padding: 26px 40px;
         }
         .option-card h3 {
             margin-top: 4px;
@@ -135,11 +143,10 @@
             margin: 8px 0 0;
             font-size: 0.95rem;
             line-height: 1.45;
-            min-height: calc(1.45em * 3); /* alinea las fechas aunque el subtítulo ocupe 2 o 3 líneas */
             color: var(--color-text-muted);
         }
         .option-card__start {
-            margin-top: 24px;
+            margin-top: 0;
             font-size: 3.6rem;
             font-weight: 700;
             line-height: 1;
@@ -151,8 +158,18 @@
             color: var(--color-text-muted);
         }
         .option-list {
-            margin: 28px 0 0;
+            margin: 0;
             padding: 0;
+        }
+        .option-list div:first-child {
+            border-top: 0;
+        }
+        .option-note {
+            width: 100%;
+            max-width: 1060px;
+            margin: 16px auto 0;
+            font-size: 0.85rem;
+            color: var(--color-text-muted);
         }
         .option-list div {
             display: flex;
@@ -755,12 +772,16 @@
     <section class="slide-container" aria-label="Dues opcions">
         <h2 class="slide-title">Dues opcions</h2>
         <div class="content-area" style="justify-content: center;">
-            <div class="feature-cards">
+            <div class="feature-cards option-cards">
                 <div class="feature-card option-card">
-                    <h3>Gestiona + Anexa</h3>
-                    <p class="option-card__lead">Traslladem la tramitació administrativa a Gestiona i mantenim algunes funcionalitats del projecte Factory a Anexa.</p>
-                    <div class="option-card__start">1T 2027</div>
-                    <div class="option-card__start-label">Arrencada · 28 de febrer de 2027</div>
+                    <div>
+                        <h3>Gestiona + Anexa</h3>
+                        <p class="option-card__lead">Traslladem la tramitació administrativa a Gestiona i mantenim algunes funcionalitats del projecte Factory a Anexa.</p>
+                    </div>
+                    <div>
+                        <div class="option-card__start">1T 2027</div>
+                        <div class="option-card__start-label">Arrencada · 28 de febrer de 2027*</div>
+                    </div>
                     <dl class="option-list">
                         <div><dt>Inici del projecte</dt><dd>Novembre 2026</dd></div>
                         <div><dt>Migració d'expedients i registre</dt><dd>28 de febrer de 2027</dd></div>
@@ -769,10 +790,14 @@
                     </dl>
                 </div>
                 <div class="feature-card option-card">
-                    <h3>Gestiona integrat</h3>
-                    <p class="option-card__lead">Condicionem la data d'arrencada al desenvolupament d'un projecte de Gestiona integrat.</p>
-                    <div class="option-card__start">3T 2027</div>
-                    <div class="option-card__start-label">Arrencada · 17 de setembre de 2027</div>
+                    <div>
+                        <h3>Gestiona integrat</h3>
+                        <p class="option-card__lead">Condicionem la data d'arrencada al desenvolupament d'un projecte de Gestiona integrat.</p>
+                    </div>
+                    <div>
+                        <div class="option-card__start">3T 2027</div>
+                        <div class="option-card__start-label">Arrencada · 17 de setembre de 2027</div>
+                    </div>
                     <dl class="option-list">
                         <div><dt>Inici del projecte</dt><dd>Gener 2027</dd></div>
                         <div><dt>Migració d'expedients</dt><dd>17 de setembre de 2027</dd></div>
@@ -781,6 +806,7 @@
                     </dl>
                 </div>
             </div>
+            <p class="option-note">* Data condicionada al desplegament dels evolutius de producte.</p>
         </div>
     </section>
 
