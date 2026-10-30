@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestiona Avanza Bytes — Plan de comunicación</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Roboto+Slab:wght@700&family=Roboto+Mono:wght@400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/corporate.css">
+    <link rel="stylesheet" href="../assets/css/gestiona-avanza.tokens.css">
+    <style>
+        /* Específico de esta presentación.
+           Fuentes: ga-bytes/docs/plan-comunicacion-ga-bytes.md y
+           ga-bytes/docs/manual-marca-bytes.md. El cian de marca no lleva
+           texto sobre claro (2,48:1): los textos de acento usan petróleo. */
+        :root {
+            --type-sq: var(--chart-1);
+            --type-qt: var(--chart-2);
+            --type-ht: var(--chart-4);
+            --type-wn: var(--chart-3);
+        }
+
+        .brand-header {
+            display: flex;
+            align-items: flex-end;
+            gap: 20px;
+            margin-bottom: 28px;
+        }
+        .brand-header-logo { height: 140px; width: auto; }
+        .brand-header-service {
+            font-weight: 500;
+            font-size: 64px;
+            line-height: 1;
+            color: var(--ga-petrol-700);
+            transform: translateY(-4px);
+        }
+        .brand-header--sm { gap: 12px; margin: 28px 0 0; }
+        .brand-header--sm .brand-header-logo { height: 72px; }
+        .brand-header--sm .brand-header-service { font-size: 34px; transform: translateY(-3px); }
+
+        .slide-title { border-left-color: var(--ga-cyan-600); }
+        .kicker {
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--ga-petrol-700);
+            margin: 0 0 8px;
+        }
+        .lead {
+            font-size: 24px;
+            line-height: 1.45;
+            color: var(--color-text-dark);
+            margin: 0;
+        }
+        .lead strong { color: var(--ga-petrol-700); }
+
+        /* Tabla compacta */
+        .table-layout--compact th { font-size: 15px; padding: 10px 16px; font-weight: 500; }
+        .table-layout--compact td { font-size: 15px; padding: 9px 16px; line-height: 1.35; }
+        .table-layout--compact table { margin-top: 0; }
+        .table-layout--compact td:first-child { font-weight: 500; color: var(--color-text-dark); }
+
+        /* Datos clave del resumen */
+        .facts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 36px; }
+        .fact {
+            background: var(--color-bg-light);
+            border-top: 3px solid var(--ga-cyan-600);
+            border-radius: var(--radius-sm);
+            padding: 20px 22px;
+        }
+        .fact-value { font-size: 30px; font-weight: 700; color: var(--ga-petrol-700); line-height: 1.1; }
+        .fact p { font-size: 15px; margin: 8px 0 0; line-height: 1.4; }
+
+        /* Flujo del ecosistema */
+        .loop {
+            margin-top: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+            font-size: 16px;
+            color: var(--color-text-muted);
+        }
+        .loop i { color: var(--ga-petrol-400); }
+        .loop strong { color: var(--ga-petrol-700); }
+
+        /* Tipologías */
+        .type-tile { border-top-color: var(--type-color); }
+        .type-tile .icon { color: var(--type-color); }
+        .type-tile h3 { color: var(--color-text-dark); font-weight: 700; display: flex; justify-content: space-between; }
+        .type-share { font-family: var(--ga-font-mono); font-size: 16px; font-weight: 400; color: var(--color-text-subtle); }
+        .type-tile p { font-size: 16px; margin: 0; }
+        .formula-quote { font-style: italic; color: var(--ga-petrol-700); margin-top: 8px !important; }
+        .tiled-content .tile { padding: 22px 26px; }
+        .tiled-content .tile .icon { font-size: 24px; margin-bottom: 8px; }
+
+        /* Separadores oscuros con cian de marca (permitido sobre petróleo) */
+        .section-title-layout { background-color: var(--ga-petrol-950); }
+        .section-title-layout hr { background: var(--ga-cyan-500); }
+        .step-card { border-bottom-color: var(--ga-cyan-500); }
+        .step-card .step-number { color: var(--ga-cyan-500); }
+        .step-card strong { color: var(--ga-cyan-200); }
+
+        /* Marca: muestras de color */
+        .swatches { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+        .swatch { border-radius: var(--radius-sm); padding: 14px 16px; height: 78px; display: flex; flex-direction: column; justify-content: flex-end; }
+        .swatch span { font-size: 13px; font-weight: 500; line-height: 1.3; }
+        .swatch code { font-family: var(--ga-font-mono); font-size: 12px; }
+        .swatch--petrol950 { background: var(--ga-petrol-950); color: var(--ga-neutral-0); }
+        .swatch--petrol700 { background: var(--ga-petrol-700); color: var(--ga-neutral-0); }
+        .swatch--cyan500 { background: var(--ga-cyan-500); color: var(--ga-petrol-950); }
+        .type-chips { display: flex; gap: 10px; margin-top: 14px; flex-wrap: wrap; }
+        .type-chip {
+            display: flex; align-items: center; gap: 8px;
+            font-size: 14px; font-weight: 500; color: var(--color-text-dark);
+            border: 1px solid var(--color-border);
+            border-left: 4px solid var(--type-color);
+            border-radius: var(--radius-sm);
+            padding: 6px 12px;
+        }
+        .type-chip i { color: var(--type-color); }
+        .font-sample { margin: 0 0 10px; font-size: 15px; color: var(--color-text-muted); }
+        .font-sample b { display: inline-block; min-width: 150px; color: var(--color-text-dark); font-weight: 500; }
+        .font-slab { font-family: var(--ga-font-slab); font-weight: 700; color: var(--color-text-dark); font-size: 20px; }
+        .font-mono { font-family: var(--ga-font-mono); color: var(--color-text-dark); }
+
+        /* Maqueta de vídeo vertical 9:16 */
+        .phone-row { display: flex; gap: 22px; justify-content: center; }
+        .phone {
+            width: 158px; height: 281px;
+            background: var(--ga-petrol-950);
+            border-radius: 16px;
+            padding: 16px 12px 12px;
+            display: flex; flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+        .phone-label { text-align: center; font-size: 13px; font-weight: 500; color: var(--color-text-dark); margin-top: 8px; }
+        .phone-label span { display: block; font-weight: 400; color: var(--color-text-subtle); font-size: 12px; }
+        .ph-tag {
+            align-self: flex-start;
+            font-size: 8px; font-weight: 500; letter-spacing: 0.6px; text-transform: uppercase;
+            color: var(--ga-neutral-0);
+            background: var(--ga-petrol-900);
+            border-left: 3px solid var(--ga-cyan-500);
+            border-radius: 4px;
+            padding: 3px 6px;
+        }
+        .ph-hook { font-family: var(--ga-font-slab); font-weight: 700; color: var(--ga-neutral-0); font-size: 16px; line-height: 1.2; margin: auto 0; text-align: center; }
+        .ph-hook em { font-style: normal; color: var(--ga-cyan-500); }
+        .ph-screen {
+            margin: 12px 0 8px; flex: 1;
+            background: var(--ga-neutral-100);
+            border-radius: 6px;
+            position: relative;
+            overflow: hidden;
+        }
+        .ph-screen::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 26px; background: var(--ga-petrol-900); }
+        .ph-screen::after { content: ""; position: absolute; left: 36px; right: 10px; top: 12px; height: 6px; border-radius: 3px; background: var(--ga-neutral-300); box-shadow: 0 14px 0 var(--ga-neutral-300), 0 28px 0 var(--ga-neutral-300); }
+        .ph-focus { position: absolute; left: 44px; right: 14px; bottom: 18px; height: 22px; border: 2px solid var(--ga-cyan-500); border-radius: 5px; }
+        .ph-step { display: flex; align-items: center; gap: 6px; color: var(--ga-neutral-0); font-size: 10px; font-weight: 500; }
+        .ph-num { width: 18px; height: 18px; border-radius: 50%; border: 1.5px solid var(--ga-cyan-500); background: var(--ga-petrol-900); display: flex; align-items: center; justify-content: center; font-size: 9px; font-weight: 700; flex-shrink: 0; }
+        .ph-check { color: var(--ga-cyan-500); font-size: 30px; text-align: center; margin-top: auto; }
+        .ph-benefit { font-family: var(--ga-font-slab); font-weight: 700; color: var(--ga-neutral-0); font-size: 14px; text-align: center; margin: 8px 0 auto; line-height: 1.25; }
+        .ph-sign { margin: auto 0; display: flex; flex-direction: column; align-items: center; gap: 2px; }
+        .ph-sign p { margin: 0; color: var(--ga-neutral-0); font-size: 13px; line-height: 1.3; }
+        .ph-sign b { color: var(--ga-cyan-500); font-weight: 700; }
+        .ph-sign img { width: 40px; margin-top: 10px; }
+        .ph-sign .ph-lockup { color: var(--ga-neutral-0); font-size: 11px; font-weight: 500; margin-top: 4px; }
+
+        /* Flujo de producción */
+        .flow { display: grid; grid-template-columns: repeat(7, 1fr); gap: 10px; }
+        .flow-step {
+            background: var(--color-bg-light);
+            border-radius: var(--radius-sm);
+            border-top: 3px solid var(--ga-petrol-700);
+            padding: 14px 12px;
+            text-align: center;
+        }
+        .flow-step i { font-size: 20px; color: var(--ga-petrol-700); }
+        .flow-step h3 { font-size: 15px; font-weight: 700; color: var(--color-text-dark); margin: 8px 0 4px; }
+        .flow-step p { font-size: 13px; margin: 0; line-height: 1.35; }
+        .flow-time { font-family: var(--ga-font-mono); font-size: 12px; color: var(--ga-petrol-700); margin-top: 6px !important; }
+        .roles { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 26px; }
+        .roles .highlight-box { padding: 14px 16px; border-left-color: var(--ga-cyan-600); }
+        .roles .highlight-box p { font-size: 14px; margin: 0; line-height: 1.4; }
+        .roles .highlight-box strong { display: block; color: var(--color-text-dark); font-size: 15px; margin-bottom: 4px; }
+
+        /* Hoja de ruta */
+        .roadmap { display: grid; grid-template-columns: 1fr 2fr 2fr 1.4fr; gap: 0; }
+        .phase-band {
+            padding: 18px 18px 20px;
+            border-top: 6px solid var(--ga-petrol-300);
+            background: var(--color-bg-light);
+            border-right: 2px solid var(--color-white);
+        }
+        .phase-band--active { border-top-color: var(--ga-cyan-600); background: var(--ga-cyan-50); }
+        .phase-band .kicker { margin-bottom: 4px; }
+        .phase-band h3 { font-size: 18px; font-weight: 700; color: var(--color-text-dark); margin: 0 0 8px; }
+        .phase-band ul { margin: 0; padding-left: 18px; }
+        .phase-band li { font-size: 14px; line-height: 1.4; margin-bottom: 4px; }
+        .phase-gate { font-size: 13px; margin: 10px 0 0; color: var(--ga-petrol-700); font-weight: 500; }
+
+        .two-column--top { align-items: start; }
+        .compact-list li { font-size: 16px; margin-bottom: 10px; }
+        .compact-list li i { color: var(--ga-petrol-700); }
+    </style>
+</head>
+<body data-brand="gestiona-avanza">
+<main role="presentation">
+
+    <!-- 1. PORTADA -->
+    <section class="slide-container" aria-label="Portada">
+        <div class="title-layout">
+            <div class="brand-header">
+                <img src="../assets/img/gestiona-avanza-logotipo.png" alt="Gestiona Avanza" class="brand-header-logo">
+                <span class="brand-header-service">Bytes</span>
+            </div>
+            <p class="subtitle">Plan de comunicación, contenido y marca del canal de microformación</p>
+        </div>
+    </section>
+
+    <!-- 2. RESUMEN -->
+    <section class="slide-container" aria-label="Resumen del plan">
+        <h2 class="slide-title">Una idea de Gestiona en menos de 30 segundos</h2>
+        <div class="content-area">
+            <p class="lead"><strong>Gestiona Avanza Bytes</strong> es el canal de microformación audiovisual de Gestiona Avanza: vídeos verticales que enseñan <strong>una funcionalidad concreta</strong> de Gestiona cada vez, producidos por los especialistas de gestión del conocimiento de esPublico.</p>
+            <div class="facts">
+                <div class="fact phase" data-phase="1"><div class="fact-value">15–30 s</div><p>Vídeo vertical 9:16, una sola idea por Byte</p></div>
+                <div class="fact phase" data-phase="1"><div class="fact-value">4 tipologías</div><p>Una misma estructura: Aprende · Aplica · Avanza</p></div>
+                <div class="fact phase" data-phase="1"><div class="fact-value">5 redes</div><p>Cuentas propias en LinkedIn, YouTube, Instagram, X y TikTok</p></div>
+                <div class="fact phase" data-phase="1"><div class="fact-value">2 / semana</div><p>Piloto de 8 semanas: 16 Bytes</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. ECOSISTEMA -->
+    <section class="slide-container" aria-label="Encaje en el ecosistema Gestiona Avanza">
+        <h2 class="slide-title">Bytes es la puerta de entrada al ecosistema</h2>
+        <div class="content-area">
+            <div class="tiled-content tile-triple">
+                <article class="tile">
+                    <div class="icon" aria-hidden="true"><i class="fa-solid fa-graduation-cap"></i></div>
+                    <h3>Academy</h3>
+                    <p class="text-sm">Formación estructurada: cursos, itinerarios y sesiones con mayor profundidad.</p>
+                    <p class="text-sm"><strong>Forma.</strong></p>
+                </article>
+                <article class="tile">
+                    <div class="icon" aria-hidden="true"><i class="fa-solid fa-people-group"></i></div>
+                    <h3>Community</h3>
+                    <p class="text-sm">Espacio de relación, participación e intercambio de experiencias.</p>
+                    <p class="text-sm"><strong>Conecta.</strong></p>
+                </article>
+                <article class="tile">
+                    <div class="icon" aria-hidden="true"><i class="fa-solid fa-bolt"></i></div>
+                    <h3>Bytes</h3>
+                    <p class="text-sm">Microaprendizaje: descubre funcionalidades, resuelve tareas y conoce las novedades.</p>
+                    <p class="text-sm"><strong>Acompaña en el día a día.</strong></p>
+                </article>
+            </div>
+            <div class="loop phase" data-phase="1">
+                <span>Redes sociales</span><i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                <strong>Byte</strong><i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                <span>Academy · Community</span><i class="fa-solid fa-rotate-left" aria-hidden="true"></i>
+                <span>Las dudas del canal generan nuevos Bytes y mejoran cursos y documentación</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. OBJETIVOS -->
+    <section class="slide-container" aria-label="Objetivos y KPIs">
+        <h2 class="slide-title">Cuatro objetivos, de la difusión al impacto</h2>
+        <div class="content-area">
+            <div class="table-layout table-layout--compact">
+                <table>
+                    <thead><tr><th>Objetivo</th><th>KPI principal</th><th>KPI secundario</th></tr></thead>
+                    <tbody>
+                        <tr><td>Llegar</td><td>Alcance único mensual por red</td><td>Seguidores nuevos al mes</td></tr>
+                        <tr><td>Enseñar</td><td>Retención media (% del vídeo visto)</td><td>Reproducciones completas</td></tr>
+                        <tr><td>Ser útil</td><td>Guardados + compartidos por Byte</td><td>Comentarios con dudas</td></tr>
+                        <tr><td>Transferir</td><td>Clics con UTM a Academy y Community</td><td>Menos consultas al soporte sobre temas cubiertos</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="highlight-box mt-lg phase" data-phase="1">
+                <p class="text-sm" style="margin:0"><strong>Criterios del piloto:</strong> retención media &gt; 60 % · al menos una tipología destacada en guardados · 10 dudas convertidas en nuevos Bytes. Las metas numéricas se fijan con la línea base del piloto.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. AUDIENCIAS -->
+    <section class="slide-container" aria-label="Audiencias">
+        <h2 class="slide-title">Para todo empleado público, escrito para un perfil</h2>
+        <div class="content-area">
+            <div class="table-layout table-layout--compact">
+                <table>
+                    <thead><tr><th>Perfil</th><th>Qué busca en Bytes</th><th>Promesa</th></tr></thead>
+                    <tbody>
+                        <tr><td>Tramitación</td><td>Agilidad, trucos, errores frecuentes</td><td>"Ahorra clics y tiempo en lo de cada día"</td></tr>
+                        <tr><td>Habilitados nacionales</td><td>Firma, libros oficiales, control</td><td>"Haz con seguridad lo que la norma te pide"</td></tr>
+                        <tr><td>Responsables políticos</td><td>Firmar y consultar rápido, también en el móvil</td><td>"Firma y consulta desde donde estés"</td></tr>
+                        <tr><td>Atención ciudadana</td><td>Registro, sede, notificaciones</td><td>"Atiende y registra mejor, a la primera"</td></tr>
+                        <tr><td>TIC y administración</td><td>Configuración, permisos, novedades</td><td>"Configura bien y conoce cada novedad"</td></tr>
+                        <tr><td>Nuevas incorporaciones</td><td>Fundamentos y vocabulario</td><td>"Trabaja con Gestiona desde el primer día"</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="text-sm mt-sm" style="margin-bottom:0">Cada Byte indica su nivel: Básico · Intermedio · Avanzado.</p>
+        </div>
+    </section>
+
+    <!-- 6. TONO -->
+    <section class="slide-container" aria-label="Posicionamiento y tono">
+        <h2 class="slide-title">Hablamos de tú, enseñamos haciendo</h2>
+        <div class="content-area">
+            <div class="two-column two-column--top">
+                <div>
+                    <p class="kicker">Mensajes paraguas</p>
+                    <ul class="bullet-list compact-list">
+                        <li><i class="fa-solid fa-check" aria-hidden="true"></i> Aprender Gestiona no requiere horas: requiere la idea adecuada en el momento adecuado.</li>
+                        <li><i class="fa-solid fa-check" aria-hidden="true"></i> Lo explican quienes mejor conocen la plataforma: el equipo de gestión del conocimiento.</li>
+                        <li><i class="fa-solid fa-check" aria-hidden="true"></i> Cada Byte es una puerta a Academy y Community.</li>
+                    </ul>
+                </div>
+                <div class="table-layout table-layout--compact">
+                    <table>
+                        <thead><tr><th>Somos</th><th>No somos</th></tr></thead>
+                        <tbody>
+                            <tr><td>Cercanos, de tú</td><td>Coloquiales en exceso</td></tr>
+                            <tr><td>Precisos con el vocabulario</td><td>Jerga sin explicar</td></tr>
+                            <tr><td>Prácticos: resultado primero</td><td>Teóricos</td></tr>
+                            <tr><td>Positivos con el error</td><td>Culpabilizadores</td></tr>
+                            <tr><td>Fiables</td><td>Comerciales</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. SEPARADOR: CONTENIDO -->
+    <section class="slide-container" aria-label="Separador: contenido">
+        <div class="section-title-layout">
+            <h2>Contenido</h2>
+            <hr aria-hidden="true">
+            <p class="subtitle">Una idea. Un Byte. Una oportunidad para avanzar.</p>
+        </div>
+    </section>
+
+    <!-- 8. TIPOLOGÍAS -->
+    <section class="slide-container" aria-label="Las cuatro tipologías">
+        <h2 class="slide-title">Cuatro tipologías, una misma estructura</h2>
+        <div class="content-area">
+            <div class="tiled-content">
+                <article class="tile type-tile" style="--type-color: var(--type-sq)">
+                    <div class="icon" aria-hidden="true"><i class="fa-solid fa-lightbulb"></i></div>
+                    <h3>¿Sabías que…? <span class="type-share">30 %</span></h3>
+                    <p>Funcionalidades útiles y poco conocidas.</p>
+                    <p class="formula-quote">"¿Sabías que puedes…?" → "No sabía que existía"</p>
+                </article>
+                <article class="tile type-tile" style="--type-color: var(--type-qt)">
+                    <div class="icon" aria-hidden="true"><i class="fa-solid fa-bolt"></i></div>
+                    <h3>Quick Tip <span class="type-share">25 %</span></h3>
+                    <p>Trabajar de forma más ágil y eficiente.</p>
+                    <p class="formula-quote">"¿Has probado a…?" → "Voy a probarlo así"</p>
+                </article>
+                <article class="tile type-tile" style="--type-color: var(--type-ht)">
+                    <div class="icon" aria-hidden="true"><i class="fa-solid fa-list-check"></i></div>
+                    <h3>How To <span class="type-share">30 %</span></h3>
+                    <p>Un procedimiento concreto, paso a paso.</p>
+                    <p class="formula-quote">"¿Sabes cómo…?" → "Ahora sé hacerlo"</p>
+                </article>
+                <article class="tile type-tile" style="--type-color: var(--type-wn)">
+                    <div class="icon" aria-hidden="true"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+                    <h3>What's New <span class="type-share">15 %</span></h3>
+                    <p>Novedades y evolución de Gestiona.</p>
+                    <p class="formula-quote">"¿Has visto que ahora puedes…?" → "Quiero usarla"</p>
+                </article>
+            </div>
+            <p class="text-xs mt-sm" style="margin-bottom:0">Porcentaje = peso en el calendario editorial. Temas desde soporte, especialistas, notas de versión, comentarios y Academy.</p>
+        </div>
+    </section>
+
+    <!-- 9. ESTRUCTURA -->
+    <section class="slide-container" aria-label="Estructura de un Byte">
+        <div class="section-title-layout">
+            <h2>Estructura de un Byte</h2>
+            <hr aria-hidden="true">
+            <div class="step-cards mt-lg" style="max-width: 1060px;">
+                <div class="step-card phase" data-phase="1"><div class="step-number">01</div><p><strong>Aprende</strong><br>0–4 s · la pregunta de la tipología</p></div>
+                <div class="step-card phase" data-phase="2"><div class="step-number">02</div><p><strong>Aplica</strong><br>4–18 s · la interfaz es protagonista, 3 pasos como máximo</p></div>
+                <div class="step-card phase" data-phase="3"><div class="step-number">03</div><p><strong>Avanza</strong><br>2–4 s · resultado y beneficio</p></div>
+                <div class="step-card phase" data-phase="4"><div class="step-number">04</div><p><strong>Firma</strong><br>1–2 s · la "A" y el isotipo</p></div>
+            </div>
+            <p class="subtitle mt-lg">Grabado en el entorno de pruebas de Gestiona · subtítulos siempre · hasta ~40 s si hace falta</p>
+        </div>
+    </section>
+
+    <!-- 10. CANALES -->
+    <section class="slide-container" aria-label="Estrategia de canales">
+        <h2 class="slide-title">Un vídeo maestro, cinco redes, cinco papeles</h2>
+        <div class="content-area">
+            <div class="table-layout table-layout--compact">
+                <table>
+                    <thead><tr><th>Red</th><th>Papel</th><th>Formato</th><th>Llamada a la acción</th></tr></thead>
+                    <tbody>
+                        <tr><td><i class="fa-brands fa-youtube" aria-hidden="true"></i> YouTube</td><td>Biblioteca permanente y buscador</td><td>Shorts + listas por área y tipología</td><td>Lista relacionada · Academy</td></tr>
+                        <tr><td><i class="fa-brands fa-linkedin" aria-hidden="true"></i> LinkedIn</td><td>Comunidad profesional: habilitados, TIC, decisores</td><td>Vídeo nativo + carrusel mensual</td><td>Comentar · Community</td></tr>
+                        <tr><td><i class="fa-brands fa-instagram" aria-hidden="true"></i> Instagram</td><td>Hábito de tramitadores</td><td>Reels + destacados por tipología</td><td>"Guárdalo para cuando lo necesites"</td></tr>
+                        <tr><td><i class="fa-brands fa-tiktok" aria-hidden="true"></i> TikTok</td><td>Descubrimiento; nuevas incorporaciones</td><td>Vídeo + respuestas en vídeo</td><td>Seguir · comentar</td></tr>
+                        <tr><td><i class="fa-brands fa-x-twitter" aria-hidden="true"></i> X</td><td>Novedades y difusión rápida</td><td>Vídeo + texto breve</td><td>YouTube · Academy</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="text-sm mt-md" style="margin-bottom:0"><strong>Cuentas propias</strong> «Gestiona Avanza Bytes» (usuario propuesto <span class="font-mono">@gestionaavanzabytes</span>) · martes y jueves · un único destino por pieza, con UTM.</p>
+        </div>
+    </section>
+
+    <!-- 11. SEPARADOR: MARCA -->
+    <section class="slide-container" aria-label="Separador: marca">
+        <div class="section-title-layout">
+            <h2>Marca</h2>
+            <hr aria-hidden="true">
+            <p class="subtitle">Bytes no crea una marca nueva: aplica la identidad de Gestiona Avanza al vídeo vertical</p>
+        </div>
+    </section>
+
+    <!-- 12. IDENTIDAD -->
+    <section class="slide-container" aria-label="Identidad visual">
+        <h2 class="slide-title">El petróleo sostiene, el cian señala</h2>
+        <div class="content-area">
+            <div class="two-column two-column--top">
+                <div>
+                    <p class="kicker">Color</p>
+                    <div class="swatches">
+                        <div class="swatch swatch--petrol950"><span>Fondo del vídeo</span><code>#032029</code></div>
+                        <div class="swatch swatch--petrol700"><span>Petróleo · estructura</span><code>#006d87</code></div>
+                        <div class="swatch swatch--cyan500"><span>Cian · foco</span><code>#00b4d3</code></div>
+                    </div>
+                    <div class="type-chips">
+                        <span class="type-chip" style="--type-color: var(--type-sq)"><i class="fa-solid fa-lightbulb" aria-hidden="true"></i>¿Sabías que…?</span>
+                        <span class="type-chip" style="--type-color: var(--type-qt)"><i class="fa-solid fa-bolt" aria-hidden="true"></i>Quick Tip</span>
+                        <span class="type-chip" style="--type-color: var(--type-ht)"><i class="fa-solid fa-list-check" aria-hidden="true"></i>How To</span>
+                        <span class="type-chip" style="--type-color: var(--type-wn)"><i class="fa-solid fa-wand-magic-sparkles" aria-hidden="true"></i>What's New</span>
+                    </div>
+                    <p class="text-xs mt-sm" style="margin-bottom:0">El cian no lleva texto sobre claro (2,48:1). Sobre petróleo 950 llega a 6,82:1. El color de tipología solo marca filo e icono.</p>
+                </div>
+                <div>
+                    <p class="kicker">Tipografía · pesos 400 / 500 / 700</p>
+                    <p class="font-sample"><b>Roboto Slab 700</b><span class="font-slab">¿Sabías que puedes…?</span></p>
+                    <p class="font-sample"><b>Roboto 500</b><span class="text-dark">Pasos, rótulos y subtítulos</span></p>
+                    <p class="font-sample"><b>Roboto Mono</b><span class="font-mono">GAB-SQ-007</span></p>
+                    <p class="kicker mt-md">Forma</p>
+                    <ul class="bullet-list compact-list" style="margin:0">
+                        <li><i class="fa-solid fa-grip-lines-vertical" aria-hidden="true"></i> Filo cian como marca de foco</li>
+                        <li><i class="fa-solid fa-slash" aria-hidden="true"></i> Diagonal de 20° como única transición</li>
+                        <li><i class="fa-regular fa-square" aria-hidden="true"></i> Radio de 8 px, sin sombras</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 13. PLANTILLA DE VÍDEO -->
+    <section class="slide-container" aria-label="Plantilla de vídeo y firma">
+        <h2 class="slide-title">Un Byte en cuatro pantallas</h2>
+        <div class="content-area">
+            <div class="phone-row">
+                <div>
+                    <div class="phone" aria-hidden="true">
+                        <span class="ph-tag">¿Sabías que…?</span>
+                        <p class="ph-hook">¿Sabías que puedes <em>firmar en bloque</em>?</p>
+                    </div>
+                    <p class="phone-label">01 Aprende<span>0–4 s</span></p>
+                </div>
+                <div>
+                    <div class="phone" aria-hidden="true">
+                        <span class="ph-tag">¿Sabías que…?</span>
+                        <div class="ph-screen"><div class="ph-focus"></div></div>
+                        <div class="ph-step"><span class="ph-num">2</span>Marca los documentos</div>
+                    </div>
+                    <p class="phone-label">02 Aplica<span>4–18 s</span></p>
+                </div>
+                <div>
+                    <div class="phone" aria-hidden="true">
+                        <span class="ph-tag">¿Sabías que…?</span>
+                        <div class="ph-check"><i class="fa-solid fa-circle-check"></i></div>
+                        <p class="ph-benefit">20 firmas en un solo paso</p>
+                    </div>
+                    <p class="phone-label">03 Avanza<span>2–4 s</span></p>
+                </div>
+                <div>
+                    <div class="phone" aria-hidden="true">
+                        <div class="ph-sign">
+                            <p><b>A</b>prende</p>
+                            <p><b>A</b>plica</p>
+                            <p><b>A</b>vanza</p>
+                            <img src="../assets/img/gestiona-avanza-isotipo.png" alt="">
+                            <span class="ph-lockup">Gestiona Avanza Bytes</span>
+                        </div>
+                    </div>
+                    <p class="phone-label">04 Firma<span>1–2 s</span></p>
+                </div>
+            </div>
+            <p class="text-xs text-center mt-sm" style="margin-bottom:0">Maqueta ilustrativa. Lienzo 1080 × 1920, fondo petróleo 950, zonas seguras arriba (~220 px) y abajo (~350 px). El ejemplo de "firmar en bloque" es orientativo.</p>
+        </div>
+    </section>
+
+    <!-- 14. PRODUCCIÓN -->
+    <section class="slide-container" aria-label="Flujo de producción">
+        <h2 class="slide-title">Lo producen los especialistas, en unas 2 horas</h2>
+        <div class="content-area">
+            <div class="flow">
+                <div class="flow-step"><i class="fa-solid fa-inbox" aria-hidden="true"></i><h3>Elegir</h3><p>Tema del backlog</p><p class="flow-time">5 min</p></div>
+                <div class="flow-step"><i class="fa-solid fa-pen" aria-hidden="true"></i><h3>Guionizar</h3><p>Plantilla de guion</p><p class="flow-time">20 min</p></div>
+                <div class="flow-step"><i class="fa-solid fa-display" aria-hidden="true"></i><h3>Grabar</h3><p>Entorno de pruebas</p><p class="flow-time">20–30 min</p></div>
+                <div class="flow-step"><i class="fa-solid fa-film" aria-hidden="true"></i><h3>Montar</h3><p>Plantilla de vídeo y subtítulos</p><p class="flow-time">45–60 min</p></div>
+                <div class="flow-step"><i class="fa-solid fa-user-check" aria-hidden="true"></i><h3>Revisar</h3><p>Otro especialista</p><p class="flow-time">15 min</p></div>
+                <div class="flow-step"><i class="fa-solid fa-calendar-check" aria-hidden="true"></i><h3>Programar</h3><p>Las 5 redes</p><p class="flow-time">15 min</p></div>
+                <div class="flow-step"><i class="fa-solid fa-table-list" aria-hidden="true"></i><h3>Registrar</h3><p>Catálogo y métricas</p><p class="flow-time">5 min</p></div>
+            </div>
+            <div class="roles">
+                <div class="highlight-box phase" data-phase="1"><p><strong>Coordinación</strong>Backlog, calendario, catálogo e informe mensual</p></div>
+                <div class="highlight-box phase" data-phase="1"><p><strong>Autor</strong>Del guion a la programación</p></div>
+                <div class="highlight-box phase" data-phase="1"><p><strong>Revisión cruzada</strong>Exactitud técnica, checklist y marca</p></div>
+                <div class="highlight-box phase" data-phase="1"><p><strong>Guardia de comentarios</strong>Rotatoria semanal; respuesta en 24 h</p></div>
+            </div>
+            <p class="text-xs mt-md" style="margin-bottom:0">Reserva de seguridad: 4 Bytes terminados por delante. Docentes: los Bytes sirven como material previo o de repaso en Academy.</p>
+        </div>
+    </section>
+
+    <!-- 15. HOJA DE RUTA -->
+    <section class="slide-container" aria-label="Hoja de ruta">
+        <h2 class="slide-title">Del piloto a la biblioteca de Bytes</h2>
+        <div class="content-area">
+            <div class="roadmap">
+                <div class="phase-band">
+                    <p class="kicker">4 semanas</p>
+                    <h3>0 · Preparación</h3>
+                    <ul><li>Plantillas y perfiles</li><li>Reservar usuarios</li><li>Taller con especialistas</li><li>Backlog de 30 temas</li></ul>
+                    <p class="phase-gate">◆ 6 Bytes listos</p>
+                </div>
+                <div class="phase-band phase-band--active">
+                    <p class="kicker">8 semanas</p>
+                    <h3>1 · Piloto</h3>
+                    <ul><li>16 Bytes, 4 tipologías, 5 redes</li><li>Martes y jueves</li><li>Línea base de KPIs</li><li>Lanzamiento con las cuentas de esPublico, Gestiona y Gestiona Avanza</li></ul>
+                    <p class="phase-gate">◆ Criterios del piloto cumplidos</p>
+                </div>
+                <div class="phase-band">
+                    <p class="kicker">Meses 3–6</p>
+                    <h3>2 · Consolidación</h3>
+                    <ul><li>Listas completas por área</li><li>Bytes integrados en cursos de Academy</li><li>"Pregunta de la comunidad" con Community</li></ul>
+                    <p class="phase-gate">◆ Metas trimestrales fijadas</p>
+                </div>
+                <div class="phase-band">
+                    <p class="kicker">Mes 7 en adelante</p>
+                    <h3>3 · Escala</h3>
+                    <ul><li>Más autores</li><li>Posible tercer Byte semanal</li><li>Bytes por perfil</li></ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 16. PRÓXIMOS PASOS -->
+    <section class="slide-container" aria-label="Riesgos y decisiones pendientes">
+        <h2 class="slide-title">Qué necesitamos para arrancar</h2>
+        <div class="content-area">
+            <div class="two-column two-column--top">
+                <div>
+                    <p class="kicker">Riesgos y mitigación</p>
+                    <ul class="bullet-list compact-list">
+                        <li><i class="fa-solid fa-clock" aria-hidden="true"></i> <strong>Carga de los especialistas:</strong> Bytes cortos, plantilla cerrada, reserva de 4 Bytes.</li>
+                        <li><i class="fa-solid fa-layer-group" aria-hidden="true"></i> <strong>Calidad desigual:</strong> plantilla, checklist y revisión cruzada.</li>
+                        <li><i class="fa-solid fa-code-branch" aria-hidden="true"></i> <strong>Contenido obsoleto:</strong> versión de Gestiona en cada Byte.</li>
+                        <li><i class="fa-solid fa-user-shield" aria-hidden="true"></i> <strong>Datos personales:</strong> solo entorno de pruebas.</li>
+                    </ul>
+                </div>
+                <div>
+                    <p class="kicker">Decisiones pendientes</p>
+                    <ul class="bullet-list compact-list">
+                        <li><i class="fa-regular fa-square" aria-hidden="true"></i> Validación del manual de marca por Comunicación</li>
+                        <li><i class="fa-regular fa-square" aria-hidden="true"></i> Logotipo vectorial (SVG) para animar la firma</li>
+                        <li><i class="fa-regular fa-square" aria-hidden="true"></i> Usuario disponible en las 5 redes</li>
+                        <li><i class="fa-regular fa-square" aria-hidden="true"></i> Especialistas participantes y dedicación</li>
+                        <li><i class="fa-regular fa-square" aria-hidden="true"></i> Herramientas aprobadas de grabación, edición y programación</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 17. CIERRE -->
+    <section class="slide-container" aria-label="Cierre">
+        <div class="title-layout">
+            <p class="lead" style="font-size:40px"><strong>Aprende · Aplica · Avanza</strong></p>
+            <div class="brand-header brand-header--sm">
+                <img src="../assets/img/gestiona-avanza-logotipo.png" alt="Gestiona Avanza" class="brand-header-logo">
+                <span class="brand-header-service">Bytes</span>
+            </div>
+        </div>
+    </section>
+
+</main>
+<script src="../assets/js/navigation.js"></script>
+</body>
+</html>
