@@ -1,0 +1,851 @@
+/* ==========================================================================
+   IV Congreso Gestiona Avanza — capa de estilo para presentaciones de ponentes
+   Se usa encima de corporate.css con <body data-brand="gestiona-avanza">.
+   Cada diapositiva: <section class="slide-container ivc ivc-<layout>">.
+   Geometría y tamaños calcados de la plantilla PPTX (html-congreso):
+   1 in = 96 px, 1 pt = 1.333 px sobre el lienzo de 1280 × 720.
+   Generado y mantenido desde el repo html-congreso; no editar a mano los
+   valores de --ivc-* sin regenerar la plantilla PPTX.
+   ========================================================================== */
+
+.ivc {
+    --ivc-petrol: #006d87;
+    --ivc-petrol-deep: #013947;
+    --ivc-cyan: #00b4d3;
+    --ivc-cyan-light: #92c7db;
+    --ivc-ink: #112127;
+    --ivc-muted: #58686e;
+    --ivc-row-alt: #d6f5fd;
+    --ivc-rule: #d1d8db;
+    --ivc-white: #ffffff;
+    --ivc-surface: #f1f5f7;
+
+    --ivc-margin: 58px;       /* 0.6 in */
+    --ivc-text-x: 101px;      /* 1.05 in: título y cuerpo tras el chevron */
+    --ivc-title-y: 53px;      /* 0.55 in */
+    --ivc-body-y: 168px;      /* 1.75 in */
+    --ivc-body-h: 370px;      /* 3.85 in */
+    --ivc-head: 'Roboto Slab', 'Roboto', serif;
+    --ivc-body: 'Roboto', sans-serif;
+
+    padding: 0;
+    background: var(--ivc-white);
+    font-family: var(--ivc-body);
+    color: var(--ivc-ink);
+}
+
+/* Las decoraciones genéricas del sistema no aplican al congreso. */
+.ivc::before,
+.ivc::after {
+    display: none;
+}
+
+.ivc > * {
+    position: absolute;
+    margin: 0;
+}
+
+/* corporate.css fija tamaño y color de p/li; dentro del congreso mandan los bloques. */
+:is(.ivc-body, .ivc-col, .ivc-free) :is(p, li) {
+    font-size: inherit;
+    color: inherit;
+    line-height: inherit;
+}
+
+/* --- Fondos ------------------------------------------------------------ */
+.ivc-bg {
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+}
+
+.ivc-content,
+.ivc-two-col,
+.ivc-image-text,
+.ivc-title-only,
+.ivc-speaker-slide,
+.ivc-index,
+.ivc-blocks,
+.ivc-process,
+.ivc-timeline,
+.ivc-stats {
+    background: var(--ivc-white) url("../img/iv-congreso/ondas-light.svg") center / 100% 100% no-repeat;
+}
+
+.ivc-statement {
+    background: var(--ivc-petrol) url("../img/iv-congreso/ondas-dark.svg") center / 100% 100% no-repeat;
+}
+
+.ivc-cover,
+.ivc-section,
+.ivc-closing {
+    background: var(--ivc-petrol);
+}
+
+/* --- Logos y numeración ------------------------------------------------ */
+.ivc-lockup {
+    top: 38px;
+    right: var(--ivc-margin);
+    width: 154px;             /* 1.6 in */
+}
+
+.ivc-cover .ivc-lockup,
+.ivc-closing .ivc-lockup {
+    width: 250px;             /* 2.6 in */
+}
+
+.ivc-section .ivc-lockup {
+    width: 211px;             /* 2.2 in */
+}
+
+.ivc-endorse {
+    right: var(--ivc-margin);
+    bottom: 29px;
+    width: 125px;             /* 1.3 in */
+}
+
+.ivc-num {
+    right: calc(var(--ivc-margin) + 144px);
+    bottom: 30px;
+    width: 40px;
+    font-size: 15px;
+    text-align: right;
+    color: var(--ivc-petrol);
+}
+
+/* --- Títulos ------------------------------------------------------------- */
+.ivc-title {
+    left: var(--ivc-text-x);
+    top: var(--ivc-title-y);
+    width: 900px;
+    font-family: var(--ivc-head);
+    font-weight: 700;
+    font-size: 40px;          /* 30 pt */
+    line-height: 1.15;
+    color: var(--ivc-petrol);
+}
+
+.ivc-title::before {
+    content: "›";
+    position: absolute;
+    left: -43px;
+    top: -6px;
+    font-size: 53px;          /* 40 pt */
+    color: var(--ivc-cyan);
+}
+
+.ivc-cover .ivc-title,
+.ivc-section .ivc-title,
+.ivc-closing .ivc-title {
+    left: var(--ivc-margin);
+    width: 826px;             /* 8.6 in */
+    color: var(--ivc-white);
+}
+
+.ivc-cover .ivc-title::before,
+.ivc-section .ivc-title::before,
+.ivc-closing .ivc-title::before {
+    content: none;
+}
+
+.ivc-cover .ivc-title {
+    top: 154px;
+    height: 192px;
+    display: flex;
+    align-items: flex-end;
+    font-size: 53px;          /* 40 pt */
+}
+
+.ivc-section .ivc-title {
+    top: 269px;
+    font-size: 53px;
+}
+
+.ivc-closing .ivc-title {
+    top: 182px;
+    height: 163px;
+    display: flex;
+    align-items: flex-end;
+    font-size: 59px;          /* 44 pt */
+}
+
+.ivc-accent {
+    color: var(--ivc-cyan);
+}
+
+.ivc-subtitle {
+    left: var(--ivc-margin);
+    top: 360px;
+    width: 826px;
+    font-size: 27px;          /* 20 pt */
+    color: var(--ivc-cyan);
+}
+
+.ivc-speaker {
+    left: var(--ivc-margin);
+    top: 432px;
+    width: 826px;
+    font-size: 24px;          /* 18 pt */
+    font-weight: 700;
+    color: var(--ivc-white);
+}
+
+.ivc-closing .ivc-speaker {
+    top: 365px;
+    color: var(--ivc-cyan);
+}
+
+.ivc-role {
+    left: var(--ivc-margin);
+    top: 472px;
+    width: 826px;
+    font-size: 21px;          /* 16 pt */
+    color: var(--ivc-cyan-light);
+}
+
+.ivc-kicker {
+    left: var(--ivc-margin);
+    top: 221px;
+    font-size: 21px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: var(--ivc-cyan);
+}
+
+/* --- Cuerpo ---------------------------------------------------------------- */
+.ivc-body,
+.ivc-col {
+    top: var(--ivc-body-y);
+    height: var(--ivc-body-h);
+    overflow: visible;        /* el texto que no cabe se ve en QA, nunca se recorta en silencio */
+    font-size: 27px;          /* 20 pt */
+    line-height: 1.35;
+}
+
+.ivc-body {
+    left: var(--ivc-text-x);
+    width: 1122px;
+}
+
+.ivc-col {
+    width: 537px;
+    font-size: 24px;          /* 18 pt */
+}
+
+.ivc-col--left {
+    left: var(--ivc-text-x);
+}
+
+.ivc-col--right {
+    left: calc(var(--ivc-text-x) + 537px + 48px);
+}
+
+.ivc-image-text .ivc-body {
+    width: 509px;             /* 5.3 in */
+    font-size: 24px;
+}
+
+.ivc-body p,
+.ivc-col p,
+.ivc-free-text p {
+    margin: 0 0 0.5em;
+}
+
+.ivc-body :is(ul, ol),
+.ivc-col :is(ul, ol),
+.ivc-free-text :is(ul, ol) {
+    margin: 0;
+    padding-left: 1.1em;
+}
+
+.ivc-body ul ul,
+.ivc-col ul ul,
+.ivc-free-text ul ul {
+    margin-top: 0.2em;
+    font-size: 0.88em;
+}
+
+.ivc-body li,
+.ivc-col li,
+.ivc-free-text li {
+    margin-bottom: 0.3em;
+}
+
+.ivc-body li::marker,
+.ivc-col li::marker,
+.ivc-free-text li::marker {
+    color: var(--ivc-cyan);
+}
+
+/* --- Imágenes -------------------------------------------------------------- */
+.ivc-figure {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ivc-figure img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.ivc-image-text .ivc-figure {
+    left: 649px;              /* 6.75 in */
+    top: var(--ivc-body-y);
+    width: 573px;
+    height: var(--ivc-body-h);
+}
+
+.ivc-image-full .ivc-figure {
+    left: var(--ivc-margin);
+    top: 154px;
+    width: 1164px;
+    height: 466px;
+}
+
+/* --- Lienzo libre: tabla y gráfico ----------------------------------------- */
+.ivc-free {
+    left: var(--ivc-text-x);
+    top: var(--ivc-body-y);
+    width: 1122px;
+    height: var(--ivc-body-h);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    font-size: 24px;
+}
+
+.ivc-free-row {
+    display: flex;
+    gap: 38px;
+    flex: 1;
+    min-height: 0;
+}
+
+.ivc-free-row > * {
+    flex: 1;
+    min-width: 0;
+}
+
+.ivc-table {
+    align-self: flex-start;
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 19px;          /* 14 pt */
+}
+
+.ivc-table th,
+.ivc-table td {
+    padding: 8px 10px;
+    border: 1px solid var(--ivc-rule);
+    text-align: left;
+}
+
+.ivc-table th {
+    background: var(--ivc-petrol);
+    color: var(--ivc-white);
+    font-weight: 700;
+}
+
+.ivc-table tbody tr:nth-child(even) td {
+    background: var(--ivc-row-alt);
+}
+
+.ivc-chart {
+    width: 100%;
+    height: 100%;
+}
+
+.ivc-chart {
+    display: block;
+}
+
+/* Las etiquetas de sector llevan su propio fill (blanco o tinta según contraste). */
+.ivc-chart text {
+    font-family: var(--ivc-body);
+    font-size: 14px;
+}
+
+.ivc-chart text:not([fill]) {
+    fill: var(--ivc-muted);
+}
+
+/* Uno o dos gráficos en tarjetas; el circular junto a otro va estrecho (2:3). */
+.ivc-charts {
+    display: flex;
+    gap: 29px;                /* 0.3 in */
+    align-self: stretch;
+}
+
+.ivc-chart-card {
+    flex: 3 1 0;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    padding: 19px 14px 10px;  /* 0.2 in · 0.15 in · 0.1 in */
+    box-sizing: border-box;
+    border-radius: 12px;
+    background: var(--ivc-surface);
+}
+
+.ivc-chart-card--narrow {
+    flex-grow: 2;
+}
+
+.ivc-chart-title {
+    margin: 0 15px 5px;
+    font-family: var(--ivc-head);
+    font-weight: 700;
+    font-size: 21px;          /* 16 pt */
+    line-height: 1.3;
+    color: var(--ivc-petrol);
+}
+
+.ivc-chart-card .ivc-chart {
+    flex: 1;
+    min-height: 0;
+    height: auto;
+}
+
+/* --- Estilos de lista: numerada (círculo petróleo) y verificación (✔ cian) --- */
+.ivc .ivc-list {
+    padding-left: 0;
+    list-style: none;
+    counter-reset: ivc-n;
+}
+
+.ivc .ivc-list > li,
+.ivc .ivc-list--checks li {
+    position: relative;
+    padding-left: 1.6em;
+    list-style: none;
+}
+
+.ivc .ivc-list--numbered > li {
+    counter-increment: ivc-n;
+}
+
+.ivc .ivc-list--numbered > li::before {
+    content: counter(ivc-n);
+    position: absolute;
+    left: 0;
+    top: 0.16em;
+    width: 1.6em;
+    height: 1.6em;
+    border-radius: 50%;
+    background: var(--ivc-petrol);
+    font-size: 0.7em;
+    font-weight: 700;
+    line-height: 1.6em;
+    text-align: center;
+    color: var(--ivc-white);
+}
+
+.ivc .ivc-list--checks li::before {
+    content: "\2714\FE0E";
+    position: absolute;
+    left: 0;
+    font-weight: 700;
+    color: var(--ivc-cyan);
+}
+
+/* Encabezados opcionales de Dos columnas: con ellos, las listas bajan 0.6 in. */
+.ivc-col-heading {
+    top: var(--ivc-body-y);
+    width: 537px;
+    height: 48px;             /* 0.5 in, texto al pie */
+    display: flex;
+    align-items: flex-end;
+    font-family: var(--ivc-head);
+    font-weight: 700;
+    font-size: 27px;          /* 20 pt */
+    line-height: 1.2;
+    color: var(--ivc-petrol);
+}
+
+.ivc-col-heading--left {
+    left: var(--ivc-text-x);
+}
+
+.ivc-col-heading--right {
+    left: calc(var(--ivc-text-x) + 537px + 48px);
+}
+
+.ivc-col-heading ~ .ivc-col {
+    top: calc(var(--ivc-body-y) + 58px);
+    height: calc(var(--ivc-body-h) - 58px);
+}
+
+/* --- Ponente --------------------------------------------------------------- */
+.ivc-speaker-photo {
+    left: var(--ivc-margin);
+    top: 96px;                /* 1.0 in */
+    width: 346px;             /* 3.6 in */
+    height: 442px;            /* 4.6 in */
+    max-width: none;
+    object-fit: cover;
+}
+
+/* Sin foto no hay marco vacío: los datos ocupan el sitio desde el margen. */
+.ivc-speaker-info {
+    left: var(--ivc-margin);
+    top: 96px;
+    width: 826px;
+}
+
+.ivc-speaker-photo + .ivc-speaker-info {
+    left: 451px;              /* 4.7 in */
+    width: 589px;
+}
+
+.ivc-speaker-name {
+    margin: 0 0 14px;
+    font-family: var(--ivc-head);
+    font-weight: 700;
+    font-size: 43px;          /* 32 pt */
+    line-height: 1.2;
+    color: var(--ivc-petrol);
+}
+
+.ivc .ivc-speaker-role {
+    margin: 0 0 10px;
+    font-size: 27px;          /* 20 pt */
+    font-weight: 700;
+    line-height: 1.3;
+    color: var(--ivc-cyan);
+}
+
+.ivc .ivc-speaker-entity {
+    margin: 0 0 28px;
+    font-size: 24px;          /* 18 pt */
+    line-height: 1.3;
+    color: var(--ivc-muted);
+}
+
+.ivc .ivc-bio {
+    margin: 0;
+    font-size: 24px;          /* 18 pt */
+    line-height: 1.35;
+    color: var(--ivc-ink);
+}
+
+/* --- Componentes sobre "Solo título" (geometría de pptx_components.js) ---- */
+.ivc-board {
+    left: var(--ivc-text-x);
+    top: var(--ivc-body-y);
+    width: 1122px;            /* 11.68 in */
+    height: var(--ivc-body-h);
+    padding: 0;
+    list-style: none;
+}
+
+.ivc-board > li {
+    list-style: none;
+}
+
+.ivc-cards {
+    display: flex;
+    gap: 29px;                /* 0.3 in */
+}
+
+.ivc-card {
+    flex: 1 1 0;
+    min-width: 0;
+    height: 288px;            /* 3.0 in */
+    margin-top: 14px;         /* 0.15 in */
+    padding: 29px;            /* 0.3 in */
+    box-sizing: border-box;
+    border-radius: 12px;      /* 0.12 in */
+    background: var(--ivc-surface);
+}
+
+.ivc-cards--small .ivc-card {
+    padding: 19px;            /* 0.2 in con más de 4 elementos */
+}
+
+.ivc .ivc-card-title {
+    margin: 0;
+    font-family: var(--ivc-head);
+    font-weight: 700;
+    font-size: var(--ivc-fit, 24px);   /* 18 pt, menos si la palabra más larga no cabe */
+    line-height: 1.25;
+    color: var(--ivc-petrol);
+}
+
+.ivc .ivc-card-text {
+    margin: 8px 0 0;          /* 6 pt */
+    font-size: 19px;          /* 14 pt */
+    line-height: 1.35;
+    color: var(--ivc-muted);
+}
+
+.ivc .ivc-cards--small .ivc-card-text {
+    font-size: 17px;          /* 13 pt */
+}
+
+/* Índice: 01, 02… en Roboto Slab cian 36 pt. */
+.ivc-card-num {
+    display: block;
+    height: 72px;             /* 0.75 in */
+    margin-bottom: 19px;      /* título a 0.95 in */
+    font-family: var(--ivc-head);
+    font-weight: 700;
+    font-size: 48px;          /* 36 pt */
+    line-height: 1.2;
+    color: var(--ivc-cyan);
+}
+
+/* Bloques con icono: círculo cian de 0.8 in con el pictograma blanco de 0.44 in. */
+.ivc-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 77px;
+    height: 77px;
+    margin-bottom: 29px;
+    border-radius: 50%;
+    background: var(--ivc-cyan);
+}
+
+.ivc-icon svg {
+    width: 42px;
+    height: 42px;
+}
+
+/* Proceso: círculos de petróleo a cian (el color va en línea) unidos por "›". */
+.ivc-steps {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 1fr;
+}
+
+.ivc-step {
+    position: relative;
+    padding: 19px 10px 0;     /* 0.2 in arriba, 0.1 in a los lados */
+    text-align: center;
+}
+
+.ivc-step-num {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--ivc-d);
+    height: var(--ivc-d);
+    margin: 0 auto 29px;
+    border-radius: 50%;
+    font-family: var(--ivc-head);
+    font-weight: 700;
+    font-size: 43px;          /* 32 pt */
+    color: var(--ivc-white);
+}
+
+.ivc-step-connector {
+    position: absolute;
+    left: 100%;
+    top: calc(19px + var(--ivc-d) / 2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;              /* 0.42 in */
+    height: 40px;
+    border-radius: 50%;
+    background: var(--ivc-cyan);
+    transform: translate(-50%, -50%);
+    font-family: var(--ivc-head);
+    font-weight: 700;
+    font-size: 27px;          /* 20 pt */
+    line-height: 1;
+    color: var(--ivc-white);
+}
+
+/* Cronología: línea gris, hitos cian (huecos si están pendientes), etiquetas arriba y abajo. */
+.ivc-line::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    height: 3px;              /* 2 pt */
+    background: var(--ivc-rule);
+    transform: translateY(-50%);
+}
+
+.ivc-milestone {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: var(--ivc-x);
+    width: var(--ivc-w);
+}
+
+.ivc-dot {
+    position: absolute;
+    left: calc(var(--ivc-dot-x) - 15px);
+    top: calc(50% - 15px);
+    width: 31px;              /* 0.32 in */
+    height: 31px;
+    box-sizing: border-box;
+    border-radius: 50%;
+    background: var(--ivc-cyan);
+}
+
+.ivc-milestone--pending .ivc-dot {
+    border: 3px solid var(--ivc-cyan);
+    background: var(--ivc-white);
+}
+
+.ivc-milestone-label {
+    position: absolute;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    text-align: center;
+}
+
+.ivc-milestone--above .ivc-milestone-label {
+    bottom: calc(50% + 31px);
+}
+
+.ivc-milestone--below .ivc-milestone-label {
+    top: calc(50% + 31px);
+}
+
+.ivc-milestone-date {
+    font-family: var(--ivc-head);
+    font-weight: 700;
+    font-size: 24px;          /* 18 pt */
+    line-height: 1.2;
+    color: var(--ivc-cyan);
+}
+
+.ivc-milestone-title {
+    font-size: 19px;          /* 14 pt */
+    line-height: 1.3;
+    color: var(--ivc-ink);
+}
+
+/* Cifras destacadas: Roboto Slab cian 54 pt (una talla para toda la fila), fila centrada. */
+.ivc-cards--stats {
+    justify-content: center;
+}
+
+.ivc-stat {
+    flex: 0 1 403px;          /* 4.2 in como máximo */
+    height: 250px;            /* 2.6 in */
+    display: flex;
+    flex-direction: column;
+}
+
+.ivc-stat-value {
+    display: flex;
+    align-items: flex-end;
+    height: 106px;            /* 1.1 in, pegado abajo */
+    margin-top: 10px;
+    font-family: var(--ivc-head);
+    font-weight: 700;
+    font-size: var(--ivc-fit, 72px);
+    line-height: 1.1;
+    white-space: nowrap;
+    color: var(--ivc-cyan);
+}
+
+.ivc-stat-label {
+    margin-top: 14px;
+    font-size: 21px;          /* 16 pt */
+    line-height: 1.3;
+    color: var(--ivc-ink);
+}
+
+/* --- Destacado ------------------------------------------------------------- */
+.ivc-statement-text {
+    left: 115px;              /* 1.2 in */
+    top: 182px;
+    width: 1050px;
+    height: 269px;
+    display: flex;
+    align-items: center;
+    font-family: var(--ivc-head);
+    font-weight: 700;
+    font-size: 45px;          /* 34 pt */
+    line-height: 1.2;
+    color: var(--ivc-white);
+}
+
+.ivc-source {
+    left: 115px;
+    top: 466px;
+    font-size: 24px;
+    color: var(--ivc-cyan);
+}
+
+/* --- Índice de ponencias (iv-congreso/index.html) ------------------------- */
+body.ivc-index {
+    display: block;
+    width: auto;
+    height: auto;
+    min-height: 100vh;
+    overflow: auto;
+    padding: 48px 16px;
+    box-sizing: border-box;
+    background: #f1f5f7;
+    font-family: 'Roboto', sans-serif;
+    color: #112127;
+}
+
+body.ivc-index header,
+.ivc-index-list {
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+body.ivc-index header img {
+    height: 56px;
+}
+
+body.ivc-index h1 {
+    margin: 24px 0;
+    font-family: 'Roboto Slab', 'Roboto', serif;
+    font-size: 36px;
+    color: #006d87;
+}
+
+.ivc-index-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr));
+    gap: 16px;
+    padding: 0;
+    list-style: none;
+}
+
+.ivc-index-item a {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 20px 24px;
+    border-left: 4px solid #00b4d3;
+    background: #ffffff;
+    color: inherit;
+    text-decoration: none;
+}
+
+.ivc-index-item a:hover,
+.ivc-index-item a:focus-visible {
+    border-left-color: #006d87;
+}
+
+.ivc-index-item strong {
+    font-size: 20px;
+    color: #006d87;
+}
+
+.ivc-index-item span {
+    font-size: 16px;
+    color: #58686e;
+}

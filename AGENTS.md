@@ -251,6 +251,7 @@ Para presentaciones bajo marca esFirma:
 
 - `templates/slide-template.html` — punto de partida con 8 slides ejemplo cubriendo los layouts más usados.
 - `templates/showcase.html` — demo navegable con **todos** los layouts y componentes; útil como referencia visual y para que un LLM vea el HTML real de cada pieza.
+- `templates/iv-congreso.html` — plantilla del **IV Congreso Gestiona Avanza**: una diapositiva de ejemplo por tipo (portada, ponente, separador, contenido, dos columnas, imagen y texto, imagen completa, destacado, cierre) y por componente (índice, bloques con icono, proceso, cronología, cifras destacadas, gráficos, listas numerada y de verificación). Usa la capa `assets/css/iv-congreso.css` (clases `.ivc-*`) encima de `corporate.css` con `data-brand="gestiona-avanza"`, y los assets de `assets/img/iv-congreso/`. Las ponencias del congreso viven en `iv-congreso/<slug>/` (con su índice en `iv-congreso/index.html`) y se **generan** desde el repo `html-congreso` (`npm run render <slug>`); no se editan a mano.
 
 ---
 
