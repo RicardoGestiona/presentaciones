@@ -1,0 +1,729 @@
+/* ==========================================================================
+   #ecityDay (inauguració noves oficines ecityclic) — capa de estilo
+   Se usa encima de corporate.css con <body data-brand="ecityclic">.
+   Cada diapositiva: <section class="slide-container ecd ecd-<layout>">.
+   Geometría y tamaños calcados de la plantilla PPTX (repo ppt-ecityday,
+   tools/build_template.js): 1 in = 96 px, 1 pt = 1.333 px sobre 1280 × 720.
+   Fuente de la línea visual: manual gráfico del evento (all-gadgets_noves-oficines.pdf).
+   ========================================================================== */
+
+.ecd {
+    --ecd-green: #81bc00;      /* verde ecityclic del manual del evento */
+    --ecd-green-dark: #5a8a17;
+    --ecd-dark: #2f3031;
+    --ecd-grey: #6a686f;
+    --ecd-grey-light: #c9c7cc;
+    --ecd-offwhite: #f4f3f1;
+    --ecd-photo-bg: #e6e4e0;
+    --ecd-white: #ffffff;
+    --ecd-petrol: #2a6478;     /* degradado del patrón: naranja → petróleo → oliva */
+    --ecd-orange: #d6862b;
+    --ecd-olive: #9db15a;
+
+    --ecd-margin: 58px;        /* 0.6 in */
+    --ecd-content-w: 1165px;   /* 12.13 in */
+    --ecd-kicker-y: 40px;      /* 0.42 in */
+    --ecd-title-y: 73px;       /* 0.76 in */
+    --ecd-body-y: 178px;       /* 1.85 in */
+    --ecd-font: 'Inter', 'Roboto', sans-serif;
+
+    padding: 0;
+    background: var(--ecd-white);
+    font-family: var(--ecd-font);
+    color: var(--ecd-dark);
+}
+
+/* Las decoraciones genéricas del sistema no aplican al evento. */
+.ecd::before,
+.ecd::after {
+    display: none;
+}
+
+.ecd > * {
+    position: absolute;
+    margin: 0;
+}
+
+/* corporate.css fija tamaño y color de p/li/h*; dentro del evento mandan los bloques.
+   :where() deja la especificidad en una clase para que cualquier .ecd-* posterior gane. */
+.ecd :where(p, li, h1, h2, h3) {
+    font-family: var(--ecd-font);
+    font-size: inherit;
+    line-height: inherit;
+    color: inherit;
+    letter-spacing: normal;
+    margin: 0;
+}
+
+/* --- Fondos y patrón de líneas -------------------------------------------- */
+/* El patrón (PNG recortado al 75 % / 50 % por abajo) va anclado al borde inferior. */
+.ecd-cover,
+.ecd-speaker {
+    background: url("../img/ecityday/pattern-75.png") center bottom / 100% auto no-repeat, var(--ecd-offwhite);
+}
+
+.ecd-speaker {
+    background-image: url("../img/ecityday/pattern-50.png");
+}
+
+.ecd-dark,
+.ecd-closing {
+    background: url("../img/ecityday/pattern-75.png") center bottom / 100% auto no-repeat, var(--ecd-dark);
+    color: var(--ecd-white);
+}
+
+/* --- Logo, hashtag y numeración ------------------------------------------ */
+.ecd-logo {
+    left: var(--ecd-margin);
+    top: 53px;                 /* 0.55 in */
+    width: 230px;              /* 2.4 in */
+}
+
+.ecd-hashtag {
+    right: var(--ecd-margin);
+    top: 69px;                 /* 0.72 in */
+    width: 182px;              /* 1.9 in */
+}
+
+.ecd-speaker .ecd-logo {
+    left: auto;
+    right: var(--ecd-margin);
+    width: 182px;              /* 1.9 in */
+}
+
+/* Pie de las diapositivas de contenido: logo a la izquierda, hashtag y número a la derecha. */
+.ecd-foot-logo {
+    left: var(--ecd-margin);
+    top: 664px;                /* 6.92 in */
+    width: 108px;              /* 1.12 in */
+}
+
+.ecd-foot-hashtag {
+    right: 111px;              /* W − 0.6 in − 0.55 in */
+    top: 670px;                /* 6.98 in */
+    width: 106px;              /* 1.1 in */
+}
+
+.ecd-num {
+    right: var(--ecd-margin);
+    top: 662px;                /* 6.9 in */
+    width: 38px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    font-size: 15px;           /* 11 pt */
+    color: var(--ecd-grey);
+}
+
+/* --- Antetítulo y título -------------------------------------------------- */
+.ecd-kicker {
+    left: var(--ecd-margin);
+    top: var(--ecd-kicker-y);
+    width: var(--ecd-content-w);
+    font-size: 16px;           /* 12 pt */
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ecd-green);
+}
+
+.ecd-title {
+    left: var(--ecd-margin);
+    top: var(--ecd-title-y);
+    width: var(--ecd-content-w);
+    font-size: 43px;           /* 32 pt */
+    font-weight: 700;
+    line-height: 1.15;
+    color: var(--ecd-dark);
+}
+
+/* Portada, fondo oscuro y cierre: título grande pegado abajo de su caja. */
+.ecd-cover .ecd-title,
+.ecd-dark .ecd-title {
+    top: 149px;                /* 1.55 in */
+    width: 1018px;             /* 10.6 in */
+    height: 158px;             /* 1.65 in */
+    display: flex;
+    align-items: flex-end;
+    font-size: 59px;           /* 44 pt */
+    line-height: 1.1;
+}
+
+.ecd-dark .ecd-title,
+.ecd-closing .ecd-title {
+    color: var(--ecd-white);
+}
+
+.ecd-closing .ecd-title {
+    top: 154px;                /* 1.6 in */
+    height: 134px;             /* 1.4 in */
+    display: flex;
+    align-items: flex-end;
+    font-size: 88px;           /* 66 pt */
+    line-height: 1;
+}
+
+.ecd-accent {
+    color: var(--ecd-green);
+}
+
+.ecd-subtitle {
+    left: var(--ecd-margin);
+    top: 317px;                /* 3.3 in */
+    width: 1018px;
+    font-size: 29px;           /* 22 pt */
+    font-weight: 700;
+    line-height: 1.25;
+    color: var(--ecd-green);
+}
+
+.ecd-closing .ecd-subtitle {
+    top: 298px;                /* 3.1 in */
+    width: var(--ecd-content-w);
+}
+
+.ecd-meta {
+    left: var(--ecd-margin);
+    top: 372px;                /* 3.88 in */
+    width: 1018px;
+    font-size: 21px;           /* 16 pt */
+    line-height: 1.3;
+    color: var(--ecd-grey);
+}
+
+.ecd-dark .ecd-meta,
+.ecd-closing .ecd-meta {
+    color: var(--ecd-grey-light);
+}
+
+.ecd-closing .ecd-meta {
+    top: 355px;                /* 3.7 in */
+}
+
+/* --- Cuerpo de texto ------------------------------------------------------ */
+.ecd-body,
+.ecd-col {
+    top: var(--ecd-body-y);
+    overflow: visible;         /* el texto que no cabe se ve en QA, nunca se recorta en silencio */
+    line-height: 1.35;
+}
+
+.ecd-body {
+    left: var(--ecd-margin);
+    width: var(--ecd-content-w);
+    height: 456px;             /* 4.75 in */
+    font-size: 24px;           /* 18 pt */
+}
+
+.ecd-col-heading {
+    top: var(--ecd-body-y);
+    width: 558px;              /* 5.82 in */
+    font-size: 27px;           /* 20 pt */
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--ecd-green);
+}
+
+.ecd-col {
+    top: 235px;                /* 2.45 in */
+    width: 558px;
+    height: 398px;             /* 4.15 in */
+    font-size: 21px;           /* 16 pt */
+}
+
+.ecd-col--left,
+.ecd-col-heading--left {
+    left: var(--ecd-margin);
+}
+
+.ecd-col--right,
+.ecd-col-heading--right {
+    left: calc(var(--ecd-margin) + 558px + 48px);
+}
+
+.ecd :is(.ecd-body, .ecd-col, .ecd-list-card) p {
+    margin-bottom: 0.5em;
+}
+
+.ecd :is(.ecd-body, .ecd-col, .ecd-list-card) ul:not(.ecd-list) {
+    margin: 0;
+    padding-left: 1.1em;
+}
+
+.ecd :is(.ecd-body, .ecd-col, .ecd-list-card) ul:not(.ecd-list) > li {
+    margin-bottom: 0.45em;
+}
+
+.ecd li::marker {
+    color: var(--ecd-green);
+}
+
+/* --- Ponent ----------------------------------------------------------------- */
+.ecd-speaker-photo {
+    left: var(--ecd-margin);
+    top: 96px;                 /* 1.0 in */
+    width: 403px;              /* 4.2 in, formato cuadrado */
+    height: 403px;
+    max-width: none;
+    object-fit: cover;
+    background: var(--ecd-photo-bg);
+}
+
+/* Sin foto, el marco queda como superficie neutra con el texto de ayuda. */
+div.ecd-speaker-photo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    color: var(--ecd-grey);
+}
+
+.ecd-speaker-info {
+    left: 518px;               /* 5.4 in */
+    top: 130px;                /* 1.35 in */
+    width: 704px;              /* 7.33 in */
+}
+
+.ecd .ecd-speaker-name {
+    margin-bottom: 14px;
+    font-size: 48px;           /* 36 pt */
+    font-weight: 700;
+    line-height: 1.15;
+    color: var(--ecd-dark);
+}
+
+.ecd .ecd-speaker-role {
+    margin-bottom: 10px;
+    font-size: 27px;           /* 20 pt */
+    font-weight: 700;
+    line-height: 1.3;
+    color: var(--ecd-green);
+}
+
+.ecd .ecd-speaker-entity {
+    margin-bottom: 32px;
+    font-size: 21px;           /* 16 pt */
+    line-height: 1.3;
+    color: var(--ecd-grey);
+}
+
+.ecd .ecd-bio {
+    font-size: 21px;           /* 16 pt */
+    line-height: 1.4;
+    color: var(--ecd-dark);
+}
+
+/* --- Imatge i text: imagen a sangre a la izquierda -------------------------- */
+.ecd-panel {
+    left: 0;
+    top: 0;
+    width: 595px;              /* 6.2 in */
+    height: 720px;
+    background: url("../img/ecityday/pattern-50.png") center bottom / 100% auto no-repeat, var(--ecd-offwhite);
+}
+
+.ecd-panel img {
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    object-fit: cover;
+    display: block;
+}
+
+.ecd-image-text :is(.ecd-kicker, .ecd-title, .ecd-body, .ecd-foot-logo) {
+    left: 653px;               /* 6.8 in */
+    width: 570px;              /* 5.93 in */
+}
+
+.ecd-image-text .ecd-foot-logo {
+    width: 108px;
+}
+
+.ecd-image-text .ecd-title {
+    font-size: 40px;           /* 30 pt */
+}
+
+.ecd-image-text .ecd-body {
+    top: 226px;                /* 2.35 in */
+    height: 408px;
+    font-size: 21px;           /* 16 pt */
+}
+
+/* --- Catàleg: lienzo libre bajo el título (layout "Només títol") ------------- */
+.ecd-board {
+    left: var(--ecd-margin);
+    width: var(--ecd-content-w);
+    padding: 0;
+    list-style: none;
+}
+
+.ecd-board > li {
+    list-style: none;
+}
+
+.ecd-cards {
+    display: flex;
+    gap: 29px;                 /* 0.3 in */
+}
+
+.ecd-card {
+    flex: 1 1 0;
+    min-width: 0;
+    padding: 34px;             /* 0.35 in */
+    border-radius: 12px;       /* 0.12 in */
+    background: var(--ecd-offwhite);
+}
+
+.ecd .ecd-card-title {
+    font-size: 27px;           /* 20 pt */
+    font-weight: 700;
+    line-height: 1.25;
+    color: var(--ecd-dark);
+}
+
+.ecd .ecd-card-text {
+    margin-top: 10px;
+    font-size: 21px;           /* 16 pt */
+    line-height: 1.35;
+    color: var(--ecd-grey);
+}
+
+/* Índex: tarjetas 01, 02… en verde 48 pt. */
+.ecd-index .ecd-board {
+    top: 226px;                /* 2.35 in */
+}
+
+.ecd-index .ecd-card {
+    height: 317px;             /* 3.3 in */
+}
+
+.ecd-card-num {
+    display: block;
+    height: 115px;             /* título a 1.55 in del borde de la tarjeta */
+    font-size: 64px;           /* 48 pt */
+    font-weight: 700;
+    line-height: 1.1;
+    color: var(--ecd-green);
+}
+
+/* Blocs amb icona: círculo verde de 0.9 in con pictograma blanco. */
+.ecd-blocks .ecd-board {
+    top: 216px;                /* 2.25 in */
+}
+
+.ecd-blocks .ecd-card {
+    height: 336px;             /* 3.5 in */
+}
+
+.ecd-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 86px;               /* 0.9 in */
+    height: 86px;
+    margin-bottom: 29px;
+    border-radius: 50%;
+    background: var(--ecd-green);
+}
+
+.ecd-icon svg {
+    width: 43px;
+    height: 43px;
+}
+
+/* Llistes: tres tarjetas (vinyetes, numerada, verificació). */
+.ecd-lists .ecd-board {
+    top: 211px;                /* 2.2 in */
+}
+
+.ecd-list-card {
+    height: 360px;             /* 3.75 in */
+    font-size: 21px;           /* 16 pt */
+    line-height: 1.3;
+}
+
+.ecd .ecd-list-card .ecd-card-title {
+    margin-bottom: 30px;
+    color: var(--ecd-green);
+}
+
+.ecd .ecd-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    counter-reset: ecd-n;
+}
+
+.ecd .ecd-list > li {
+    position: relative;
+    min-height: 36px;
+    margin-bottom: 24px;       /* paso de fila 0.62 in */
+    padding-left: 53px;
+    display: flex;
+    align-items: center;
+    list-style: none;
+}
+
+.ecd .ecd-list > li::before {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 36px;               /* 0.38 in */
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 19px;           /* 14 pt */
+    font-weight: 700;
+    color: var(--ecd-white);
+}
+
+.ecd .ecd-list--numbered > li {
+    counter-increment: ecd-n;
+}
+
+.ecd .ecd-list--numbered > li::before {
+    content: counter(ecd-n);
+    background: var(--ecd-dark);
+}
+
+.ecd .ecd-list--checks > li::before {
+    content: "";
+    background: var(--ecd-green) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center / 20px no-repeat;
+}
+
+/* Procés: círculos oscuros (el último en verde) unidos por una flecha verde. */
+.ecd-process .ecd-board {
+    top: 206px;                /* 2.15 in */
+    display: grid;
+    grid-template-columns: repeat(var(--ecd-steps, 4), 1fr);
+    gap: 29px;
+}
+
+.ecd-step {
+    position: relative;
+    text-align: center;
+}
+
+.ecd-step-num {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 144px;              /* 1.5 in */
+    height: 144px;
+    margin: 0 auto 29px;
+    border-radius: 50%;
+    background: var(--ecd-dark);
+    font-size: 53px;           /* 40 pt */
+    font-weight: 700;
+    color: var(--ecd-white);
+}
+
+.ecd-step:last-child .ecd-step-num {
+    background: var(--ecd-green);
+}
+
+.ecd-step:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    right: -14px;              /* centrada en el hueco entre columnas */
+    top: 72px;
+    width: 58px;               /* 0.6 in */
+    height: 58px;
+    border-radius: 50%;
+    transform: translate(50%, -50%);
+    background: var(--ecd-green) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m9 18 6-6-6-6'/%3E%3C/svg%3E") center / 35px no-repeat;
+}
+
+.ecd .ecd-step-title {
+    font-size: 27px;           /* 20 pt */
+    font-weight: 700;
+    line-height: 1.25;
+    color: var(--ecd-dark);
+}
+
+.ecd .ecd-step-text {
+    margin: 10px auto 0;
+    max-width: calc(100% - 38px);
+    font-size: 21px;           /* 16 pt */
+    line-height: 1.35;
+    color: var(--ecd-grey);
+}
+
+/* Cronologia: eje gris, hitos verdes (contorno si están pendientes), etiquetas alternas. */
+.ecd-timeline .ecd-board {
+    top: 211px;
+    height: 326px;
+    display: grid;
+    grid-template-columns: repeat(var(--ecd-milestones, 5), 1fr);
+    gap: 24px;                 /* 0.25 in */
+}
+
+.ecd-timeline .ecd-board::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 163px;                /* eje a 3.9 in */
+    height: 3px;               /* 2 pt */
+    background: var(--ecd-grey-light);
+    transform: translateY(-50%);
+}
+
+.ecd-milestone {
+    position: relative;
+    text-align: center;
+}
+
+.ecd-milestone::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 163px;
+    width: 35px;               /* 0.36 in */
+    height: 35px;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--ecd-green);
+}
+
+.ecd-milestone--pending::before {
+    border: 3px solid var(--ecd-green);
+    background: var(--ecd-white);
+}
+
+.ecd-milestone-label {
+    position: absolute;
+    left: 0;
+    right: 0;
+}
+
+.ecd-milestone:nth-child(odd) .ecd-milestone-label {
+    top: 15px;                 /* 2.35 in */
+}
+
+.ecd-milestone:nth-child(even) .ecd-milestone-label {
+    top: 207px;                /* 4.35 in */
+}
+
+.ecd-milestone-date {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 24px;           /* 18 pt */
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--ecd-green);
+}
+
+.ecd-milestone-title {
+    display: block;
+    font-size: 21px;           /* 16 pt */
+    line-height: 1.3;
+    color: var(--ecd-dark);
+}
+
+/* Xifres: cifra grande en verde 66 pt. */
+.ecd-stats .ecd-board {
+    top: 211px;                /* 2.2 in */
+}
+
+.ecd-stat {
+    height: 326px;             /* 3.4 in */
+    padding: 38px;             /* 0.4 in */
+    display: flex;
+    flex-direction: column;
+}
+
+.ecd-stat-value {
+    display: flex;
+    align-items: flex-end;
+    height: 125px;             /* 1.3 in, pegado abajo */
+    margin-top: 15px;
+    font-size: 88px;           /* 66 pt */
+    font-weight: 700;
+    line-height: 1;
+    white-space: nowrap;
+    color: var(--ecd-green);
+}
+
+.ecd .ecd-stat-label {
+    margin-top: 19px;
+    font-size: 24px;           /* 18 pt */
+    line-height: 1.3;
+    color: var(--ecd-dark);
+}
+
+/* Gràfics: tarjetas con SVG en línea (columnas 7.5 in + anillo). */
+.ecd-charts .ecd-board {
+    top: 187px;                /* 1.95 in */
+    height: 442px;             /* 4.6 in */
+    display: flex;
+    gap: 29px;
+}
+
+.ecd-chart-card {
+    display: flex;
+    flex-direction: column;
+    padding: 24px 34px;
+}
+
+.ecd-chart-card--wide {
+    flex: 0 0 720px;           /* 7.5 in */
+}
+
+.ecd .ecd-chart-title {
+    margin-bottom: 8px;
+    font-size: 24px;           /* 18 pt */
+    font-weight: 700;
+    color: var(--ecd-dark);
+}
+
+.ecd-chart {
+    display: block;
+    flex: 1;
+    min-height: 0;
+    width: 100%;
+}
+
+.ecd-chart text {
+    font-family: var(--ecd-font);
+    font-size: 15px;
+    fill: var(--ecd-grey);
+}
+
+.ecd-chart .ecd-chart-value {
+    fill: var(--ecd-dark);
+}
+
+.ecd-chart .ecd-chart-pct {
+    font-weight: 700;
+    fill: var(--ecd-white);
+}
+
+.ecd-legend {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px 18px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: 16px;
+    color: var(--ecd-grey);
+}
+
+.ecd-legend li {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    list-style: none;
+}
+
+.ecd-legend li::before {
+    content: "";
+    width: 12px;
+    height: 12px;
+    background: var(--ecd-swatch);
+}

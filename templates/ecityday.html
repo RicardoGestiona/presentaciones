@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="Nom Cognom">
+<title>Plantilla — #ecityDay</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/corporate.css">
+<link rel="stylesheet" href="../assets/css/ecityday.css">
+</head>
+<body data-brand="ecityclic">
+<main role="presentation">
+
+<!-- ========== Obertura ========== -->
+
+<!-- Portada clara. Substitueix títol, lema, ponent, data i lloc. -->
+<section class="slide-container ecd ecd-cover" aria-label="1. Portada">
+<img class="ecd-logo" src="../assets/img/ecityday/logo.svg" alt="ecityclic esPublico">
+<img class="ecd-hashtag" src="../assets/img/ecityday/hashtag.svg" alt="#ecityDay">
+<h1 class="ecd-title">Títol de la presentació</h1>
+<p class="ecd-subtitle">Subtítol o lema de la presentació</p>
+<p class="ecd-meta">Nom del ponent · 10 de novembre 2026 · Parc Agrobiotech Lleida</p>
+</section>
+
+<!-- Ponent. Substitueix el <div> per <img class="ecd-speaker-photo" src="…" alt="Nom Cognom"> (format quadrat). -->
+<section class="slide-container ecd ecd-speaker" aria-label="2. Ponent">
+<img class="ecd-logo" src="../assets/img/ecityday/logo.svg" alt="ecityclic esPublico">
+<div class="ecd-speaker-photo">Fotografia del ponent</div>
+<div class="ecd-speaker-info">
+<h2 class="ecd-speaker-name">Nom Cognom</h2>
+<p class="ecd-speaker-role">Càrrec</p>
+<p class="ecd-speaker-entity">Entitat o organització</p>
+<p class="ecd-bio">Breu biografia del ponent: trajectòria professional, àmbits d'expertesa i projectes destacats. Màxim tres o quatre línies.</p>
+</div>
+</section>
+
+<!-- Índex en targetes numerades. Elimina o duplica targetes segons el nombre de seccions. -->
+<section class="slide-container ecd ecd-index" aria-label="3. Continguts de la presentació">
+<p class="ecd-kicker">Índex</p>
+<h2 class="ecd-title">Continguts de la presentació</h2>
+<ol class="ecd-board ecd-cards">
+<li class="ecd-card"><span class="ecd-card-num">01</span><h3 class="ecd-card-title">Introducció</h3><p class="ecd-card-text">Objectius i abast de la presentació</p></li>
+<li class="ecd-card"><span class="ecd-card-num">02</span><h3 class="ecd-card-title">Context</h3><p class="ecd-card-text">Situació actual i reptes principals</p></li>
+<li class="ecd-card"><span class="ecd-card-num">03</span><h3 class="ecd-card-title">Proposta</h3><p class="ecd-card-text">Solució plantejada i beneficis</p></li>
+<li class="ecd-card"><span class="ecd-card-num">04</span><h3 class="ecd-card-title">Conclusions</h3><p class="ecd-card-text">Resum i següents passos</p></li>
+</ol>
+<img class="ecd-foot-logo" src="../assets/img/ecityday/logo.svg" alt="ecityclic esPublico">
+<img class="ecd-foot-hashtag" src="../assets/img/ecityday/hashtag.svg" alt="#ecityDay">
+<span class="ecd-num">3</span>
+</section>
+
+<!-- ========== Contingut ========== -->
+
+<!-- Títol i contingut. L'etiqueta verda superior indica la secció. -->
+<section class="slide-container ecd ecd-content" aria-label="4. Títol de la diapositiva">
+<p class="ecd-kicker">Secció</p>
+<h2 class="ecd-title">Títol de la diapositiva</h2>
+<div class="ecd-body"><ul>
+<li>Primer missatge clau, en una sola línia si és possible</li>
+<li>Segon missatge clau amb el detall imprescindible</li>
+<li>Tercer missatge clau: una idea per diapositiva</li>
+<li>Fes servir com a màxim cinc punts per diapositiva</li>
+</ul></div>
+<img class="ecd-foot-logo" src="../assets/img/ecityday/logo.svg" alt="ecityclic esPublico">
+<img class="ecd-foot-hashtag" src="../assets/img/ecityday/hashtag.svg" alt="#ecityDay">
+<span class="ecd-num">4</span>
+</section>
+
+<!-- Dues columnes: abans/després, problema/solució o dues línies de treball. -->
+<section class="slide-container ecd ecd-two-col" aria-label="5. Dues columnes">
+<p class="ecd-kicker">Secció</p>
+<h2 class="ecd-title">Títol de la diapositiva</h2>
+<h3 class="ecd-col-heading ecd-col-heading--left">Encapçalament columna 1</h3>
+<h3 class="ecd-col-heading ecd-col-heading--right">Encapçalament columna 2</h3>
+<div class="ecd-col ecd-col--left"><ul><li>Primer punt de la columna</li><li>Segon punt de la columna</li><li>Tercer punt de la columna</li></ul></div>
+<div class="ecd-col ecd-col--right"><ul><li>Primer punt de la columna</li><li>Segon punt de la columna</li><li>Tercer punt de la columna</li></ul></div>
+<img class="ecd-foot-logo" src="../assets/img/ecityday/logo.svg" alt="ecityclic esPublico">
+<img class="ecd-foot-hashtag" src="../assets/img/ecityday/hashtag.svg" alt="#ecityDay">
+<span class="ecd-num">5</span>
+</section>
+
+<!-- Imatge i text. Posa <img src="…" alt="…"> dins de .ecd-panel; sense imatge es veu el patró. -->
+<section class="slide-container ecd ecd-image-text" aria-label="6. Títol de la diapositiva amb imatge">
+<figure class="ecd-panel"></figure>
+<p class="ecd-kicker">Secció</p>
+<h2 class="ecd-title">Títol de la diapositiva amb imatge</h2>
+<div class="ecd-body"><ul>
+<li>Insereix la imatge dins del marc de l'esquerra</li>
+<li>La imatge ocupa tota l'alçada de la diapositiva</li>
+<li>Mantén el text breu i alineat a l'esquerra</li>
+</ul></div>
+<img class="ecd-foot-logo" src="../assets/img/ecityday/logo.svg" alt="ecityclic esPublico">
+<img class="ecd-foot-hashtag" src="../assets/img/ecityday/hashtag.svg" alt="#ecityDay">
+<span class="ecd-num">6</span>
+</section>
+
+<!-- Fons fosc: frases destacades o cites. També serveix com a portada alternativa. -->
+<section class="slide-container ecd ecd-dark" aria-label="7. Frase destacada">
+<img class="ecd-logo" src="../assets/img/ecityday/logo-white.svg" alt="ecityclic esPublico">
+<img class="ecd-hashtag" src="../assets/img/ecityday/hashtag.svg" alt="#ecityDay">
+<p class="ecd-title">Una frase o idea clau que vulguis destacar davant del públic</p>
+<p class="ecd-subtitle">Nom Cognom, càrrec</p>
+</section>
+
+<!-- ========== Catàleg d'elements ========== -->
+
+<!-- Tres tipologies de llista: vinyetes per a idees, numerada per a seqüències, verificació per a fites. -->
+<section class="slide-container ecd ecd-lists" aria-label="8. Tipologies de llistes">
+<p class="ecd-kicker">Llistes</p>
+<h2 class="ecd-title">Tipologies de llistes</h2>
+<div class="ecd-board ecd-cards">
+<div class="ecd-card ecd-list-card"><h3 class="ecd-card-title">Amb vinyetes</h3><ul><li>Idea principal del punt</li><li>Segon element de la llista</li><li>Tercer element de la llista</li><li>Quart element de la llista</li></ul></div>
+<div class="ecd-card ecd-list-card"><h3 class="ecd-card-title">Numerada</h3><ol class="ecd-list ecd-list--numbered"><li>Primer pas o prioritat</li><li>Segon pas o prioritat</li><li>Tercer pas o prioritat</li><li>Quart pas o prioritat</li></ol></div>
+<div class="ecd-card ecd-list-card"><h3 class="ecd-card-title">De verificació</h3><ul class="ecd-list ecd-list--checks"><li>Requisit complert</li><li>Tasca finalitzada</li><li>Objectiu assolit</li><li>Validació feta</li></ul></div>
+</div>
+<img class="ecd-foot-logo" src="../assets/img/ecityday/logo.svg" alt="ecityclic esPublico">
+<img class="ecd-foot-hashtag" src="../assets/img/ecityday/hashtag.svg" alt="#ecityDay">
+<span class="ecd-num">8</span>
+</section>
+
+<!-- Targetes amb icona (Lucide, traç blanc) en cercle verd. -->
+<section class="slide-container ecd ecd-blocks" aria-label="9. Blocs amb icona">
+<p class="ecd-kicker">Icones</p>
+<h2 class="ecd-title">Blocs amb icona</h2>
+<ul class="ecd-board ecd-cards">
+<li class="ecd-card"><span class="ecd-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><path d="M16 3.128a4 4 0 0 1 0 7.744"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><circle cx="9" cy="7" r="4"/></svg></span><h3 class="ecd-card-title">Persones</h3><p class="ecd-card-text">Text descriptiu breu sobre aquest punt en dues o tres línies.</p></li>
+<li class="ecd-card"><span class="ecd-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg></span><h3 class="ecd-card-title">Seguretat</h3><p class="ecd-card-text">Text descriptiu breu sobre aquest punt en dues o tres línies.</p></li>
+<li class="ecd-card"><span class="ecd-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15.914 4a1.5 1.5 0 00-2.474-1.561l-9 9A1.5 1.5 0 005.5 14h4.002a.5.5 0 01.471.666L8.086 20a1.5 1.5 0 002.475 1.56l9-9A1.5 1.5 0 0018.5 10h-3.997a.5.5 0 01-.472-.667z"/></svg></span><h3 class="ecd-card-title">Agilitat</h3><p class="ecd-card-text">Text descriptiu breu sobre aquest punt en dues o tres línies.</p></li>
+<li class="ecd-card"><span class="ecd-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83z"/><path d="M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12"/><path d="M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17"/></svg></span><h3 class="ecd-card-title">Integració</h3><p class="ecd-card-text">Text descriptiu breu sobre aquest punt en dues o tres línies.</p></li>
+</ul>
+<img class="ecd-foot-logo" src="../assets/img/ecityday/logo.svg" alt="ecityclic esPublico">
+<img class="ecd-foot-hashtag" src="../assets/img/ecityday/hashtag.svg" alt="#ecityDay">
+<span class="ecd-num">9</span>
+</section>
+
+<!-- Procés en blocs rodons. L'últim pas es destaca en verd; la resta, en fosc. Per a 3 o 5 passos: style="--ecd-steps:3". -->
+<section class="slide-container ecd ecd-process" aria-label="10. Procés en quatre passos">
+<p class="ecd-kicker">Procés</p>
+<h2 class="ecd-title">Procés en quatre passos</h2>
+<ol class="ecd-board">
+<li class="ecd-step"><span class="ecd-step-num">1</span><h3 class="ecd-step-title">Anàlisi</h3><p class="ecd-step-text">Descripció breu del que passa en aquesta fase</p></li>
+<li class="ecd-step"><span class="ecd-step-num">2</span><h3 class="ecd-step-title">Disseny</h3><p class="ecd-step-text">Descripció breu del que passa en aquesta fase</p></li>
+<li class="ecd-step"><span class="ecd-step-num">3</span><h3 class="ecd-step-title">Implantació</h3><p class="ecd-step-text">Descripció breu del que passa en aquesta fase</p></li>
+<li class="ecd-step"><span class="ecd-step-num">4</span><h3 class="ecd-step-title">Seguiment</h3><p class="ecd-step-text">Descripció breu del que passa en aquesta fase</p></li>
+</ol>
+<img class="ecd-foot-logo" src="../assets/img/ecityday/logo.svg" alt="ecityclic esPublico">
+<img class="ecd-foot-hashtag" src="../assets/img/ecityday/hashtag.svg" alt="#ecityDay">
+<span class="ecd-num">10</span>
+</section>
+
+<!-- Cronologia horitzontal amb fites alternades a dalt i a baix. Assolides en verd ple; la propera, ecd-milestone--pending. -->
+<section class="slide-container ecd ecd-timeline" aria-label="11. Cronologia del projecte">
+<p class="ecd-kicker">Timeline</p>
+<h2 class="ecd-title">Cronologia del projecte</h2>
+<ol class="ecd-board">
+<li class="ecd-milestone"><span class="ecd-milestone-label"><span class="ecd-milestone-date">Gener 2026</span><span class="ecd-milestone-title">Inici del projecte</span></span></li>
+<li class="ecd-milestone"><span class="ecd-milestone-label"><span class="ecd-milestone-date">Abril 2026</span><span class="ecd-milestone-title">Primera fase completada</span></span></li>
+<li class="ecd-milestone"><span class="ecd-milestone-label"><span class="ecd-milestone-date">Juliol 2026</span><span class="ecd-milestone-title">Desplegament pilot</span></span></li>
+<li class="ecd-milestone"><span class="ecd-milestone-label"><span class="ecd-milestone-date">Novembre 2026</span><span class="ecd-milestone-title">Posada en marxa</span></span></li>
+<li class="ecd-milestone ecd-milestone--pending"><span class="ecd-milestone-label"><span class="ecd-milestone-date">2027</span><span class="ecd-milestone-title">Evolució i escalat</span></span></li>
+</ol>
+<img class="ecd-foot-logo" src="../assets/img/ecityday/logo.svg" alt="ecityclic esPublico">
+<img class="ecd-foot-hashtag" src="../assets/img/ecityday/hashtag.svg" alt="#ecityDay">
+<span class="ecd-num">11</span>
+</section>
+
+<!-- Gràfics en SVG estàtic: columnes per a evolució (2025 gris, 2026 verd) i anell per a distribució. -->
+<section class="slide-container ecd ecd-charts" aria-label="12. Evolució i distribució">
+<p class="ecd-kicker">Gràfics</p>
+<h2 class="ecd-title">Evolució i distribució</h2>
+<div class="ecd-board">
+<figure class="ecd-card ecd-chart-card ecd-chart-card--wide">
+<figcaption class="ecd-chart-title">Evolució anual</figcaption>
+<ul class="ecd-legend"><li style="--ecd-swatch:#c9c7cc">2025</li><li style="--ecd-swatch:#81bc00">2026</li></ul>
+<svg class="ecd-chart" viewBox="0 0 652 330" role="img" aria-label="Columnes per trimestre: 2025 32, 41, 48, 55; 2026 45, 53, 61, 72">
+<g fill="#c9c7cc"><rect x="29.5" y="190" width="50" height="100"/><rect x="192.5" y="161.9" width="50" height="128.1"/><rect x="355.5" y="140" width="50" height="150"/><rect x="518.5" y="118.1" width="50" height="171.9"/></g>
+<g fill="#81bc00"><rect x="83.5" y="149.4" width="50" height="140.6"/><rect x="246.5" y="124.4" width="50" height="165.6"/><rect x="409.5" y="99.4" width="50" height="190.6"/><rect x="572.5" y="65" width="50" height="225"/></g>
+<g class="ecd-chart-value" text-anchor="middle"><text x="54.5" y="183">32</text><text x="217.5" y="155">41</text><text x="380.5" y="133">48</text><text x="543.5" y="111">55</text><text x="108.5" y="142">45</text><text x="271.5" y="117">53</text><text x="434.5" y="92">61</text><text x="597.5" y="58">72</text></g>
+<g text-anchor="middle"><text x="81.5" y="315">T1</text><text x="244.5" y="315">T2</text><text x="407.5" y="315">T3</text><text x="570.5" y="315">T4</text></g>
+</svg>
+</figure>
+<figure class="ecd-card ecd-chart-card">
+<figcaption class="ecd-chart-title">Distribució</figcaption>
+<svg class="ecd-chart" viewBox="0 0 300 300" role="img" aria-label="Anell: Categoria A 45 %, B 25 %, C 18 %, D 12 %">
+<g fill="none" stroke-width="50" transform="rotate(-90 150 150)">
+<circle cx="150" cy="150" r="105" pathLength="100" stroke="#81bc00" stroke-dasharray="45 55"/>
+<circle cx="150" cy="150" r="105" pathLength="100" stroke="#2a6478" stroke-dasharray="25 75" stroke-dashoffset="-45"/>
+<circle cx="150" cy="150" r="105" pathLength="100" stroke="#d6862b" stroke-dasharray="18 82" stroke-dashoffset="-70"/>
+<circle cx="150" cy="150" r="105" pathLength="100" stroke="#9db15a" stroke-dasharray="12 88" stroke-dashoffset="-88"/>
+</g>
+<g class="ecd-chart-pct" text-anchor="middle" dominant-baseline="central"><text x="253.7" y="133.6">45%</text><text x="102.3" y="243.6">25%</text><text x="48.3" y="123.9">18%</text><text x="111.4" y="52.4">12%</text></g>
+</svg>
+<ul class="ecd-legend"><li style="--ecd-swatch:#81bc00">Categoria A</li><li style="--ecd-swatch:#2a6478">Categoria B</li><li style="--ecd-swatch:#d6862b">Categoria C</li><li style="--ecd-swatch:#9db15a">Categoria D</li></ul>
+</figure>
+</div>
+<img class="ecd-foot-logo" src="../assets/img/ecityday/logo.svg" alt="ecityclic esPublico">
+<img class="ecd-foot-hashtag" src="../assets/img/ecityday/hashtag.svg" alt="#ecityDay">
+<span class="ecd-num">12</span>
+</section>
+
+<!-- Xifres grans en verd. Substitueix els valors per les dades reals. -->
+<section class="slide-container ecd ecd-stats" aria-label="13. Dades destacades">
+<p class="ecd-kicker">Xifres</p>
+<h2 class="ecd-title">Dades destacades</h2>
+<ul class="ecd-board ecd-cards">
+<li class="ecd-card ecd-stat"><span class="ecd-stat-value">00%</span><p class="ecd-stat-label">Descripció breu de la dada</p></li>
+<li class="ecd-card ecd-stat"><span class="ecd-stat-value">+000</span><p class="ecd-stat-label">Descripció breu de la dada</p></li>
+<li class="ecd-card ecd-stat"><span class="ecd-stat-value">00</span><p class="ecd-stat-label">Descripció breu de la dada</p></li>
+</ul>
+<img class="ecd-foot-logo" src="../assets/img/ecityday/logo.svg" alt="ecityclic esPublico">
+<img class="ecd-foot-hashtag" src="../assets/img/ecityday/hashtag.svg" alt="#ecityDay">
+<span class="ecd-num">13</span>
+</section>
+
+<!-- ========== Tancament ========== -->
+
+<!-- Tancament. Substitueix el contacte pel del ponent. -->
+<section class="slide-container ecd ecd-closing" aria-label="14. Gràcies">
+<img class="ecd-logo" src="../assets/img/ecityday/logo-white.svg" alt="ecityclic esPublico">
+<img class="ecd-hashtag" src="../assets/img/ecityday/hashtag.svg" alt="#ecityDay">
+<h2 class="ecd-title">Gràcies</h2>
+<p class="ecd-subtitle">Tecnologia innovadora per a impulsar el futur de l'administració</p>
+<p class="ecd-meta">nom.cognom@ecityclic.com · www.ecityclic.com</p>
+</section>
+
+</main>
+<script src="../assets/js/navigation.js"></script>
+</body>
+</html>

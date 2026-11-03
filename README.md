@@ -41,7 +41,9 @@ presentaciones/
 │   └── img/                  ← Logos compartidos
 ├── templates/
 │   ├── slide-template.html   ← Plantilla base (8 slides ejemplo)
-│   └── showcase.html         ← Demo navegable con todos los layouts
+│   ├── showcase.html         ← Demo navegable con todos los layouts
+│   ├── iv-congreso.html      ← Estilo IV Congreso Gestiona Avanza (capa iv-congreso.css)
+│   └── ecityday.html         ← Estilo #ecityDay (capa ecityday.css)
 └── <nombre>/index.html       ← Cada presentación
 ```
 

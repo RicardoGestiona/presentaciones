@@ -251,7 +251,74 @@ Para presentaciones bajo marca esFirma:
 
 - `templates/slide-template.html` — punto de partida con 8 slides ejemplo cubriendo los layouts más usados.
 - `templates/showcase.html` — demo navegable con **todos** los layouts y componentes; útil como referencia visual y para que un LLM vea el HTML real de cada pieza.
-- `templates/iv-congreso.html` — plantilla del **IV Congreso Gestiona Avanza**: una diapositiva de ejemplo por tipo (portada, ponente, separador, contenido, dos columnas, imagen y texto, imagen completa, destacado, cierre) y por componente (índice, bloques con icono, proceso, cronología, cifras destacadas, gráficos, listas numerada y de verificación). Usa la capa `assets/css/iv-congreso.css` (clases `.ivc-*`) encima de `corporate.css` con `data-brand="gestiona-avanza"`, y los assets de `assets/img/iv-congreso/`. Las ponencias del congreso viven en `iv-congreso/<slug>/` (con su índice en `iv-congreso/index.html`) y se **generan** desde el repo `html-congreso` (`npm run render <slug>`); no se editan a mano.
+- `templates/iv-congreso.html` y `templates/ecityday.html` — plantillas de estilo de evento. Ver §4bis.
+
+---
+
+## 4bis. Plantillas de estilo de evento
+
+Algunos eventos tienen una línea gráfica propia que sustituye a la del sistema. Se implementan como una **capa CSS** que va encima de `corporate.css`, con clases propias y geometría fija calcada de la plantilla PowerPoint del evento: 1 in = 96 px y 1 pt = 1,333 px sobre el lienzo de 1280 × 720.
+
+Cada diapositiva es `<section class="slide-container <prefijo> <prefijo>-<layout>">` y sus hijos se posicionan en absoluto. **No mezclar** clases de layout de `corporate.css` (`.title-layout`, `.tiled-content`…) dentro de estas diapositivas: usa solo las de la capa.
+
+Para crear una presentación con el estilo de un evento:
+
+1. `mkdir <nombre> && cp templates/<plantilla>.html <nombre>/index.html`.
+2. Conserva el `<head>` (fuentes y las dos hojas de estilo) y el `data-brand` del `<body>`.
+3. Duplica o borra las `<section>` de ejemplo y sustituye los textos. Cada `<section>` va precedida de un comentario con su uso.
+4. Actualiza los números de página (`.ivc-num` / `.ecd-num`) y los `aria-label` numerados.
+5. Si el contenido no cabe, divídelo en otra diapositiva: no reduzcas los tamaños de la capa.
+
+| Plantilla | Evento | Capa CSS · prefijo | `data-brand` | Fuentes | Idioma | Assets | Origen (repo hermano) |
+|---|---|---|---|---|---|---|---|
+| `templates/iv-congreso.html` | IV Congreso Gestiona Avanza · Zaragoza, 4–6 nov 2026 | `assets/css/iv-congreso.css` · `.ivc-*` | `gestiona-avanza` | Roboto + Roboto Slab 700 | Castellano | `assets/img/iv-congreso/` | `html-congreso` (`npm run build:html`) |
+| `templates/ecityday.html` | #ecityDay · inauguración de las oficinas de ecityclic · Parc Agrobiotech Lleida, 10 nov 2026 | `assets/css/ecityday.css` · `.ecd-*` | `ecityclic` | Inter 400/700 | Catalán | `assets/img/ecityday/` | `ppt-ecityday` (`tools/build_template.js`) |
+
+Los repos hermanos (`../html-congreso`, `../ppt-ecityday`) son la fuente de la plantilla PPTX/POTX y de los scripts que reestilan los PPTX de los ponentes. Si la geometría cambia allí, hay que actualizar la capa CSS correspondiente.
+
+### IV Congreso (`.ivc-*`)
+
+- **Layouts:** `ivc-cover`, `ivc-speaker-slide`, `ivc-section`, `ivc-content`, `ivc-two-col`, `ivc-image-text`, `ivc-image-full`, `ivc-statement` y `ivc-closing`.
+- **Componentes sobre lienzo:** `ivc-index`, `ivc-blocks`, `ivc-process`, `ivc-timeline`, `ivc-stats` y gráficos (`ivc-free` + `ivc-chart-card`).
+- **Listas:** `ivc-list--numbered`, `ivc-list--checks`.
+- **Elementos fijos:** lockup del congreso arriba a la derecha (`ivc-lockup`), aval Gestiona·esPublico abajo (`ivc-endorse`) y número de página (`ivc-num`).
+- **Ponencias:** viven en `iv-congreso/<slug>/` y se **generan** con `html-congreso` (`npm run render <slug>`); no se editan a mano.
+
+### #ecityDay (`.ecd-*`)
+
+Paleta del manual del evento, con tokens en `.ecd`:
+
+| Token | Color | Uso |
+|---|---|---|
+| `--ecd-green` | `#81bc00` | Acentos (no `#7fb927`) |
+| `--ecd-dark` | `#2f3031` | Texto y fondos oscuros |
+| `--ecd-grey` | `#6a686f` | Texto secundario |
+| `--ecd-offwhite` | `#f4f3f1` | Fondos claros y tarjetas |
+| `--ecd-orange`, `--ecd-petrol`, `--ecd-olive` | — | Tres colores del degradado del patrón (series de gráficos) |
+
+**Layouts:**
+
+| Clase | Contenido |
+|---|---|
+| `ecd-cover` | Portada clara: logo, `#ecityDay` y patrón de líneas abajo |
+| `ecd-dark` | Portada alternativa o frase destacada |
+| `ecd-speaker` | Ponente: `ecd-speaker-photo`, que es un `<img>` cuadrado o un `<div>` vacío, y `ecd-speaker-info` |
+| `ecd-content` | Antetítulo `ecd-kicker` + `ecd-title` + `ecd-body` |
+| `ecd-two-col` | `ecd-col-heading--left/right` + `ecd-col--left/right` |
+| `ecd-image-text` | Imagen a sangre a la izquierda dentro de `ecd-panel`; sin imagen se ve el patrón |
+| `ecd-closing` | Cierre |
+
+**Componentes**, sobre `ecd-board` bajo el título:
+
+- `ecd-index`: tarjetas `ecd-card` con `ecd-card-num`.
+- `ecd-lists`: tarjetas `ecd-list-card` con `ul`, `ecd-list--numbered` o `ecd-list--checks`.
+- `ecd-blocks`: `ecd-icon` con un SVG Lucide de trazo blanco.
+- `ecd-process`: `ecd-step`; el último paso va en verde. Para cambiar el número de pasos, `style="--ecd-steps:N"`.
+- `ecd-timeline`: `ecd-milestone`, con las fechas alternadas arriba y abajo; el hito próximo lleva `ecd-milestone--pending`. Para cambiar el número de hitos, `--ecd-milestones:N`.
+- `ecd-charts`: SVG estático dentro de `ecd-chart-card` (`--wide` para el de columnas), con leyenda `ecd-legend`.
+- `ecd-stats`: `ecd-stat` con `ecd-stat-value` y `ecd-stat-label`.
+
+**Pie fijo** de las diapositivas de contenido: `ecd-foot-logo`, `ecd-foot-hashtag` y `ecd-num`. Portada, fondo oscuro y cierre llevan en su lugar `ecd-logo` (`logo.svg`, o `logo-white.svg` sobre fondo oscuro) y `ecd-hashtag`.
 
 ---
 
