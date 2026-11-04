@@ -367,6 +367,11 @@ main[role="presentation"] {
     flex-shrink: 0;
 }
 
+/* Slide oculta: se mantiene en el HTML pero no se renderiza ni navega (ver navigation.js) */
+.slide-container[hidden] {
+    display: none !important;
+}
+
 /* Decoración sutil de fondo */
 .slide-container::before {
     content: "";

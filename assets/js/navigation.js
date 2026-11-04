@@ -18,7 +18,8 @@
     }
     var stage = main.parentElement; // .stage (recién inyectado o preexistente)
 
-    var slides = main.querySelectorAll(".slide-container");
+    /* Slides con atributo `hidden` se conservan en el HTML pero quedan fuera del deck. */
+    var slides = main.querySelectorAll(".slide-container:not([hidden])");
     var total = slides.length;
     var current = 0;
     var SLIDE_WIDTH = 1280;

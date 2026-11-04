@@ -291,17 +291,128 @@
 .reveal-slide.is-current .rv-a {
     animation: rv-in-a 5s cubic-bezier(0.22, 0.61, 0.36, 1) 0.6s both;
 }
+/* Secuencia «apagón» (señal para técnicos: al quedar en negro se apagan las luces de la sala).
+   Línea de tiempo desde la entrada en la diapositiva:
+     0.6s–5.6s   el 4 y la ª se juntan
+     8.1s–18.1s  los tres puntos parpadean (10 s)
+     18.1s–20.3s los puntos se apagan de derecha a izquierda
+     20.6s–34.6s el «4ª» parpadea con interferencia eléctrica progresiva hasta morir
+     34.6s       pantalla completamente negra (también fondo de página, paginación y cursor) */
+.reveal-slide.is-current {
+    cursor: none;
+    animation: rv-room-out 14s linear 20.6s forwards;
+}
 .reveal-slide.is-current .reveal-num {
-    animation: rv-flicker 1.4s linear 5.6s both;
+    animation:
+        rv-flicker 1.4s linear 5.6s both,
+        rv-interference 14s linear 20.6s forwards;
 }
 .reveal-slide.is-current .rv-dots {
     animation: rv-fade 0.9s ease 7.2s forwards;
 }
-.reveal-slide.is-current .rv-dots span {
-    animation: suspense-pulse 1.8s ease-in-out 8.1s infinite;
+/* La segunda animación (rv-dot-off) prevalece sobre el pulso en cuanto arranca. */
+.reveal-slide.is-current .rv-dots span:nth-child(1) {
+    animation: suspense-pulse 1.8s ease-in-out 8.1s infinite, rv-dot-off 0.6s linear 19.7s forwards;
 }
-.reveal-slide.is-current .rv-dots span:nth-child(2) { animation-delay: 8.4s; }
-.reveal-slide.is-current .rv-dots span:nth-child(3) { animation-delay: 8.7s; }
+.reveal-slide.is-current .rv-dots span:nth-child(2) {
+    animation: suspense-pulse 1.8s ease-in-out 8.4s infinite, rv-dot-off 0.6s linear 18.9s forwards;
+}
+.reveal-slide.is-current .rv-dots span:nth-child(3) {
+    animation: suspense-pulse 1.8s ease-in-out 8.7s infinite, rv-dot-off 0.6s linear 18.1s forwards;
+}
+.stage:has(.reveal-slide.is-current) :is(.slide-dots, .slide-number) {
+    animation: rv-hide 1s ease 20.6s forwards;
+}
+body:has(.reveal-slide.is-current) {
+    background-color: #000;
+    transition: background-color 1.2s ease 33.4s;
+}
+@keyframes rv-dot-off {
+    0%   { opacity: 1; }
+    30%  { opacity: 0.2; }
+    45%  { opacity: 0.8; }
+    100% { opacity: 0; }
+}
+@keyframes rv-hide {
+    to { opacity: 0; }
+}
+/* Interferencia eléctrica: caídas esporádicas que se vuelven más frecuentes,
+   con tirones horizontales, un último fogonazo y muerte definitiva. */
+@keyframes rv-interference {
+    0%     { opacity: 1;    filter: none;                     transform: none; }
+    6%     { opacity: 1;    filter: none; }
+    6.5%   { opacity: 0.3;  filter: blur(2px); }
+    7.2%   { opacity: 1;    filter: none; }
+    15%    { opacity: 1; }
+    15.5%  { opacity: 0.2; }
+    16%    { opacity: 0.9; }
+    16.5%  { opacity: 0.35; }
+    17.2%  { opacity: 1; }
+    26%    { opacity: 1;                                      transform: none; }
+    26.4%  { opacity: 0.15;                                   transform: translateX(-6px); }
+    27%    { opacity: 1;                                      transform: none; }
+    31%    { opacity: 0.85; filter: none; }
+    31.4%  { opacity: 0.1;  filter: blur(3px);                transform: translateX(8px); }
+    32%    { opacity: 1;    filter: none;                     transform: none; }
+    33%    { opacity: 0.4; }
+    33.5%  { opacity: 1; }
+    40%    { opacity: 0.9;                                    transform: none; }
+    40.4%  { opacity: 0.05;                                   transform: translateX(-10px) skewX(-4deg); }
+    41.2%  { opacity: 0.8;                                    transform: none; }
+    41.6%  { opacity: 0.2; }
+    42.2%  { opacity: 1;    filter: none; }
+    47%    { opacity: 0.7;  filter: brightness(0.8); }
+    47.4%  { opacity: 0.1;  filter: brightness(0.8) blur(2px); }
+    48%    { opacity: 0.9;  filter: none;                     transform: none; }
+    48.4%  { opacity: 0.3;                                    transform: translateX(12px); }
+    49%    { opacity: 1;                                      transform: none; }
+    55%    { opacity: 0.6; }
+    55.4%  { opacity: 0; }
+    56.2%  { opacity: 0.85; filter: none; }
+    56.6%  { opacity: 0.15; filter: blur(3px); }
+    57.4%  { opacity: 0.7;  filter: none; }
+    58%    { opacity: 0.05; }
+    59%    { opacity: 0.9; }
+    63%    { opacity: 0.5;                                    transform: none; }
+    63.4%  { opacity: 0; }
+    64.4%  { opacity: 0.75;                                   transform: translateX(-14px) skewX(5deg); }
+    65%    { opacity: 0.1;                                    transform: none; }
+    65.6%  { opacity: 0.6; }
+    66.2%  { opacity: 0; }
+    67.6%  { opacity: 0.5; }
+    68%    { opacity: 0; }
+    70%    { opacity: 0.4;  filter: none; }
+    70.3%  { opacity: 0.9;  filter: brightness(1.6); }
+    70.6%  { opacity: 0;    filter: none; }
+    73%    { opacity: 0; }
+    73.4%  { opacity: 0.6; }
+    73.8%  { opacity: 0.1; }
+    75%    { opacity: 0.35; }
+    75.3%  { opacity: 0; }
+    78%    { opacity: 0; }
+    78.3%  { opacity: 0.5; }
+    78.6%  { opacity: 0; }
+    82%    { opacity: 0; }
+    82.3%  { opacity: 0.3; }
+    82.6%  { opacity: 0; }
+    88%    { opacity: 0;    filter: none; }
+    88.4%  { opacity: 1;    filter: brightness(2.2); }
+    90%    { opacity: 0.8;  filter: brightness(1.5); }
+    90.6%  { opacity: 0.1;  filter: none; }
+    91.2%  { opacity: 0.6; }
+    92%    { opacity: 0; }
+    100%   { opacity: 0;    filter: none;                     transform: none; }
+}
+/* El fondo de la diapositiva se va apagando con el número hasta negro total. */
+@keyframes rv-room-out {
+    0%   { filter: brightness(1); }
+    60%  { filter: brightness(0.75); }
+    88%  { filter: brightness(0.4); }
+    88.4%{ filter: brightness(0.9); }
+    90.6%{ filter: brightness(0.3); }
+    95%  { filter: brightness(0); }
+    100% { filter: brightness(0); }
+}
 @keyframes rv-in-4 {
     0%   { opacity: 0; transform: translate(-560px, -340px) scale(2.4); filter: blur(8px); }
     35%  { opacity: 1; }
@@ -328,9 +439,10 @@
 @media (prefers-reduced-motion: reduce) {
     .reveal-slide.is-current .rv-4,
     .reveal-slide.is-current .rv-a,
-    .reveal-slide.is-current .reveal-num,
-    .reveal-slide.is-current .rv-dots span { animation: none; }
+    .reveal-slide.is-current .reveal-num { animation: rv-hide 1s ease 20.6s forwards; }
+    .reveal-slide.is-current .rv-dots span { animation: rv-hide 0.6s ease 18.1s forwards; }
     .reveal-slide.is-current .rv-dots { animation: none; opacity: 1; }
+    /* La señal de apagón se mantiene aunque se reduzca el movimiento. */
 }
 /* Cierre: título centrado en la diapositiva y legible sobre la foto
    (velo oscuro sobre la imagen + sombra suave en el texto). */
@@ -1011,8 +1123,8 @@
 </div>
 </section>
 
-<!-- Cierre -->
-<section class="slide-container ivc ivc-closing closing-centered" aria-label="19. Cierre">
+<!-- Cierre (oculta: no se usa en esta edición; quitar `hidden` para recuperarla) -->
+<section class="slide-container ivc ivc-closing closing-centered" aria-label="19. Cierre" hidden>
 <img class="ivc-bg" src="../assets/img/iv-congreso/photo-tinted.jpg" alt="" aria-hidden="true">
 <img class="ivc-lockup" src="../assets/img/iv-congreso/lockup-white.png" alt="IV Congreso Gestiona Avanza">
 <h2 class="ivc-title"><span>¡Sigamos aprendiendo <span class="ivc-accent">juntos</span>!</span></h2>
