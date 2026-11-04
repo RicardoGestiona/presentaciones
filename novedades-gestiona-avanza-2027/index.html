@@ -93,8 +93,42 @@
 }
 /* 06 · Bytes: frase de entrada + fila de tarjetas (reutiliza .obj-card). */
 .ivc .bytes-free {
-    justify-content: flex-start;
-    gap: 40px;
+    top: 150px;
+    height: 380px;
+    justify-content: center;
+    gap: 48px;
+}
+.ivc .bytes-cards .obj-card {
+    min-height: 180px;
+    padding: 28px 26px;
+    row-gap: 14px;
+}
+.ivc .bytes-cards .obj-text {
+    font-size: 20px;
+}
+/* Contenido AAA: tres pasos con más presencia (número, título y texto mayores). */
+.ivc .bytes-cards--steps .obj-card {
+    min-height: 210px;
+    padding: 32px 30px;
+    grid-template-columns: 48px 1fr;
+    column-gap: 14px;
+    row-gap: 18px;
+}
+.ivc .bytes-cards--steps .obj-num {
+    width: 48px;
+    height: 48px;
+    font-size: 24px;
+}
+.ivc .bytes-cards--steps .obj-title {
+    font-size: 30px;
+}
+.ivc .bytes-cards--steps .obj-text {
+    font-size: 22px;
+}
+/* Tarjetas sin cita: contenido centrado en vertical para no dejar hueco abajo. */
+.ivc .bytes-cards .obj-card:not(:has(.bytes-quote)) {
+    grid-template-rows: auto auto;
+    align-content: center;
 }
 .ivc .bytes-lead {
     margin: 0;
@@ -108,6 +142,10 @@
 }
 .ivc .bytes-cards {
     padding-left: 0;
+}
+.ivc .bytes-cards .obj-title {
+    font-size: 24px;
+    white-space: nowrap;
 }
 .ivc .obj-card.obj-card--plain {
     grid-template-columns: 1fr;
@@ -131,7 +169,18 @@
 /* ¿Cuándo?: pregunta grande y respuesta que aparece con un clic. */
 .ivc.when-slide .ivc-statement-text { font-size: 80px; top: 200px; }
 .ivc.when-slide .when-answer {
-    top: 400px;
+    top: 440px;
+    filter: blur(14px);
+    transition: opacity 2.6s ease, filter 2.6s ease, visibility 0s linear 2.6s;
+}
+.ivc.when-slide .when-answer.visible {
+    filter: none;
+    transition: opacity 2.6s ease, filter 2.6s ease, visibility 0s;
+}
+@media (prefers-reduced-motion: reduce) {
+    .ivc.when-slide .when-answer { filter: none; transition: opacity 0.5s ease; }
+}
+.ivc.when-slide .when-answer {
     font-size: 36px;
     font-style: italic;
     color: var(--ivc-cyan-light);
@@ -168,30 +217,109 @@
     .ivc.suspense-slide .suspense-text { letter-spacing: 0.01em; transition: opacity 0.5s ease; }
     .suspense-dots span { animation: none; }
 }
-/* 07 · Revelación: «4ª» a pantalla completa sobre cian, en contraste con la oscuridad previa. */
+/* 07 · Revelación «4ª», estilo cabecera de serie de los 80: el 4 y la ª entran
+   despacio desde esquinas opuestas con trazo luminoso, se juntan en el centro,
+   parpadean con un desenfoque suave y aparecen tres puntos suspensivos abajo.
+   Se dispara con el primer clic (fase 1). */
 .ivc.reveal-slide {
-    background: var(--ivc-cyan);
+    background: radial-gradient(ellipse at center, #02303b 0%, var(--ivc-petrol-deep) 55%, #001a21 100%);
 }
-.ivc .reveal-num {
+.ivc .reveal-stage {
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
+}
+.ivc .reveal-num {
+    position: absolute;
+    left: 0;
+    top: 40px;
+    width: 100%;
+    height: 520px;
     margin: 0;
     display: flex;
     align-items: center;
     justify-content: center;
     font-family: var(--ivc-head);
     font-weight: 700;
-    font-size: 600px;
+    font-size: 440px;
     line-height: 1;
-    letter-spacing: -0.04em;
-    color: var(--ivc-white);
+    color: transparent;
+    -webkit-text-stroke: 5px var(--ivc-cyan-light);
+    text-shadow: 0 0 18px rgba(0, 180, 211, 0.85), 0 0 60px rgba(0, 180, 211, 0.55);
 }
-.reveal-ord {
+.rv-4,
+.rv-a {
+    display: inline-block;
+}
+.rv-a {
     align-self: flex-start;
-    margin-top: 0.12em;
+    margin-top: 70px;
     font-size: 0.45em;
+    -webkit-text-stroke-width: 4px;
+}
+.ivc .rv-dots {
+    position: absolute;
+    left: 0;
+    top: 560px;
+    width: 100%;
+    margin: 0;
+    text-align: center;
+    font-family: var(--ivc-head);
+    font-weight: 700;
+    font-size: 64px;
+    line-height: 1;
+    letter-spacing: 0.25em;
+    color: var(--ivc-cyan-light);
+    text-shadow: 0 0 14px rgba(0, 180, 211, 0.8);
+    opacity: 0;
+}
+.reveal-stage.visible .rv-4 {
+    animation: rv-in-4 5s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+.reveal-stage.visible .rv-a {
+    animation: rv-in-a 5s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+.reveal-stage.visible .reveal-num {
+    animation: rv-flicker 1.4s linear 5s both;
+}
+.reveal-stage.visible .rv-dots {
+    animation: rv-fade 0.9s ease 6.6s forwards;
+}
+.reveal-stage.visible .rv-dots span {
+    animation: suspense-pulse 1.8s ease-in-out 7.5s infinite;
+}
+.reveal-stage.visible .rv-dots span:nth-child(2) { animation-delay: 7.8s; }
+.reveal-stage.visible .rv-dots span:nth-child(3) { animation-delay: 8.1s; }
+@keyframes rv-in-4 {
+    0%   { opacity: 0; transform: translate(-560px, -340px) scale(2.4); filter: blur(8px); }
+    35%  { opacity: 1; }
+    100% { opacity: 1; transform: none; filter: none; }
+}
+@keyframes rv-in-a {
+    0%   { opacity: 0; transform: translate(620px, 380px) scale(2.4); filter: blur(8px); }
+    35%  { opacity: 1; }
+    100% { opacity: 1; transform: none; filter: none; }
+}
+@keyframes rv-flicker {
+    0%   { opacity: 1;    filter: none; }
+    10%  { opacity: 0.25; filter: blur(3px); }
+    18%  { opacity: 1;    filter: none; }
+    30%  { opacity: 0.45; filter: blur(2px); }
+    38%  { opacity: 1;    filter: none; }
+    55%  { opacity: 0.7;  filter: blur(1.5px); }
+    65%  { opacity: 1;    filter: none; }
+    100% { opacity: 1;    filter: none; }
+}
+@keyframes rv-fade {
+    to { opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .reveal-stage.visible .rv-4,
+    .reveal-stage.visible .rv-a,
+    .reveal-stage.visible .reveal-num,
+    .reveal-stage.visible .rv-dots span { animation: none; }
+    .reveal-stage.visible .rv-dots { animation: none; opacity: 1; }
 }
 /* Índice sobrio: dos columnas de líneas numeradas separadas por un filete. */
 .idx-list {
@@ -706,52 +834,60 @@
 <span class="ivc-num">10</span>
 </section>
 
-<!-- 05 · Eventos Gestiona Avanza: Datathon y Hackathon -->
-<section class="slide-container ivc ivc-title-only" aria-label="11. Eventos Gestiona Avanza">
+<!-- 05 · Eventos Gestiona Avanza: una diapositiva por evento -->
+<section class="slide-container ivc ivc-title-only" aria-label="11. I Datathon Gestiona Avanza">
 <img class="ivc-lockup" src="../assets/img/iv-congreso/lockup-color.png" alt="IV Congreso Gestiona Avanza">
 <img class="ivc-endorse" src="../assets/img/iv-congreso/gestiona-espublico-color.png" alt="Gestiona esPublico">
 <p class="ivc-kicker idx-tag"><span class="idx-tag-num">05</span> Eventos Gestiona Avanza</p>
-<h2 class="ivc-title">Eventos Gestiona Avanza</h2>
-<div class="ivc-free"><div class="prog-blocks">
-<article class="prog-block prog-block--analiza"><h3 class="prog-name">I Datathon Gestiona Avanza</h3><div class="prog-body"><dl class="evt-facts"><dt>Dónde</dt><dd>Valencia</dd><dt>Cuándo</dt><dd>Del 7 al 9 de abril</dd><dt>Quién</dt><dd>Usuarios certificados en Analiza y Admin.Avanzada</dd><dt>Descripción</dt><dd>Construcción de gemelos digitales y depuración de fuentes públicas de datos y su aplicación en la tramitación administrativa</dd></dl></div></article>
-<article class="prog-block prog-block--developers"><h3 class="prog-name">II Hackathon Gestiona Avanza</h3><div class="prog-body"><dl class="evt-facts"><dt>Dónde</dt><dd>Torrevieja</dd><dt>Cuándo</dt><dd>Del 24 al 26 de febrero</dd><dt>Quién</dt><dd>Usuarios certificados en Developers, Admin.Avanzada y Analiza</dd><dt>Descripción</dt><dd>Diseño, desarrollo y despliegue de un proyecto 360º que se pueda poner en producción</dd></dl></div></article>
-</div></div>
+<h2 class="ivc-title">I Datathon Gestiona Avanza</h2>
+<div class="ivc-free evt-layout"><div class="evt-card evt-card--datathon"><dl class="evt-facts evt-facts--lg"><dt>Dónde</dt><dd>Valencia</dd><dt>Cuándo</dt><dd>Del 7 al 9 de abril</dd><dt>Quién</dt><dd>Usuarios certificados en Analiza y Admin.Avanzada</dd><dt>Descripción</dt><dd>Construcción de gemelos digitales y depuración de fuentes públicas de datos y su aplicación en la tramitación administrativa</dd></dl></div>
+<figure class="evt-photo evt-photo--pending"><figcaption>Imagen pendiente</figcaption></figure></div>
 <span class="ivc-num">11</span>
 </section>
 
-<!-- 06 · Gestiona Avanza Bytes: resumen en tres diapositivas -->
-<section class="slide-container ivc ivc-title-only" aria-label="12. ¿Qué es Gestiona Avanza Bytes?">
+<section class="slide-container ivc ivc-title-only" aria-label="12. II Hackathon Gestiona Avanza">
 <img class="ivc-lockup" src="../assets/img/iv-congreso/lockup-color.png" alt="IV Congreso Gestiona Avanza">
 <img class="ivc-endorse" src="../assets/img/iv-congreso/gestiona-espublico-color.png" alt="Gestiona esPublico">
-<p class="ivc-kicker idx-tag"><span class="idx-tag-num">06</span> Gestiona Avanza Bytes</p>
-<h2 class="ivc-title">¿Qué es Gestiona Avanza Bytes?</h2>
-<div class="ivc-free bytes-free"><p class="bytes-lead">Canal de <strong>microformación audiovisual</strong> en formato vertical: píldoras breves sobre los módulos y funcionalidades de Gestiona que complementan la formación estructurada.</p>
-<ol class="obj-cards bytes-cards"><li class="obj-card obj-card--plain"><h3 class="obj-title">Academy</h3><p class="obj-text"><strong>Forma.</strong> Cursos, itinerarios y sesiones con desarrollo y profundidad</p></li><li class="obj-card obj-card--plain"><h3 class="obj-title">Forum</h3><p class="obj-text"><strong>Conecta.</strong> Relación, participación e intercambio de experiencias</p></li><li class="obj-card obj-card--plain bytes-card--hl"><h3 class="obj-title">Bytes</h3><p class="obj-text"><strong>Acompaña.</strong> Descubre funcionalidades, resuelve tareas y conoce las novedades</p></li></ol></div>
+<p class="ivc-kicker idx-tag"><span class="idx-tag-num">05</span> Eventos Gestiona Avanza</p>
+<h2 class="ivc-title">II Hackathon Gestiona Avanza</h2>
+<div class="ivc-free evt-layout"><div class="evt-card evt-card--hackathon"><dl class="evt-facts evt-facts--lg"><dt>Dónde</dt><dd>Torrevieja</dd><dt>Cuándo</dt><dd>Del 24 al 26 de febrero</dd><dt>Quién</dt><dd>Usuarios certificados en Developers, Admin.Avanzada y Analiza</dd><dt>Descripción</dt><dd>Diseño, desarrollo y despliegue de un proyecto 360º que se pueda poner en producción</dd></dl></div>
+<figure class="evt-photo evt-photo--pending"><figcaption>Imagen pendiente</figcaption></figure></div>
 <span class="ivc-num">12</span>
 </section>
 
-<section class="slide-container ivc ivc-title-only" aria-label="13. Aprende · Aplica · Avanza">
+<!-- 06 · Gestiona Avanza Bytes: resumen en tres diapositivas -->
+<section class="slide-container ivc ivc-title-only" aria-label="13. Nuevo proyecto «Gestiona Avanza Bytes»">
 <img class="ivc-lockup" src="../assets/img/iv-congreso/lockup-color.png" alt="IV Congreso Gestiona Avanza">
 <img class="ivc-endorse" src="../assets/img/iv-congreso/gestiona-espublico-color.png" alt="Gestiona esPublico">
 <p class="ivc-kicker idx-tag"><span class="idx-tag-num">06</span> Gestiona Avanza Bytes</p>
-<h2 class="ivc-title">Aprende · Aplica · Avanza</h2>
-<div class="ivc-free bytes-free"><p class="bytes-lead">Cada Byte sigue la misma estructura: <strong>una única idea</strong>, de 15 a 30 segundos, en vertical 9:16.</p>
-<ol class="obj-cards bytes-cards"><li class="obj-card"><span class="obj-num" aria-hidden="true">1</span><h3 class="obj-title">Aprende</h3><p class="obj-text"><strong>0–4 s.</strong> Presenta lo que se va a aprender</p></li><li class="obj-card"><span class="obj-num" aria-hidden="true">2</span><h3 class="obj-title">Aplica</h3><p class="obj-text"><strong>4–18 s.</strong> La interfaz real de Gestiona es la protagonista</p></li><li class="obj-card"><span class="obj-num" aria-hidden="true">3</span><h3 class="obj-title">Avanza</h3><p class="obj-text"><strong>2–4 s.</strong> Muestra el resultado conseguido</p></li><li class="obj-card"><span class="obj-num" aria-hidden="true">4</span><h3 class="obj-title">Firma</h3><p class="obj-text"><strong>1–2 s.</strong> Cierre común del canal con la «A» de Gestiona Avanza</p></li></ol></div>
+<h2 class="ivc-title">Nuevo proyecto «Gestiona Avanza Bytes»</h2>
+<div class="ivc-free bytes-free"><p class="bytes-lead">Canal de <strong>microformación audiovisual</strong> en formato vertical: píldoras breves sobre los módulos y funcionalidades de Gestiona que complementan la formación estructurada.</p>
+<ol class="obj-cards bytes-cards"><li class="obj-card obj-card--plain"><h3 class="obj-title">Academy – Formación</h3><p class="obj-text">Cursos, itinerarios y sesiones con desarrollo y profundidad</p></li><li class="obj-card obj-card--plain"><h3 class="obj-title">Forum – Conexión</h3><p class="obj-text">Relación, participación e intercambio de experiencias</p></li><li class="obj-card obj-card--plain bytes-card--hl"><h3 class="obj-title">Bytes – Acompañamiento</h3><p class="obj-text">Descubre funcionalidades, resuelve tareas y conoce las novedades</p></li></ol></div>
 <span class="ivc-num">13</span>
 </section>
 
-<section class="slide-container ivc ivc-title-only" aria-label="14. Cuatro tipologías, una misma estructura">
+<section class="slide-container ivc ivc-title-only" aria-label="14. Contenido AAA">
 <img class="ivc-lockup" src="../assets/img/iv-congreso/lockup-color.png" alt="IV Congreso Gestiona Avanza">
 <img class="ivc-endorse" src="../assets/img/iv-congreso/gestiona-espublico-color.png" alt="Gestiona esPublico">
 <p class="ivc-kicker idx-tag"><span class="idx-tag-num">06</span> Gestiona Avanza Bytes</p>
-<h2 class="ivc-title">Cuatro tipologías, una misma estructura</h2>
-<div class="ivc-free bytes-free"><p class="bytes-lead">Cada tipología responde a una pregunta del usuario y busca un resultado concreto.</p>
-<ol class="obj-cards bytes-cards"><li class="obj-card obj-card--plain"><h3 class="obj-title">¿Sabías que…?</h3><p class="obj-text">Funcionalidades útiles y poco conocidas</p><p class="bytes-quote">«No sabía que existía»</p></li><li class="obj-card obj-card--plain"><h3 class="obj-title">Quick Tip</h3><p class="obj-text">Consejos para trabajar de forma más ágil</p><p class="bytes-quote">«Voy a probarlo así»</p></li><li class="obj-card obj-card--plain"><h3 class="obj-title">How To</h3><p class="obj-text">Un procedimiento concreto, paso a paso</p><p class="bytes-quote">«Ahora sé hacerlo»</p></li><li class="obj-card obj-card--plain"><h3 class="obj-title">What's New</h3><p class="obj-text">Novedades y evolución de Gestiona</p><p class="bytes-quote">«Quiero utilizar la novedad»</p></li></ol></div>
+<h2 class="ivc-title">Contenido AAA</h2>
+<div class="ivc-free bytes-free"><p class="bytes-lead">Cada Byte sigue la misma estructura: <strong>una única idea</strong>, de 15 a 30 segundos, en vertical 9:16.</p>
+<ol class="obj-cards bytes-cards bytes-cards--steps"><li class="obj-card"><span class="obj-num" aria-hidden="true">1</span><h3 class="obj-title">Aprende</h3><p class="obj-text"><strong>0–4 s.</strong> Presenta lo que se va a aprender</p></li><li class="obj-card"><span class="obj-num" aria-hidden="true">2</span><h3 class="obj-title">Aplica</h3><p class="obj-text"><strong>4–18 s.</strong> La interfaz real de Gestiona es la protagonista</p></li><li class="obj-card"><span class="obj-num" aria-hidden="true">3</span><h3 class="obj-title">Avanza</h3><p class="obj-text"><strong>2–4 s.</strong> Muestra el resultado conseguido</p></li></ol></div>
 <span class="ivc-num">14</span>
 </section>
 
+<section class="slide-container ivc ivc-title-only" aria-label="15. Tipología de contenido">
+<img class="ivc-lockup" src="../assets/img/iv-congreso/lockup-color.png" alt="IV Congreso Gestiona Avanza">
+<img class="ivc-endorse" src="../assets/img/iv-congreso/gestiona-espublico-color.png" alt="Gestiona esPublico">
+<p class="ivc-kicker idx-tag"><span class="idx-tag-num">06</span> Gestiona Avanza Bytes</p>
+<h2 class="ivc-title">Tipología de contenido</h2>
+<div class="ivc-free bytes-free"><p class="bytes-lead">Cada tipología responde a una pregunta del usuario y busca un resultado concreto.</p>
+<ol class="obj-cards bytes-cards"><li class="obj-card obj-card--plain"><h3 class="obj-title">¿Sabías que…?</h3><p class="obj-text">Funcionalidades útiles y poco conocidas</p><p class="bytes-quote">«No sabía que existía»</p></li><li class="obj-card obj-card--plain"><h3 class="obj-title">Quick Tip</h3><p class="obj-text">Consejos para trabajar de forma más ágil</p><p class="bytes-quote">«Voy a probarlo así»</p></li><li class="obj-card obj-card--plain"><h3 class="obj-title">How To</h3><p class="obj-text">Un procedimiento concreto, paso a paso</p><p class="bytes-quote">«Ahora sé hacerlo»</p></li><li class="obj-card obj-card--plain"><h3 class="obj-title">What's New</h3><p class="obj-text">Novedades y evolución de Gestiona</p><p class="bytes-quote">«Quiero utilizarlo»</p></li></ol></div>
+<span class="ivc-num">15</span>
+</section>
+
 <!-- 06 · Bytes: ¿cuándo? -->
-<section class="slide-container ivc ivc-statement when-slide" aria-label="15. ¿Cuándo?">
+<section class="slide-container ivc ivc-statement when-slide" aria-label="16. ¿Cuándo?">
 <img class="ivc-lockup" src="../assets/img/iv-congreso/lockup-white.png" alt="IV Congreso Gestiona Avanza">
 <img class="ivc-endorse" src="../assets/img/iv-congreso/gestiona-espublico-white.png" alt="Gestiona esPublico">
 <p class="ivc-kicker idx-tag"><span class="idx-tag-num">06</span> Gestiona Avanza Bytes</p>
@@ -760,20 +896,22 @@
 </section>
 
 <!-- 07 · One more thing…: diapositiva de suspense -->
-<section class="slide-container ivc ivc-statement suspense-slide" aria-label="16. One more thing…">
+<section class="slide-container ivc ivc-statement suspense-slide" aria-label="17. One more thing…">
 <img class="ivc-lockup" src="../assets/img/iv-congreso/lockup-white.png" alt="IV Congreso Gestiona Avanza">
 <img class="ivc-endorse" src="../assets/img/iv-congreso/gestiona-espublico-white.png" alt="Gestiona esPublico">
-<p class="ivc-kicker idx-tag"><span class="idx-tag-num">07</span></p>
 <p class="ivc-statement-text statement-centered suspense-text phase phase--fade" data-phase="1">One more thing<span class="suspense-dots" aria-hidden="true"><span>.</span><span>.</span><span>.</span></span></p>
 </section>
 
 <!-- 07 · Revelación: 4ª certificación -->
-<section class="slide-container ivc ivc-statement reveal-slide" aria-label="17. Cuarta certificación">
-<p class="reveal-num" aria-label="Cuarta certificación">4<span class="reveal-ord">ª</span></p>
+<section class="slide-container ivc ivc-statement reveal-slide" aria-label="18. Cuarta certificación">
+<div class="reveal-stage phase phase--fade" data-phase="1" role="img" aria-label="Cuarta certificación">
+<p class="reveal-num" aria-hidden="true"><span class="rv-4">4</span><span class="rv-a">ª</span></p>
+<p class="rv-dots" aria-hidden="true"><span>.</span><span>.</span><span>.</span></p>
+</div>
 </section>
 
 <!-- Cierre -->
-<section class="slide-container ivc ivc-closing" aria-label="18. Cierre">
+<section class="slide-container ivc ivc-closing" aria-label="19. Cierre">
 <img class="ivc-bg" src="../assets/img/iv-congreso/photo-tinted.jpg" alt="" aria-hidden="true">
 <img class="ivc-lockup" src="../assets/img/iv-congreso/lockup-white.png" alt="IV Congreso Gestiona Avanza">
 <h2 class="ivc-title"><span>¡Sigamos aprendiendo <span class="ivc-accent">juntos</span>!</span></h2>
