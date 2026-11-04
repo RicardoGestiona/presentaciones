@@ -176,6 +176,95 @@
 .portal-steps strong {
     color: var(--ivc-petrol);
 }
+/* Diapositiva de intención: más aire entre bloques y entre objetivos. */
+.portal-intro {
+    top: 156px;   /* casi alineado con el cuerpo del resto de diapositivas (168 px) */
+}
+.ivc .portal-intro .portal-quote {
+    margin-bottom: 28px;
+}
+.ivc .portal-intro .portal-lead {
+    margin-bottom: 12px;
+}
+.ivc .portal-intro .portal-lead--next {
+    margin-bottom: 24px;   /* más aire entre «Objetivos» y su lista */
+}
+.portal-objectives {
+    font-size: 23px;
+}
+.ivc .portal-objectives > li {
+    margin-bottom: 14px;
+}
+/* Objetivos en tarjetas: número + palabra clave en cabecera, descripción debajo. */
+.ivc .portal-intro .obj-cards {
+    padding-left: 0;
+}
+.obj-cards {
+    display: flex;
+    gap: 24px;
+    width: 1122px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.ivc .obj-card {
+    flex: 1 1 0;
+    min-width: 0;
+    margin: 0;
+    padding: 22px 22px 24px;
+    box-sizing: border-box;
+    border-radius: 12px;
+    background: var(--ivc-surface);
+    display: grid;
+    grid-template-columns: 36px 1fr;
+    grid-template-rows: auto 1fr;
+    align-content: start;
+    column-gap: 12px;
+    row-gap: 12px;
+    align-items: center;
+}
+.obj-num {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--ivc-petrol);
+    font-family: var(--ivc-head);
+    font-weight: 700;
+    font-size: 19px;
+    color: var(--ivc-white);
+}
+.ivc .obj-title {
+    margin: 0;
+    font-family: var(--ivc-head);
+    font-weight: 700;
+    font-size: 26px;
+    line-height: 1.1;
+    color: var(--ivc-petrol);
+}
+.ivc .obj-text {
+    grid-column: 1 / -1;
+    align-self: start;
+    margin: 0;
+    font-size: 19px;
+    line-height: 1.35;
+    color: var(--ivc-ink);
+}
+/* Propuesta: lista numerada centrada en vertical junto a las capturas. */
+.portal-proposal {
+    display: flex;
+    align-items: center;
+    height: 400px !important;
+}
+.portal-proposal .portal-steps {
+    font-size: 27px;
+    line-height: 1.3;
+}
+.ivc .portal-proposal .portal-steps > li {
+    margin-bottom: 36px;
+}
 /* Cita: cursiva con comillas en cian. */
 .ivc .portal-quote {
     margin: 0 0 22px;
@@ -196,22 +285,22 @@
 .portal-quote::after  { content: "»"; margin-left: 2px; }
 .portal-stack {
     left: 640px;
-    top: 262px;
+    top: 168px;
     width: 590px;
-    height: 310px;
+    height: 400px;
 }
 .portal-shot {
     position: absolute;
-    width: 262px;
+    width: 275px;
     margin: 0;
 }
-.portal-shot:nth-child(1) { left: 0;     top: 4px; }
-.portal-shot:nth-child(2) { left: 292px; top: 0; }
-.portal-shot:nth-child(3) { left: 10px;  top: 160px; }
-.portal-shot:nth-child(4) { left: 300px; top: 156px; }
+.portal-shot:nth-child(1) { left: 0;     top: 6px; }
+.portal-shot:nth-child(2) { left: 300px; top: 0; }
+.portal-shot:nth-child(3) { left: 10px;  top: 206px; }
+.portal-shot:nth-child(4) { left: 305px; top: 200px; }
 .portal-frame {
     position: relative;
-    height: 140px;
+    height: 180px;
     border-radius: 12px;
     overflow: hidden;
     background: var(--ivc-white);
@@ -237,6 +326,54 @@
     color: var(--ivc-white);
 }
 
+/* Pie de la frase destacada, centrado bajo la frase. */
+.ivc .source-centered {
+    width: 1050px;
+    text-align: center;
+    font-size: 27px;
+}
+.cta-mail {
+    display: inline-block;
+    margin-left: 6px;
+    padding: 6px 20px;
+    border-radius: 999px;
+    background: var(--ivc-white);
+    font-weight: 700;
+    color: var(--ivc-petrol);
+}
+/* Diapositiva de llamada a la acción: bloque subido 40 px para dejar sitio al botón. */
+.ivc.cta-slide .ivc-statement-text { top: 142px; }
+.ivc.cta-slide .ivc-source { top: 426px; }
+.ivc.cta-slide .cta-button { top: 540px; }
+/* Botón de llamada a la acción, centrado bajo el correo. */
+.ivc .cta-button {
+    left: 50%;
+    top: 548px;
+    transform: translateX(-50%);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 6px 20px;
+    border-radius: 999px;
+    background: var(--ivc-white);
+    font-family: var(--ivc-body);
+    font-weight: 700;
+    font-size: 24px;
+    color: var(--ivc-petrol);
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background 0.2s ease;
+}
+.ivc .cta-button:hover,
+.ivc .cta-button:focus-visible {
+    background: var(--ivc-cyan-light);
+    outline: 3px solid var(--ivc-cyan);
+    outline-offset: 3px;
+}
+.cta-ext {
+    width: 20px;
+    height: 20px;
+}
 /* Frase destacada centrada y algo mayor que la de la plantilla (45 px). */
 .ivc .statement-centered {
     justify-content: center;
@@ -312,33 +449,39 @@
 <img class="ivc-lockup" src="../assets/img/iv-congreso/lockup-color.png" alt="IV Congreso Gestiona Avanza">
 <img class="ivc-endorse" src="../assets/img/iv-congreso/gestiona-espublico-color.png" alt="Gestiona esPublico">
 <h2 class="ivc-title">Plan personalizado de Formación</h2>
-<div class="ivc-body portal-intro"><p class="portal-lead">Principios</p>
-<blockquote class="portal-quote">Si cada entidad es distinta, también debería serlo su plan de formación</blockquote>
-<p class="portal-lead portal-lead--next">Objetivos</p>
-<ol class="ivc-list ivc-list--numbered portal-steps"><li><strong>Formación eficaz:</strong> lo que se aprende se aplica a diario</li><li><strong>Ampliamos alcance:</strong> la formación llega a todos los usuarios de la entidad</li><li><strong>Contenido relevante:</strong> alineado con las necesidades y prioridades de la entidad</li><li><strong>Autonomía del usuario:</strong> posibilidad de inscripción libre en todo el catálogo de la Academy</li></ol></div>
+<div class="ivc-body portal-intro"><p class="portal-lead phase" data-phase="1">Principios</p>
+<blockquote class="portal-quote phase" data-phase="1">Si cada entidad es distinta, también debería serlo su plan de formación</blockquote>
+<p class="portal-lead portal-lead--next phase" data-phase="2">Objetivos</p>
+<ol class="obj-cards"><li class="obj-card phase" data-phase="2"><span class="obj-num" aria-hidden="true">1</span><h3 class="obj-title">Eficacia</h3><p class="obj-text">lo que se aprende se aplica a diario</p></li><li class="obj-card phase" data-phase="3"><span class="obj-num" aria-hidden="true">2</span><h3 class="obj-title">Alcance</h3><p class="obj-text">la formación llega a todos los usuarios de la entidad</p></li><li class="obj-card phase" data-phase="4"><span class="obj-num" aria-hidden="true">3</span><h3 class="obj-title">Contenido</h3><p class="obj-text">alineado con las necesidades y prioridades de la entidad</p></li><li class="obj-card phase" data-phase="5"><span class="obj-num" aria-hidden="true">4</span><h3 class="obj-title">Autonomía</h3><p class="obj-text">posibilidad de inscripción en todo el catálogo de la Academy</p></li></ol></div>
 <span class="ivc-num">8</span>
 </section>
 
-<!-- Bloque 2 · (copia) Portales formativos por entidad: las capturas entran una a una -->
-<section class="slide-container ivc ivc-image-text" aria-label="9. ¿Qué es un plan personalizado de formación?">
+<!-- Bloque 2 · Nuestra propuesta: lista + portales formativos por entidad: las capturas entran una a una -->
+<section class="slide-container ivc ivc-image-text" aria-label="9. Nuestra propuesta">
 <img class="ivc-lockup" src="../assets/img/iv-congreso/lockup-color.png" alt="IV Congreso Gestiona Avanza">
 <img class="ivc-endorse" src="../assets/img/iv-congreso/gestiona-espublico-color.png" alt="Gestiona esPublico">
-<h2 class="ivc-title">¿Qué es un plan personalizado de formación?</h2>
-<div class="ivc-body"><p class="portal-lead">Principios</p>
-<blockquote class="portal-quote">Si cada entidad es distinta, también debería serlo su plan de formación</blockquote>
-<p class="portal-lead portal-lead--next">Nuestra propuesta</p>
-<ol class="ivc-list ivc-list--numbered portal-steps"><li>Consultoría a cargo de especialistas</li><li>Diseño de un portal con identidad propia</li><li>Calendario unificado de formación</li></ol></div>
+<h2 class="ivc-title">Nuestra propuesta</h2>
+<div class="ivc-body portal-proposal"><ol class="ivc-list ivc-list--numbered portal-steps"><li class="phase" data-phase="1">Consultoría a cargo de especialistas en diseño de programas formativos</li><li class="phase" data-phase="2">Diseño de un portal con identidad propia</li><li class="phase" data-phase="3">Calendario unificado de formación presencial + online</li></ol></div>
 <div class="portal-stack">
-<figure class="portal-shot phase phase--fade" data-phase="1"><div class="portal-frame"><img src="img/portal-eivissa.jpg" alt="Portal formativo de Eivissa"><figcaption>Eivissa</figcaption></div></figure>
-<figure class="portal-shot phase phase--fade" data-phase="2"><div class="portal-frame"><img src="img/portal-castellon.jpg" alt="Portal formativo de Castellón"><figcaption>Castellón</figcaption></div></figure>
-<figure class="portal-shot phase phase--fade" data-phase="3"><div class="portal-frame"><img src="img/portal-el-prat.jpg" alt="Portal formativo de El Prat de Llobregat"><figcaption>El Prat de Llobregat</figcaption></div></figure>
-<figure class="portal-shot phase phase--fade" data-phase="4"><div class="portal-frame"><img src="img/portal-setdiba.jpg" alt="Portal SeTDIBA"><figcaption>SeTDIBA</figcaption></div></figure>
+<figure class="portal-shot phase phase--fade" data-phase="4"><div class="portal-frame"><img src="img/portal-eivissa.jpg" alt="Portal formativo de Eivissa"><figcaption>Eivissa</figcaption></div></figure>
+<figure class="portal-shot phase phase--fade" data-phase="5"><div class="portal-frame"><img src="img/portal-castellon.jpg" alt="Portal formativo de Castellón"><figcaption>Castellón</figcaption></div></figure>
+<figure class="portal-shot phase phase--fade" data-phase="6"><div class="portal-frame"><img src="img/portal-el-prat.jpg" alt="Portal formativo de El Prat de Llobregat"><figcaption>El Prat de Llobregat</figcaption></div></figure>
+<figure class="portal-shot phase phase--fade" data-phase="7"><div class="portal-frame"><img src="img/portal-setdiba.jpg" alt="Portal SeTDIBA"><figcaption>SeTDIBA</figcaption></div></figure>
 </div>
 <span class="ivc-num">9</span>
 </section>
 
+<!-- Bloque 2 · Llamada a la acción -->
+<section class="slide-container ivc ivc-statement cta-slide" aria-label="10. ¿Queréis un plan personalizado para vuestra entidad?">
+<img class="ivc-lockup" src="../assets/img/iv-congreso/lockup-white.png" alt="IV Congreso Gestiona Avanza">
+<img class="ivc-endorse" src="../assets/img/iv-congreso/gestiona-espublico-white.png" alt="Gestiona esPublico">
+<p class="ivc-statement-text statement-centered">¿Queréis un plan personalizado para vuestra entidad?</p>
+<p class="ivc-source source-centered">Más info en <strong class="cta-mail">formaciongestiona@espublico.com</strong></p>
+<a class="cta-button" href="https://espublico.gestiona.academy" target="_blank" rel="noopener noreferrer" aria-label="¿Lo vemos? Abrir Gestiona Academy">¿Lo vemos? <svg class="cta-ext" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg></a>
+</section>
+
 <!-- Cierre -->
-<section class="slide-container ivc ivc-closing" aria-label="10. Cierre">
+<section class="slide-container ivc ivc-closing" aria-label="11. Cierre">
 <img class="ivc-bg" src="../assets/img/iv-congreso/photo-tinted.jpg" alt="" aria-hidden="true">
 <img class="ivc-lockup" src="../assets/img/iv-congreso/lockup-white.png" alt="IV Congreso Gestiona Avanza">
 <h2 class="ivc-title"><span>¡Sigamos aprendiendo <span class="ivc-accent">juntos</span>!</span></h2>
