@@ -69,6 +69,65 @@
 .ivc .prog-list > li:last-child {
     margin-bottom: 0;
 }
+/* 05 · Ficha de evento: etiqueta en columna fija + dato. */
+.evt-facts {
+    display: grid;
+    grid-template-columns: 136px 1fr;
+    column-gap: 14px;
+    row-gap: 12px;
+    margin: 0;
+    font-size: 21px;
+    line-height: 1.3;
+}
+.evt-facts dt {
+    font-weight: 700;
+    color: var(--ivc-petrol);
+}
+.evt-facts dd {
+    margin: 0;
+    color: var(--ivc-ink);
+}
+.evt-facts .evt-todo {
+    font-style: italic;
+    color: var(--ivc-muted);
+}
+/* 06 · Bytes: frase de entrada + fila de tarjetas (reutiliza .obj-card). */
+.ivc .bytes-free {
+    justify-content: flex-start;
+    gap: 40px;
+}
+.ivc .bytes-lead {
+    margin: 0;
+    max-width: 1122px;
+    font-size: 26px;
+    line-height: 1.4;
+    color: var(--ivc-ink);
+}
+.ivc .bytes-lead strong {
+    color: var(--ivc-petrol);
+}
+.ivc .bytes-cards {
+    padding-left: 0;
+}
+.ivc .obj-card.obj-card--plain {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto 1fr;
+}
+.ivc .obj-text strong {
+    color: var(--ivc-petrol);
+}
+.ivc .bytes-card--hl {
+    background: var(--ivc-white);
+    box-shadow: inset 0 0 0 3px var(--ivc-cyan);
+}
+.ivc .bytes-quote {
+    grid-column: 1 / -1;
+    align-self: end;
+    margin: 0;
+    font-size: 18px;
+    font-style: italic;
+    color: var(--ivc-muted);
+}
 /* Índice sobrio: dos columnas de líneas numeradas separadas por un filete. */
 .idx-list {
     display: grid;
@@ -488,7 +547,7 @@
 <img class="ivc-lockup" src="../assets/img/iv-congreso/lockup-color.png" alt="IV Congreso Gestiona Avanza">
 <img class="ivc-endorse" src="../assets/img/iv-congreso/gestiona-espublico-color.png" alt="Gestiona esPublico">
 <h2 class="ivc-title">Índice</h2>
-<ol class="ivc-board idx-list"><li class="idx-item"><span class="idx-num">01</span><span class="idx-title">Balance mejoras 2026</span></li><li class="idx-item"><span class="idx-num">02</span><span class="idx-title">Planes formativos personalizados</span></li><li class="idx-item"><span class="idx-num">03</span><span class="idx-title">Rediseño Academy y nueva página del certificado</span></li><li class="idx-item"><span class="idx-num">04</span><span class="idx-title">Ajustes programas de certificación</span></li><li class="idx-item"><span class="idx-num">05</span><span class="idx-title">I Datathon Gestiona</span></li><li class="idx-item"><span class="idx-num">06</span><span class="idx-title">Gestiona Avanza Bytes</span></li><li class="idx-item"><span class="idx-num">07</span><span class="idx-title">One more thing…</span></li></ol>
+<ol class="ivc-board idx-list"><li class="idx-item"><span class="idx-num">01</span><span class="idx-title">Balance mejoras 2026</span></li><li class="idx-item"><span class="idx-num">02</span><span class="idx-title">Planes formativos personalizados</span></li><li class="idx-item"><span class="idx-num">03</span><span class="idx-title">Novedades Academy</span></li><li class="idx-item"><span class="idx-num">04</span><span class="idx-title">Ajustes programas de certificación</span></li><li class="idx-item"><span class="idx-num">05</span><span class="idx-title">Eventos Gestiona Avanza</span></li><li class="idx-item"><span class="idx-num">06</span><span class="idx-title">Gestiona Avanza Bytes</span></li><li class="idx-item"><span class="idx-num">07</span><span class="idx-title">One more thing…</span></li></ol>
 <span class="ivc-num">2</span>
 </section>
 
@@ -527,7 +586,7 @@
 <p class="ivc-kicker idx-tag"><span class="idx-tag-num">02</span> Planes formativos personalizados</p>
 <h2 class="ivc-title">Datos uso Gestiona Avanza Academy</h2>
 <div class="ivc-free"><div class="cmp-cards"><div class="cmp-card cmp-card--general phase" data-phase="1"><h3 class="cmp-name">Global</h3><p class="cmp-sub cmp-sub--muted">8.000 entidades</p><div class="cmp-metric"><div class="cmp-metric-head">Usuarios en Gestiona</div><div class="acad-track"><i class="acad-bar acad-bar--gestiona" style="--w:100%"><span class="cmp-value">225.000</span></i></div></div><div class="cmp-metric"><div class="cmp-metric-head">Usuarios en la Academy</div><div class="acad-track"><i class="acad-bar acad-bar--academy" style="--w:31.1%"><span class="cmp-value">70.000</span></i></div></div><div class="cmp-metric"><div class="cmp-metric-head">Completan las nociones básicas</div><div class="acad-track"><i class="acad-bar acad-bar--done" style="--w:23.7%"><span class="cmp-value">23,7 %</span></i></div></div></div><div class="cmp-card cmp-card--custom phase" data-phase="2"><h3 class="cmp-name">Plan personalizado</h3><p class="cmp-sub cmp-sub--muted">6 entidades</p><div class="cmp-metric"><div class="cmp-metric-head">Usuarios en Gestiona</div><div class="acad-track"><i class="acad-bar acad-bar--gestiona" style="--w:100%"><span class="cmp-value">8.237</span></i></div></div><div class="cmp-metric"><div class="cmp-metric-head">Usuarios en la Academy</div><div class="acad-track"><i class="acad-bar acad-bar--academy" style="--w:80%"><span class="cmp-value">6.589</span></i></div></div><div class="cmp-metric"><div class="cmp-metric-head">Completan las nociones básicas</div><div class="acad-track"><i class="acad-bar acad-bar--done" style="--w:62.1%"><span class="cmp-value">62,1 %</span></i></div></div></div></div></div>
-<span class="ivc-num">7</span>
+<span class="ivc-num">6</span>
 </section>
 
 <!-- Bloque 2 · Portales formativos por entidad: las capturas entran una a una -->
@@ -540,7 +599,7 @@
 <blockquote class="portal-quote phase" data-phase="1">Si cada entidad es distinta, también debería serlo su plan de formación</blockquote>
 <p class="portal-lead portal-lead--next phase" data-phase="2">Objetivos</p>
 <ol class="obj-cards"><li class="obj-card phase" data-phase="2"><span class="obj-num" aria-hidden="true">1</span><h3 class="obj-title">Eficacia</h3><p class="obj-text">lo que se aprende se aplica a diario</p></li><li class="obj-card phase" data-phase="3"><span class="obj-num" aria-hidden="true">2</span><h3 class="obj-title">Alcance</h3><p class="obj-text">la formación llega a todos los usuarios de la entidad</p></li><li class="obj-card phase" data-phase="4"><span class="obj-num" aria-hidden="true">3</span><h3 class="obj-title">Contenido</h3><p class="obj-text">alineado con las necesidades y prioridades de la entidad</p></li><li class="obj-card phase" data-phase="5"><span class="obj-num" aria-hidden="true">4</span><h3 class="obj-title">Autonomía</h3><p class="obj-text">posibilidad de inscripción en todo el catálogo de la Academy</p></li></ol></div>
-<span class="ivc-num">8</span>
+<span class="ivc-num">7</span>
 </section>
 
 <!-- Bloque 2 · Nuestra propuesta: lista + portales formativos por entidad: las capturas entran una a una -->
@@ -556,7 +615,7 @@
 <figure class="portal-shot phase phase--fade" data-phase="6"><div class="portal-frame"><img src="img/portal-el-prat.jpg" alt="Portal formativo de El Prat de Llobregat"><figcaption>El Prat de Llobregat</figcaption></div></figure>
 <figure class="portal-shot phase phase--fade" data-phase="7"><div class="portal-frame"><img src="img/portal-setdiba.jpg" alt="Portal SeTDIBA"><figcaption>SeTDIBA</figcaption></div></figure>
 </div>
-<span class="ivc-num">9</span>
+<span class="ivc-num">8</span>
 </section>
 
 <!-- Bloque 2 · Llamada a la acción -->
@@ -579,10 +638,55 @@
 <article class="prog-block prog-block--analiza"><h3 class="prog-name">Analiza</h3><div class="prog-body"><ol class="ivc-list ivc-list--numbered prog-list"><li class="phase" data-phase="1">Pasamos de cuatro a tres jornadas presenciales, de martes a jueves</li><li class="phase" data-phase="2">Añadimos una sesión telemática de revisión de los proyectos de evaluación</li><li class="phase" data-phase="3">Trasladamos los contenidos compartidos y los recursos adicionales al Forum Gestiona Avanza</li><li class="phase" data-phase="4">Incorporamos la tutorización personalizada</li></ol></div></article>
 <article class="prog-block prog-block--developers"><h3 class="prog-name">Gestiona for Developers</h3><div class="prog-body"><ol class="ivc-list ivc-list--numbered prog-list"><li class="phase" data-phase="5">Pasamos de cuatro jornadas presenciales en una sesión a seis jornadas presenciales en dos sesiones</li><li class="phase" data-phase="6">Trasladamos el contenido adicional de la API al Forum</li><li class="phase" data-phase="7">Login único en todas las plataformas y recursos (n8n, Slack, Forum y Academy)</li></ol></div></article>
 </div></div>
+<span class="ivc-num">10</span>
+</section>
+
+<!-- 05 · Eventos Gestiona Avanza: Datathon y Hackathon -->
+<section class="slide-container ivc ivc-title-only" aria-label="11. Eventos Gestiona Avanza">
+<img class="ivc-lockup" src="../assets/img/iv-congreso/lockup-color.png" alt="IV Congreso Gestiona Avanza">
+<img class="ivc-endorse" src="../assets/img/iv-congreso/gestiona-espublico-color.png" alt="Gestiona esPublico">
+<p class="ivc-kicker idx-tag"><span class="idx-tag-num">05</span> Eventos Gestiona Avanza</p>
+<h2 class="ivc-title">Eventos Gestiona Avanza</h2>
+<div class="ivc-free"><div class="prog-blocks">
+<article class="prog-block prog-block--analiza"><h3 class="prog-name">I Datathon Gestiona Avanza</h3><div class="prog-body"><dl class="evt-facts"><dt>Dónde</dt><dd>Valencia</dd><dt>Cuándo</dt><dd>Del 7 al 9 de abril</dd><dt>Quién</dt><dd>Usuarios certificados en Analiza y Admin.Avanzada</dd><dt>Descripción</dt><dd>Construcción de gemelos digitales y depuración de fuentes públicas de datos y su aplicación en la tramitación administrativa</dd></dl></div></article>
+<article class="prog-block prog-block--developers"><h3 class="prog-name">II Hackathon Gestiona Avanza</h3><div class="prog-body"><dl class="evt-facts"><dt>Dónde</dt><dd>Torrevieja</dd><dt>Cuándo</dt><dd>Del 24 al 26 de febrero</dd><dt>Quién</dt><dd>Usuarios certificados en Developers, Admin.Avanzada y Analiza</dd><dt>Descripción</dt><dd>Diseño, desarrollo y despliegue de un proyecto 360º que se pueda poner en producción</dd></dl></div></article>
+</div></div>
+<span class="ivc-num">11</span>
+</section>
+
+<!-- 06 · Gestiona Avanza Bytes: resumen en tres diapositivas -->
+<section class="slide-container ivc ivc-title-only" aria-label="12. ¿Qué es Gestiona Avanza Bytes?">
+<img class="ivc-lockup" src="../assets/img/iv-congreso/lockup-color.png" alt="IV Congreso Gestiona Avanza">
+<img class="ivc-endorse" src="../assets/img/iv-congreso/gestiona-espublico-color.png" alt="Gestiona esPublico">
+<p class="ivc-kicker idx-tag"><span class="idx-tag-num">06</span> Gestiona Avanza Bytes</p>
+<h2 class="ivc-title">¿Qué es Gestiona Avanza Bytes?</h2>
+<div class="ivc-free bytes-free"><p class="bytes-lead">Canal de <strong>microformación audiovisual</strong> en formato vertical: píldoras breves sobre los módulos y funcionalidades de Gestiona que complementan la formación estructurada.</p>
+<ol class="obj-cards bytes-cards"><li class="obj-card obj-card--plain"><h3 class="obj-title">Academy</h3><p class="obj-text"><strong>Forma.</strong> Cursos, itinerarios y sesiones con desarrollo y profundidad</p></li><li class="obj-card obj-card--plain"><h3 class="obj-title">Forum</h3><p class="obj-text"><strong>Conecta.</strong> Relación, participación e intercambio de experiencias</p></li><li class="obj-card obj-card--plain bytes-card--hl"><h3 class="obj-title">Bytes</h3><p class="obj-text"><strong>Acompaña.</strong> Descubre funcionalidades, resuelve tareas y conoce las novedades</p></li></ol></div>
+<span class="ivc-num">12</span>
+</section>
+
+<section class="slide-container ivc ivc-title-only" aria-label="13. Aprende · Aplica · Avanza">
+<img class="ivc-lockup" src="../assets/img/iv-congreso/lockup-color.png" alt="IV Congreso Gestiona Avanza">
+<img class="ivc-endorse" src="../assets/img/iv-congreso/gestiona-espublico-color.png" alt="Gestiona esPublico">
+<p class="ivc-kicker idx-tag"><span class="idx-tag-num">06</span> Gestiona Avanza Bytes</p>
+<h2 class="ivc-title">Aprende · Aplica · Avanza</h2>
+<div class="ivc-free bytes-free"><p class="bytes-lead">Cada Byte sigue la misma estructura: <strong>una única idea</strong>, de 15 a 30 segundos, en vertical 9:16.</p>
+<ol class="obj-cards bytes-cards"><li class="obj-card"><span class="obj-num" aria-hidden="true">1</span><h3 class="obj-title">Aprende</h3><p class="obj-text"><strong>0–4 s.</strong> Presenta lo que se va a aprender</p></li><li class="obj-card"><span class="obj-num" aria-hidden="true">2</span><h3 class="obj-title">Aplica</h3><p class="obj-text"><strong>4–18 s.</strong> La interfaz real de Gestiona es la protagonista</p></li><li class="obj-card"><span class="obj-num" aria-hidden="true">3</span><h3 class="obj-title">Avanza</h3><p class="obj-text"><strong>2–4 s.</strong> Muestra el resultado conseguido</p></li><li class="obj-card"><span class="obj-num" aria-hidden="true">4</span><h3 class="obj-title">Firma</h3><p class="obj-text"><strong>1–2 s.</strong> Cierre común del canal con la «A» de Gestiona Avanza</p></li></ol></div>
+<span class="ivc-num">13</span>
+</section>
+
+<section class="slide-container ivc ivc-title-only" aria-label="14. Cuatro tipologías, una misma estructura">
+<img class="ivc-lockup" src="../assets/img/iv-congreso/lockup-color.png" alt="IV Congreso Gestiona Avanza">
+<img class="ivc-endorse" src="../assets/img/iv-congreso/gestiona-espublico-color.png" alt="Gestiona esPublico">
+<p class="ivc-kicker idx-tag"><span class="idx-tag-num">06</span> Gestiona Avanza Bytes</p>
+<h2 class="ivc-title">Cuatro tipologías, una misma estructura</h2>
+<div class="ivc-free bytes-free"><p class="bytes-lead">Cada tipología responde a una pregunta del usuario y busca un resultado concreto.</p>
+<ol class="obj-cards bytes-cards"><li class="obj-card obj-card--plain"><h3 class="obj-title">¿Sabías que…?</h3><p class="obj-text">Funcionalidades útiles y poco conocidas</p><p class="bytes-quote">«No sabía que existía»</p></li><li class="obj-card obj-card--plain"><h3 class="obj-title">Quick Tip</h3><p class="obj-text">Consejos para trabajar de forma más ágil</p><p class="bytes-quote">«Voy a probarlo así»</p></li><li class="obj-card obj-card--plain"><h3 class="obj-title">How To</h3><p class="obj-text">Un procedimiento concreto, paso a paso</p><p class="bytes-quote">«Ahora sé hacerlo»</p></li><li class="obj-card obj-card--plain"><h3 class="obj-title">What's New</h3><p class="obj-text">Novedades y evolución de Gestiona</p><p class="bytes-quote">«Quiero utilizar la novedad»</p></li></ol></div>
+<span class="ivc-num">14</span>
 </section>
 
 <!-- Cierre -->
-<section class="slide-container ivc ivc-closing" aria-label="11. Cierre">
+<section class="slide-container ivc ivc-closing" aria-label="15. Cierre">
 <img class="ivc-bg" src="../assets/img/iv-congreso/photo-tinted.jpg" alt="" aria-hidden="true">
 <img class="ivc-lockup" src="../assets/img/iv-congreso/lockup-white.png" alt="IV Congreso Gestiona Avanza">
 <h2 class="ivc-title"><span>¡Sigamos aprendiendo <span class="ivc-accent">juntos</span>!</span></h2>
