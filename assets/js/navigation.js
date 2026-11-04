@@ -163,6 +163,10 @@
         main.style.transform = "translateX(-" + (current * SLIDE_WIDTH) + "px)";
         updateDots(current);
         updateSlideNumber(current);
+        // Marca la slide visible para animaciones que arrancan al entrar (sin clic)
+        slides.forEach(function (slide, i) {
+            slide.classList.toggle("is-current", i === current);
+        });
         // Marca de fondo oscuro (slides de portada de sección tipo .section-title-layout),
         // por si la presentación necesita adaptar elementos fijos anclados a .stage (logos, etc.)
         stage.classList.toggle("is-dark-slide", !!slides[current].querySelector(".section-title-layout"));

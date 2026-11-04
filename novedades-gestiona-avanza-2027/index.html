@@ -226,7 +226,7 @@
 /* 07 · Revelación «4ª», estilo cabecera de serie de los 80: el 4 y la ª entran
    despacio desde esquinas opuestas con trazo luminoso, se juntan en el centro,
    parpadean con un desenfoque suave y aparecen tres puntos suspensivos abajo.
-   Se dispara con el primer clic (fase 1). */
+   Arranca sola al entrar en la diapositiva (clase .is-current de navigation.js). */
 .ivc.reveal-slide {
     background: radial-gradient(ellipse at center, #02303b 0%, var(--ivc-petrol-deep) 55%, #001a21 100%);
 }
@@ -257,6 +257,11 @@
 .rv-4,
 .rv-a {
     display: inline-block;
+    opacity: 0;
+}
+.reveal-slide.is-current .rv-4,
+.reveal-slide.is-current .rv-a {
+    opacity: 1;
 }
 .rv-a {
     align-self: flex-start;
@@ -280,23 +285,23 @@
     text-shadow: 0 0 14px rgba(0, 180, 211, 0.8);
     opacity: 0;
 }
-.reveal-stage.visible .rv-4 {
-    animation: rv-in-4 5s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+.reveal-slide.is-current .rv-4 {
+    animation: rv-in-4 5s cubic-bezier(0.22, 0.61, 0.36, 1) 0.6s both;
 }
-.reveal-stage.visible .rv-a {
-    animation: rv-in-a 5s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+.reveal-slide.is-current .rv-a {
+    animation: rv-in-a 5s cubic-bezier(0.22, 0.61, 0.36, 1) 0.6s both;
 }
-.reveal-stage.visible .reveal-num {
-    animation: rv-flicker 1.4s linear 5s both;
+.reveal-slide.is-current .reveal-num {
+    animation: rv-flicker 1.4s linear 5.6s both;
 }
-.reveal-stage.visible .rv-dots {
-    animation: rv-fade 0.9s ease 6.6s forwards;
+.reveal-slide.is-current .rv-dots {
+    animation: rv-fade 0.9s ease 7.2s forwards;
 }
-.reveal-stage.visible .rv-dots span {
-    animation: suspense-pulse 1.8s ease-in-out 7.5s infinite;
+.reveal-slide.is-current .rv-dots span {
+    animation: suspense-pulse 1.8s ease-in-out 8.1s infinite;
 }
-.reveal-stage.visible .rv-dots span:nth-child(2) { animation-delay: 7.8s; }
-.reveal-stage.visible .rv-dots span:nth-child(3) { animation-delay: 8.1s; }
+.reveal-slide.is-current .rv-dots span:nth-child(2) { animation-delay: 8.4s; }
+.reveal-slide.is-current .rv-dots span:nth-child(3) { animation-delay: 8.7s; }
 @keyframes rv-in-4 {
     0%   { opacity: 0; transform: translate(-560px, -340px) scale(2.4); filter: blur(8px); }
     35%  { opacity: 1; }
@@ -321,11 +326,11 @@
     to { opacity: 1; }
 }
 @media (prefers-reduced-motion: reduce) {
-    .reveal-stage.visible .rv-4,
-    .reveal-stage.visible .rv-a,
-    .reveal-stage.visible .reveal-num,
-    .reveal-stage.visible .rv-dots span { animation: none; }
-    .reveal-stage.visible .rv-dots { animation: none; opacity: 1; }
+    .reveal-slide.is-current .rv-4,
+    .reveal-slide.is-current .rv-a,
+    .reveal-slide.is-current .reveal-num,
+    .reveal-slide.is-current .rv-dots span { animation: none; }
+    .reveal-slide.is-current .rv-dots { animation: none; opacity: 1; }
 }
 /* Cierre: título centrado en la diapositiva y legible sobre la foto
    (velo oscuro sobre la imagen + sombra suave en el texto). */
@@ -1000,7 +1005,7 @@
 
 <!-- 07 · Revelación: 4ª certificación -->
 <section class="slide-container ivc ivc-statement reveal-slide" aria-label="18. Cuarta certificación">
-<div class="reveal-stage phase phase--fade" data-phase="1" role="img" aria-label="Cuarta certificación">
+<div class="reveal-stage" role="img" aria-label="Cuarta certificación">
 <p class="reveal-num" aria-hidden="true"><span class="rv-4">4</span><span class="rv-a">ª</span></p>
 <p class="rv-dots" aria-hidden="true"><span>.</span><span>.</span><span>.</span></p>
 </div>
