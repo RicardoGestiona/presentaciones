@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Novedades Gestiona Avanza 2027 · VEsther</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;1,400;1,700&family=Roboto+Slab:wght@700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/corporate.css">
+<link rel="stylesheet" href="../assets/css/iv-congreso.css">
+<style>
+/* Etiqueta del punto del índice sobre el título de cada diapositiva de contenido. */
+.ivc .idx-tag {
+    left: var(--ivc-text-x);
+    top: 24px;
+    font-size: 16px;
+    text-transform: uppercase;
+    color: var(--ivc-muted);
+}
+.idx-tag-num {
+    margin-right: 6px;
+    color: var(--ivc-cyan);
+}
+.ivc-statement .idx-tag {
+    left: var(--ivc-margin);
+    color: var(--ivc-cyan-light);
+}
+/* 04 · Dos bloques diferenciados por programa: cabecera de color + cuerpo neutro. */
+.prog-blocks {
+    display: flex;
+    gap: 29px;
+    width: 1122px;
+    height: 360px;
+}
+.prog-block {
+    flex: 1 1 0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border-radius: 12px;
+    background: var(--ivc-surface);
+}
+.ivc .prog-name {
+    margin: 0;
+    padding: 18px 29px;
+    font-family: var(--ivc-head);
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 1.15;
+    color: var(--ivc-white);
+}
+.prog-block--analiza .prog-name { background: var(--ivc-petrol); }
+.prog-block--developers .prog-name { background: var(--ivc-cyan); }
+.prog-body {
+    flex: 1;
+    padding: 22px 29px;
+    font-size: 22px;
+    line-height: 1.35;
+    color: var(--ivc-ink);
+}
+.ivc .prog-list {
+    margin: 0;
+    font-size: 21px;
+    line-height: 1.3;
+}
+.ivc .prog-list > li {
+    margin-bottom: 14px;
+}
+.ivc .prog-list > li:last-child {
+    margin-bottom: 0;
+}
+/* Índice sobrio: dos columnas de líneas numeradas separadas por un filete. */
+.idx-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(4, auto);
+    grid-auto-flow: column;
+    column-gap: 64px;
+    align-content: start;
+    padding-top: 12px;
+}
+.ivc .idx-item {
+    display: flex;
+    align-items: baseline;
+    gap: 20px;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--ivc-rule);
+}
+.idx-num {
+    flex: none;
+    width: 40px;
+    font-family: var(--ivc-head);
+    font-weight: 700;
+    font-size: 24px;
+    color: var(--ivc-cyan);
+}
+.idx-title {
+    font-size: 24px;
+    line-height: 1.3;
+    color: var(--ivc-ink);
+}
+/* Hitos con casilla: el hito aparece con la casilla vacía y la siguiente fase la marca en verde. */
+.hito-list {
+    --hito-done: #00dfb2;   /* turquesa Gestiona (--color-primary-light del sistema) */
+    display: flex;
+    flex-direction: column;
+    gap: 19px;
+    justify-content: center;
+    height: 100%;   /* centrada en la zona de cuerpo de la plantilla */
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.hito-list--spaced {
+    gap: 58px;   /* pocas entradas: más aire entre hitos */
+}
+.hito {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+.hito-box {
+    position: relative;
+    flex: none;
+    width: 44px;
+    height: 44px;
+    box-sizing: border-box;
+    border: 3px solid var(--ivc-rule);
+    border-radius: 8px;
+    background: var(--ivc-white);
+}
+.hito-tick {
+    position: absolute;
+    inset: -3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    background: var(--hito-done);
+    color: var(--ivc-petrol-deep);
+}
+.hito-tick svg {
+    width: 30px;
+    height: 30px;
+}
+.hito-text strong {
+    margin-right: 12px;
+    font-family: var(--ivc-head);
+    color: var(--ivc-petrol);
+}
+
+/* --- Bloque 2 · Gestiona Academy ------------------------------------------ */
+/* Barras de adopción: gris = usuarios en Gestiona, cian = en la Academy, petróleo = nociones básicas completadas. */
+.acad {
+    --acad-gestiona: var(--ivc-rule);
+    --acad-academy: var(--ivc-cyan);
+    --acad-done: var(--ivc-petrol-deep);
+}
+.acad-track {
+    position: relative;
+    height: 40px;
+    border-radius: 10px;
+    background: var(--ivc-surface);
+    overflow: hidden;
+}
+.acad-bar {
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 0;
+    border-radius: 10px;
+    transition: width 1.4s cubic-bezier(0.2, 0.8, 0.2, 1) 0.2s;
+}
+.acad-bar--gestiona { background: var(--acad-gestiona); transition-delay: 0s; }
+.acad-bar--academy  { background: var(--acad-academy); }
+.acad-bar--done     { background: var(--acad-done); transition-delay: 0.6s; }
+.visible .acad-bar  { width: var(--w); }
+
+/* Comparativa de escenarios: dos tarjetas con las mismas métricas. */
+.cmp-cards {
+    display: flex;
+    gap: 29px;
+}
+.cmp-card {
+    flex: 1 1 0;
+    min-width: 0;
+    padding: 20px 29px 20px;
+    box-sizing: border-box;
+    border-radius: 12px;
+    background: var(--ivc-surface);
+}
+.cmp-card--custom {
+    background: var(--ivc-white);
+    box-shadow: inset 0 0 0 3px var(--ivc-cyan);
+}
+.ivc .cmp-name {
+    margin: 0;
+    font-family: var(--ivc-head);
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 1.15;
+    color: var(--ivc-petrol);
+}
+.ivc .cmp-sub {
+    margin: 2px 0 12px;
+    font-size: 19px;
+    color: var(--ivc-ink);
+}
+.ivc .cmp-sub--muted {
+    font-size: 16px;
+    color: var(--ivc-muted);
+}
+.cmp-metric + .cmp-metric {
+    margin-top: 16px;
+}
+.cmp-metric-head {
+    margin-bottom: 4px;
+    font-size: 19px;
+    color: var(--ivc-ink);
+}
+.cmp-card .acad-track {
+    height: 46px;
+    background: var(--ivc-rule);
+}
+.cmp-card--general .acad-track { background: var(--ivc-white); }
+.cmp-card .acad-bar--gestiona { background: var(--ivc-cyan-light); }
+/* Cifra centrada sobre la parte sólida de cada barra. */
+.cmp-card .acad-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+.cmp-value {
+    font-family: var(--ivc-body);
+    font-weight: 500;
+    font-size: 21px;
+    font-style: normal;
+    line-height: 1;
+    white-space: nowrap;
+    color: var(--ivc-petrol-deep);
+}
+.acad-bar--done .cmp-value {
+    color: var(--ivc-white);
+}
+
+/* Portales por entidad: texto a la izquierda, capturas en abanico a la derecha. */
+.ivc .portal-lead {
+    margin: 0 0 8px;
+    font-family: var(--ivc-head);
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 1.2;
+    color: var(--ivc-petrol);
+}
+.ivc .portal-lead--next {
+    margin-top: 6px;
+}
+.portal-steps {
+    font-size: 21px;
+    line-height: 1.3;
+}
+/* Diapositiva de intención (sin capturas): el cuerpo ocupa todo el ancho. */
+.ivc-image-text .portal-intro {
+    width: 1050px;
+}
+.portal-steps strong {
+    color: var(--ivc-petrol);
+}
+/* Diapositiva de intención: más aire entre bloques y entre objetivos. */
+.portal-intro {
+    top: 156px;   /* casi alineado con el cuerpo del resto de diapositivas (168 px) */
+}
+.ivc .portal-intro .portal-quote {
+    margin-bottom: 28px;
+}
+.ivc .portal-intro .portal-lead {
+    margin-bottom: 12px;
+}
+.ivc .portal-intro .portal-lead--next {
+    margin-bottom: 24px;   /* más aire entre «Objetivos» y su lista */
+}
+.portal-objectives {
+    font-size: 23px;
+}
+.ivc .portal-objectives > li {
+    margin-bottom: 14px;
+}
+/* Objetivos en tarjetas: número + palabra clave en cabecera, descripción debajo. */
+.ivc .portal-intro .obj-cards {
+    padding-left: 0;
+}
+.obj-cards {
+    display: flex;
+    gap: 24px;
+    width: 1122px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.ivc .obj-card {
+    flex: 1 1 0;
+    min-width: 0;
+    margin: 0;
+    padding: 22px 22px 24px;
+    box-sizing: border-box;
+    border-radius: 12px;
+    background: var(--ivc-surface);
+    display: grid;
+    grid-template-columns: 36px 1fr;
+    grid-template-rows: auto 1fr;
+    align-content: start;
+    column-gap: 12px;
+    row-gap: 12px;
+    align-items: center;
+}
+.obj-num {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--ivc-petrol);
+    font-family: var(--ivc-head);
+    font-weight: 700;
+    font-size: 19px;
+    color: var(--ivc-white);
+}
+.ivc .obj-title {
+    margin: 0;
+    font-family: var(--ivc-head);
+    font-weight: 700;
+    font-size: 26px;
+    line-height: 1.1;
+    color: var(--ivc-petrol);
+}
+.ivc .obj-text {
+    grid-column: 1 / -1;
+    align-self: start;
+    margin: 0;
+    font-size: 19px;
+    line-height: 1.35;
+    color: var(--ivc-ink);
+}
+/* Propuesta: lista numerada centrada en vertical junto a las capturas. */
+.portal-proposal {
+    display: flex;
+    align-items: center;
+    height: 400px !important;
+}
+.portal-proposal .portal-steps {
+    font-size: 27px;
+    line-height: 1.3;
+}
+.ivc .portal-proposal .portal-steps > li {
+    margin-bottom: 36px;
+}
+/* Cita: cursiva con comillas en cian. */
+.ivc .portal-quote {
+    margin: 0 0 22px;
+    white-space: nowrap;   /* una sola línea: desborda la columna por encima de las capturas, que empiezan más abajo */
+    font-size: 23px;
+    font-style: italic;
+    line-height: 1.35;
+    color: var(--ivc-muted);
+}
+.portal-quote::before,
+.portal-quote::after {
+    font-family: var(--ivc-head);
+    font-style: normal;
+    font-weight: 700;
+    color: var(--ivc-cyan);
+}
+.portal-quote::before { content: "«"; margin-right: 2px; }
+.portal-quote::after  { content: "»"; margin-left: 2px; }
+.portal-stack {
+    left: 640px;
+    top: 168px;
+    width: 590px;
+    height: 400px;
+}
+.portal-shot {
+    position: absolute;
+    width: 275px;
+    margin: 0;
+}
+.portal-shot:nth-child(1) { left: 0;     top: 6px; }
+.portal-shot:nth-child(2) { left: 300px; top: 0; }
+.portal-shot:nth-child(3) { left: 10px;  top: 206px; }
+.portal-shot:nth-child(4) { left: 305px; top: 200px; }
+.portal-frame {
+    position: relative;
+    height: 180px;
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--ivc-white);
+    box-shadow: 0 14px 36px rgba(1, 57, 71, 0.28);
+}
+.portal-shot:nth-child(1) .portal-frame { transform: rotate(-2deg); }
+.portal-shot:nth-child(2) .portal-frame { transform: rotate(1.5deg); }
+.portal-shot:nth-child(3) .portal-frame { transform: rotate(-1deg); }
+.portal-shot:nth-child(4) .portal-frame { transform: rotate(2deg); }
+.portal-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+}
+.portal-frame figcaption {
+    position: absolute;
+    inset: auto 0 0 0;
+    padding: 20px 12px 6px;
+    background: linear-gradient(rgba(1, 57, 71, 0), rgba(1, 57, 71, 0.9) 55%);
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--ivc-white);
+}
+
+/* Pie de la frase destacada, centrado bajo la frase. */
+.ivc .source-centered {
+    width: 1050px;
+    text-align: center;
+    font-size: 27px;
+}
+.cta-mail {
+    display: inline-block;
+    margin-left: 6px;
+    padding: 6px 20px;
+    border-radius: 999px;
+    background: var(--ivc-white);
+    font-weight: 700;
+    color: var(--ivc-petrol);
+}
+/* Diapositiva de llamada a la acción: bloque subido 40 px para dejar sitio al botón. */
+.ivc.cta-slide .ivc-statement-text { top: 142px; }
+.ivc.cta-slide .ivc-source { top: 426px; }
+.ivc.cta-slide .cta-button { top: 580px; }
+/* Botón de llamada a la acción, centrado bajo el correo. */
+.ivc .cta-button {
+    left: 50%;
+    top: 548px;
+    transform: translateX(-50%);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 26px;
+    border: 2px solid var(--ivc-cyan-light);
+    border-radius: 999px;
+    background: transparent;
+    font-family: var(--ivc-body);
+    font-weight: 500;
+    font-size: 19px;
+    color: var(--ivc-white);
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background 0.2s ease;
+}
+.ivc .cta-button:hover,
+.ivc .cta-button:focus-visible {
+    background: rgba(255, 255, 255, 0.12);
+    outline: 3px solid var(--ivc-cyan);
+    outline-offset: 3px;
+}
+.cta-ext {
+    width: 17px;
+    height: 17px;
+}
+/* Frase destacada centrada y algo mayor que la de la plantilla (45 px). */
+.ivc .statement-centered {
+    justify-content: center;
+    text-align: center;
+    font-size: 56px;
+}
+</style>
+</head>
+<body data-brand="gestiona-avanza">
+<main role="presentation">
+
+<!-- Bloque 2 · Gestiona Academy: pregunta de arranque -->
+<section class="slide-container ivc ivc-statement" aria-label="1. ¿Se están formando vuestros compañeros?">
+<img class="ivc-lockup" src="../assets/img/iv-congreso/lockup-white.png" alt="IV Congreso Gestiona Avanza">
+<img class="ivc-endorse" src="../assets/img/iv-congreso/gestiona-espublico-white.png" alt="Gestiona esPublico">
+<p class="ivc-kicker idx-tag"><span class="idx-tag-num">02</span> Planes formativos personalizados</p>
+<p class="ivc-statement-text statement-centered">¿Se están formando vuestros compañeros?</p>
+</section>
+
+<!-- Bloque 2 · Comparativa de escenarios: Global (todas las entidades) frente a Plan personalizado (plan formativo de la entidad) -->
+<section class="slide-container ivc ivc-title-only acad" aria-label="2. Datos uso Gestiona Avanza Academy">
+<img class="ivc-lockup" src="../assets/img/iv-congreso/lockup-color.png" alt="IV Congreso Gestiona Avanza">
+<img class="ivc-endorse" src="../assets/img/iv-congreso/gestiona-espublico-color.png" alt="Gestiona esPublico">
+<p class="ivc-kicker idx-tag"><span class="idx-tag-num">02</span> Planes formativos personalizados</p>
+<h2 class="ivc-title">Datos uso Gestiona Avanza Academy</h2>
+<div class="ivc-free"><div class="cmp-cards"><div class="cmp-card cmp-card--general phase" data-phase="1"><h3 class="cmp-name">Global</h3><p class="cmp-sub cmp-sub--muted">8.000 entidades</p><div class="cmp-metric"><div class="cmp-metric-head">Usuarios en Gestiona</div><div class="acad-track"><i class="acad-bar acad-bar--gestiona" style="--w:100%"><span class="cmp-value">225.000</span></i></div></div><div class="cmp-metric"><div class="cmp-metric-head">Usuarios en la Academy</div><div class="acad-track"><i class="acad-bar acad-bar--academy" style="--w:31.1%"><span class="cmp-value">70.000</span></i></div></div><div class="cmp-metric"><div class="cmp-metric-head">Completan las nociones básicas</div><div class="acad-track"><i class="acad-bar acad-bar--done" style="--w:23.7%"><span class="cmp-value">23,7 %</span></i></div></div></div><div class="cmp-card cmp-card--custom phase" data-phase="2"><h3 class="cmp-name">Plan personalizado</h3><p class="cmp-sub cmp-sub--muted">6 entidades</p><div class="cmp-metric"><div class="cmp-metric-head">Usuarios en Gestiona</div><div class="acad-track"><i class="acad-bar acad-bar--gestiona" style="--w:100%"><span class="cmp-value">8.237</span></i></div></div><div class="cmp-metric"><div class="cmp-metric-head">Usuarios en la Academy</div><div class="acad-track"><i class="acad-bar acad-bar--academy" style="--w:80%"><span class="cmp-value">6.589</span></i></div></div><div class="cmp-metric"><div class="cmp-metric-head">Completan las nociones básicas</div><div class="acad-track"><i class="acad-bar acad-bar--done" style="--w:62.1%"><span class="cmp-value">62,1 %</span></i></div></div></div></div></div>
+<span class="ivc-num">2</span>
+</section>
+
+<!-- Bloque 2 · Portales formativos por entidad: las capturas entran una a una -->
+<section class="slide-container ivc ivc-image-text" aria-label="3. Plan personalizado de Formación">
+<img class="ivc-lockup" src="../assets/img/iv-congreso/lockup-color.png" alt="IV Congreso Gestiona Avanza">
+<img class="ivc-endorse" src="../assets/img/iv-congreso/gestiona-espublico-color.png" alt="Gestiona esPublico">
+<p class="ivc-kicker idx-tag"><span class="idx-tag-num">02</span> Planes formativos personalizados</p>
+<h2 class="ivc-title">Plan personalizado de Formación</h2>
+<div class="ivc-body portal-intro"><p class="portal-lead phase" data-phase="1">Principios</p>
+<blockquote class="portal-quote phase" data-phase="1">Si cada entidad es distinta, también debería serlo su plan de formación</blockquote>
+<p class="portal-lead portal-lead--next phase" data-phase="2">Objetivos</p>
+<ol class="obj-cards"><li class="obj-card phase" data-phase="2"><span class="obj-num" aria-hidden="true">1</span><h3 class="obj-title">Eficacia</h3><p class="obj-text">lo que se aprende se aplica a diario</p></li><li class="obj-card phase" data-phase="3"><span class="obj-num" aria-hidden="true">2</span><h3 class="obj-title">Alcance</h3><p class="obj-text">la formación llega a todos los usuarios de la entidad</p></li><li class="obj-card phase" data-phase="4"><span class="obj-num" aria-hidden="true">3</span><h3 class="obj-title">Contenido</h3><p class="obj-text">alineado con las necesidades y prioridades de la entidad</p></li><li class="obj-card phase" data-phase="5"><span class="obj-num" aria-hidden="true">4</span><h3 class="obj-title">Autonomía</h3><p class="obj-text">posibilidad de inscripción en todo el catálogo de la Academy</p></li></ol></div>
+<span class="ivc-num">3</span>
+</section>
+
+<!-- Bloque 2 · Nuestra propuesta: lista + portales formativos por entidad: las capturas entran una a una -->
+<section class="slide-container ivc ivc-image-text" aria-label="4. Nuestra propuesta">
+<img class="ivc-lockup" src="../assets/img/iv-congreso/lockup-color.png" alt="IV Congreso Gestiona Avanza">
+<img class="ivc-endorse" src="../assets/img/iv-congreso/gestiona-espublico-color.png" alt="Gestiona esPublico">
+<p class="ivc-kicker idx-tag"><span class="idx-tag-num">02</span> Planes formativos personalizados</p>
+<h2 class="ivc-title">Nuestra propuesta</h2>
+<div class="ivc-body portal-proposal"><ol class="ivc-list ivc-list--numbered portal-steps"><li class="phase" data-phase="1">Consultoría a cargo de especialistas en diseño de programas formativos</li><li class="phase" data-phase="2">Diseño de un portal con identidad propia</li><li class="phase" data-phase="3">Calendario unificado de formación presencial + online</li></ol></div>
+<div class="portal-stack">
+<figure class="portal-shot phase phase--fade" data-phase="4"><div class="portal-frame"><img src="img/portal-eivissa.jpg" alt="Portal formativo de Eivissa"><figcaption>Eivissa</figcaption></div></figure>
+<figure class="portal-shot phase phase--fade" data-phase="5"><div class="portal-frame"><img src="img/portal-castellon.jpg" alt="Portal formativo de Castellón"><figcaption>Castellón</figcaption></div></figure>
+<figure class="portal-shot phase phase--fade" data-phase="6"><div class="portal-frame"><img src="img/portal-el-prat.jpg" alt="Portal formativo de El Prat de Llobregat"><figcaption>El Prat de Llobregat</figcaption></div></figure>
+<figure class="portal-shot phase phase--fade" data-phase="7"><div class="portal-frame"><img src="img/portal-setdiba.jpg" alt="Portal SeTDIBA"><figcaption>SeTDIBA</figcaption></div></figure>
+</div>
+<span class="ivc-num">4</span>
+</section>
+
+<!-- Bloque 2 · Llamada a la acción -->
+<section class="slide-container ivc ivc-statement cta-slide" aria-label="5. ¿Queréis un plan personalizado para vuestra entidad?">
+<img class="ivc-lockup" src="../assets/img/iv-congreso/lockup-white.png" alt="IV Congreso Gestiona Avanza">
+<img class="ivc-endorse" src="../assets/img/iv-congreso/gestiona-espublico-white.png" alt="Gestiona esPublico">
+<p class="ivc-kicker idx-tag"><span class="idx-tag-num">02</span> Planes formativos personalizados</p>
+<p class="ivc-statement-text statement-centered">¿Queréis un plan personalizado para vuestra entidad?</p>
+<p class="ivc-source source-centered">Más info en <strong class="cta-mail">formaciongestiona@espublico.com</strong></p>
+<a class="cta-button" href="https://espublico.gestiona.academy" target="_blank" rel="noopener noreferrer" aria-label="¿Lo vemos? Abrir Gestiona Academy">¿Lo vemos? <svg class="cta-ext" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg></a>
+</section>
+
+</main>
+<script src="../assets/js/navigation.js"></script>
+</body>
+</html>
