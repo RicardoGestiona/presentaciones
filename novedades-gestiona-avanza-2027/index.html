@@ -352,6 +352,65 @@
 .ivc.cover-lowered .ivc-title {
     top: 214px;
 }
+/* 05 · Ficha de evento + imagen. */
+.evt-layout {
+    flex-direction: row !important;
+    align-items: stretch;
+    gap: 40px;
+    height: 360px !important;
+}
+.evt-card {
+    flex: 0 0 520px;
+    box-sizing: border-box;
+    padding: 28px 30px;
+    border-radius: 12px;
+    background: var(--ivc-surface);
+    border-top: 6px solid var(--ivc-petrol);
+}
+.evt-card--hackathon { border-top-color: var(--ivc-cyan); }
+.ivc .evt-facts--lg {
+    grid-template-columns: 140px 1fr;
+    row-gap: 18px;
+    font-size: 22px;
+}
+.evt-photo {
+    flex: 1;
+    min-width: 0;
+    margin: 0;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 12px 30px rgba(1, 57, 71, 0.18);
+}
+.evt-photo img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+/* Logotipo cuadrado: se muestra entero, centrado como tarjeta cuadrada,
+   sin marco de fondo para no forzar un color ajeno a la marca. */
+.evt-photo--logo {
+    display: flex;
+    justify-content: center;
+    overflow: visible;
+    box-shadow: none;
+}
+.evt-photo--logo img {
+    width: auto;
+    height: 100%;
+    border-radius: 12px;
+    box-shadow: 0 12px 30px rgba(1, 57, 71, 0.18);
+}
+.evt-photo--pending {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: none;
+    border: 2px dashed var(--ivc-rule);
+    font-size: 20px;
+    font-style: italic;
+    color: var(--ivc-muted);
+}
 /* Índice sobrio: dos columnas de líneas numeradas separadas por un filete. */
 .idx-list {
     display: grid;
@@ -872,7 +931,7 @@
 <p class="ivc-kicker idx-tag"><span class="idx-tag-num">05</span> Eventos Gestiona Avanza</p>
 <h2 class="ivc-title">I Datathon Gestiona Avanza</h2>
 <div class="ivc-free evt-layout"><div class="evt-card evt-card--datathon"><dl class="evt-facts evt-facts--lg"><dt>Dónde</dt><dd>Valencia</dd><dt>Cuándo</dt><dd>Del 7 al 9 de abril</dd><dt>Quién</dt><dd>Usuarios certificados en Analiza y Admin.Avanzada</dd><dt>Descripción</dt><dd>Construcción de gemelos digitales, depuración de fuentes públicas de datos y su aplicación en la tramitación administrativa</dd></dl></div>
-<figure class="evt-photo evt-photo--pending"><figcaption>Imagen pendiente</figcaption></figure></div>
+<figure class="evt-photo"><img src="img/datathon-valencia.jpg" alt="Edificio Veles e Vents en el puerto de Valencia al atardecer"></figure></div>
 <span class="ivc-num">11</span>
 </section>
 
@@ -882,7 +941,7 @@
 <p class="ivc-kicker idx-tag"><span class="idx-tag-num">05</span> Eventos Gestiona Avanza</p>
 <h2 class="ivc-title">II Hackathon Gestiona Avanza</h2>
 <div class="ivc-free evt-layout"><div class="evt-card evt-card--hackathon"><dl class="evt-facts evt-facts--lg"><dt>Dónde</dt><dd>Torrevieja</dd><dt>Cuándo</dt><dd>Del 24 al 26 de febrero</dd><dt>Quién</dt><dd>Usuarios certificados en Developers, Admin.Avanzada y Analiza</dd><dt>Descripción</dt><dd>Diseño, desarrollo y despliegue de un proyecto 360º que se pueda poner en producción</dd></dl></div>
-<figure class="evt-photo evt-photo--pending"><figcaption>Imagen pendiente</figcaption></figure></div>
+<figure class="evt-photo evt-photo--logo"><img src="img/hackathon-torrevieja.jpg" alt="Logotipo del Ayuntamiento de Torrevieja"></figure></div>
 <span class="ivc-num">12</span>
 </section>
 
