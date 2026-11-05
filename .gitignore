@@ -17,3 +17,5 @@ _sources/
 *.textClipping
 hub-td-ecityclic/
 brainstorming-hub/
+/inbox/
+/outbox/
