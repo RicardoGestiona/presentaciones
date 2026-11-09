@@ -474,6 +474,28 @@
     width: 570px;
     height: 408px;
 }
+
+/* PSCP: puntos del evolutivo de producto */
+.hub-pscp .hub-lead {
+    top: 180px;
+}
+
+.hub-pscp .ecd-board {
+    top: 240px;
+}
+
+.hub-pscp .ecd-card {
+    height: 300px;
+}
+
+/* Principis del projecte */
+.hub-principles .hub-tile {
+    height: 215px;
+}
+
+.hub-principles .ecd-card-title {
+    font-size: 32px;
+}
 </style>
 </head>
 <body data-brand="ecityclic">
@@ -502,6 +524,12 @@
 <symbol id="i-messages" viewBox="0 0 24 24"><path d="M16 10a2 2 0 0 1-2 2H6.828a2 2 0 0 0-1.414.586l-2.202 2.202A.71.71 0 0 1 2 14.286V4a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/><path d="M20 9a2 2 0 0 1 2 2v10.286a.71.71 0 0 1-1.212.502l-2.202-2.202A2 2 0 0 0 17.172 19H10a2 2 0 0 1-2-2v-1"/></symbol>
 <symbol id="i-calendar" viewBox="0 0 24 24"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></symbol>
 <symbol id="i-book" viewBox="0 0 24 24"><path d="M12 7v14"/><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></symbol>
+<symbol id="i-file-text" viewBox="0 0 24 24"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></symbol>
+<symbol id="i-gavel" viewBox="0 0 24 24"><path d="m14.5 12.5-8 8a2.119 2.119 0 1 1-3-3l8-8"/><path d="m16 16 6-6"/><path d="m8 8 6-6"/><path d="m9 7 8 8"/><path d="m21 11-8-8"/></symbol>
+<symbol id="i-route" viewBox="0 0 24 24"><circle cx="6" cy="19" r="3"/><path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15"/><circle cx="18" cy="5" r="3"/></symbol>
+<symbol id="i-check" viewBox="0 0 24 24"><path d="M21.801 10A10 10 0 1 1 17 3.335"/><path d="m9 11 3 3L22 4"/></symbol>
+<symbol id="i-equal" viewBox="0 0 24 24"><line x1="5" x2="19" y1="9" y2="9"/><line x1="5" x2="19" y1="15" y2="15"/></symbol>
+<symbol id="i-layers" viewBox="0 0 24 24"><path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83z"/><path d="M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12"/><path d="M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17"/></symbol>
 </svg>
 
 <main role="presentation">
@@ -519,7 +547,7 @@
 <p class="ecd-kicker">Índex</p>
 <h2 class="ecd-title">Continguts de la presentació</h2>
 <ol class="ecd-board ecd-cards">
-<li class="ecd-card"><span class="ecd-card-num">01</span><h3 class="ecd-card-title">Noves integracions amb serveis AOC</h3><p class="ecd-card-text">PSCP i Via Oberta</p></li>
+<li class="ecd-card"><span class="ecd-card-num">01</span><h3 class="ecd-card-title">Contractació electrònica integrada amb la PSCP</h3><p class="ecd-card-text">Un nou projecte</p></li>
 <li class="ecd-card"><span class="ecd-card-num">02</span><h3 class="ecd-card-title">El Hub de transformació digital</h3><p class="ecd-card-text">L’estratègia d’esPublico amb la capacitació dels usuaris</p></li>
 </ol>
 <img class="ecd-foot-logo" src="../assets/img/ecityday/logo.svg" alt="ecityclic esPublico">
@@ -528,33 +556,53 @@
 </section>
 
 <!-- 3. Primera part. Les seves diapositives van darrere d'aquest separador. -->
-<section class="slide-container ecd ecd-dark" aria-label="3. Primera part: Noves integracions amb serveis AOC">
+<section class="slide-container ecd ecd-dark" aria-label="3. Primera part: Contractació electrònica integrada amb la PSCP">
 <img class="ecd-logo" src="../assets/img/ecityday/logo-white.svg" alt="ecityclic esPublico">
 <img class="ecd-hashtag" src="../assets/img/ecityday/hashtag.svg" alt="#ecityDay">
-<h2 class="ecd-title"><span>Noves integracions<br>amb serveis AOC</span></h2>
-<p class="ecd-subtitle">Primera part · PSCP i Via Oberta</p>
+<h2 class="ecd-title"><span>Contractació electrònica<br>integrada amb la PSCP</span></h2>
+<p class="ecd-subtitle">Primera part · Un nou projecte</p>
 </section>
 
-<!-- 4. Integració amb la PSCP. Contingut pendent dins de .ecd-body. -->
-<section class="slide-container ecd ecd-content" aria-label="4. Integració amb la PSCP (Plataforma de Serveis de Contractació Pública)">
-<p class="ecd-kicker">Noves integracions AOC</p>
+<!-- 4. Integració amb la PSCP: punts de l’evolutiu de producte -->
+<section class="slide-container ecd ecd-blocks hub-pscp" aria-label="4. Integració amb la PSCP (Plataforma de Serveis de Contractació Pública)">
+<p class="ecd-kicker">Contractació electrònica</p>
 <h2 class="ecd-title">Integració amb la PSCP<br>(Plataforma de Serveis de Contractació Pública)</h2>
-<div class="ecd-body"></div>
+<p class="hub-lead">Punts destacats de l’evolutiu de producte</p>
+<ul class="ecd-board ecd-cards">
+<li class="ecd-card"><span class="ecd-icon" aria-hidden="true"><svg class="hub-i" viewBox="0 0 24 24"><use href="#i-file-text"/></svg></span><h3 class="ecd-card-title">Nou mòdul de contractació electrònica a Gestiona</h3></li>
+<li class="ecd-card"><span class="ecd-icon" aria-hidden="true"><svg class="hub-i" viewBox="0 0 24 24"><use href="#i-link"/></svg></span><h3 class="ecd-card-title">Integració amb els serveis PSCP</h3></li>
+<li class="ecd-card"><span class="ecd-icon" aria-hidden="true"><svg class="hub-i" viewBox="0 0 24 24"><use href="#i-gavel"/></svg></span><h3 class="ecd-card-title">Integració amb els serveis d’e-Licita</h3></li>
+</ul>
 <img class="ecd-foot-logo" src="../assets/img/ecityday/logo.svg" alt="ecityclic esPublico">
 <img class="ecd-foot-hashtag" src="../assets/img/ecityday/hashtag.svg" alt="#ecityDay">
 <span class="ecd-num">4</span>
 </section>
 
-<!-- 5. Segona part -->
-<section class="slide-container ecd ecd-dark" aria-label="5. Segona part: El Hub de transformació digital">
+<!-- 5. Principis del projecte -->
+<section class="slide-container ecd hub-principles" aria-label="5. Principis del projecte">
+<p class="ecd-kicker">Contractació electrònica</p>
+<h2 class="ecd-title">Principis del projecte</h2>
+<ul class="ecd-board hub-grid">
+<li class="ecd-card hub-tile"><span class="ecd-icon" aria-hidden="true"><svg class="hub-i" viewBox="0 0 24 24"><use href="#i-route"/></svg></span><h3 class="ecd-card-title">Traçabilitat</h3></li>
+<li class="ecd-card hub-tile"><span class="ecd-icon" aria-hidden="true"><svg class="hub-i" viewBox="0 0 24 24"><use href="#i-check"/></svg></span><h3 class="ecd-card-title" lang="en">Once-only</h3></li>
+<li class="ecd-card hub-tile"><span class="ecd-icon" aria-hidden="true"><svg class="hub-i" viewBox="0 0 24 24"><use href="#i-equal"/></svg></span><h3 class="ecd-card-title">Uniformitat</h3></li>
+<li class="ecd-card hub-tile"><span class="ecd-icon" aria-hidden="true"><svg class="hub-i" viewBox="0 0 24 24"><use href="#i-layers"/></svg></span><h3 class="ecd-card-title">Estandardització</h3></li>
+</ul>
+<img class="ecd-foot-logo" src="../assets/img/ecityday/logo.svg" alt="ecityclic esPublico">
+<img class="ecd-foot-hashtag" src="../assets/img/ecityday/hashtag.svg" alt="#ecityDay">
+<span class="ecd-num">5</span>
+</section>
+
+<!-- 6. Segona part -->
+<section class="slide-container ecd ecd-dark" aria-label="6. Segona part: El Hub de transformació digital">
 <img class="ecd-logo" src="../assets/img/ecityday/logo-white.svg" alt="ecityclic esPublico">
 <img class="ecd-hashtag" src="../assets/img/ecityday/hashtag.svg" alt="#ecityDay">
 <h2 class="ecd-title">El Hub de transformació digital</h2>
 <p class="ecd-subtitle">Segona part · L’estratègia d’esPublico amb la capacitació dels usuaris</p>
 </section>
 
-<!-- 6. Pilars de l'estratègia -->
-<section class="slide-container ecd" aria-label="6. Estratègia d’esPublico: pilars">
+<!-- 7. Pilars de l'estratègia -->
+<section class="slide-container ecd" aria-label="7. Estratègia d’esPublico: pilars">
 <p class="ecd-kicker">Estratègia</p>
 <h2 class="ecd-title">Estratègia d’esPublico: pilars</h2>
 <svg class="hub-diagram hub-pillars" viewBox="0 0 1165 490" role="img" aria-label="Tres pilars al voltant del ciutadà: Proximitat, Col·laboració i Transferència del coneixement">
@@ -576,11 +624,11 @@
 </svg>
 <img class="ecd-foot-logo" src="../assets/img/ecityday/logo.svg" alt="ecityclic esPublico">
 <img class="ecd-foot-hashtag" src="../assets/img/ecityday/hashtag.svg" alt="#ecityDay">
-<span class="ecd-num">6</span>
+<span class="ecd-num">7</span>
 </section>
 
-<!-- 7. Proximitat -->
-<section class="slide-container ecd" aria-label="7. La proximitat es practica en persona">
+<!-- 8. Proximitat -->
+<section class="slide-container ecd" aria-label="8. La proximitat es practica en persona">
 <p class="ecd-kicker">Estratègia</p>
 <h2 class="ecd-title">La proximitat es practica en persona</h2>
 <div class="hub-third">
@@ -596,11 +644,11 @@
 <p class="hub-source">Font: dada interna d’esPublico facilitada per a aquesta presentació</p>
 <img class="ecd-foot-logo" src="../assets/img/ecityday/logo.svg" alt="ecityclic esPublico">
 <img class="ecd-foot-hashtag" src="../assets/img/ecityday/hashtag.svg" alt="#ecityDay">
-<span class="ecd-num">7</span>
+<span class="ecd-num">8</span>
 </section>
 
-<!-- 8. Xifres de capacitació -->
-<section class="slide-container ecd hub-knowledge" aria-label="8. Compartim coneixement per tal de capacitar als usuaris">
+<!-- 9. Xifres de capacitació -->
+<section class="slide-container ecd hub-knowledge" aria-label="9. Compartim coneixement per tal de capacitar als usuaris">
 <p class="ecd-kicker">Estratègia</p>
 <h2 class="ecd-title">Compartim coneixement per tal de capacitar als usuaris</h2>
 <p class="hub-lead">La nostra aposta és que els usuaris puguin aplicar el coneixement a la seva feina amb autonomia</p>
@@ -624,11 +672,11 @@
 <p class="hub-source">Font: dades internes d’esPublico facilitades per aquesta presentació</p>
 <img class="ecd-foot-logo" src="../assets/img/ecityday/logo.svg" alt="ecityclic esPublico">
 <img class="ecd-foot-hashtag" src="../assets/img/ecityday/hashtag.svg" alt="#ecityDay">
-<span class="ecd-num">8</span>
+<span class="ecd-num">9</span>
 </section>
 
-<!-- 9. Una forma eficaç d'aprendre -->
-<section class="slide-container ecd hub-learning" aria-label="9. Una forma eficaç d’aprendre">
+<!-- 10. Una forma eficaç d'aprendre -->
+<section class="slide-container ecd hub-learning" aria-label="10. Una forma eficaç d’aprendre">
 <p class="ecd-kicker">Estratègia</p>
 <h2 class="ecd-title">Una forma eficaç d’aprendre</h2>
 <p class="hub-lead">La nostra aposta per la capacitació i la nostra experiència presencial orienten el disseny del HUB</p>
@@ -641,19 +689,19 @@
 <p class="hub-strip">Creiem en una formació amb temps per practicar i aprendre junts</p>
 <img class="ecd-foot-logo" src="../assets/img/ecityday/logo.svg" alt="ecityclic esPublico">
 <img class="ecd-foot-hashtag" src="../assets/img/ecityday/hashtag.svg" alt="#ecityDay">
-<span class="ecd-num">9</span>
+<span class="ecd-num">10</span>
 </section>
 
-<!-- 10. Separador -->
-<section class="slide-container ecd ecd-dark" aria-label="10. En aquest context, què és el HUB?">
+<!-- 11. Separador -->
+<section class="slide-container ecd ecd-dark" aria-label="11. En aquest context, què és el HUB?">
 <img class="ecd-logo" src="../assets/img/ecityday/logo-white.svg" alt="ecityclic esPublico">
 <img class="ecd-hashtag" src="../assets/img/ecityday/hashtag.svg" alt="#ecityDay">
 <h2 class="ecd-title">En aquest context, què és el HUB?</h2>
 <p class="ecd-subtitle">Territori, tecnologia, persones</p>
 </section>
 
-<!-- 11. Context i premisses -->
-<section class="slide-container ecd hub-context" aria-label="11. Context i premisses de partida">
+<!-- 12. Context i premisses -->
+<section class="slide-container ecd hub-context" aria-label="12. Context i premisses de partida">
 <p class="ecd-kicker">El HUB</p>
 <h2 class="ecd-title">Context i premisses de partida</h2>
 <ul class="hub-rows">
@@ -668,11 +716,11 @@
 </ul>
 <img class="ecd-foot-logo" src="../assets/img/ecityday/logo.svg" alt="ecityclic esPublico">
 <img class="ecd-foot-hashtag" src="../assets/img/ecityday/hashtag.svg" alt="#ecityDay">
-<span class="ecd-num">11</span>
+<span class="ecd-num">12</span>
 </section>
 
-<!-- 12. Territori -->
-<section class="slide-container ecd hub-territory" aria-label="12. La formació presencial connecta el territori">
+<!-- 13. Territori -->
+<section class="slide-container ecd hub-territory" aria-label="13. La formació presencial connecta el territori">
 <p class="ecd-kicker">El HUB</p>
 <h2 class="ecd-title">La formació presencial connecta el territori</h2>
 <p class="hub-lead">El HUB busca reunir a professionals de diferents entitats catalanes per aprendre junts i compartir la seva experiència</p>
@@ -693,11 +741,11 @@
 <p class="hub-strip">Una aposta per la capacitació que contribueix al propòsit de vertebrar el territori</p>
 <img class="ecd-foot-logo" src="../assets/img/ecityday/logo.svg" alt="ecityclic esPublico">
 <img class="ecd-foot-hashtag" src="../assets/img/ecityday/hashtag.svg" alt="#ecityDay">
-<span class="ecd-num">12</span>
+<span class="ecd-num">13</span>
 </section>
 
-<!-- 13. Valors -->
-<section class="slide-container ecd hub-values" aria-label="13. Valors">
+<!-- 14. Valors -->
+<section class="slide-container ecd hub-values" aria-label="14. Valors">
 <p class="ecd-kicker">El HUB</p>
 <h2 class="ecd-title">Valors</h2>
 <ul class="ecd-board hub-grid">
@@ -708,11 +756,11 @@
 </ul>
 <img class="ecd-foot-logo" src="../assets/img/ecityday/logo.svg" alt="ecityclic esPublico">
 <img class="ecd-foot-hashtag" src="../assets/img/ecityday/hashtag.svg" alt="#ecityDay">
-<span class="ecd-num">13</span>
+<span class="ecd-num">14</span>
 </section>
 
-<!-- 14. Catàleg d'accions -->
-<section class="slide-container ecd ecd-blocks hub-catalog" aria-label="14. Catàleg d’accions">
+<!-- 15. Catàleg d'accions -->
+<section class="slide-container ecd ecd-blocks hub-catalog" aria-label="15. Catàleg d’accions">
 <p class="ecd-kicker">El HUB</p>
 <h2 class="ecd-title">Catàleg d’accions</h2>
 <ul class="ecd-board ecd-cards">
@@ -723,11 +771,11 @@
 </ul>
 <img class="ecd-foot-logo" src="../assets/img/ecityday/logo.svg" alt="ecityclic esPublico">
 <img class="ecd-foot-hashtag" src="../assets/img/ecityday/hashtag.svg" alt="#ecityDay">
-<span class="ecd-num">14</span>
+<span class="ecd-num">15</span>
 </section>
 
-<!-- 15. HUB al 2026 -->
-<section class="slide-container ecd hub-2026" aria-label="15. HUB al 2026">
+<!-- 16. HUB al 2026 -->
+<section class="slide-container ecd hub-2026" aria-label="16. HUB al 2026">
 <p class="ecd-kicker">El HUB</p>
 <h2 class="ecd-title">HUB al 2026</h2>
 <div class="ecd-board hub-milestones">
@@ -749,11 +797,11 @@
 </ul>
 <img class="ecd-foot-logo" src="../assets/img/ecityday/logo.svg" alt="ecityclic esPublico">
 <img class="ecd-foot-hashtag" src="../assets/img/ecityday/hashtag.svg" alt="#ecityDay">
-<span class="ecd-num">15</span>
+<span class="ecd-num">16</span>
 </section>
 
-<!-- 16. HUB 2027 -->
-<section class="slide-container ecd hub-2027" aria-label="16. HUB 2027">
+<!-- 17. HUB 2027 -->
+<section class="slide-container ecd hub-2027" aria-label="17. HUB 2027">
 <p class="ecd-kicker">El HUB</p>
 <h2 class="ecd-title">HUB 2027</h2>
 <div class="hub-arrow"><span>2027</span></div>
@@ -766,11 +814,11 @@
 </div>
 <img class="ecd-foot-logo" src="../assets/img/ecityday/logo.svg" alt="ecityclic esPublico">
 <img class="ecd-foot-hashtag" src="../assets/img/ecityday/hashtag.svg" alt="#ecityDay">
-<span class="ecd-num">16</span>
+<span class="ecd-num">17</span>
 </section>
 
-<!-- 17. Comunicació: el pòster conserva el QR original -->
-<section class="slide-container ecd ecd-image-text hub-communication" aria-label="17. Comunicació">
+<!-- 18. Comunicació: el pòster conserva el QR original -->
+<section class="slide-container ecd ecd-image-text hub-communication" aria-label="18. Comunicació">
 <figure class="ecd-panel"><img src="img/connecta-hub.png" alt="Pòster «Connecta’t al HUB» amb dues mans unint peces de trencaclosques i un codi QR per subscriure’s a les novetats"></figure>
 <p class="ecd-kicker">El HUB</p>
 <h2 class="ecd-title">Comunicació</h2>
@@ -781,11 +829,11 @@
 </div>
 <img class="ecd-foot-logo" src="../assets/img/ecityday/logo.svg" alt="ecityclic esPublico">
 <img class="ecd-foot-hashtag" src="../assets/img/ecityday/hashtag.svg" alt="#ecityDay">
-<span class="ecd-num">17</span>
+<span class="ecd-num">18</span>
 </section>
 
-<!-- 18. Tancament -->
-<section class="slide-container ecd ecd-closing" aria-label="18. Gràcies">
+<!-- 19. Tancament -->
+<section class="slide-container ecd ecd-closing" aria-label="19. Gràcies">
 <img class="ecd-logo" src="../assets/img/ecityday/logo-white.svg" alt="ecityclic esPublico">
 <img class="ecd-hashtag" src="../assets/img/ecityday/hashtag.svg" alt="#ecityDay">
 <h2 class="ecd-title">Gràcies!</h2>
