@@ -516,72 +516,88 @@
     white-space: nowrap;
 }
 
-/* Demo funcional: guion en timeline sobre la línea del evento */
-.hub-script {
-    top: 170px;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1.5fr;
-    gap: 48px;
+/* Demo funcional: guion en timeline diagonal ascendente */
+.hub-script-line {
+    left: 0;
+    top: 0;
+    width: var(--slide-width);
+    height: var(--slide-height);
 }
 
-.hub-script::before {
-    content: "";
-    position: absolute;
-    left: calc(-1 * var(--ecd-margin));
-    top: 34px;
-    width: var(--slide-width);
-    height: 4px;
-    background: linear-gradient(90deg, var(--ecd-orange), var(--ecd-petrol) 52%, var(--ecd-olive));
-    transform: translateY(-50%);
+.hub-script {
+    top: 0;
+    height: var(--slide-height);
 }
 
 .hub-script-step {
-    position: relative;
+    position: absolute;
+    width: 364px;
+}
+
+.hub-script-step:nth-child(1) {
+    left: 0;
+    top: 458px;
+}
+
+.hub-script-step:nth-child(2) {
+    left: 400px;
+    top: 328px;
+}
+
+.hub-script-step:nth-child(3) {
+    left: 800px;
+    top: 198px;
 }
 
 .hub-script-mark {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 68px;
-    height: 68px;
-    margin-bottom: 22px;
+    width: 44px;
+    height: 44px;
+    margin-bottom: 14px;
     border-radius: 50%;
     background: var(--ecd-petrol);
+    box-shadow: 0 0 0 5px var(--ecd-white);
     color: var(--ecd-white);
-    font-size: 30px;
+    font-size: 20px;
     font-weight: 700;
 }
 
 .ecd .hub-script-name {
-    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 6px;
     font-size: 28px;
     font-weight: 700;
     line-height: 1.2;
 }
 
+.hub-script-name img {
+    display: block;
+    width: 30px;
+    height: 26px;
+    object-fit: contain;
+}
+
 .ecd .hub-script-text {
     font-size: 21px;
-    line-height: 1.35;
+    line-height: 1.32;
     color: var(--ecd-grey);
 }
 
 .hub-script-services {
-    margin-top: 18px;
-    padding-top: 16px;
-    border-top: 1.5px solid var(--ecd-grey-light);
+    margin-top: 12px;
+    font-size: 14px;
+    line-height: 1.3;
+    color: var(--ecd-grey);
 }
 
 .hub-script-services div {
     display: grid;
-    grid-template-columns: 66px 1fr;
-    margin-top: 10px;
-    font-size: 19px;
-    line-height: 1.3;
-}
-
-.hub-script-services div:first-child {
-    margin-top: 0;
+    grid-template-columns: 46px 1fr;
+    margin-top: 4px;
 }
 
 .hub-script-services dt {
@@ -590,7 +606,6 @@
 
 .hub-script-services dd {
     margin: 0;
-    color: var(--ecd-grey);
 }
 
 </style>
@@ -704,11 +719,15 @@
 
 <!-- 6. Demo funcional: guia de les tres fases -->
 <section class="slide-container ecd hub-demo" aria-label="6. Demo funcional">
+<svg class="hub-script-line" viewBox="0 0 1280 720" aria-hidden="true">
+<defs><linearGradient id="hub-script-gradient" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="1280" y2="0"><stop offset="0" stop-color="var(--ecd-orange)"/><stop offset="0.52" stop-color="var(--ecd-petrol)"/><stop offset="1" stop-color="var(--ecd-olive)"/></linearGradient></defs>
+<path d="M0 506L1280 90" fill="none" stroke="url(#hub-script-gradient)" stroke-width="4"/>
+</svg>
 <h2 class="ecd-title">Demo funcional</h2>
 <ol class="ecd-board hub-script">
-<li class="hub-script-step"><span class="hub-script-mark">1</span><h3 class="hub-script-name">Perfil del contractant</h3><p class="hub-script-text">Creació de l’expedient i publicació de la licitació a&nbsp;la&nbsp;PSCP</p></li>
-<li class="hub-script-step"><span class="hub-script-mark">2</span><h3 class="hub-script-name">e-Licita</h3><p class="hub-script-text">Publicació de la proposta d’adjudicació i incorporació de la documentació a l’expedient</p></li>
-<li class="hub-script-step"><span class="hub-script-mark">3</span><h3 class="hub-script-name">Via Oberta</h3><p class="hub-script-text">Resolució d’adjudicació i formalització del contracte</p>
+<li class="hub-script-step"><span class="hub-script-mark">1</span><h3 class="hub-script-name"><img src="img/logos/perfil-contractant.svg" alt="">Perfil del contractant</h3><p class="hub-script-text">Creació de l’expedient i publicació de la licitació a&nbsp;la&nbsp;PSCP</p></li>
+<li class="hub-script-step"><span class="hub-script-mark">2</span><h3 class="hub-script-name"><img src="img/logos/elicita.svg" alt="">e-Licita</h3><p class="hub-script-text">Publicació de la proposta d’adjudicació i incorporació de la documentació a l’expedient</p></li>
+<li class="hub-script-step"><span class="hub-script-mark">3</span><h3 class="hub-script-name"><img src="img/logos/via-oberta.svg" alt="">Via Oberta</h3><p class="hub-script-text">Resolució d’adjudicació i formalització del contracte</p>
 <dl class="hub-script-services">
 <div><dt>AEAT</dt><dd>Estar al corrent de les obligacions tributàries segons la Llei de Contractes amb incompliments</dd></div>
 <div><dt>ATC</dt><dd>Situació de deute d’un contribuent amb l’Agència Tributària de Catalunya</dd></div>
